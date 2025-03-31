@@ -340,3 +340,7 @@
         }
 
 .hide{display:none;}
+
+header > img {
+    border-radius: 100px;
+}
