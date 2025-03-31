@@ -356,3 +356,11 @@ header > img {
     border-radius: 100px;
     margin-right: 10px;
 }
+@media screen and (max-width: 540px) {
+        .body-card {
+            font-size: 10px;
+        } 
+        tbody img {
+            height: 50px !important;
+        }
+}
