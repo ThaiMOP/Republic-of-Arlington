@@ -28,7 +28,7 @@
         }
 
         body > header {
-            background-color: #ffdd00;
+            background-color: #fff;
             color: #000;
             display: flex;
             justify-content: space-between;
