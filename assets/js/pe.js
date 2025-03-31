@@ -19,7 +19,7 @@ function updateClock() {
         });
         document.getElementById("form").addEventListener("submit", function (e) {
           e.preventDefault(); // Prevent the default form submission
-          document.getElementById("message").textContent = "เธเธณเธฅเธฑเธเธเธฑเธเธ—เธถเธ...";
+          document.getElementById("message").textContent = "กำลังบันทึก...";
           document.getElementById("message").style.display = "block";
           document.getElementById("submit-button").disabled = true;
   
@@ -34,7 +34,7 @@ function updateClock() {
   
           // Send a POST request to your Google Apps Script
           fetch(
-            "https://script.google.com/macros/s/AKfycby3ndK2LIkcgDHv33i8H40jxCcmSzEyp2489xjoGD48f3lLvV-Vz3SunKvKJVZLJAD_/exec",
+            "https://script.google.com/macros/s/AKfycbzyYwv0eKvmhjwa5SSTGf9FTFFsCHEjPm9qqV64HSVYAkBGx3oyciWjnp-WdLK21Wu8/exec",
             {
               redirect: "follow",
               method: "POST",
