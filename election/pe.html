@@ -34,20 +34,34 @@
                             <thead>
                                 <tr>
                                     <td>หมายเลข<br>ของผู้สมัคร</td>
+                                    <td><small>ภาพเครื่องหมาย<br>พรรคการเมือง</small></td>
+                                    <td><small>ชื่อพรรคการเมือง</small></td>
                                     <td><img src="https://koknongna.pages.dev/election/assets/img/1.png"></td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>1</td>
+                                    <td><img src="https://upload.wikimedia.org/wikipedia/en/d/d4/Bhumjaithai_Party_logo.png" height="60px"></td>
+                                    <td>พรรคภูมิใจไทย</td>
                                     <td>
-                                        <input type="text" class="value" id="ประยุทธ์" name="ประยุทธ์" readonly>
+                                        <input type="text" class="value" id="พรรคภูมิใจไทย" name="พรรคภูมิใจไทย" readonly>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
+                                    <td><img src="/assets/img/DEM.png" height="60px"></td>
+                                    <td>พรรคประชาธิปไตย</td>
                                     <td>
-                                        <input type="text" class="value" id="สุรพล" name="สุรพล" readonly>
+                                        <input type="text" class="value" id="พรรคประชาธิปไตย" name="พรรคประชาธิปไตย" readonly>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td><img src="/assets/img/pheutham.png" height="60px"></td>
+                                    <td>พรรคเพื่อธรรม</td>
+                                    <td>
+                                        <input type="text" class="value" id="พรรคเพื่อธรรม" name="พรรคเพื่อธรรม" readonly>
                                     </td>
                                 </tr>
                             </tbody>
@@ -56,19 +70,19 @@
                 </div>
                 <footer>
                     <div class="p">
-                        <p>ถ้าไม่ประสงค์ลงคะแนนเลือกผู้สมัครใดเลย ให้ทำเครื่องหมายกากบาท "<b>X</b>" ในช่องสี่เหลื่ยมนี้ </p>
+                        <p>ถ้าไม่ประสงค์ลงคะแนนเลือกพรรคการเมืองใดเลย ให้ทำเครื่องหมายกากบาท "<b>X</b>" ในช่องสี่เหลื่ยมนี้ </p>
                         <img src="https://koknongna.pages.dev/election/assets/img/no.png" alt="">
                     </div>
                     <div class="box">
                         <p><small>ช่องไม่เลือกผู้สมัครใด</small></p>
-                        <input type="text" class="value" id="ไม่เลือกนายกคนใด" name="ไม่เลือกนายกคนใด" readonly>
+                        <input type="text" class="value" id="ไม่เลือกพรรคใด" name="ไม่เลือกพรรคใด" readonly>
                     </div>
                 </footer>
             </div>
             <div class="col-6 c-0">
                 <header>
-                    <h2>ท้ายบัตรเลือกตั้ง</h2>
-                    <p>ด้านในของบัตรเลือกตั้งนายกเทศมนตรีและสมาชิกสภาเทศบาลตำบลโคกหนองนา</p>
+                    <h2>ตั้นขั้วบัตรเลือกตั้ง</h2>
+                    <p>ด้านในของบัตรเลือกตั้งประธานาธิบดี</p>
                 </header>
                 <main>
                     <div style=" display: grid; text-align: left; ">
@@ -76,12 +90,12 @@
                         <input type="text" id="name" placeholder="ชื่อ นามสกุล" name="name" required="">
                     </div>
                     <div style=" display: grid; text-align: left; ">
-                        <label for="moo">หมู่ที่</label>
-                        <input type="number" id="moo" placeholder="เลขหมู่บ้าน" name="moo" required="">
+                        <label for="uid">เลขประชาชน (UID Discord)</label>
+                        <input type="text" id="uid" placeholder="เลขประชาชน" name="uid" required="">
                     </div>
                 </main>
                 <main>
-                    <button type="submit" id="submit-button" class="btn btn-primary button is-primary">ลงคะแนน</button>
+                    <button type="submit" id="submit-button" class="btn btn-primary button is-primary">หย่อนบัตร</button>
                 </main>
                 <main>
                     <div id="message" style=" display: none; margin: 20px; font-weight: bold; color: green; padding: 8px; background-color: beige; border-radius: 4px; border-color: aquamarine; "></div>
