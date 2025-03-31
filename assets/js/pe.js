@@ -53,20 +53,20 @@ function updateClock() {
               }
             })
             .then(function (data) {
-              // Display a success message
-              document.getElementById("message").textContent =
-                "Data submitted successfully!";
-              document.getElementById("message").style.display = "block";
-              document.getElementById("message").style.backgroundColor = "green";
-              document.getElementById("message").style.color = "beige";
-              document.getElementById("submit-button").disabled = false;
-              document.getElementById("form").reset();
-  
-              setTimeout(function () {
-                document.getElementById("message").textContent = "";
-                document.getElementById("message").style.display = "none";
-              }, 2600);
+                // แสดงข้อความสำเร็จ
+                document.getElementById("message").textContent = "Data submitted successfully!";
+                document.getElementById("message").style.display = "block";
+                document.getElementById("message").style.backgroundColor = "green";
+                document.getElementById("message").style.color = "beige";
+                document.getElementById("submit-button").disabled = false;
+                document.getElementById("form").reset();
+            
+                // รอ 2.6 วินาทีแล้วเปลี่ยนหน้า
+                setTimeout(function () {
+                    window.location.href = "/election/";
+                }, 2600);
             })
+
             .catch(function (error) {
               // Handle errors, you can display an error message here
               console.error(error);
