@@ -314,12 +314,23 @@
             gap: 30px;
         }
         
-        input#moo, input#name {
+        input#uid, input#name {
             text-align: center;
             padding: 4px 6px;
-            border-radius: 5px;
             outline: 0;
-            border: 1px solid;
+            border-bottom: 2px solid #000;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            background: transparent;
+        }
+
+        input#director {
+            text-align: center;
+            padding: 4px 6px;
+            outline: 0;
+            border: none;
+            background: transparent;
         }
 
         main > button{
