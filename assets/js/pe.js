@@ -64,7 +64,7 @@ function updateClock() {
                 // รอ 2.6 วินาทีแล้วเปลี่ยนหน้า
                 setTimeout(function () {
                     window.location.href = "/election/next";
-                }, 2600);
+                }, 500);
             })
 
             .catch(function (error) {
