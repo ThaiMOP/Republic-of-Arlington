@@ -31,9 +31,17 @@
     </header>
     <section>
       <h1>ท่านใช้สิทธิครบแล้ว ระบบได้บันทึกผลการลงคะแนนแล้ว</h1>
-      <p>หากพบเจอการลงคะแนนซ้ำ ด้วยหมายเลขอุปกรณ์อิเล็กทรอนิกส์เดียวกัน 
-        <br>สำนักงานคณะกรรมการการเลือกตั้ง จะดำเนินการถึงที่สุดต่อไป</p>
+      <p style="color: red;font-weight: 900;text-shadow: 2px 2px 4px rgb(74 74 74 / 50%);">
+        หากพบเจอการลงคะแนนซ้ำ ด้วยหมายเลขอุปกรณ์อิเล็กทรอนิกส์เดียวกัน 
+        <br>สำนักงานคณะกรรมการการเลือกตั้ง จะดำเนินการถึงที่สุดต่อไป
+      </p>
+        <button id="homeButton">กลับสู่หน้าหลัก</button>
     </section>
+    <script>
+      document.getElementById("homeButton").addEventListener("click", function() {
+        window.location.href = "/election/";
+      });
+    </script>
 </body>
 </html>
 
