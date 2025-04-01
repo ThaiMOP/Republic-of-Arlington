@@ -56,7 +56,8 @@
     <footer>
         <p>© สงวนลิขสิทธิ์ 2568</p>
     </footer>
-	<script>document.addEventListener("DOMContentLoaded", function () {
+	<script>
+document.addEventListener("DOMContentLoaded", function () {
     const idCardInput = document.getElementById("idCard");
     const checkButton = document.querySelector(".btn-primary");
     const resultTableBody = document.querySelector(".mtable tbody");
@@ -75,14 +76,17 @@
         }
         
         try {
-            const response = await fetch(`https://script.google.com/macros/s/AKfycbyXIpdKy5QRwuVG9rAffwPMJ4iLukxPyQu2DUzUzU7bS0wXNJAIpobRL4sIzFzvCngw/exec?id_card=${idCardValue}`);
+            const response = await fetch("https://script.google.com/macros/s/AKfycbyXIpdKy5QRwuVG9rAffwPMJ4iLukxPyQu2DUzUzU7bS0wXNJAIpobRL4sIzFzvCngw/exec", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ id_card: idCardValue })
+            });
             
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
             
             const data = await response.json();
-
             
             resultTableBody.innerHTML = ""; // เคลียร์ข้อมูลเก่า
             
@@ -126,8 +130,6 @@
         }
     });
 });
-
-
 	</script>
 </body>
 </html>
