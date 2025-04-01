@@ -30,6 +30,10 @@
             align-items: center;
             padding: 10px 20px;
         }
+      
+        h1 {
+            margin: 0;
+        }
 
         .menu-toggle {
             font-size: 24px;
@@ -70,6 +74,8 @@
         .submenu {
             display: none;
             padding-left: 20px;
+            position: absolute;
+            background: #fff;
         }
 
         .submenu a {
@@ -92,8 +98,8 @@
             nav {
                 display: none;
                 position: absolute;
-                width: 250px;
-                top: 50px;
+                width: 100%;
+                top: 70.4px;
                 left: 0;
                 box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
                 flex-direction: column;
@@ -101,6 +107,10 @@
 
             nav ul {
                 flex-direction: column;
+            }
+          
+            .submenu {
+                position: unset;
             }
         }
     </style>
@@ -152,7 +162,10 @@
     <script>
         document.querySelector('.menu-toggle').addEventListener('click', function() {
             let nav = document.querySelector('nav');
+            let icon = this.querySelector('i');
             nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
         });
 
         document.querySelectorAll('.toggle-submenu').forEach(item => {
