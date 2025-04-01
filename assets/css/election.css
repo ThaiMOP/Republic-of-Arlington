@@ -23,6 +23,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100px;
 }
 
 .eca-btn {
@@ -34,12 +35,4 @@ header {
     text-align: center;
     text-shadow: 2px 1px 4px #fff;
     cursor: pointer;
-}
-
-[data-flex-hidden="0"] {
-    display: flex;
-}
-
-[data-flex-hidden="1"] {
-    display: none;
 }
