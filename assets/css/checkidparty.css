@@ -1,0 +1,316 @@
+
+        :root {
+            --main-bg-color: #009d63;
+            --main-text-color: #009d63;
+            --second-text-color: #bbbec5;
+            --second-bg-color: #c1efde;
+        }
+
+        body {
+            font-family: CPN, sans-serif; 
+            margin: 0;
+            padding: 0;
+            background-color: var(--second-bg-color);
+        }
+
+        header {
+            background: var(--main-bg-color);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+      
+        
+        header h1 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .menu-toggle {
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+        }
+
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            background: white;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            padding-right: 10px;
+        }
+
+        nav ul li {
+            border-bottom: 1px solid var(--second-text-color);
+        }
+
+        nav ul li a {
+            display: block;
+            text-decoration: none;
+            color: var(--main-text-color);
+            padding: 12px;
+        }
+
+        .feedback a ,
+        footer a {
+            color: #2e603c;
+            border-bottom: 2px solid #2e603c;
+            text-decoration: none;
+        }
+
+        .feedback a:hover ,
+        footer a:hover {
+            color: #30906a !important;
+        }
+        
+        nav ul li a:hover {
+            background: var(--second-bg-color);
+        }
+
+        .submenu {
+            display: none;
+            padding-left: 20px;
+            position: absolute;
+            background: #fff;
+        }
+
+        .submenu a {
+            font-size: 0.9em;
+        }
+
+        .language-switch {
+            cursor: pointer;
+            padding: 5px 10px;
+            background: white;
+            color: var(--main-text-color);
+            border-radius: 5px;
+        }
+      
+        [data-open="640"] {
+            display: none;
+        }
+      
+        @media (max-width: 640px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            [data-open="640"] {
+                display: block;
+            }
+            
+            .box {
+                width: 100%;
+            }
+        }
+        
+
+        .banner {
+            width: 100%;
+            text-align: center;
+        }
+
+        
+	@media (min-width: 1200px) {
+	    .container {
+	        max-width: 1140px;
+	    }
+	}
+	@media (min-width: 992px) {
+	    .container {
+	        max-width: 960px;
+	    }
+	}
+	@media (min-width: 768px) {
+	    .container {
+	        max-width: 720px;
+	    }
+	}
+	@media (min-width: 576px) {
+	    .container {
+	        max-width: 540px;
+	    }
+	}
+	.container {
+	    width: 100%;
+	    padding-right: 15px;
+	    padding-left: 15px;
+	    margin-right: auto;
+	    margin-left: auto;
+	}
+
+        
+        .box {
+            background: white;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 5px;
+            width: 40%;
+            text-align: center;
+        }
+
+        .feedback {
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer {
+            background: #a2a2a2;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+            font-size: 0.9em;
+        }
+
+        img[alt="Election Commission Banner"] {
+            cursor: pointer;
+        }
+      
+	.marquee-text {
+	    background-color: #ffc107;
+	    color: #ff0000;
+	    font-size: 16px;
+	    padding: 15px 0;
+	    position: relative;
+	}
+	.form-control {
+	    box-shadow: none;
+	    border: 1px solid #dadada;
+	    padding: 5px 20px;
+	    height: 25px;
+	    background-color: #fff;
+	    background-clip: padding-box;
+	    color: #959595;
+	    font-size: 12px;
+	    border-radius: 0;
+	    display: block;
+	    width: -webkit-fill-available;
+	    line-height: 1.5;
+	    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+	    margin: 0;
+	    outline: none;
+	}
+	    
+.btn-secondary.disabled, .btn-secondary:disabled {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+.btn.disabled, .btn:disabled {
+    opacity: .65;
+}
+[type=reset], [type=submit], button, html [type=button] {
+    -webkit-appearance: button;
+}
+	
+.btn-primary, .btn-dark {
+    border: 0;
+    border-radius: 0;
+    padding: 12px 25px 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 350ms;
+    user-select: none;
+    font-size: 1rem;
+    line-height: 1.5;
+}    
+.result-print-check-id-party {
+    border-top: 4px dotted #CFCFCF;
+    margin-top: 30px;
+}
+.container-fluid {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+	    
+.text-center {
+    text-align: center !important;
+}
+	    
+h4 {
+    font-size: 18px;
+    line-height: 28px;
+}
+	    
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+	    
+table.minimalistBlack {
+    border: 3px solid #000000;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+}
+table {
+    border-collapse: collapse;
+}
+	    
+table.minimalistBlack thead {
+    background: linear-gradient(to bottom, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
+    border-bottom: 3px solid #000000;
+}
+	    
+table.minimalistBlack thead th {
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+    vertical-align: middle;
+}
+	    
+table.minimalistBlack tbody td {
+    font-size: 12px;
+    line-height: 16px;
+    vertical-align: middle;
+}
+	    
+table.minimalistBlack td, table.minimalistBlack th {
+    border: 1px solid #000000;
+    padding: 5px 4px;
+}
+	    
+.table td, .table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+.text-right {
+    text-align: right !important;
+}
+	    
+.reCapcha {
+    text-align: center;
+}
