@@ -238,7 +238,7 @@
     margin-top: 30px;
 }
 .result-print-check-id-party.active {
-    display: unset;
+    display: block;
 }
 .container-fluid {
     width: 100%;
@@ -322,4 +322,11 @@ table.minimalistBlack td, table.minimalistBlack th {
 
 p {
     margin: 0;
+}
+
+button {
+    cursor: pointer;
+}
+tbody tr {
+    background: #fff;
 }
