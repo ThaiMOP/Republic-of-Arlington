@@ -5,6 +5,10 @@
   font-family: CPN, sans-serif; 
 }
 
+body {
+    overflow: hidden;
+}
+
 header {
     display: flex;
     justify-content: space-between;
