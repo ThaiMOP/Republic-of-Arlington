@@ -3,10 +3,8 @@ function updateElectionStatus() {
     if (!electionTag) return; 
 
     const now = new Date(); 
-    const timezoneOffset = 7 * 60 * 60 * 1000; // Offset 7 ชั่วโมง (UTC+7)
-    
-    const startTime = new Date(Date.UTC(2025, 3, 2, 6, 0, 0) - timezoneOffset); 
-    const endTime = new Date(Date.UTC(2025, 3, 2, 16, 59, 59) - timezoneOffset); 
+    const startTime = new Date("2025-04-02T06:00:00"); 
+    const endTime = new Date("2025-04-02T16:59:59"); 
 
     if (now < startTime) { 
         electionTag.innerHTML = `<h1>ยังไม่ถึงเวลาใช้สิทธิออกเสียงลงคะแนน</h1>`; 
