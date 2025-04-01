@@ -18,7 +18,9 @@
   --second-text-color: #bbbec5;
   --second-bg-color: #c1efde;
 }
-
+.sidebar.hidden {
+    margin-left: -15rem;
+}
 .primary-text {
   color: var(--main-text-color);
 }
@@ -115,10 +117,10 @@ font-size: 1rem !important;
     <script src="https://kit.fontawesome.com/987283b7ac.js" crossorigin="anonymous"></script>
     <script>
     document.getElementById("menu-toggle").addEventListener("click", function() {
-        var sidebar = document.getElementById("sidebar-wrapper");
-        sidebar.style.display = (sidebar.style.display === "none" || sidebar.style.display === "") ? "block" : "none";
+        document.getElementById("sidebar-wrapper").classList.toggle("hidden");
     });
     </script>
+
 
 </head>
 
