@@ -185,6 +185,9 @@
             font-size: 0.9em;
         }
 
+        img[alt="Election Commission Banner"] {
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -305,7 +308,7 @@
         // ลบผู้ใช้ออกจากระบบเมื่อออกจากหน้าเว็บ
         window.addEventListener("beforeunload", removeOnlineUser);
         
-        document.getElementById("electionBanner").addEventListener("click", function() {
+        document.querySelector('img[alt="Election Commission Banner"]').addEventListener("click", function() {
             window.location.href = "/election/";
         });
     </script>
