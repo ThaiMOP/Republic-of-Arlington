@@ -113,14 +113,21 @@ font-size: 1rem !important;
 </style>
     <title>Bootstap 5 Responsive Admin Dashboard</title>
     <script src="https://kit.fontawesome.com/987283b7ac.js" crossorigin="anonymous"></script>
+    <script>
+    document.getElementById("menu-toggle").addEventListener("click", function() {
+        var sidebar = document.getElementById("sidebar-wrapper");
+        sidebar.style.display = (sidebar.style.display === "none" || sidebar.style.display === "") ? "block" : "none";
+    });
+    </script>
+
 </head>
 
 <body>
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
         <div class="bg-white" id="sidebar-wrapper" style=" z-index:1;">
-            <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><img
-                    class="fas fa-user-secret me-2" style="height:30px;" src="https://rep-arlington.pages.dev/assets/img/logo.png"></i>ELEC67</div>
+            <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
+              <img class="fas fa-user-secret me-2" style="height:50px;" src="https://rep-arlington.pages.dev/assets/img/eca.png" aria-hidden="true"></div>
                     
 
             <div class="list-group list-group-flush my-3">
