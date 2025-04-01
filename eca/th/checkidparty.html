@@ -216,6 +216,103 @@
 	    margin: 0;
 	    outline: none;
 	}
+	    
+.btn-secondary.disabled, .btn-secondary:disabled {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+.btn-primary.disabled, .btn-primary:disabled {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.btn.disabled, .btn:disabled {
+    opacity: .65;
+}
+[type=reset], [type=submit], button, html [type=button] {
+    -webkit-appearance: button;
+}
+	    
+.result-print-check-id-party {
+    border-top: 4px dotted #CFCFCF;
+    margin-top: 30px;
+}
+.container-fluid {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+	    
+.text-center {
+    text-align: center !important;
+}
+	    
+h4 {
+    font-size: 18px;
+    line-height: 28px;
+}
+	    
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+	    
+table.minimalistBlack {
+    border: 3px solid #000000;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+}
+table {
+    border-collapse: collapse;
+}
+	    
+table.minimalistBlack thead {
+    background: linear-gradient(to bottom, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
+    border-bottom: 3px solid #000000;
+}
+	    
+table.minimalistBlack thead th {
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+    vertical-align: middle;
+}
+	    
+table.minimalistBlack tbody td {
+    font-size: 12px;
+    line-height: 16px;
+    vertical-align: middle;
+}
+	    
+table.minimalistBlack td, table.minimalistBlack th {
+    border: 1px solid #000000;
+    padding: 5px 4px;
+}
+	    
+.table td, .table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+.text-right {
+    text-align: right !important;
+}
     </style>
 </head>
 <body>
@@ -253,6 +350,7 @@
             <label>หมายเลขประจำตัวประชาชน</label>
             <input type="text" class="form-control" value="" name="id_card" id="idCard" maxlength="21">
 	  </div>
+	<button type="button" class="btn btn btn-primary btn-secondary " disabled="">ตรวจสอบ</button>
   <div class="panel-footer result-print-check-id-party" id="result">
     <div class="container-fluid" id="print-area">
     	<div class="check-id-party-print-box">
