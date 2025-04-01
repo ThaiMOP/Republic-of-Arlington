@@ -2,11 +2,9 @@ function updateElectionStatus() {
     const electionTag = document.querySelector("[data-election]"); 
     if (!electionTag) return; 
 
-    const now = new Date(); 
-    const timezoneOffset = 7 * 60 * 60 * 1000; // Offset 7 ชั่วโมง (UTC+7)
-    
-    const startTime = new Date(Date.UTC(2025, 3, 2, 6, 0, 0) - timezoneOffset); 
-    const endTime = new Date(Date.UTC(2025, 3, 2, 16, 59, 59) - timezoneOffset); 
+    const now = new Date();
+    const startTime = new Date(2025, 3, 2, 6, 0, 0);  // 2 เม.ย. 2025 เวลา 06:00 (UTC+7)
+    const endTime = new Date(2025, 3, 2, 16, 59, 59); // 2 เม.ย. 2025 เวลา 16:59 (UTC+7)
 
     if (now < startTime) { 
         electionTag.innerHTML = `<h1>ยังไม่ถึงเวลาใช้สิทธิออกเสียงลงคะแนน</h1>`; 
@@ -17,5 +15,5 @@ function updateElectionStatus() {
     } 
 } 
 
-updateElectionStatus(); 
-setInterval(updateElectionStatus, 30000);
+updateElectionStatus();  
+setInterval(updateElectionStatus, 1000);
