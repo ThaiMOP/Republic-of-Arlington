@@ -333,6 +333,7 @@ p {
 
 button {
     cursor: pointer;
+    font-family: inherit;
 }
 tbody tr {
     background: #fff;
