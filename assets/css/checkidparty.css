@@ -315,3 +315,7 @@ table.minimalistBlack td, table.minimalistBlack th {
 .reCapcha {
     text-align: center;
 }
+
+p {
+    margin: 0;
+}
