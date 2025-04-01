@@ -237,92 +237,94 @@ font-size: 1rem !important;
               </div>
             </div>
           
-            <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4" id="next">
-                <div class="d-flex align-items-center">
-                    <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0" style="font-family: 'Kanit', sans-serif;">ผลการเลือกตั้งสมาชิกสภาผู้แทนราษฎร</h2>
-                </div>
-            </nav>
-
-            <div class="container-fluid px-4">
-                <div class="row g-3 my-2">
-                    <div class="col-md-3">
-                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                            <div>
-                                <h3 class="fs-2"><span id="all"></span></h3>
-                                <p class="fs-5" style="font-family: 'Kanit', sans-serif;">ผู้มีสิทธิ์เลือกตั้ง</p>
-                            </div>
-                            <i class="fas fa-solid fa-check-to-slot fs-1 primary-text border rounded-full secondary-bg p-3"></i>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                            <div>
-                                <h3 class="fs-2"><span id="pvote"></span></h3>
-                                <p class="fs-5" style="font-family: 'Kanit', sans-serif;">ผู้มาใช้สิทธิเลือกตั้ง</p>
-                            </div>
-                            <i class="fas fa-user fs-1 primary-text border rounded-full secondary-bg p-3"></i>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                            <div>
-                                <h3 class="fs-2"><span id="pc"></span> %</h3>
-                                <p class="fs-5" style="font-family: 'Kanit', sans-serif;">สถิติผู้มาใช้สิทธิ (%)</p>
-                                
-                            </div>
-                            <i class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                            <div>
-                                <h3 class="fs-2"><span id="nvote"></span></h3>
-                                <p class="fs-5" style="font-family: 'Kanit', sans-serif;">ไม่ประสงค์ลงคะแนน</p>
-                                
-                            </div>
-                            <i class="fas  fa-not-equal fs-1 primary-text border rounded-full secondary-bg p-3"></i>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                            <div>
-                                <h3 class="fs-2"><span id="pmfp"></span></h3>
-                                <p class="fs-5" style="font-family: 'Kanit', sans-serif;">คะแนนเสียงพรรคภูมิใจไทย</p>
-                                <h6 style="font-family: 'Kanit', sans-serif;">จำนวน ส.ส.</p><p><span id="smfp"></span></h6>
-                            </div>
-                            <img style="height: 41.6px;" src="https://upload.wikimedia.org/wikipedia/en/d/d4/Bhumjaithai_Party_logo.png">
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                            <div>
-                                <h3 class="fs-2"><span id="pptp"></span></h3>
-                                <p class="fs-5" style="font-family: 'Kanit', sans-serif;">คะแนนเสียงพรรคประชาธิปไตย</p>
-                                <h6 style="font-family: 'Kanit', sans-serif;">จำนวน ส.ส.</p><p><span id="sptp"></span></h6>
-                            </div>
-                            <img style="height: 41.6px;" src="/assets/img/DEM.png">
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                            <div>
-                                <h3 class="fs-2"><span id="pprp"></span></h3>
-                                <p class="fs-5" style="font-family: 'Kanit', sans-serif;">คะแนนเสียงพรรคเพื่อธรรม</p>
-                                <h6 style="font-family: 'Kanit', sans-serif;">จำนวน ส.ส.</p><p><span id="sprp"></span></h6>
-                            </div>
-                            <img style="height: 41.6px;" src="/assets/img/pheutham.png">
-                        </div>
-                    </div>
-                </div>
-
-
+            <div style="overflow: auto;min-height: 100vh;">
+              <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4" id="next">
+                  <div class="d-flex align-items-center">
+                      <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
+                      <h2 class="fs-2 m-0" style="font-family: 'Kanit', sans-serif;">ผลการเลือกตั้งสมาชิกสภาผู้แทนราษฎร</h2>
+                  </div>
+              </nav>
+  
+              <div class="container-fluid px-4">
+                  <div class="row g-3 my-2">
+                      <div class="col-md-3">
+                          <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                              <div>
+                                  <h3 class="fs-2"><span id="all"></span></h3>
+                                  <p class="fs-5" style="font-family: 'Kanit', sans-serif;">ผู้มีสิทธิ์เลือกตั้ง</p>
+                              </div>
+                              <i class="fas fa-solid fa-check-to-slot fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                          </div>
+                      </div>
+  
+                      <div class="col-md-3">
+                          <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                              <div>
+                                  <h3 class="fs-2"><span id="pvote"></span></h3>
+                                  <p class="fs-5" style="font-family: 'Kanit', sans-serif;">ผู้มาใช้สิทธิเลือกตั้ง</p>
+                              </div>
+                              <i class="fas fa-user fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                          </div>
+                      </div>
+  
+                      <div class="col-md-3">
+                          <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                              <div>
+                                  <h3 class="fs-2"><span id="pc"></span> %</h3>
+                                  <p class="fs-5" style="font-family: 'Kanit', sans-serif;">สถิติผู้มาใช้สิทธิ (%)</p>
+                                  
+                              </div>
+                              <i class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                          </div>
+                      </div>
+  
+                      <div class="col-md-3">
+                          <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                              <div>
+                                  <h3 class="fs-2"><span id="nvote"></span></h3>
+                                  <p class="fs-5" style="font-family: 'Kanit', sans-serif;">ไม่ประสงค์ลงคะแนน</p>
+                                  
+                              </div>
+                              <i class="fas  fa-not-equal fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                          </div>
+                      </div>
+  
+                      <div class="col-md-3">
+                          <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                              <div>
+                                  <h3 class="fs-2"><span id="pmfp"></span></h3>
+                                  <p class="fs-5" style="font-family: 'Kanit', sans-serif;">คะแนนเสียงพรรคภูมิใจไทย</p>
+                                  <h6 style="font-family: 'Kanit', sans-serif;">จำนวน ส.ส.</p><p><span id="smfp"></span></h6>
+                              </div>
+                              <img style="height: 41.6px;" src="https://upload.wikimedia.org/wikipedia/en/d/d4/Bhumjaithai_Party_logo.png">
+                          </div>
+                      </div>
+  
+                      <div class="col-md-3">
+                          <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                              <div>
+                                  <h3 class="fs-2"><span id="pptp"></span></h3>
+                                  <p class="fs-5" style="font-family: 'Kanit', sans-serif;">คะแนนเสียงพรรคประชาธิปไตย</p>
+                                  <h6 style="font-family: 'Kanit', sans-serif;">จำนวน ส.ส.</p><p><span id="sptp"></span></h6>
+                              </div>
+                              <img style="height: 41.6px;" src="/assets/img/DEM.png">
+                          </div>
+                      </div>
+  
+                      <div class="col-md-3">
+                          <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                              <div>
+                                  <h3 class="fs-2"><span id="pprp"></span></h3>
+                                  <p class="fs-5" style="font-family: 'Kanit', sans-serif;">คะแนนเสียงพรรคเพื่อธรรม</p>
+                                  <h6 style="font-family: 'Kanit', sans-serif;">จำนวน ส.ส.</p><p><span id="sprp"></span></h6>
+                              </div>
+                              <img style="height: 41.6px;" src="/assets/img/pheutham.png">
+                          </div>
+                      </div>
+                  </div>
+  
+  
+              </div>
             </div>
           
         <footer style="bottom:0; z-index:0; color: var(--main-text-color);font-family: 'Kanit', sans-serif;  padding: 14px 16px;">
