@@ -54,6 +54,7 @@
             padding: 0;
             margin: 0;
             display: flex;
+            padding-right: 10px;
         }
 
         nav ul li {
@@ -89,8 +90,12 @@
             color: var(--main-text-color);
             border-radius: 5px;
         }
-
-        @media (max-width: 600px) {
+      
+        [data-open="640"] {
+            display: none;
+        }
+      
+        @media (max-width: 640px) {
             .menu-toggle {
                 display: block;
             }
@@ -112,13 +117,19 @@
             .submenu {
                 position: unset;
             }
+
+            header h1 {display: none;}
+            [data-open="640"] {
+                display: block;
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <div class="menu-toggle"><i class="fas fa-bars"></i></div>
-        <h1>สำนักงาน กกต.</h1>
+        <img height="50px" src="https://rep-arlington.pages.dev/assets/img/eca.png" data-open="640">
+        <h1>สำนักงานคณะกรรมการการเลือกตั้ง</h1>
         <div class="language-switch">TH | EN</div>
     </header>
     
