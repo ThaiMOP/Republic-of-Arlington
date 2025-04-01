@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สำนักงานคณะกรรมการการเลือกตั้ง</title>
+    <link rel="icon" href="https://rep-arlington.pages.dev/assets/img/eca.png" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="https://slw-system.pages.dev/assets/css/font-face.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --main-bg-color: #009d63;
+            --main-text-color: #009d63;
+            --second-text-color: #bbbec5;
+            --second-bg-color: #c1efde;
+        }
+
+        body {
+            font-family: CPN, sans-serif; 
+            margin: 0;
+            padding: 0;
+            background-color: var(--second-bg-color);
+        }
+
+        header {
+            background: var(--main-bg-color);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+      
+        
+        header h1 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .menu-toggle {
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+        }
+
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            background: white;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            padding-right: 10px;
+        }
+
+        nav ul li {
+            border-bottom: 1px solid var(--second-text-color);
+        }
+
+        nav ul li a {
+            display: block;
+            text-decoration: none;
+            color: var(--main-text-color);
+            padding: 12px;
+        }
+
+        .feedback a ,
+        footer a {
+            color: #2e603c;
+            border-bottom: 2px solid #2e603c;
+            text-decoration: none;
+        }
+
+        .feedback a:hover ,
+        footer a:hover {
+            color: #30906a !important;
+        }
+        
+        nav ul li a:hover {
+            background: var(--second-bg-color);
+        }
+
+        .submenu {
+            display: none;
+            padding-left: 20px;
+            position: absolute;
+            background: #fff;
+        }
+
+        .submenu a {
+            font-size: 0.9em;
+        }
+
+        .language-switch {
+            cursor: pointer;
+            padding: 5px 10px;
+            background: white;
+            color: var(--main-text-color);
+            border-radius: 5px;
+        }
+      
+        [data-open="640"] {
+            display: none;
+        }
+      
+        @media (max-width: 640px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                width: 100%;
+                top: 70.4px;
+                left: 0;
+                box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+                flex-direction: column;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+          
+            .submenu {
+                position: unset;
+            }
+
+            header h1 {display: none;}
+            [data-open="640"] {
+                display: block;
+            }
+            
+            .box {
+                width: 100%;
+            }
+        }
+        
+
+        .banner {
+            width: 100%;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        
+        .box {
+            background: white;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 5px;
+            width: 40%;
+            text-align: center;
+        }
+
+        .feedback {
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer {
+            background: #a2a2a2;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+            font-size: 0.9em;
+        }
+
+        img[alt="Election Commission Banner"] {
+            cursor: pointer;
+        }
+      
+        .marquee-text {
+            background-color: #ffc107;
+            color: #ff0000;
+            font-size: 25px;
+            padding: 15px 0;
+            top: 51px;
+            left: 0px;
+            position: relative;
+            top: -30px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img height="50px" src="https://rep-arlington.pages.dev/assets/img/eca.png" data-open="640">
+        <h1>ระบบฐานข้อมูลพรรคการเมือง</h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="dataparty">เกี่ยวกับพรรคการเมือง</a></li>
+            <li><a href="checkidparty">ตรวจสอบการเป็นสมาชิกพรรคการเมือง</a></li>
+            <li><a href="login">เข้าสู่ระบบ</a></li>
+        </ul>
+    </nav>
+    <marquee class="marquee-text">
+          การตรวจสอบข้อมูลสมาชิกพรรคการเมืองในระบบฐานข้อมูลพรรคการเมืองเป็นข้อมูลที่พรรคการเมืองนำเข้า&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          การตรวจสอบข้อมูลสมาชิกพรรคการเมืองในระบบฐานข้อมูลพรรคการเมืองเป็นข้อมูลที่พรรคการเมืองนำเข้า&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          การตรวจสอบข้อมูลสมาชิกพรรคการเมืองในระบบฐานข้อมูลพรรคการเมืองเป็นข้อมูลที่พรรคการเมืองนำเข้า&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          การตรวจสอบข้อมูลสมาชิกพรรคการเมืองในระบบฐานข้อมูลพรรคการเมืองเป็นข้อมูลที่พรรคการเมืองนำเข้า&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          การตรวจสอบข้อมูลสมาชิกพรรคการเมืองในระบบฐานข้อมูลพรรคการเมืองเป็นข้อมูลที่พรรคการเมืองนำเข้า&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          การตรวจสอบข้อมูลสมาชิกพรรคการเมืองในระบบฐานข้อมูลพรรคการเมืองเป็นข้อมูลที่พรรคการเมืองนำเข้า&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          การตรวจสอบข้อมูลสมาชิกพรรคการเมืองในระบบฐานข้อมูลพรรคการเมืองเป็นข้อมูลที่พรรคการเมืองนำเข้า&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          การตรวจสอบข้อมูลสมาชิกพรรคการเมืองในระบบฐานข้อมูลพรรคการเมืองเป็นข้อมูลที่พรรคการเมืองนำเข้า&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          การตรวจสอบข้อมูลสมาชิกพรรคการเมืองในระบบฐานข้อมูลพรรคการเมืองเป็นข้อมูลที่พรรคการเมืองนำเข้า&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          การตรวจสอบข้อมูลสมาชิกพรรคการเมืองในระบบฐานข้อมูลพรรคการเมืองเป็นข้อมูลที่พรรคการเมืองนำเข้า&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </marquee>
+    <section class="block-wrapper">
+		<div class="container">
+<div class="row" style="padding-bottom: 15px;">
+  <div class="col-md-12 text-center" style="padding-top: 15px;"><h4>ตรวจสอบการเป็นสมาชิกพรรคการเมือง</h4><h5>Check the membership of political parties</h5></div>
+  </div>
+<div class="panel panel-default">
+	<div class="panel-body">
+        
+    <form action="/showpdf" method="post" target="_blank" id="showPdf" class="hide">
+        <input type="text" name="b64" id="b64">
+    </form>
+		<form data-request="onChecker" data-request-update="result: '#result'" data-request-flash="" data-request-complete="complete()">
+            <label>หมายเลขประจำตัวประชาชน</label>
+            <input type="text" class="form-control" value="" name="id_card" id="idCard" maxlength="21">
+            <div class="reCapcha"></div>
+		</form>
+	</div>
+  <div class="panel-footer result-print-check-id-party" id="result">
+    <div class="container-fluid" id="print-area">
+    	<div class="check-id-party-print-box">
+         <h4 class="text-center">
+            ผลการตรวจสอบสถานภาพสมาชิกพรรคการเมือง<br>
+            <span id="today"></span>
+         </h4>
+            
+            <div class="table-responsive">
+                <table class="table minimalistBlack mtable">
+                    <thead>
+                        <tr>
+                            <th>ลำดับที่</th>
+                            <th>ชื่อตัว-สกุล</th>
+                            <th>เลขประจำตัว<br>ประชาชน</th>
+                            <th>พรรค</th>
+                            <th>เลขประจำตัว<br>สมาชิก</th>
+                            <th>วันที่เป็น<br>สมาชิก</th>
+                            <th>วันที่พ้นจาก<br>สมาชิกภาพ</th>
+                            <th>หมายเหตุ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td class="text-left"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>ไม่พบข้อมูล</td>
+                        </tr>
+                      </tbody>
+                </table>
+            </div>
+            <div style="height:200px;">
+            <br>
+            <br>
+            <br>
+            <p class="text-right">วันที่ตรวจสอบ<!-- และเวลา 00:00:00 น. --> <span class="report-now"></span></p>
+            <br>
+            <p class="text-center text-remark">
+            ข้อมูลในระบบนี้เป็นข้อมูลการนำเข้าและรับรองโดยพรรคการเมือง หากพบข้อมูลที่ไม่ถูกต้อง <br>
+            โปรดแจ้งสำนักงานคณะกรรมการการเลือกตั้งเพื่อตรวจสอบและดำเนินการให้พรรคการเมืองแก้ไขข้อมูลให้ถูกต้องต่อไป
+            <br>ติดต่อหรือส่งหลักฐานได้ที่ <a hraf="https://discordapp.com/users/1201060701440061462">Discord</a>
+            </p>
+            </div>
+            <span style="page-break-after: always;"></span>
+
+</div></div>
+  </div>
+    </div>
+</div>
+	</section>
+
+    <footer>
+        <p>© สงวนลิขสิทธิ์ 2568</p>
+    </footer>
+</body>
+</html>
