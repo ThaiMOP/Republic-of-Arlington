@@ -10,4 +10,10 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 8px 20px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+[data-flex="0"] {
+    display: flex;
+    gap: 10px;
 }
