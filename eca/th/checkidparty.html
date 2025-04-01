@@ -222,18 +222,24 @@
     background-color: #6c757d;
     border-color: #6c757d;
 }
-.btn-primary.disabled, .btn-primary:disabled {
-    color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
-}
 .btn.disabled, .btn:disabled {
     opacity: .65;
 }
 [type=reset], [type=submit], button, html [type=button] {
     -webkit-appearance: button;
 }
-	    
+	
+.btn-primary, .btn-dark {
+    border: 0;
+    border-radius: 0;
+    padding: 12px 25px 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 350ms;
+    user-select: none;
+    font-size: 1rem;
+    line-height: 1.5;
+}    
 .result-print-check-id-party {
     border-top: 4px dotted #CFCFCF;
     margin-top: 30px;
