@@ -224,22 +224,15 @@
           การตรวจสอบข้อมูลสมาชิกพรรคการเมืองในระบบฐานข้อมูลพรรคการเมืองเป็นข้อมูลที่พรรคการเมืองนำเข้า&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </marquee>
     <section class="block-wrapper">
-		<div class="container">
-<div class="row" style="padding-bottom: 15px;">
-  <div class="col-md-12 text-center" style="padding-top: 15px;"><h4>ตรวจสอบการเป็นสมาชิกพรรคการเมือง</h4><h5>Check the membership of political parties</h5></div>
-  </div>
-<div class="panel panel-default">
-	<div class="panel-body">
-        
-    <form action="/showpdf" method="post" target="_blank" id="showPdf" class="hide">
-        <input type="text" name="b64" id="b64">
-    </form>
-		<form data-request="onChecker" data-request-update="result: '#result'" data-request-flash="" data-request-complete="complete()">
+      <div class="container">
+	<div class="row" style="padding-bottom: 15px;">
+	  <div class="col-md-12 text-center" style="padding-top: 15px;"><h4>ตรวจสอบการเป็นสมาชิกพรรคการเมือง</h4><h5>Check the membership of political parties</h5></div>
+  	</div>
+        <div class="panel panel-default">
+	  <div class="panel-body">
             <label>หมายเลขประจำตัวประชาชน</label>
             <input type="text" class="form-control" value="" name="id_card" id="idCard" maxlength="21">
-            <div class="reCapcha"></div>
-		</form>
-	</div>
+	  </div>
   <div class="panel-footer result-print-check-id-party" id="result">
     <div class="container-fluid" id="print-area">
     	<div class="check-id-party-print-box">
