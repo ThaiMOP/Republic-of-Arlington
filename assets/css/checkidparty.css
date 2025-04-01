@@ -208,6 +208,7 @@
 	    border-radius: 0;
 	    display: block;
 	    width: -webkit-fill-available;
+	    max-width: 350px;
 	    line-height: 1.5;
 	    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 	    margin: 0;
