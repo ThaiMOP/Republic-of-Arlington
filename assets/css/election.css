@@ -18,3 +18,28 @@ header {
     align-items: center;
     gap: 10px;
 }
+
+[data-flex="1"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.eca-btn {
+    font-size: 20px;
+    padding: 22px 52px;
+    border: 0px;
+    width: 320px;
+    background: #00bf62;
+    text-align: center;
+    text-shadow: 2px 1px 4px #fff;
+    cursor: pointer;
+}
+
+[data-flex-hidden="0"] {
+    display: flex;
+}
+
+[data-flex-hidden="1"] {
+    display: none;
+}
