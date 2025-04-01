@@ -17,3 +17,14 @@ function updateElectionStatus() {
 
 updateElectionStatus();  
 setInterval(updateElectionStatus, 1000);
+
+    document.querySelector(".eca-btn").addEventListener("click", function() {
+        window.location.href = "/election/pe";
+    });
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll("img").forEach(img => {
+            img.addEventListener("contextmenu", function(event) {
+                event.preventDefault();
+            });
+        });
+    });
