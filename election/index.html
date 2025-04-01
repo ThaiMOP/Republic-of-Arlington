@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://slw-system.pages.dev/assets/css/font-face.css">
     <link rel="stylesheet" href="/assets/css/election.css">
     <script src="/assets/js/time.js"></script>
+    <script src="/assets/js/e.js"></script>
 </head>
 <body>
     <header>
@@ -23,34 +24,12 @@
     </div>
     <img src="/assets/img/eca-banner.png" width="100%">
     <div data-election data-flex="1"></div>
-
     <script>
-    function updateElectionStatus() {
-        const electionTag = document.querySelector("[data-election]");
-        if (!electionTag) return;
-    
-        const now = new Date();
-        const startTime = new Date("2025-04-01T08:50:00");
-        const endTime = new Date("2025-04-01T08:51:00");  
-    
-        if (now < startTime) {
-            // ยังไม่ถึงเวลาเลือกตั้ง
-            electionTag.innerHTML = `<h1>ยังไม่ถึงเวลาใช้สิทธิออกเสียงลงคะแนน</h1>`;
-        } else if (now >= startTime && now < endTime) {
-            // ถึงเวลาเลือกตั้ง
-            electionTag.innerHTML = `<div class="eca-btn">เข้าระบบใช้สิทธิเลือกตั้ง</div>`;
-        } else {
-            // หมดเวลาเลือกตั้ง
-            electionTag.innerHTML = `<h1>สิ้นสุดเวลาใช้สิทธิออกเสียงลงคะแนนแล้ว</h1>`;
-        }
-    }
-    
-    // อัปเดตสถานะเมื่อโหลดหน้า
-    updateElectionStatus();
-    
-    // ตั้งเวลาอัปเดตทุก 1 นาที
-    setInterval(updateElectionStatus, 60000);
+    document.querySelector(".eca-btn").addEventListener("click", function() {
+        window.location.href = "/election/pe";
+    });
     </script>
+
 
 </body>
 </html>
