@@ -289,3 +289,9 @@
 	    padding: 0 8px;
 	    color: #777;
 	}
+
+	.card-block {
+	    background: #fff;
+	    padding-top: 10px;
+	    padding-bottom: 10px;
+	}
