@@ -13,6 +13,7 @@ body {
     background: linear-gradient(#1cc61ccf, #ffffffbf), url(/assets/img/bg.gif);
     background-size: cover;
     background-position: center;
+    overflow: hidden;
 }
 
 *, ::after, ::before {
