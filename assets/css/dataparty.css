@@ -384,3 +384,6 @@
 	    margin-top: 0;
 	    margin-bottom: .5rem;
 	}
+	.party_name .party-name-en {
+	    text-transform: uppercase;
+	}
