@@ -107,3 +107,17 @@ input, button {
 .flex-column {
     flex-direction: column !important;
 }
+
+#loginButton {
+    width: -webkit-fill-available;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #1cc61c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#loginButton:hover {
+    background-color: #029d00;
+}
