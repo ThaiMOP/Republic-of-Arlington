@@ -9,7 +9,7 @@ function updateElectionStatus() {
     if (now < startTime) { 
         electionTag.innerHTML = `<h1>ยังไม่ถึงเวลาใช้สิทธิออกเสียงลงคะแนน</h1>`; 
     } else if (now >= startTime && now <= endTime) { 
-        electionTag.innerHTML = `<div class="eca-btn">เข้าระบบใช้สิทธิเลือกตั้ง</div>`; 
+        electionTag.innerHTML = `<div class="eca-btn" onclick="window.location.href='/election/pe'">เข้าระบบใช้สิทธิเลือกตั้ง</div>`; 
     } else { 
         electionTag.innerHTML = `<h1>สิ้นสุดเวลาใช้สิทธิออกเสียงลงคะแนนแล้ว</h1>`; 
     } 
