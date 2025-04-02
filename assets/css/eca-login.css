@@ -121,3 +121,12 @@ input, button {
 #loginButton:hover {
     background-color: #029d00;
 }
+
+input#email, input#password {
+    width: -webkit-fill-available;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
