@@ -295,3 +295,13 @@
 	    padding-top: 10px;
 	    padding-bottom: 10px;
 	}
+
+	.line-top {
+	    margin-top: 10px;
+	}
+	hr {
+	    background-color: #e7e7e7;
+	    border: 0;
+	    height: 1px;
+	    margin: 40px 0;
+	}
