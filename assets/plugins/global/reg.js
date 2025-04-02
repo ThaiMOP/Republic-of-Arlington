@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 </div>
                             </div>
                             
-                            <button type="submit" id="submit-button loginButton" class="btn btn-primary button is-primary" fdprocessedid="w8vfi">ถัดไป</button>
+                            <button type="submit" id="submit-button" class="btn btn-primary button is-primary" fdprocessedid="w8vfi">ถัดไป</button>
                             <button class="button is-danger" style="display:none;">Cancel</button>
                         </form>
                         <div id="message" style=" display: none;width:0; height:0; opacity:0; "></div>
