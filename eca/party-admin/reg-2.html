@@ -61,7 +61,9 @@
             setTimeout(function () {
               document.getElementById("message").textContent = "";
               document.getElementById("message").style.display = "none";
-            }, 2600);
+                
+              window.location.href = "/eca/party-admin/login-new.html";
+            }, 1000);
           })
           .catch(function (error) {
             // Handle errors, you can display an error message here
