@@ -10,6 +10,9 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
+    background: linear-gradient(#1cc61c82, #029d0087), url(/assets/img/bg.gif);
+    background-size: cover;
+    background-position: center;
 }
 
 *, ::after, ::before {
