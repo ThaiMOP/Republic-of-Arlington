@@ -11,7 +11,6 @@
 </head>
 <body>
     <div id="root" class="h-100">
-        
         <div class="d-flex flex-column flex-root h-100">
             <div class="d-flex justify-content-center align-items-center h-100">
                 <div class="card rounded-3 w-md-550px shadow">
@@ -104,7 +103,8 @@
                 setTimeout(function () {
                   document.getElementById("message").textContent = "";
                   document.getElementById("message").style.display = "none";
-                }, 2600);
+                  window.location.href = "/eca/party-admin/reg-2.html";
+                }, 2000);
               })
               .catch(function (error) {
                 // Handle errors, you can display an error message here
