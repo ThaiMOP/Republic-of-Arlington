@@ -186,7 +186,7 @@ input#email, input#password {
 .t-step span {
     white-space: nowrap;
 }
-.t-step li:not(.active):after{
+.t-step li:not(:first-child):after{
     width: 100%;
     height: 2px;
     content: "";
