@@ -233,3 +233,17 @@ input {
     border-radius: 5px;
     outline: none;
 }
+
+input[type="radio"] {
+  appearance: none;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #029d00;
+  transition: 0.2s all linear;
+  position: relative;
+}
+
+input[type="radio"]:checked {
+  border: 6px solid #1cc61c;
+}
