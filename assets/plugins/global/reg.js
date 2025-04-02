@@ -14,19 +14,27 @@ document.addEventListener("DOMContentLoaded", function () {
                           <li class=""><span>เข้าสู่ระบบ</span></li>
                         </ul>
                         <form id="form" method="POST">
-                          <label for="party">พรรคการเมือง</label>
-                          <input type="radio" class="party" name="party" id="party" value="ภูมิใจไทย">
-                          <input type="radio" class="party" name="party" id="party" value="ประชาธิปไตย">
-                          <input type="radio" class="party" name="party" id="party" value="เพื่อธรรม">
-                          
-                          <label for="password1">รหัสผ่าน</label>
-                          <input type="password" id="password1" name="password1" placeholder="กรอกรหัสผ่าน" required>
-                          
-                          <label for="password2">ยืนยันรหัสผ่าน</label>
-                          <input type="password" id="password2" name="password2" placeholder="ยืนยันรหัสผ่าน" required>
-                          
-                          <button type="submit" id="submit-button loginButton"class="btn btn-primary button is-primary" fdprocessedid="w8vfi">ถัดไป</button>
-                          <button class="button is-danger" style="display:none;">Cancel</button>
+                            <div class="party">
+                                <label>พรรคการเมืองที่สังกัด</label>
+                                <br>
+                                <input type="radio" class="party" name="party" id="party1" value="ภูมิใจไทย"><label for="party1">ภูมิใจไทย</label>
+                                <input type="radio" class="party" name="party" id="party2" value="ประชาธิปไตย"><label for="party2">ประชาธิปไตย</label>
+                                <input type="radio" class="party" name="party" id="party3" value="เพื่อธรรม"><label for="party3">เพื่อธรรม</label>
+                            </div>
+                            
+                            <div class="group">
+                                <div class="g-grid">
+                                    <label for="password1">รหัสผ่าน</label>
+                                    <input type="password" id="password1" name="password1" placeholder="กรอกรหัสผ่าน" required="">
+                                </div>
+                                <div class="g-grid">
+                                    <label for="password2">ยืนยันรหัสผ่าน</label>
+                                    <input type="password" id="password2" name="password2" placeholder="ยืนยันรหัสผ่าน" required="">
+                                </div>
+                            </div>
+                            
+                            <button type="submit" id="submit-button loginButton" class="btn btn-primary button is-primary" fdprocessedid="w8vfi">ถัดไป</button>
+                            <button class="button is-danger" style="display:none;">Cancel</button>
                         </form>
                         <div id="message" style=" display: none;width:0; height:0; opacity:0; "></div>
                     </div>
