@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 </div>
                             </div>
                             
-                            <button type="submit" id="submit-button" class="btn btn-primary button is-primary" fdprocessedid="w8vfi">ถัดไป</button>
+                            <button type="submit" id="submit-button" class="btn btn-primary button is-primary">ถัดไป</button>
                             <button class="button is-danger" style="display:none;">Cancel</button>
                         </form>
                         <div id="message" style=" display: none;width:0; height:0; opacity:0; "></div>
@@ -42,64 +42,65 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
         </div>
         <script>
+        
           document.getElementById("form").addEventListener("submit", function (e) {
-          e.preventDefault(); // ป้องกันการส่งฟอร์มแบบปกติ
-          document.getElementById("message").textContent = "Submitting..";
-          document.getElementById("message").style.display = "block";
-          document.getElementById("submit-button").disabled = true;
-        
-          // รวบรวมข้อมูลฟอร์ม
-          var formData = new FormData(this);
-          var keyValuePairs = [];
-          for (var pair of formData.entries()) {
-            keyValuePairs.push(pair[0] + "=" + encodeURIComponent(pair[1])); // ป้องกันปัญหาอักขระพิเศษ
-          }
-        
-          var formDataString = keyValuePairs.join("&");
-        
-          // ส่งข้อมูลไปยัง Google Apps Script
-          fetch(
-            "https://script.google.com/macros/s/AKfycbwTjlY46zXt72-L888xPP6zQRUezAAisH_Ck8SMw-ldnmueS1lyAIlfTyCvV07VZwCM/exec",
-            {
-              redirect: "follow",
-              method: "POST",
-              body: formDataString,
-              headers: {
-                "Content-Type": "text/plain;charset=utf-8",
-              },
+            e.preventDefault(); // Prevent the default form submission
+            document.getElementById("message").textContent = "Submitting..";
+            document.getElementById("message").style.display = "block";
+            document.getElementById("submit-button").disabled = true;
+    
+            // Collect the form data
+            var formData = new FormData(this);
+            var keyValuePairs = [];
+            for (var pair of formData.entries()) {
+              keyValuePairs.push(pair[0] + "=" + pair[1]);
             }
-          )
-            .then(function (response) {
-              if (response.ok) {
-                return response.json(); // ถ้าส่งข้อมูลสำเร็จ ให้ดึงข้อมูล JSON กลับมา
-              } else {
-                throw new Error("Failed to submit the form.");
+    
+            var formDataString = keyValuePairs.join("&");
+    
+            // Send a POST request to your Google Apps Script
+            fetch(
+              "https://script.google.com/macros/s/AKfycbwTjlY46zXt72-L888xPP6zQRUezAAisH_Ck8SMw-ldnmueS1lyAIlfTyCvV07VZwCM/exec",
+              {
+                redirect: "follow",
+                method: "POST",
+                body: formDataString,
+                headers: {
+                  "Content-Type": "text/plain;charset=utf-8",
+                },
               }
-            })
-            .then(function (data) {
-              // แสดงข้อความสำเร็จ
-              document.getElementById("message").textContent = "Data submitted successfully!";
-              document.getElementById("message").style.backgroundColor = "green";
-              document.getElementById("message").style.color = "beige";
-        
-              // รีเซ็ตฟอร์ม
-              document.getElementById("form").reset();
-        
-              // รอ 2.6 วินาทีแล้วเปลี่ยนหน้า
-              setTimeout(function () {
-                window.location.href = "/eca/party-admin/reg-2.html";
-              }, 2600);
-            })
-            .catch(function (error) {
-              console.error(error);
-              document.getElementById("message").textContent = "An error occurred while submitting the form.";
-              document.getElementById("message").style.backgroundColor = "red";
-              document.getElementById("message").style.color = "white";
-            })
-            .finally(function () {
-              document.getElementById("submit-button").disabled = false;
-            });
-        });
+            )
+              .then(function (response) {
+                // Check if the request was successful
+                if (response) {
+                  return response; // Assuming your script returns JSON response
+                } else {
+                  throw new Error("Failed to submit the form.");
+                }
+              })
+              .then(function (data) {
+                // Display a success message
+                document.getElementById("message").textContent =
+                  "Data submitted successfully!";
+                document.getElementById("message").style.display = "block";
+                document.getElementById("message").style.backgroundColor = "green";
+                document.getElementById("message").style.color = "beige";
+                document.getElementById("submit-button").disabled = false;
+                document.getElementById("form").reset();
+    
+                setTimeout(function () {
+                  document.getElementById("message").textContent = "";
+                  document.getElementById("message").style.display = "none";
+                }, 2600);
+              })
+              .catch(function (error) {
+                // Handle errors, you can display an error message here
+                console.error(error);
+                document.getElementById("message").textContent =
+                  "An error occurred while submitting the form.";
+                document.getElementById("message").style.display = "block";
+              });
+          });
     
         </script>
     `;
