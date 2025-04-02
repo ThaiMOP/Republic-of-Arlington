@@ -212,3 +212,25 @@ input#email, input#password {
         display: grid;
         width: 50%;
     }
+
+button {
+    width: -webkit-fill-available;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #1cc61c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #029d00;
+}
+
+input {
+    width: -webkit-fill-available;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
