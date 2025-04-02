@@ -9,6 +9,7 @@ body {
     font-family: CPN, sans-serif;
     margin: 0;
     padding: 0;
+    height: 100vh;
 }
 
 *, ::after, ::before {
@@ -85,4 +86,24 @@ body {
 
 input, button {
     font-family: inherit;
+}
+
+.card .card-body {
+    padding: 2rem 2.25rem;
+}
+@media (min-width: 992px) {
+    .pb-lg-10 {
+        padding-bottom: 2.5rem !important;
+    }
+}
+@media (min-width: 992px) {
+    .p-lg-20 {
+        padding: 5rem !important;
+    }
+}
+.p-10 {
+    padding: 2.5rem !important;
+}
+.flex-column {
+    flex-direction: column !important;
 }
