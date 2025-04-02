@@ -82,3 +82,7 @@ body {
     background-color: var(--bs-card-bg);
     background-clip: border-box;
 }
+
+input, button {
+    font-family: inherit;
+}
