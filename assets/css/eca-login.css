@@ -194,3 +194,19 @@ input#email, input#password {
     left: -50%;
     z-index: -1;
 }
+
+    
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .group {
+        display: flex;
+        gap: 10px;
+    }
+
+    .g-grid {
+        display: grid;
+        width: 50%;
+    }
