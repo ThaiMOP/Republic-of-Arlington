@@ -261,3 +261,36 @@
 	    padding: 15px 0;
 	    position: relative;
 	}
+
+	@media (min-width: 768px) {
+	    .col-md-12 {
+	        -ms-flex: 0 0 100%;
+	        flex: 0 0 100%;
+	        max-width: 100%;
+	    }
+	}
+	
+	.breadcrumb {
+	    color: #777;
+	    margin: 30px 0 -10px 0;
+	    padding: 0;
+	    background: none;
+	}
+	.breadcrumb {
+	    display: -ms-flexbox;
+	    display: flex;
+	    -ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
+	    padding: .75rem 1rem;
+	    margin-bottom: 1rem;
+	    list-style: none;
+	    background-color: #e9ecef;
+	    border-radius: .25rem;
+	}
+
+	.breadcrumb>li+li:before {
+	    content: "\f105";
+	    font-family: FontAwesome;
+	    padding: 0 8px;
+	    color: #777;
+	}
