@@ -10,8 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         <h2 style="text-align: center;">ระบบฐานข้อมูลพรรคการเมือง</h2>
                         <ul class="t-step">
                           <li class="active"><span>ลงทะเบียน</span></li>
-                          <li class=""><span>เลือกวิธีเข้าระบบ</span></li>
-                          <li class=""><span>ตรวจสอบข้อมูล</span></li>
+                          <li class=""><span>ยืนยันตัวตน</span></li>
+                          <li class=""><span>เข้าสู่ระบบ</span></li>
                         </ul>
                         <form id="form" method="POST">
                           <label for="party">พรรคการเมือง</label>
