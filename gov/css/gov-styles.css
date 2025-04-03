@@ -78,7 +78,7 @@
 
        #topics {
            max-width: 800px;
-           margin: 0 auto;
+           margin: 20px auto;
            background: #fff;
            padding: 20px;
            border-radius: 5px;
@@ -103,7 +103,7 @@
 
         #eco {
             max-width: 800px;
-            margin: 0 auto;
+            margin: 20px auto;
             background: #fff;
             padding: 20px;
             border-radius: 5px;
