@@ -13,29 +13,29 @@ function updateClock() {
 
         updateClock();
 // ------------------- คุณหลอกดาว ----------------------- //
-document.getElementById("พรรคเพื่อธรรม").addEventListener("click", function() {
-    let target = document.getElementById("พรรคภูมิใจไทย");
-    target.value = target.value === "X" ? "" : "X";
-});
-
-document.getElementById("พรรคภูมิใจไทย").addEventListener("click", function() {
-    let target = document.getElementById("ไม่เลือกพรรคใด");
-    target.value = target.value === "X" ? "" : "X";
-});
-
-document.getElementById("ไม่เลือกพรรคใด").addEventListener("click", function() {
-    this.value = this.value === "X" ? "" : "X";
-});
-
-document.getElementById("พรรคประชาธิปไตย").addEventListener("click", function() {
-    this.value = this.value === "X" ? "" : "X";
-});
-
-// document.querySelectorAll('input.value[type="text"]').forEach(input => {
-//   input.addEventListener('click', function() {
-//     this.value = this.value === "X" ? "" : "X";
-//   });
+// document.getElementById("พรรคเพื่อธรรม").addEventListener("click", function() {
+//     let target = document.getElementById("พรรคภูมิใจไทย");
+//     target.value = target.value === "X" ? "" : "X";
 // });
+
+// document.getElementById("พรรคภูมิใจไทย").addEventListener("click", function() {
+//     let target = document.getElementById("ไม่เลือกพรรคใด");
+//     target.value = target.value === "X" ? "" : "X";
+// });
+
+// document.getElementById("ไม่เลือกพรรคใด").addEventListener("click", function() {
+//     this.value = this.value === "X" ? "" : "X";
+// });
+
+// document.getElementById("พรรคประชาธิปไตย").addEventListener("click", function() {
+//     this.value = this.value === "X" ? "" : "X";
+// });
+
+document.querySelectorAll('input.value[type="text"]').forEach(input => {
+  input.addEventListener('click', function() {
+    this.value = this.value === "X" ? "" : "X";
+  });
+});
         document.getElementById("form").addEventListener("submit", function (e) {
           e.preventDefault(); // Prevent the default form submission
           document.getElementById("message").textContent = "กำลังบันทึก...";
