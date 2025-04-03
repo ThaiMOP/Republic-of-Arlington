@@ -62,6 +62,7 @@
 
         .icon-menu {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
             background: #d90000;
@@ -128,6 +129,20 @@
                 align-items: center;
             }
         }
+        /* เมื่อจอมีขนาดน้อยกว่า 900px */
+        @media (max-width: 900px) {
+            .icon-menu .icon-item {
+                width: 30%;
+            }
+        }
+        
+        /* เมื่อจอมีขนาดน้อยกว่า 450px */
+        @media (max-width: 450px) {
+            .icon-menu .icon-item {
+                width: 45%;
+            }
+        }
+
     </style>
 </head>
 <body>
