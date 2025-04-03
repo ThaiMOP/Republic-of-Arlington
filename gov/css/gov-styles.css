@@ -121,7 +121,7 @@
         }
         #hourly-table {
             width: 35%;
-            height: 100px;
+            height: 200px;
             overflow-y: auto;
             border: 1px solid #ddd;
             padding: 5px;
