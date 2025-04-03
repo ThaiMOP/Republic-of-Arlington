@@ -6,7 +6,6 @@
     <title>ค้นหาผู้มีสิทธิเลือกตั้ง</title>
     <link rel="stylesheet" href="https://slw-system.pages.dev/assets/css/font-face.css">
     <style>
-      
         * {
             margin: 0;
             padding: 0;
@@ -16,6 +15,27 @@
         body {
             text-align: center;
             margin: 50px;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 20px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        [data-flex="0"] {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        [data-flex="1"] {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
         }
         input, button {
             padding: 10px;
@@ -31,8 +51,13 @@
             padding: 10px;
         }
     </style>
+    <script src="/assets/js/time.js"></script>
 </head>
 <body>
+    <header>
+        <div data-flex="0"><img src="/assets/img/eca.png" height="50px"><h3>สำนักงานคณะกรรมการการเลือกตั้ง</h3></div>
+        <div><p id="time"></p></div>
+    </header>
     <h1>ค้นหาผู้มีสิทธิเลือกตั้ง</h1>
     <input type="text" id="searchID" placeholder="กรอกรหัส ID">
     <button onclick="searchVoter()">ค้นหา</button>
