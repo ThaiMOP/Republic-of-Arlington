@@ -76,7 +76,7 @@
             const response = await fetch('https://script.google.com/macros/s/AKfycbzLPSFBqvpK2nUI_9_UMvXn4HpggFtaSTB2itSNj91Nq41K5H9y8Z8XPA2ShidqSmO8/exec');
             const data = await response.json();
             
-            document.getElementById('inflation-latest').innerText = `Latest inflation rates: ${data.latest} Arlington Dollar`;
+            document.getElementById('inflation-latest').innerText = `ค่าเงินเฟ้อล่าสุด: ${data.latest} ดอลลาร์อาร์ลิงตัน`;
             
             const inflationTable = document.getElementById('inflation-data');
             data.history.forEach(entry => {
