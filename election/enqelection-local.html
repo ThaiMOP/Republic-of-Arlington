@@ -23,6 +23,14 @@
             align-items: center;
             padding: 8px 20px;
             box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+        
+        h1 {
+            margin-top: 100px;
         }
         
         [data-flex="0"] {
@@ -51,12 +59,10 @@
             padding: 10px;
         }
     </style>
-    <script src="/assets/js/time.js"></script>
 </head>
 <body>
     <header>
         <div data-flex="0"><img src="/assets/img/eca.png" height="50px"><h3>สำนักงานคณะกรรมการการเลือกตั้ง</h3></div>
-        <div><p id="time"></p></div>
     </header>
     <h1>ค้นหาผู้มีสิทธิเลือกตั้ง</h1>
     <input type="text" id="searchID" placeholder="กรอกรหัส ID">
