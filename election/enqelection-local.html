@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ค้นหาผู้มีสิทธิเลือกตั้ง</title>
+    <link rel="stylesheet" href="https://slw-system.pages.dev/assets/css/font-face.css">
+    <style>
+      
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: CPN, sans-serif;
+        }
+        body {
+            text-align: center;
+            margin: 50px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>ค้นหาผู้มีสิทธิเลือกตั้ง</h1>
+    <input type="text" id="searchID" placeholder="กรอกรหัส ID">
+    <button onclick="searchVoter()">ค้นหา</button>
+    <div id="result"></div>
+    
+    <script>
+        function searchVoter() {
+            var id = document.getElementById("searchID").value;
+            if (!id) {
+                alert("กรุณากรอกรหัส ID");
+                return;
+            }
+            
+            fetch("https://script.google.com/macros/s/AKfycbwZsEgSTo6Hhk6vEhJzMBNefJt484tsXkiVBf2K6RvUGgF4H4fyzXBK6q3SM22Wvh_M/exec")
+                .then(response => response.json())
+                .then(data => {
+                    var voter = data.find(v => v.id === id);
+                    if (voter) {
+                        document.getElementById("result").innerHTML = `
+                            <table>
+                                <tr><th>เลขประชาชน</th><td>${voter.id}</td></tr>
+                                <tr><th>ชื่อ-สกุล</th><td>${voter.name}</td></tr>
+                                <tr style="display: none;"><th>พรรค</th><td>${voter.party}</td></tr>
+                                <tr><th>สิทธิ</th><td style="color:${voter.color};">${voter.rights}</td></tr>
+                            </table>
+                        `;
+                    } else {
+                        document.getElementById("result").innerHTML = "ไม่พบข้อมูล";
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching data: ", error);
+                    document.getElementById("result").innerHTML = "เกิดข้อผิดพลาดในการดึงข้อมูล";
+                });
+        }
+    </script>
+</body>
+</html>
