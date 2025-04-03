@@ -6,6 +6,8 @@
     <title>ค้นหาผู้มีสิทธิเลือกตั้ง</title>
     <link rel="stylesheet" href="https://slw-system.pages.dev/assets/css/font-face.css">
     <link rel="icon" href="/assets/img/eca.png" type="image/gif" sizes="16x16">
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer=""></script>
+    <script src="/assets/js/cloudflare.js" ></script>
     <style>
         * {
             margin: 0;
@@ -71,6 +73,7 @@
     <h1>ค้นหาผู้มีสิทธิเลือกตั้ง</h1>
     <input type="text" id="searchID" placeholder="กรอกรหัส ID">
     <button onclick="searchVoter()">ค้นหา</button>
+    <div class="cf-turnstile" data-sitekey="0x4AAAAAABDmRvUcorXokKqR"></div>
     <div id="result"></div>
     
     <script>
