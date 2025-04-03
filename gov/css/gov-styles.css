@@ -75,7 +75,33 @@
             padding: 20px;
             background: white;
         }
-        #topics {
+
+       #topics {
+           max-width: 800px;
+           margin: 0 auto;
+           background: #fff;
+           padding: 20px;
+           border-radius: 5px;
+           box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+       }
+
+       #topics ul {
+           list-style: none;
+           padding: 0;
+       }
+
+       #topics ul li {
+           padding: 10px;
+           border-bottom: 1px solid #ddd;
+       }
+
+       #topics ul li a {
+           text-decoration: none;
+           color: #005ea5;
+           font-weight: bold;
+       }
+
+        #eco {
             max-width: 800px;
             margin: 0 auto;
             background: #fff;
