@@ -8,38 +8,10 @@
     <link rel="stylesheet" href="https://slw-system.pages.dev/assets/css/font-face.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/eca.css">
-    <script src="/assets/js/navbar.js"></script>
+    <script src="/assets/js/eca-index.js"></script>
 </head>
 <body>
-    <header id="header"></header>
-    <nav id="navbar"></nav>
-    
-    <div class="banner">
-        <img src="https://rep-arlington.pages.dev/assets/img/eca-banner.png" width="100%" alt="Election Commission Banner">
-    </div>
-
-    <div class="container">
-        <div class="box">
-            <h2>นายณภัทร สุวรรณสวัสดิ์</h2>
-            <p>คณะกรรมการการเลือกตั้ง</p>
-        </div>
-    </div>
-
-    <div class="feedback">
-        <p>ทุกความคิดเห็นของท่านมีความสำคัญ โปรดแสดงความคิดเห็นของท่าน <a href="#">ที่นี่</a></p>
-    </div>
-
-    <footer>
-        <p>สำนักงานคณะกรรมการการเลือกตั้ง</p>
-        <p><i class="fas fa-envelope"></i> infi.dopa.moi.my@gmail.com</p>
-        <div class="footer-bottom">
-            <a href="#">ข้อกำหนด เงื่อนไข และนโยบายส่วนตัว</a>
-            <span>สงวนลิขสิทธิ์ 2025 - สำนักงานคณะกรรมการการเลือกตั้ง</span>
-            <span>จำนวนผู้เข้าชมเว็บไซต์: <span id="totalVisits">0</span> | ขณะนี้มีผู้ชมออนไลน์: <span id="onlineUsers">0</span></span>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_jX8KHjTOD9fTawF-2pJSQG7AABeVAM5GZA&s" height="30">
-        </div>
-    </footer>
-    <div id="script"></div>
+    <div id="root"></div>
     <script>
         // นับจำนวนผู้เข้าชม (เก็บใน LocalStorage)
         if (localStorage.getItem("totalVisits")) {
