@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
     const script = document.getElementById("script");
 
-    script.innerHTML = `
+    script.innerHTML = "
         <script>
         document.querySelector('.menu-toggle').addEventListener('click', function() {
             let nav = document.querySelector('nav');
@@ -73,5 +73,5 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }); 
         </script>
-    `;
+    ";
 });
