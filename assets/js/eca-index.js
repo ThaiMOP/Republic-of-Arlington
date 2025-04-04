@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const navbar = document.getElementById("navbar");
+    const root = document.getElementById("root");
 
-    navbar.innerHTML = `
+    root.innerHTML = `
     <header>
         <div class="menu-toggle"><i class="fas fa-bars"></i></div>
         <img height="50px" src="https://rep-arlington.pages.dev/assets/img/eca.png" data-open="640">
