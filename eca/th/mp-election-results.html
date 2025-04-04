@@ -28,7 +28,6 @@
       .card-header {
           background-color: #2d8c62;
           color: white;
-          padding: 15px;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -36,7 +35,35 @@
           font-weight: bold;
           cursor: pointer;
       }
+        
+        .ftag {
+            background: #30906a;
+        }
+        
+        .ftag {
+            width: 4rem;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+            border-right: 2px solid transparent;
+        }
 
+        .ftag > .icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .icon img {
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: 2.5rem;
+        }
+        
       .card-content {
           padding: 15px;
           background-color: white;
@@ -146,9 +173,7 @@
         <h1>ประกาศผลการเลือกตั้ง</h1>
         <div class="card">
             <div class="card-header">
-                <span class="icon">
-                    <img src="https://www.ect.go.th/ect_th/app/images/icon-svg/document.svg">
-                </span>
+                <h3 class="ftag"><div class="icon"><img src="https://www.ect.go.th/ect_th/app/images/icon-svg/document.svg" alt="Icon Document"></div></h3>
                 <span class="title">ผลการเลือกตั้งสมาชิกสภาผู้แทนราษฎร เมื่อวันที่ 4 เมษายน 2568</span>
                 <i class="fa-solid fa-chevron-down"></i>
             </div>
