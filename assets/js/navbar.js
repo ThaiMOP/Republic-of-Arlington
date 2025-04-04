@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 e.preventDefault();
                 let submenu = this.nextElementSibling;
                 if (submenu) {
-                    submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
+                    submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
                 }
             });
         });
