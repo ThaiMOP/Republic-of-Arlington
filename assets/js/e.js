@@ -3,7 +3,7 @@ function updateElectionStatus() {
     if (!electionTag) return; 
 
     const now = new Date();
-    const startTime = new Date(2025, 3, 4, 1, 0, 0);  // 2 เม.ย. 2025 เวลา 06:00 (UTC+7)
+    const startTime = new Date(2025, 3, 4, 6, 0, 0);  // 2 เม.ย. 2025 เวลา 06:00 (UTC+7)
     const endTime = new Date(2025, 3, 4, 16, 59, 59); // 2 เม.ย. 2025 เวลา 16:59 (UTC+7)
 
     if (now < startTime) { 
