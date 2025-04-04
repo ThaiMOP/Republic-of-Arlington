@@ -51,10 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    const script = document.getElementById("script");
-
-    script.innerHTML = "
-        <script>
+    const scriptContent = `
         document.querySelector('.menu-toggle').addEventListener('click', function() {
             let nav = document.querySelector('nav');
             let icon = this.querySelector('i');
@@ -62,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
             icon.classList.toggle('fa-bars');
             icon.classList.toggle('fa-xmark');
         });
-        
+
         document.querySelectorAll('.toggle-submenu').forEach(item => {
             item.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -71,7 +68,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
                 }
             });
-        }); 
-        </script>
-    ";
+        });
+    `;
+
+    const script = document.createElement('script');
+    script.textContent = scriptContent;
+    document.body.appendChild(script);
 });
+
