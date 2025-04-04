@@ -224,19 +224,27 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="ftag"><div class="icon"><img src="https://www.ect.go.th/ect_th/app/images/icon-svg/document.svg" alt="Icon Document"></div></h3>
-                <span class="title">ผลการเลือกตั้งสมาชิกสภาผู้แทนราษฎร เมื่อวันที่ 4 เมษายน 2568</span>
+                <span class="title">ผลการเลือกตั้งเป็นการทั่วไป เมื่อวันที่ 4 เมษายน 2568</span>
                 <i class="fa-solid fa-chevron-down"></i>
             </div>
             <div class="card-content">
                 <div class="file-info">
                     <img src="https://www.ect.go.th/ect_th/app/images/file/svg/pdf.svg" alt="PDF Icon" class="file-icon">
                     <div class="file-details">
-                        <p class="file-name">ผลการเลือกตั้งสมาชิกสภาผู้แทนราษฎร เมื่อวันที่ 4 เมษายน 2568</p>
-                        <p class="file-size">ขนาดไฟล์ <strong>291.01 kB</strong></p>
+                        <p class="file-name">ผลการเลือกตั้งประธานาธิบดี เมื่อวันที่ 4 เมษายน 2568</p>
+                        <p class="file-size">ขนาดไฟล์ <strong> kB</strong></p>
                     </div>
-                    <button class="download-btn">ดาวน์โหลด</button>
+                    <button class="download-btn" data-pe="">ดาวน์โหลด</button>
                 </div>
-                <button class="download-all-btn">ดาวน์โหลดทั้งหมด</button>
+                <div class="file-info">
+                    <img src="https://www.ect.go.th/ect_th/app/images/file/svg/pdf.svg" alt="PDF Icon" class="file-icon">
+                    <div class="file-details">
+                        <p class="file-name">ผลการเลือกตั้งสมาชิกสภาผู้แทนราษฎร เมื่อวันที่ 4 เมษายน 2568</p>
+                        <p class="file-size">ขนาดไฟล์ <strong> kB</strong></p>
+                    </div>
+                    <button class="download-btn"  data-mp="">ดาวน์โหลด</button>
+                </div>
+                <button class="download-all-btn" download-all>ดาวน์โหลดทั้งหมด</button>
             </div>
         </div>
     </div>
@@ -252,6 +260,30 @@
         </div>
     </footer>
     <script>
+        document.querySelectorAll('[data-pe]').forEach(element => {
+            element.addEventListener('click', function() {
+                window.location.href = 'https://slw-system.pages.dev/pdf/election/1xafe92b10c3d78e45fbb27d89e561c74.pdf';
+            });
+        });
+        
+        document.querySelectorAll('[data-mp]').forEach(element => {
+            element.addEventListener('click', function() {
+                window.location.href = 'https://slw-system.pages.dev/pdf/election/1x9c3f7b25e6a48d12dfe80a34b5d27f8.pdf';
+            });
+        });
+        document.addEventListener('click', function(event) {
+            if (event.target.matches('.download-all-btn')) {
+                const link = document.createElement('a');
+                link.href = '/assets/file/ประกาศผลการเลือกตั้ง 4 เมษายน 2568.pdf';
+                link.download = 'ประกาศผลการเลือกตั้ง 4 เมษายน 2568.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        });
+
+
+
         document.querySelector('.menu-toggle').addEventListener('click', function() {
             let nav = document.querySelector('nav');
             let icon = this.querySelector('i');
