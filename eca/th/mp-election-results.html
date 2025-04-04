@@ -11,27 +11,14 @@
     <script src="/assets/js/navbar.js"></script>
 </head>
 <body>
-    <header>
-        <div class="menu-toggle"><i class="fas fa-bars"></i></div>
-        <img height="50px" src="https://rep-arlington.pages.dev/assets/img/eca.png" data-open="640">
-        <h1>สำนักงานคณะกรรมการการเลือกตั้ง</h1>
-        <div class="language-switch">TH | EN</div>
-    </header>
+    <header id="header"></header>
     <nav id="navbar"></nav>
-    
-    <div class="banner">
-        <img src="https://rep-arlington.pages.dev/assets/img/eca-banner.png" width="100%" alt="Election Commission Banner">
-    </div>
 
     <div class="container">
         <div class="box">
             <h2>นายณภัทร สุวรรณสวัสดิ์</h2>
             <p>คณะกรรมการการเลือกตั้ง</p>
         </div>
-    </div>
-
-    <div class="feedback">
-        <p>ทุกความคิดเห็นของท่านมีความสำคัญ โปรดแสดงความคิดเห็นของท่าน <a href="#">ที่นี่</a></p>
     </div>
 
     <footer>
@@ -44,7 +31,25 @@
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_jX8KHjTOD9fTawF-2pJSQG7AABeVAM5GZA&s" height="30">
         </div>
     </footer>
-  
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            let nav = document.querySelector('nav');
+            let icon = this.querySelector('i');
+            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        });
+
+        document.querySelectorAll('.toggle-submenu').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                let submenu = this.nextElementSibling;
+                if (submenu) {
+                    submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+                }
+            });
+        });
+    </script>
     <script>
         // นับจำนวนผู้เข้าชม (เก็บใน LocalStorage)
         if (localStorage.getItem("totalVisits")) {
