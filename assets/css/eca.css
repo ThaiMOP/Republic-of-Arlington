@@ -1,0 +1,180 @@
+:root {
+    --main-bg-color: #009d63;
+    --main-text-color: #009d63;
+    --second-text-color: #bbbec5;
+    --second-bg-color: #c1efde;
+}
+
+body {
+    font-family: CPN, sans-serif; 
+    margin: 0;
+    padding: 0;
+    background-color: var(--second-bg-color);
+}
+
+header {
+    background: var(--main-bg-color);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+
+header h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.menu-toggle {
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    background: white;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    padding-right: 10px;
+}
+
+nav ul li {
+    border-bottom: 1px solid var(--second-text-color);
+}
+
+nav ul li a {
+    display: block;
+    text-decoration: none;
+    color: var(--main-text-color);
+    padding: 12px;
+}
+
+.feedback a ,
+footer a {
+    color: #2e603c;
+    border-bottom: 2px solid #2e603c;
+    text-decoration: none;
+}
+
+.feedback a:hover ,
+footer a:hover {
+    color: #30906a !important;
+}
+
+nav ul li a:hover {
+    background: var(--second-bg-color);
+}
+
+.submenu {
+    display: none;
+    padding-left: 20px;
+    position: absolute;
+    background: #fff;
+}
+
+.submenu a {
+    font-size: 0.9em;
+}
+
+.language-switch {
+    cursor: pointer;
+    padding: 5px 10px;
+    background: white;
+    color: var(--main-text-color);
+    border-radius: 5px;
+}
+
+[data-open="640"] {
+    display: none;
+}
+
+@media (max-width: 640px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    nav {
+        display: none;
+        position: absolute;
+        width: 100%;
+        top: 70.4px;
+        left: 0;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        flex-direction: column;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+  
+    .submenu {
+        position: unset;
+    }
+
+    header h1 {display: none;}
+    [data-open="640"] {
+        display: block;
+    }
+    
+    .box {
+        width: 100%;
+    }
+}
+
+
+.banner {
+    width: 100%;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+
+.box {
+    background: white;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+    width: 40%;
+    text-align: center;
+}
+
+.feedback {
+    text-align: center;
+    padding: 20px;
+}
+
+footer {
+    background: #a2a2a2;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    font-size: 0.9em;
+}
+
+img[alt="Election Commission Banner"] {
+    cursor: pointer;
+}
