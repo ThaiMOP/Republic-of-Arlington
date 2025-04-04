@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
 document.querySelector('.menu-toggle').addEventListener('click', function() {
     let nav = document.querySelector('nav');
     let icon = this.querySelector('i');
-    nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+    nav.classList.toggle('active');
     icon.classList.toggle('fa-bars');
     icon.classList.toggle('fa-xmark');
 });
@@ -63,7 +63,7 @@ document.querySelectorAll('.toggle-submenu').forEach(item => {
         e.preventDefault();
         let submenu = this.nextElementSibling;
         if (submenu) {
-            submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+            submenu.classList.toggle('active');
         }
     });
 });
