@@ -39,25 +39,7 @@
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_jX8KHjTOD9fTawF-2pJSQG7AABeVAM5GZA&s" height="30">
         </div>
     </footer>
-    <script>
-        document.querySelector('.menu-toggle').addEventListener('click', function() {
-            let nav = document.querySelector('nav');
-            let icon = this.querySelector('i');
-            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-xmark');
-        });
-
-        document.querySelectorAll('.toggle-submenu').forEach(item => {
-            item.addEventListener('click', function(e) {
-                e.preventDefault();
-                let submenu = this.nextElementSibling;
-                if (submenu) {
-                    submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
-                }
-            });
-        });
-    </script>
+    <div id="script"></div>
     <script>
         // นับจำนวนผู้เข้าชม (เก็บใน LocalStorage)
         if (localStorage.getItem("totalVisits")) {
