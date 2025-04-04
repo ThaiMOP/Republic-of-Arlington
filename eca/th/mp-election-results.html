@@ -8,16 +8,72 @@
     <link rel="stylesheet" href="https://slw-system.pages.dev/assets/css/font-face.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/eca.css">
-    <script src="/assets/js/navbar.js"></script>
 </head>
 <body>
-    <header id="header"></header>
-    <nav id="navbar"></nav>
+    <header>
+        <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        <img height="50px" src="https://rep-arlington.pages.dev/assets/img/eca.png" data-open="640">
+        <h1>สำนักงานคณะกรรมการการเลือกตั้ง</h1>
+        <div class="language-switch">TH | EN</div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">หน้าหลัก</a></li>
+            <li>
+                <a href="#" class="toggle-submenu">เกี่ยวกับ ▾</a>
+                <div class="submenu">
+                    <a href="#">คณะกรรมการการเลือกตั้ง</a>
+                    <a href="#">สำนักงาน กกต.</a>
+                    <a href="#">ทำเนียบผู้บริหาร</a>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="toggle-submenu">ข่าวสาร ▾</a>
+                <div class="submenu">
+                    <a href="#">ข่าวประชาสัมพันธ์</a>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="toggle-submenu">บริการข้อมูล ▾</a>
+                <div class="submenu">
+                    <a href="#" class="toggle-submenu">สถิติการเลือกตั้ง ▾</a>
+                    <div class="submenu">
+                        <a href="#">การเลือกตั้งสมาชิกสภาผู้แทนราษฎร</a>
+                        <a href="#">การออกเสียงประชามติ</a>
+                        <a href="#">การเลือกตั้งท้องถิ่น</a>
+                        <a href="#">สถิติการวินิจฉัยชี้ขาดเรื่องคัดค้านการเลือกตั้ง</a>
+                    </div>
+                    <a href="/election/result">รายงานผลการนับคะแนน</a>
+                    <a href="mp-election-results">ประกาศผลการเลือกตั้ง สส.</a>
+                    <a href="checkidparty">ตรวจสอบการเป็นสมาชิกพรรคการเมือง</a>
+                    <a href="#">ข้อมูลพรรคการเมือง</a>
+                </div>
+            </li>
+            <li><a href="#">ติดต่อ</a></li>
+        </ul>
+    </nav>
 
-    <div class="container">
-        <div class="box">
-            <h2>นายณภัทร สุวรรณสวัสดิ์</h2>
-            <p>คณะกรรมการการเลือกตั้ง</p>
+    <div class="container-a">
+        <h1>ประกาศผลการเลือกตั้ง</h1>
+        <div class="card">
+            <div class="card-header">
+                <span class="icon">
+                    <img src="https://www.ect.go.th/ect_th/app/images/icon-svg/document.svg">
+                </span>
+                <span class="title">ผลการเลือกตั้งสมาชิกสภาผู้แทนราษฎร เมื่อวันที่ 4 เมษายน 2568</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="card-content">
+                <div class="file-info">
+                    <img src="https://www.ect.go.th/ect_th/app/images/file/svg/pdf.svg" alt="PDF Icon" class="file-icon">
+                    <div class="file-details">
+                        <p class="file-name">ผลการเลือกตั้งสมาชิกสภาผู้แทนราษฎร เมื่อวันที่ 4 เมษายน 2568</p>
+                        <p class="file-size">ขนาดไฟล์ <strong>291.01 kB</strong></p>
+                    </div>
+                    <button class="download-btn">ดาวน์โหลด</button>
+                </div>
+                <button class="download-all-btn">ดาวน์โหลดทั้งหมด</button>
+            </div>
         </div>
     </div>
 
