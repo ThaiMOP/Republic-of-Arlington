@@ -50,20 +50,28 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
 });
 
-document.querySelector('.menu-toggle').addEventListener('click', function() {
-    let nav = document.querySelector('nav');
-    let icon = this.querySelector('i');
-    nav.classList.toggle('active');
-    icon.classList.toggle('fa-bars');
-    icon.classList.toggle('fa-xmark');
-});
+document.addEventListener("DOMContentLoaded", function () {
+    const script = document.getElementById("script");
 
-document.querySelectorAll('.toggle-submenu').forEach(item => {
-    item.addEventListener('click', function(e) {
-        e.preventDefault();
-        let submenu = this.nextElementSibling;
-        if (submenu) {
-            submenu.classList.toggle('active');
-        }
-    });
+    script.innerHTML = `
+        <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            let nav = document.querySelector('nav');
+            let icon = this.querySelector('i');
+            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        });
+        
+        document.querySelectorAll('.toggle-submenu').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                let submenu = this.nextElementSibling;
+                if (submenu) {
+                    submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+                }
+            });
+        }); 
+        </script>
+    `;
 });
