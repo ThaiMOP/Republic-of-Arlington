@@ -100,3 +100,40 @@ document.addEventListener("DOMContentLoaded", function () {
     script.textContent = scriptContent;
     document.body.appendChild(script);
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const scriptContent = `
+            if (localStorage.getItem("totalVisits")) {
+                let visits = parseInt(localStorage.getItem("totalVisits")) + 1;
+                localStorage.setItem("totalVisits", visits);
+            } else {
+                localStorage.setItem("totalVisits", 1);
+            }
+            document.getElementById("totalVisits").textContent = localStorage.getItem("totalVisits");
+    
+            function updateOnlineUsers() {
+                sessionStorage.setItem("isOnline", "true");
+    
+                let onlineUsers = sessionStorage.getItem("onlineUsers") ? parseInt(sessionStorage.getItem("onlineUsers")) : 0;
+                sessionStorage.setItem("onlineUsers", onlineUsers + 1);
+                document.getElementById("onlineUsers").textContent = sessionStorage.getItem("onlineUsers");
+            }
+    
+            function removeOnlineUser() {
+                let onlineUsers = parseInt(sessionStorage.getItem("onlineUsers")) || 1;
+                sessionStorage.setItem("onlineUsers", onlineUsers > 1 ? onlineUsers - 1 : 0);
+            }
+    
+            updateOnlineUsers();
+    
+            window.addEventListener("beforeunload", removeOnlineUser);
+            
+            document.querySelector('img[alt="Election Commission Banner"]').addEventListener("click", function() {
+                window.location.href = "/election/";
+            });
+    `;
+
+    const script = document.createElement('script');
+    script.textContent = scriptContent;
+    document.body.appendChild(script);
+});
