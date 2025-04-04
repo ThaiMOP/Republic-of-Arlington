@@ -39,6 +39,17 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const header = document.getElementById("header");
+
+    header.innerHTML = `
+        <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        <img height="50px" src="https://rep-arlington.pages.dev/assets/img/eca.png" data-open="640">
+        <h1>สำนักงานคณะกรรมการการเลือกตั้ง</h1>
+        <div class="language-switch">TH | EN</div>
+    `;
+});
+
 document.querySelector('.menu-toggle').addEventListener('click', function() {
     let nav = document.querySelector('nav');
     let icon = this.querySelector('i');
