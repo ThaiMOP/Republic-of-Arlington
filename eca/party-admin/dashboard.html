@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard พรรคการเมือง</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      display: flex;
+      background-color: #f4f4f4;
+    }
+    .sidebar {
+      width: 260px;
+      background-color: #1e293b;
+      color: white;
+      height: 100vh;
+      padding: 20px;
+    }
+    .sidebar img {
+      width: 100px;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto;
+    }
+    .sidebar h3 {
+      text-align: center;
+      margin: 10px 0 20px;
+    }
+    .menu a {
+      display: block;
+      color: #e2e8f0;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      background-color: #334155;
+      transition: background 0.3s;
+    }
+    .menu a:hover {
+      background-color: #475569;
+    }
+    .content {
+      padding: 20px;
+      flex-grow: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <img id="profileImg" src="" alt="Profile">
+    <h3 id="partyName">พรรค</h3>
+    <div class="menu" id="menuLinks">
+      <!-- เมนูจะถูกเติมโดย JS -->
+    </div>
+  </div>
+
+  <div class="content">
+    <h1>Welcome to ECA Dashboard</h1>
+    <p>เลือกเมนูจากด้านซ้ายเพื่อดำเนินการ</p>
+  </div>
+
+  <script>
+    // ตรวจสอบว่าผู้ใช้ login แล้ว
+    const username = localStorage.getItem("username");
+    if (!username) {
+      alert("กรุณาเข้าสู่ระบบก่อน");
+      window.location.href = "login.html";
+    }
+
+    // ดึงข้อมูลจาก API
+    fetch("https://script.google.com/macros/s/AKfycbzraANqp9MWSDAC5l0qP12iiN-xQqpFvsZbhDSCN_NfnkB0xw0556xixLBp3y0wxRS4EA/exec")
+      .then(res => res.json())
+      .then(data => {
+        const user = data.find(item => item.username === username);
+        if (!user) {
+          alert("ไม่พบข้อมูลผู้ใช้");
+          return;
+        }
+
+        // แสดงรูปและชื่อพรรค
+        document.getElementById("profileImg").src = user.profile;
+        document.getElementById("partyName").textContent = user.party;
+
+        const nparty = user.nparty;
+
+        // สร้างเมนู
+        const menuList = [
+          { text: "แก้ไขรายชื่อสมาชิกพรรค", page: `epm-${nparty}.html` },
+          { text: "แก้ไขข้อมูลพรรค", page: `ep-${nparty}.html` },
+          { text: "แก้รายชื่อคณะกรรมการบริหารพรรค", page: `eep-${nparty}.html` },
+          { text: "ยื่นรายชื่อผู้สมัครรับเลือกตั้ง - ส.ส.", page: `smp-${nparty}.html` },
+          { text: "ยื่นรายชื่อผู้สมัครรับเลือกตั้ง - นายกฯ", page: `sp-${nparty}.html` },
+          { text: "ยื่นรายชื่อผู้สมัครรับเลือกตั้ง - ปธน.", page: `spd-${nparty}.html` }
+        ];
+
+        const menuContainer = document.getElementById("menuLinks");
+        menuList.forEach(menu => {
+          const a = document.createElement("a");
+          a.href = menu.page;
+          a.textContent = menu.text;
+          menuContainer.appendChild(a);
+        });
+      })
+      .catch(err => {
+        console.error("เกิดข้อผิดพลาด:", err);
+        alert("ไม่สามารถโหลดข้อมูลได้");
+      });
+  </script>
+</body>
+</html>
