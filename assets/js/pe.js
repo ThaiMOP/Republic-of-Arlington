@@ -44,7 +44,7 @@ document.getElementById("form").addEventListener("submit", function (e) {
 
       // ส่งไปยัง Google Apps Script
       return fetch(
-        "https://script.google.com/macros/s/AKfycbzyYwv0eKvmhjwa5SSTGf9FTFFsCHEjPm9qqV64HSVYAkBGx3oyciWjnp-WdLK21Wu8/exec",
+        "https://script.google.com/macros/s/AKfycbwswWEeY8H7vmq6-Ccb1rr6uB9P5DyFiAm-eiBsDcWXB2zRlFIWllrCWQXz7_ZZbr7S/exec",
         {
           redirect: "follow",
           method: "POST",
