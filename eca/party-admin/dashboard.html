@@ -69,7 +69,7 @@
     }
 
     // ดึงข้อมูลจาก API
-    fetch("https://script.google.com/macros/s/AKfycbzraANqp9MWSDAC5l0qP12iiN-xQqpFvsZbhDSCN_NfnkB0xw0556xixLBp3y0wxRS4EA/exec")
+    fetch("https://script.google.com/macros/s/AKfycbz50jKpoOOXgNVhweEtfykhzUaeJUQRwbJcGQYE27tiEESWVTgvE_3NizZbPkELeKqgwA/exec")
       .then(res => res.json())
       .then(data => {
         const user = data.find(item => item.username === username);
