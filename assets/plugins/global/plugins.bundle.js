@@ -41,7 +41,8 @@ document.addEventListener("DOMContentLoaded", function () {
             
                         if (user) {
                             alert("เข้าสู่ระบบสำเร็จ!");
-                            window.location.href = "dashboard.html"; // <-- ไปหน้า dashboard
+                            localStorage.setItem("username", user.username); // บันทึก username ลง localStorage
+                            window.location.href = "dashboard.html";
                         } else {
                             alert("อีเมล/ชื่อผู้ใช้ หรือรหัสผ่านไม่ถูกต้อง");
                         }
