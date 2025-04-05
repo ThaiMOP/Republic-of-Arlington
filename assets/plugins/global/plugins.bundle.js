@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const emailInput = document.getElementById("email").value.trim();
                 const passwordInput = document.getElementById("password").value.trim();
             
-                fetch("https://script.google.com/macros/s/AKfycbwnl5OfMe566LZlFxLu1hUnN9OCRuPYNY7XJkqpEHHORpHtSoKnCkPGSezmvasyvBNIpw/exec")
+                fetch("https://script.google.com/macros/s/AKfycbz50jKpoOOXgNVhweEtfykhzUaeJUQRwbJcGQYE27tiEESWVTgvE_3NizZbPkELeKqgwA/exec")
                     .then(response => response.json())
                     .then(data => {
                         const user = data.find(u => (u.email === emailInput || u.username === emailInput) && u.password === passwordInput);
