@@ -416,3 +416,23 @@
 	.btn:not(:disabled):not(.disabled) {
 	    cursor: pointer;
 	}
+
+	.btn-primary {
+	    background: #28a745;
+	}
+	.btn-primary, .btn-dark {
+	    border: 0;
+	    border-radius: 0;
+	    padding: 12px 25px 10px;
+	    font-weight: 700;
+	    text-transform: uppercase;
+	    color: #fff;
+	    -webkit-transition: 350ms;
+	    -moz-transition: 350ms;
+	    -o-transition: 350ms;
+	    transition: 350ms;
+	}
+	.btn-block {
+	    display: block;
+	    width: 100%;
+	}
