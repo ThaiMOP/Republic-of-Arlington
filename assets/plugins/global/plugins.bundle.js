@@ -27,3 +27,34 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
     `;
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const scriptContent = `
+            document.getElementById("loginButton").addEventListener("click", function () {
+                const emailInput = document.getElementById("email").value.trim();
+                const passwordInput = document.getElementById("password").value.trim();
+            
+                fetch("https://script.google.com/macros/s/AKfycbyMoE1HBlHD12bExCB_lcYzA80TcxeYiS3s_Sl0IAldw2z5EiFX6b-2tnWUoqNXzngwQA/exec")
+                    .then(response => response.json())
+                    .then(data => {
+                        const user = data.find(u => (u.email === emailInput || u.username === emailInput) && u.password === passwordInput);
+            
+                        if (user) {
+                            alert("เข้าสู่ระบบสำเร็จ!");
+                            window.location.href = "dashboard.html"; // <-- ไปหน้า dashboard
+                        } else {
+                            alert("อีเมล/ชื่อผู้ใช้ หรือรหัสผ่านไม่ถูกต้อง");
+                        }
+                    })
+                    .catch(error => {
+                        console.error("เกิดข้อผิดพลาดในการดึงข้อมูล:", error);
+                        alert("ไม่สามารถเชื่อมต่อกับระบบได้");
+                    });
+            });
+
+    `;
+
+    const script = document.createElement('script');
+    script.textContent = scriptContent;
+    document.body.appendChild(script);
+});
