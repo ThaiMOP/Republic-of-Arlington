@@ -12,11 +12,12 @@ function updateClock() {
         setInterval(updateClock, 1000);
 
         updateClock();
-        document.querySelectorAll('input.value[type="text"]').forEach(input => {
-            input.addEventListener('click', function() {
+
+            document.querySelectorAll('input.value[type="text"]').forEach(input => {
+              input.addEventListener('click', function() {
                 this.value = this.value === "X" ? "" : "X";
+              });
             });
-        });
 
 document.getElementById("form").addEventListener("submit", function (e) {
   e.preventDefault(); // Prevent the default form submission
@@ -43,7 +44,7 @@ document.getElementById("form").addEventListener("submit", function (e) {
 
       // ส่งไปยัง Google Apps Script
       return fetch(
-        "https://script.google.com/macros/s/AKfycbwj8854FjlPDedHnYNzAg8nx08QPivk07N85Z0U5cmrq2VcvLKkMjdJon9lWVMo1l2f8Q/exec",
+        "https://script.google.com/macros/s/AKfycbzURjmg91K2N8KObFQxc2K9lh1039BrRu_w-3fpmgJh1optf8OnP_P3PBapU6Q4-q0glA/exec",
         {
           redirect: "follow",
           method: "POST",
