@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>กำลังออกระบบ...</title>
+    <link rel="stylesheet" href="https://slw-system.pages.dev/assets/css/font-face.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: CPN, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .message {
+            font-size: 1.2rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="message">กำลังออกจากระบบ...</div>
+
+    <script>
+        // ลบ localStorage
+        localStorage.clear();
+
+        // รอประมาณ 1 วินาที ก่อน redirect ไปหน้า login
+        setTimeout(function () {
+            window.location.href = 'login.html';
+        }, 1000);
+    </script>
+</body>
+</html>
