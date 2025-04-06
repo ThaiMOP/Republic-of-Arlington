@@ -19,7 +19,8 @@ updateElectionStatus();
 setInterval(updateElectionStatus, 1000);
 
     document.querySelector(".eca-btn").addEventListener("click", function() {
-        window.location.href = "/election/pe";
+        // window.location.href = "/election/pe"; // ประธานาธิบดีไม่เลือก
+        window.location.href = "/election/next";
     });
     document.addEventListener("DOMContentLoaded", function() {
         document.querySelectorAll("img").forEach(img => {
