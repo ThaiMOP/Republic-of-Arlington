@@ -10,9 +10,9 @@
 
         // ข้อมูล iframe
         const iframeData = {
-        dem: "https://docs.google.com/spreadsheets/d/18DiM43jKe4cKTQ1yIANusTh7_YI8mY4tWEloVL-VrdI/edit?usp=sharing?gid=0#gid=0",
-        bjt: "https://docs.google.com/spreadsheets/d/1oXV_rB1ooFxqrSiAbABQJ563SDl_t7voyiQClsH7Vc4/edit?usp=sharing?gid=0#gid=0",
-        pt:  "https://docs.google.com/spreadsheets/d/17fOu6b1l_PCFKNzjyeER1xpRFr0odHX3iU2Wf8O2LEY/edit?usp=sharing?gid=0#gid=0"
+        dem: "https://docs.google.com/spreadsheets/d/18DiM43jKe4cKTQ1yIANusTh7_YI8mY4tWEloVL-VrdI/edit?usp=sharing?gid=843659141#gid=843659141",
+        bjt: "https://docs.google.com/spreadsheets/d/1oXV_rB1ooFxqrSiAbABQJ563SDl_t7voyiQClsH7Vc4/edit?usp=sharing?gid=1025402287#gid=1025402287",
+        pt:  "https://docs.google.com/spreadsheets/d/17fOu6b1l_PCFKNzjyeER1xpRFr0odHX3iU2Wf8O2LEY/edit?usp=sharing?gid=418710084#gid=418710084"
         };
 
         // สร้าง iframe function
