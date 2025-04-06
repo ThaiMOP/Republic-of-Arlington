@@ -6,17 +6,234 @@
     <title>สำนักงานคณะกรรมการการเลือกตั้ง - สาธารณรัฐแห่งอาร์ลิงตัน</title>
     <link rel="icon" href="https://rep-arlington.pages.dev/assets/img/eca.png" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="https://slw-system.pages.dev/assets/css/font-face.css">
-    <link rel="stylesheet" href="/assets/css/election.css">
-    <script src="/assets/js/time.js"></script>
+    <link rel="stylesheet" href="https://rep-arlington.pages.dev/assets/css/election.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .box{
+            width: 820px;
+            display: flex;
+            justify-content: center;
+            padding: 12px;
+            margin-right: auto !important;
+            margin-left: auto !important;
+        }
+
+        .sub-box{
+            box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+        }
+        
+        .v-card__title {
+            background-color: #373877;
+        }
+        .v-card__title {
+            align-items: center;
+            display: flex;
+            flex-wrap: wrap;
+            font-size: 1.25rem;
+            font-weight: 500;
+            letter-spacing: .0125em;
+            line-height: 2rem;
+            word-break: break-all;
+        }
+        .v-card__title {
+            padding: 16px;
+        }
+        .p-12 {
+            padding: 0 12px;
+        }
+
+        .mt-4 {
+            margin-top: 4px !important;
+        }
+
+        .pt-8 {
+            padding-top: 8px !important;
+        }
+
+        .text-input {
+            padding: 0 12px;
+        }
+
+        [data-color="373877"] {
+            color: #373877;
+        }
+
+        .sup-input {
+            background-color: #f1f3f5 !important;
+            border-color: #f1f3f5 !important;
+            padding: 0 12px;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 8px 0 4px;
+            background-color: transparent;
+            border-style: none;
+            outline: none;
+            max-height: 32px;
+            line-height: 20px;
+            font-size: 18px;
+            font-family: inherit;
+        }
+        .button-input {
+            padding: 12px 12px 0;
+        }
+        .btn {
+            width: 100%;
+            height: 36px;
+            min-width: 64px;
+            padding: 0 16px;
+            background-color: #373877 !important;
+            border-color: #373877 !important;
+            box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+        }
+
+        [data-flex] {
+            align-items: center;
+            color: inherit;
+            display: flex;
+            flex: 1 0 auto;
+            justify-content: center;
+            line-height: normal;
+            position: relative;
+            transition: inherit;
+            transition-property: opacity;
+            color: #fff;
+        }
+
+        [data-flex] i {
+            font-size: 24px;
+        }
+
+        .flex-end {
+            justify-content: flex-end !important;
+            display: flex;
+            flex-wrap: wrap;
+            font-weight: 500;
+            padding-top: 5px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div data-flex="0"><img src="/assets/img/eca.png" height="50px"><h3>สำนักงานคณะกรรมการการเลือกตั้ง</h3></div>
-        <div><p id="time"></p></div>
-    </header>
-    <div class="mt-5"></div>
-    <form>
-      
-    </form>
+    <div class="box">
+        <div class="sub-box" style="width: 100%; padding-left: 10px; padding-right: 10px;">
+            <div class="v-card__title">
+                <h1 class="green" style="font-size: 22px; color: white; font-weight: 500; text-align: left;">
+                    <span>ระบบการแจ้งเหตุจำเป็นที่ไม่อาจไปใช้สิทธิเลือกตั้งทางอิเล็กทรอนิกส์</span>
+                    <span data-type="0"></span>
+                </h1>
+            </div>
+            <form id="form" method="POST">
+                <div class="p-12 pt-8" style="font-size: 18px;">
+                    กรุณากรอกข้อมูลของท่านให้ถูกต้องครบถ้วน
+                </div>
+                <div class="p-12 pt-8" data-color="373877" style="font-size: 18px;">
+                    <label for="textField">เลขประจำตัวประชาชน</label>
+                </div>
+                <div class="text-input">
+                    <div class="sup-input">
+                        <input name="id" maxlength="20" id="textField" type="text" placeholder="0-00000-0000000000-00-0(0)">
+                    </div>
+                </div>
+                <div class="p-12 pt-8" data-color="373877" style="font-size: 18px;">
+                    <label for="name">ชื่อ *ไม่ต้องระบุคำนำหน้าชื่อ (เช่น นาย, นาง, นางสาว)</label>
+                </div>
+                <div class="text-input">
+                    <div class="sup-input">
+                        <input name="fname" id="name" type="text" placeholder="ชื่อภาษาไทย">
+                    </div>
+                    <div class="sup-input mt-4">
+                        <input name="lname" id="name" type="text" placeholder="นามสกุลภาษาไทย">
+                    </div>
+                </div>
+                <div class="p-12 pt-8" data-color="373877" style="font-size: 18px;">
+                    <label for="cause">สาเหตุ</label>
+                </div>
+                <div class="text-input">
+                    <div class="sup-input">
+                        <input name="cause" id="cause" type="text" placeholder="สาเหตุที่ไม่อาจไปใช้สิทธิเลือกตั้ง">
+                    </div>
+                </div>
+                <div class="button-input">
+                    <button class="btn" type="submit" id="submit-button">
+                        <span data-flex="" style="font-size: 18px; font-weight: 500;"><i class="fas fa-search"></i> ตรวจสอบข้อมูล</span>
+                    </button>
+                </div>
+                <div class="flex-end text-input">v 1.1</div>
+            </form>
+        </div>
+    </div>
+    <main style=" display: none; ">
+        <div id="message" style=" display: none; margin: 20px; font-weight: bold; color: green; padding: 8px; background-color: beige; border-radius: 4px; border-color: aquamarine; "></div>
+    </main>
+    <script>
+        document.getElementById("form").addEventListener("submit", function (e) {
+            e.preventDefault(); // Prevent the default form submission
+            document.getElementById("message").textContent = "กำลังบันทึก...";
+            document.getElementById("message").style.display = "block";
+            document.getElementById("submit-button").disabled = true;
+
+            // Collect the form data
+            var formData = new FormData(this);
+            var keyValuePairs = [];
+
+            for (var pair of formData.entries()) {
+                keyValuePairs.push(pair[0] + "=" + encodeURIComponent(pair[1]));
+            }
+
+            // ดึง IP จาก API
+            fetch("https://api.ipify.org?format=json")
+                .then((res) => res.json())
+                .then((data) => {
+                const ip = data.ip;
+                keyValuePairs.push("ip=" + ip); // เพิ่ม IP เข้าไปในข้อมูล
+
+                var formDataString = keyValuePairs.join("&");
+
+                // ส่งไปยัง Google Apps Script
+                return fetch(
+                    "https://script.google.com/macros/s/AKfycbx9h6RclTjfj8EpI8Yy9BCduNmkBi77_zwrbCH-R44YSE4570HDPZ0FT1i0wPR0lMq0/exec",
+                    {
+                    redirect: "follow",
+                    method: "POST",
+                    body: formDataString,
+                    headers: {
+                        "Content-Type": "text/plain;charset=utf-8",
+                    },
+                    }
+                );
+                })
+                .then(function (response) {
+                if (response) {
+                    return response;
+                } else {
+                    throw new Error("Failed to submit the form.");
+                }
+                })
+                .then(function () {
+                document.getElementById("message").textContent = "Data submitted successfully!";
+                document.getElementById("message").style.display = "block";
+                document.getElementById("message").style.backgroundColor = "green";
+                document.getElementById("message").style.color = "beige";
+                document.getElementById("submit-button").disabled = false;
+                document.getElementById("form").reset();
+
+                setTimeout(function () {
+                    window.location.href = "/eca/th/";
+                }, 500);
+                })
+                .catch(function (error) {
+                console.error(error);
+                document.getElementById("message").textContent = "An error occurred while submitting the form.";
+                document.getElementById("message").style.display = "block";
+                });
+            });
+    </script>
 </body>
 </html>
