@@ -46,7 +46,8 @@ document.addEventListener("DOMContentLoaded", function () {
     </nav>
     
     <div class="banner">
-        <img src="https://rep-arlington.pages.dev/assets/img/eca-banner.png" width="100%" alt="Election Commission Banner">
+        <img src="https://rep-arlington.pages.dev/assets/img/eca-banner.png" width="100%" alt="Election Commission Banner" style="display: none">
+        <img src="https://rep-arlington.pages.dev/assets/img/eca-banner (1).png" width="100%" alt="Election Commission Banner">
     </div>
 
     <div class="container">
