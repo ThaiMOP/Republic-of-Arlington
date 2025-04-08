@@ -11,7 +11,7 @@ function updateElectionStatus() {
     } else if (now >= startTime && now <= endTime) { 
         electionTag.innerHTML = `<div class="eca-btn" onclick="window.location.href='/election/pe'">เข้าระบบใช้สิทธิเลือกตั้ง</div>`; 
     } else { 
-        electionTag.innerHTML = `<h1>สิ้นสุดเวลาใช้สิทธิออกเสียงลงคะแนนแล้ว</h1>`; 
+        electionTag.innerHTML = `<h1>บัดนี้ถึงเวลาปิดการออกเสียงลงคะแนนแล้ว ให้ปิดการออกเสียงลงคะแนน</h1>`; 
     } 
 } 
 
