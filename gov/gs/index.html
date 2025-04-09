@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Governance Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Sarabun', sans-serif;
+      background-color: #f5f6f8;
+      color: #333;
+    }
+    header {
+      background-color: #002d5a;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #fff;
+      position: relative;
+    }
+    header img {
+      height: 50px;
+    }
+    header h1 {
+      font-size: 1.5rem;
+      margin-left: 1rem;
+    }
+    .menu-toggle {
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .sidebar {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #00b894;
+      width: 250px;
+      color: #fff;
+      padding: 1rem;
+      display: none;
+    }
+    .sidebar.active {
+      display: block;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+    .sidebar ul li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    main {
+      max-width: 1024px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+      color: #002d5a;
+      margin-top: 0;
+      text-align: center;
+    }
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .service-card {
+      background: #fff;
+      border-radius: 1rem;
+      padding: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .service-card img {
+      width: 64px;
+      margin-bottom: 0.5rem;
+    }
+    .service-card p {
+      margin: 0.5rem 0;
+    }
+    .details-link {
+      color: #00b894;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div style="display: flex; align-items: center;">
+      <img src="/assets/img/AGS.png" alt="Governance Services Logo" />
+      <h1>Governance Services</h1>
+    </div>
+    <i class="fas fa-bars menu-toggle" id="menuToggle"></i>
+  </header>
+  <div class="sidebar" id="sidebar">
+    <ul>
+      <li>ข้อมูลของฉัน</li>
+      <li>นโยบายรัฐบาล</li>
+      <li>สวัสดิการ</li>
+      <li>สารธารณูปโภค</li>
+      <li>การศึกษา</li>
+      <li>การงาน/อาชีพ</li>
+      <li>คนพิการ</li>
+      <li>เลือกตั้ง</li>
+      <li>ยานพาหนะ</li>
+      <li>การเงิน/ประกัน</li>
+      <li>สุขภาพ</li>
+      <li>ที่ดิน/ที่อยู่</li>
+      <li>คดี/แจ้งเหตุ</li>
+      <li>รู้เรื่องรัฐ</li>
+    </ul>
+  </div>
+  <main>
+    <h2>บริการที่น่าสนใจ</h2>
+    <div class="services">
+      <div class="service-card">
+        <img src="https://img.icons8.com/ios-filled/100/000000/car-license-plate.png" alt="ทะเบียนรถ">
+        <p>ข้อมูลทะเบียนรถ</p>
+        <a href="#" class="details-link">รายละเอียด</a>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/ios-filled/100/000000/policeman.png" alt="ใบสั่งจราจร">
+        <p>ใบสั่งจราจร</p>
+        <a href="#" class="details-link">รายละเอียด</a>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/ios-filled/100/000000/mother.png" alt="เงินอุดหนุนเด็ก">
+        <p>เงินอุดหนุนเด็กแรกเกิด</p>
+        <a href="#" class="details-link">รายละเอียด</a>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/ios-filled/100/000000/credit-card.png" alt="เครดิตบูโร">
+        <p>ตรวจสอบเครดิตบูโร ง่ายและฟรี</p>
+        <a href="#" class="details-link">รายละเอียด</a>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/ios-filled/100/000000/hospital.png" alt="สิทธิการรักษา">
+        <p>ตรวจสอบสิทธิการรักษาพยาบาล</p>
+        <a href="#" class="details-link">รายละเอียด</a>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/ios-filled/100/000000/conference.png" alt="ประกันสังคม">
+        <p>เช็กสิทธิประกันสังคม โครงการเยียวยา</p>
+        <a href="#" class="details-link">รายละเอียด</a>
+      </div>
+    </div>
+  </main>
+  <footer>
+    &copy; 2025 Governance Services. สงวนลิขสิทธิ์.
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+    let open = false;
+
+    toggle.addEventListener('click', () => {
+      open = !open;
+      sidebar.classList.toggle('active');
+      toggle.classList.toggle('fa-bars');
+      toggle.classList.toggle('fa-xmark');
+    });
+  </script>
+</body>
+</html>
