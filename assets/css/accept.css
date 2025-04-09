@@ -2,11 +2,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: CPN, sans-serif;
 }
 
 body {
     margin: 0;
-    font-family: CPN, sans-serif;
     background-color: #f4f4f4;
 }
 
@@ -32,4 +32,8 @@ main > button {
     cursor: pointer;
     font-size: 16px;
     font-family: CPN;
+}
+
+i {
+    
 }
