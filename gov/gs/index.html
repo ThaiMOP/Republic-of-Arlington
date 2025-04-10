@@ -115,18 +115,17 @@
   </header>
   <div class="sidebar" id="sidebar">
     <ul>
-      <li>ข้อมูลของฉัน</li>
-      <li>นโยบายรัฐบาล</li>
-      <li>สวัสดิการ</li>
-      <li>สารธารณูปโภค</li>
-      <li>การศึกษา</li>
-      <li>การงาน/อาชีพ</li>
-      <li>เลือกตั้ง</li>
-      <li>การเงิน/ประกัน</li>
-      <li>สุขภาพ</li>
-      <li>ที่ดิน/ที่อยู่</li>
-      <li>คดี/แจ้งเหตุ</li>
-      <li>รู้เรื่องรัฐ</li>
+      <li onclick="openFeatureContent('feature-list-block-1')">ข้อมูลของฉัน</li>
+      <li onclick="openFeatureContent('feature-list-block-2')">นโยบายรัฐบาล</li>
+      <li onclick="openFeatureContent('feature-list-block-3')">สวัสดิการ</li>
+      <li onclick="openFeatureContent('feature-list-block-4')">สารธารณูปโภค</li>
+      <li onclick="openFeatureContent('feature-list-block-5')">การศึกษา</li>
+      <li onclick="openFeatureContent('feature-list-block-6')">การงาน/อาชีพ</li>
+      <li onclick="openFeatureContent('feature-list-block-7')">เลือกตั้ง</li>
+      <li onclick="openFeatureContent('feature-list-block-8')">การเงิน/ประกัน</li>
+      <li onclick="openFeatureContent('feature-list-block-9')">ที่ดิน/ที่อยู่</li>
+      <li onclick="openFeatureContent('feature-list-block-10')">คดี/แจ้งเหตุ</li>
+      <li onclick="openFeatureContent('feature-list-block-11')">รู้เรื่องรัฐ</li>
     </ul>
   </div>
   <main>
@@ -136,12 +135,12 @@
       <!-- ข้อมูลของฉัน -->
       
       <div class="service-card">
-        <img src="https://img.icons8.com/ios-filled/100/000000/car-license-plate.png" alt="ทะเบียนรถ">
+        <img src="https://img.icons8.com/?size=100&id=KoFUQ6FPna5n&format=png&color=000000" alt="เช็กสิทธิเลือกตั้ง">
         <p>เช็กสิทธิเลือกตั้ง</p>
         <a href="#" class="details-link">รายละเอียด</a>
       </div>
       <div class="service-card">
-        <img src="https://img.icons8.com/ios-filled/100/000000/policeman.png" alt="ใบสั่งจราจร">
+        <img src="https://img.icons8.com/?size=100&id=YNfoxHVAFFEa&format=png&color=000000" alt="ข้อมูลทะเบียนราษฎร์">
         <p>ข้อมูลทะเบียนราษฎร์</p>
         <a href="#" class="details-link">รายละเอียด</a>
       </div>
@@ -261,6 +260,21 @@
   <footer>
     &copy; 2025 Governance Services. สงวนลิขสิทธิ์.
   </footer>
+  <script>
+  function openFeatureContent(id) {
+    // ซ่อนทุก block ก่อน
+    const allBlocks = document.querySelectorAll('.services');
+    allBlocks.forEach(block => {
+      block.classList.remove('active');
+    });
+  
+    // แสดง block ที่ต้องการ
+    const targetBlock = document.getElementById(id);
+    if (targetBlock) {
+      targetBlock.classList.add('active');
+    }
+  }
+  </script>
 
   <script>
     const toggle = document.getElementById('menuToggle');
