@@ -234,3 +234,12 @@ hr {
     height: 42.4px;
     width: 100%;
 }
+
+.g-grid input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    height: 42.4px;
+    width: 100%;
+}
