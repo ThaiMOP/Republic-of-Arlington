@@ -140,7 +140,7 @@ ul.rule {
 
 .g-grid {
     display: grid;
-    width: 50%;
+    width: 100%;
 }
 
 .g-grid input {
@@ -171,6 +171,11 @@ hr {
 }
 .g-grid-3 {
     display: grid;
+    width: 25%;
+    padding: 0 10px;
+}
+.g-grid-4 {
+    display: grid;
     width: 33.3333333333333%;
     padding: 0 10px;
 }
@@ -185,6 +190,15 @@ hr {
     padding: 0 10px;
 }
 
+.g-grid-6 input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    height: 42.4px;
+    width: 100%;
+}
+
 .g-grid-5 input {
     padding: 10px;
     border: 1px solid #ccc;
@@ -194,7 +208,7 @@ hr {
     width: 100%;
 }
 
-.g-grid-6 input {
+.g-grid-4 input {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
