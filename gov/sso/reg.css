@@ -181,7 +181,9 @@ hr {
     padding: 0 10px;
 }
 
-.group:has(.g-grid-3) {
+.group:has(.g-grid-2),
+.group:has(.g-grid-3),
+.group:has(.g-grid-5) {
     gap: 0;
 }
 
