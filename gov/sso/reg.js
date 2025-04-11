@@ -1,9 +1,12 @@
 
   const checkbox = document.getElementById("myCheck");
   const button1 = document.getElementById("nextBtn1");
+  const buttonA = document.getElementById("goPage1");
   const button2 = document.getElementById("nextBtn2");
+  const buttonB = document.getElementById("goPage2");
   const page1 = document.getElementById("page-1");
   const page2 = document.getElementById("page-2");
+  const page3 = document.getElementById("page-3");
 
   checkbox.addEventListener("change", function () {
     if (this.checked) {
