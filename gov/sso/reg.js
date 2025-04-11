@@ -77,3 +77,22 @@
       saveButton.disabled = true;
     }
   });
+
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbw-0FEBQCjcKOgn3NMHpdZOl0OdbsW9TsyPO_-x8uW-rEOoIHFUj0J43eNmkmBrK763EQ/exec';
+      const form = document.forms['hello-sheet'];
+    
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+          .then(response => {
+            alert("✅ บันทึกข้อมูลเรียบร้อยแล้ว");
+            form.reset();
+            // รีเซ็ตกลับหน้าแรกหากต้องการ
+            document.getElementById("page-3").classList.add("hidden");
+            document.getElementById("page-2").classList.remove("hidden");
+          })
+          .catch(error => {
+            console.error('❌ Error!', error.message);
+            alert("❌ ไม่สามารถส่งข้อมูลได้ กรุณาลองใหม่");
+          });
+      });
