@@ -1,6 +1,6 @@
 * {font-family: CPN, sans-serif;}
 body { padding: 20px; margin:0; }
-.hidden { display: none; }
+.hidden { display: none !important; }
 table { border-collapse: collapse; width: 100%; margin-top: 20px; }
 th, td { border: 1px solid #ccc; padding: 8px; }
 th { background-color: #f0f0f0; }
@@ -9,6 +9,10 @@ input {
     padding: 10px;
     margin: 5px auto;
     width: 75%;
+}
+
+button[onclick="logout()"] {
+    width: unset;
 }
 
 #login-box {
