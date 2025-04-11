@@ -167,7 +167,12 @@ hr {
 
 .g-grid-3 {
     display: grid;
-    width: 33%;
+    width: 33.3333333333333%;
+    padding: 0 10px;
+}
+
+.group:has(.g-grid-3) {
+    gap: 0;
 }
 
 .g-gri-3 input {
