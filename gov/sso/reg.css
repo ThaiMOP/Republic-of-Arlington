@@ -164,3 +164,16 @@ hr {
     height: 0;
     overflow: visible;
 }
+
+.g-grid-3 {
+    display: grid;
+    width: 33%;
+}
+
+.g-gri-3 input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    height: 42.4px;
+}
