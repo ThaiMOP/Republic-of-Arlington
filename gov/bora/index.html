@@ -18,7 +18,7 @@
   </div>
 
   <div id="data-box" class="hidden">
-    <h2>ข้อมูลทะเบียนราษฎร์</h2>
+    <h2>ข้อมูลของคุณ</h2>
     <button onclick="logout()">ออกจากระบบ</button>
     <table id="data-table">
       <thead>
@@ -41,54 +41,56 @@
   </div>
 
   <script>
-    const correctUsername = "admin";
-    const correctPassword = "1234";
     const apiUrl = "https://script.google.com/macros/s/AKfycbz4OteJFXPN2fc18Lye85f1-zaRj_LkXYy9fjDO3wsOTwX478MTSe2A3PkJx-g7iUnN/exec";
 
     function login() {
-      const u = document.getElementById("username").value;
-      const p = document.getElementById("password").value;
+      const inputUser = document.getElementById("username").value.trim();
+      const inputPass = document.getElementById("password").value.trim();
       const errorBox = document.getElementById("login-error");
 
-      if (u === correctUsername && p === correctPassword) {
-        document.getElementById("login-box").classList.add("hidden");
-        document.getElementById("data-box").classList.remove("hidden");
-        loadData();
-      } else {
-        errorBox.textContent = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
-      }
+      fetch(apiUrl)
+        .then(res => res.json())
+        .then(data => {
+          const userData = data.find(row =>
+            row["หมายเลขบัตร"] === inputUser &&
+            row["วันเกิด"] === inputPass
+          );
+
+          if (userData) {
+            showUserData(userData);
+            document.getElementById("login-box").classList.add("hidden");
+            document.getElementById("data-box").classList.remove("hidden");
+          } else {
+            errorBox.textContent = "ไม่พบผู้ใช้งาน หรือวันเกิดไม่ถูกต้อง";
+          }
+        });
+    }
+
+    function showUserData(row) {
+      const tbody = document.querySelector("#data-table tbody");
+      tbody.innerHTML = `
+        <tr>
+          <td><img src="${row['รูปภาพ']}" alt="รูปภาพ"></td>
+          <td>${row['ชื่อไทย']}</td>
+          <td>${row['ชื่ออังกฤษ']}</td>
+          <td>${row['หมายเลขบัตร']}</td>
+          <td>${row['วันเกิด']}</td>
+          <td>${row['เพศ']}</td>
+          <td>${row['สัญชาติ']}</td>
+          <td>${row['ศาสนา']}</td>
+          <td>${row['ออกบัตร']}</td>
+          <td>${row['หมดอายุ']}</td>
+          <td>${row['วุฒิ']}</td>
+        </tr>
+      `;
     }
 
     function logout() {
       document.getElementById("login-box").classList.remove("hidden");
       document.getElementById("data-box").classList.add("hidden");
-    }
-
-    function loadData() {
-      fetch(apiUrl)
-        .then(res => res.json())
-        .then(data => {
-          const tbody = document.querySelector("#data-table tbody");
-          tbody.innerHTML = "";
-
-          data.forEach(row => {
-            const tr = document.createElement("tr");
-            tr.innerHTML = `
-              <td><img src="${row['รูปภาพ']}" alt="img"></td>
-              <td>${row['ชื่อไทย']}</td>
-              <td>${row['ชื่ออังกฤษ']}</td>
-              <td>${row['หมายเลขบัตร']}</td>
-              <td>${row['วันเกิด']}</td>
-              <td>${row['เพศ']}</td>
-              <td>${row['สัญชาติ']}</td>
-              <td>${row['ศาสนา']}</td>
-              <td>${row['ออกบัตร']}</td>
-              <td>${row['หมดอายุ']}</td>
-              <td>${row['วุฒิ']}</td>
-            `;
-            tbody.appendChild(tr);
-          });
-        });
+      document.getElementById("username").value = "";
+      document.getElementById("password").value = "";
+      document.getElementById("login-error").textContent = "";
     }
   </script>
 </body>
