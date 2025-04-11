@@ -16,6 +16,10 @@ body {
     display: none;
 }
 
+.page-1, .page-2, .page-3 {
+    padding-top: 30px;
+}
+
 ul.rule {
     padding-left: 40px;
 }
@@ -26,7 +30,6 @@ ul.rule {
     display: flex;
     margin: 0 0 16px 0;
     padding: 0;
-    max-width: 760px;
 }
 
 .t-step li:active, .t-step li.active {
