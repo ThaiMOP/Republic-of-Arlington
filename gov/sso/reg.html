@@ -10,7 +10,6 @@
 </head>
 <body>
   <div class="container">
-    <form method="post" autocomplete="off" name="hello-sheet">
     <div class="page-1" id="page-1">
       <ul class="t-step">
           <li class="active"><span>ข้อตกลง</span></li>
@@ -49,66 +48,67 @@
           <li class="active"><span>ข้อมูลส่วนตัว</span></li>
           <li class=""><span>ยืนยันตัวตน</span></li>
       </ul>
-      
-      <div class="card-consent">
-          <div class="group">
-              <div class="g-grid-6">
-                  <label for="uid">หมายเลขบัตรประชาชน (18 - 19 หลัก)<span style="color:red">*</span></label>
-                  <input type="text" id="uid" name="uid" >
-              </div>
-              <div class="g-grid-6">
-                  <label for="email">อีเมล<span style="color:red">*</span></label>
-                  <input type="email" id="email" name="email" >
-              </div>
-          </div>
-          <div class="group">
-              <div class="g-grid-6">
-                  <label for="password1">รหัสผ่าน<span style="color:red; font-size:10px">* (รหัสผ่านต้องเป็นตัวอักษร a-z, A-Z และ 0-9 ความยาวขั้นต่ำ 6 ตัวอักษร)</span></label>
-                  <input type="password" id="password1" name="password1" >
-              </div>
-              <div class="g-grid-6">
-                  <label for="password2">ยืนยันรหัสผ่าน<span style="color:red">*</span></label>
-                  <input type="password" id="password2" name="password2" >
-              </div>
-          </div>
-          <hr style="height:20px;">
-          <div class="group">
-                <div class="g-grid-2">
-                    <label for="prefix">คำนำหน้า<span style="color:red">*</span></label>
-                    <input type="text" id="prefix" name="prefix" >
+      <form method="post" autocomplete="off" name="hello-sheet">
+        <div class="card-consent">
+            <div class="group">
+                <div class="g-grid-6">
+                    <label for="uid">หมายเลขบัตรประชาชน (18 - 19 หลัก)<span style="color:red">*</span></label>
+                    <input type="text" id="uid" name="uid" >
                 </div>
-                <div class="g-grid-5">
-                    <label for="fname">ชื่อ<span style="color:red">*</span></label>
-                    <input type="text" id="fname" name="fname" >
+                <div class="g-grid-6">
+                    <label for="email">อีเมล<span style="color:red">*</span></label>
+                    <input type="email" id="email" name="email" >
                 </div>
-                <div class="g-grid-5">
-                    <label for="lname">นามสกุล<span style="color:red">*</span></label>
-                    <input type="text" id="lname" name="lname" >
+            </div>
+            <div class="group">
+                <div class="g-grid-6">
+                    <label for="password1">รหัสผ่าน<span style="color:red; font-size:10px">* (รหัสผ่านต้องเป็นตัวอักษร a-z, A-Z และ 0-9 ความยาวขั้นต่ำ 6 ตัวอักษร)</span></label>
+                    <input type="password" id="password1" name="password1" >
                 </div>
-          </div>
-          <div class="group">
-                <div class="g-grid">
-                    <label>วันเกิด/วันเข้า server<span style="color:red">*</span></label>
+                <div class="g-grid-6">
+                    <label for="password2">ยืนยันรหัสผ่าน<span style="color:red">*</span></label>
+                    <input type="password" id="password2" name="password2" >
                 </div>
-          </div>
-          <div class="group">
-                <div class="g-grid-4">
-                    <input type="text" id="day" name="day" >
-                </div>
-                <div class="g-grid-4">
-                    <input type="text" id="month" name="month" >
-                </div>
-                <div class="g-grid-4">
-                    <input type="text" id="year" name="year" >
-                </div>
-          </div>
-          <p id="warn" style="color:red; font-size:16px;"></p>
-          <div class="d-flex justify-content-end" style="margin-top:2rem">
-            <button class="btn btn-secondary btn-otp px-4 mx-3" id="goPage1" style="border-radius:20px; line-height:30px; width:150px;" type="button"><!--!--> &lt; ย้อนกลับ </button><!--!-->
-              <!--!-->
-            <button class="btn btn-warning btn-otp px-4" id="nextBtn2" style="border-radius:20px; line-height:30px; width:150px;" type="button"> ถัดไป &gt; </button>
-          </div>
-      </div>
+            </div>
+            <hr style="height:20px;">
+            <div class="group">
+                  <div class="g-grid-2">
+                      <label for="prefix">คำนำหน้า<span style="color:red">*</span></label>
+                      <input type="text" id="prefix" name="prefix" >
+                  </div>
+                  <div class="g-grid-5">
+                      <label for="fname">ชื่อ<span style="color:red">*</span></label>
+                      <input type="text" id="fname" name="fname" >
+                  </div>
+                  <div class="g-grid-5">
+                      <label for="lname">นามสกุล<span style="color:red">*</span></label>
+                      <input type="text" id="lname" name="lname" >
+                  </div>
+            </div>
+            <div class="group">
+                  <div class="g-grid">
+                      <label>วันเกิด/วันเข้า server<span style="color:red">*</span></label>
+                  </div>
+            </div>
+            <div class="group">
+                  <div class="g-grid-4">
+                      <input type="text" id="day" name="day" >
+                  </div>
+                  <div class="g-grid-4">
+                      <input type="text" id="month" name="month" >
+                  </div>
+                  <div class="g-grid-4">
+                      <input type="text" id="year" name="year" >
+                  </div>
+            </div>
+            <p id="warn" style="color:red; font-size:16px;"></p>
+            <div class="d-flex justify-content-end" style="margin-top:2rem">
+              <button class="btn btn-secondary btn-otp px-4 mx-3" id="goPage1" style="border-radius:20px; line-height:30px; width:150px;" type="button"><!--!--> &lt; ย้อนกลับ </button><!--!-->
+                <!--!-->
+              <button class="btn btn-warning btn-otp px-4" id="nextBtn2" style="border-radius:20px; line-height:30px; width:150px;" type="button"> ถัดไป &gt; </button>
+            </div>
+        </div>
+      </form>
     </div>
 
     <!-- // PAGE 3 // PAGE 3 // PAGE 3 // PAGE 3 // PAGE 3 // PAGE 3 // PAGE 3 // PAGE 3 // -->
@@ -128,11 +128,10 @@
           <div class="d-flex justify-content-end" style="margin-top:2rem">
             <button class="btn btn-secondary btn-otp px-4 mx-3" id="goPage2" style="border-radius:20px; line-height:30px; width:150px;" type="button"><!--!--> &lt; ย้อนกลับ </button><!--!-->
               <!--!-->
-            <button class="btn btn-warning btn-otp px-4" id="save" style="border-radius:20px; line-height:30px; width:150px;" type="submit" > บันทึก &gt; </button>
+            <button class="btn btn-warning btn-otp px-4" id="save" style="border-radius:20px; line-height:30px; width:150px;" type="submit"> บันทึก &gt; </button>
           </div>
       </div>
     </div>
-    </form>
   </div>
 
   <script src="reg.js"></script>
@@ -153,13 +152,6 @@
                     })
                     .catch(error => console.error('Error!', error.message));
             });
-        }
-        
-        // แสดงข้อความผิดพลาด
-        function showError(message) {
-            let errorMessage = document.getElementById("errorMessage");
-            errorMessage.innerHTML = message;
-            errorMessage.style.display = "block";
         }
     </script>
 </body>
