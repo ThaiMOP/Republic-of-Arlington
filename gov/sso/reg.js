@@ -16,7 +16,7 @@
 
   button.addEventListener("click", function () {
     if (!button.disabled) {
-      page1.style.display = "none";
-      page2.style.display = "block";
+      page1.classList.add("hidden");
+      page2.classList.remove("hidden");
     }
   });
