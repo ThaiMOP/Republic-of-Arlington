@@ -52,11 +52,11 @@ form input {
 
 button {
   width: 100%;
-  padding: 12px;
+  padding: 10px 8px;
   background: #28a745;
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 2px;
   margin-top: 20px;
   cursor: pointer;
 }
@@ -65,4 +65,9 @@ button {
   margin-top: 15px;
   text-align: center;
   color: red;
+}
+
+.flex {
+    display: flex;
+    gap: 15px;
 }
