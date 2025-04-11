@@ -32,6 +32,7 @@ ul.rule {
     margin: 0 auto 16px auto;
     padding: 0;
     max-width: 950px;
+    padding-top: 40px;
 }
 
 .t-step li:active, .t-step li.active {
