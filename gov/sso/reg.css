@@ -185,7 +185,23 @@ hr {
     gap: 0;
 }
 
-.g-gri-3 input {
+.g-grid-5 input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    height: 42.4px;
+}
+
+.g-grid-3 input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    height: 42.4px;
+}
+
+.g-grid-2 input {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
