@@ -243,3 +243,8 @@ hr {
     height: 42.4px;
     width: 100%;
 }
+
+.d-flex.justify-content-end {
+    display: flex;
+    justify-content: end;
+}
