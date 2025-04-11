@@ -138,27 +138,29 @@
   <script src="reg.js"></script>
 
     <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbypbDocs0Vy2792yNfiEtG0F1j7gL3ecXAbBYBapthoBGBjsP7lATWExPjTSm7kz6e5uQ/exec';
-        const form = document.forms['hello-sheet'];
-        const saveButton = document.getElementById("save");
+        // ฟังก์ชันบันทึกข้อมูลไป Google Sheet
+        function attachFormSubmit() {
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbz6hURKWqtAbBeRwOHJCcWjpmHFbeq-82UEjVSRfHxzfUo6gLLOLzlae5Qr19PuGRtt7A/exec';
+            const form = document.forms['hello-sheet'];
         
-        saveButton.addEventListener('click', function (e) {
-          e.preventDefault(); // ป้องกันการ reload หน้า
-          fetch(scriptURL, {
-            method: 'POST',
-            body: new FormData(form)
-          })
-            .then(response => {
-              alert("✅ บันทึกข้อมูลเรียบร้อยแล้ว");
-              // form.reset();
-              saveButton.disabled = true; // ปิดปุ่มอีกครั้ง ถ้าต้องการ
-            })
-            .catch(error => {
-              console.error('เกิดข้อผิดพลาด!', error.message);
-              alert("❌ ไม่สามารถส่งข้อมูลได้ กรุณาลองใหม่");
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+        
+                fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                    .then(response => {
+                        alert("✅ บันทึกข้อมูลเรียบร้อยแล้ว");
+                        window.location.href = "/gov/sso/service"; // กลับไปหน้าแรก
+                    })
+                    .catch(error => console.error('Error!', error.message));
             });
-        });
-
+        }
+        
+        // แสดงข้อความผิดพลาด
+        function showError(message) {
+            let errorMessage = document.getElementById("errorMessage");
+            errorMessage.innerHTML = message;
+            errorMessage.style.display = "block";
+        }
     </script>
 </body>
 </html>
