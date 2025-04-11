@@ -321,3 +321,7 @@ hr {
     --bs-btn-disabled-bg: #ffc107;
     --bs-btn-disabled-border-color: #ffc107;
 }
+
+#randomText {
+    user-select: none;
+}
