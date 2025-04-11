@@ -54,8 +54,8 @@
   });
 
   buttonB.addEventListener("click", function () {
-    page2.classList.add("hidden");
-    page1.classList.remove("hidden");
+    page3.classList.add("hidden");
+    page2.classList.remove("hidden");
   });
 
   function generateRandomCode(length = 6) {
