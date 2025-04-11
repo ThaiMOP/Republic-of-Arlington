@@ -16,6 +16,10 @@ body {
     display: none;
 }
 
+ul.rule {
+    padding-left: 40px;
+}
+
 .t-step {
     counter-reset: step;
     font-family: inherit;
