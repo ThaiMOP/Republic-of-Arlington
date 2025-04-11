@@ -53,6 +53,11 @@
     }
   });
 
+  buttonB.addEventListener("click", function () {
+    page2.classList.add("hidden");
+    page1.classList.remove("hidden");
+  });
+
   function generateRandomCode(length = 6) {
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz012345678998765432100123456789";
     let result = "";
