@@ -165,9 +165,19 @@ hr {
     overflow: visible;
 }
 
+.g-grid-2 {
+    display: grid;
+    width: 16.6666666666666%;
+    padding: 0 10px;
+}
 .g-grid-3 {
     display: grid;
     width: 33.3333333333333%;
+    padding: 0 10px;
+}
+.g-grid-5 {
+    display: grid;
+    width: 41.6666666666666%;
     padding: 0 10px;
 }
 
