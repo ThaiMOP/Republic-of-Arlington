@@ -291,7 +291,7 @@ hr {
     border-color: var(--bs-btn-hover-border-color);
 }
 
-.btn-secondary {
+.btn-warning {
     color: #fff;
     text-align: center;
     text-decoration: none;
