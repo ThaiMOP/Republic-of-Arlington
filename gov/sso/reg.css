@@ -193,6 +193,7 @@ hr {
     border-radius: 5px;
     outline: none;
     height: 42.4px;
+    width: 100%;
 }
 
 .g-grid-3 input {
@@ -201,6 +202,7 @@ hr {
     border-radius: 5px;
     outline: none;
     height: 42.4px;
+    width: 100%;
 }
 
 .g-grid-2 input {
@@ -209,4 +211,5 @@ hr {
     border-radius: 5px;
     outline: none;
     height: 42.4px;
+    width: 100%;
 }
