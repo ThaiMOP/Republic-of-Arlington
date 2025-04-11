@@ -135,7 +135,6 @@ ul.rule {
 
 .group {
     display: flex;
-    gap: 10px;
     margin: 10px 0 0 0;
 }
 
@@ -180,14 +179,29 @@ hr {
     width: 41.6666666666666%;
     padding: 0 10px;
 }
+.g-grid-6 {
+    display: grid;
+    width: 50%;
+    padding: 0 10px;
+}
 
 .group:has(.g-grid-2),
 .group:has(.g-grid-3),
-.group:has(.g-grid-5) {
+.group:has(.g-grid-5),
+.group:has(.g-grid-6) {
     gap: 0;
 }
 
 .g-grid-5 input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    height: 42.4px;
+    width: 100%;
+}
+
+.g-grid-6 input {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
