@@ -132,3 +132,21 @@ ul.rule {
     margin-right: auto;
     margin-left: auto;
 }
+
+.group {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0 0 0;
+}
+
+.g-grid {
+    display: grid;
+    width: 50%;
+}
+
+.g-grid input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
