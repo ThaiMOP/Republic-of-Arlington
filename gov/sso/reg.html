@@ -10,6 +10,7 @@
 </head>
 <body>
   <div class="container">
+    <form method="post" autocomplete="off" name="hello-sheet">
     <div class="page-1" id="page-1">
       <ul class="t-step">
           <li class="active"><span>ข้อตกลง</span></li>
@@ -49,7 +50,6 @@
           <li class=""><span>ยืนยันตัวตน</span></li>
       </ul>
         <div class="card-consent">
-              <form method="post" autocomplete="off" name="hello-sheet">
               <div class="group">
                   <div class="g-grid-6">
                       <label for="uid">หมายเลขบัตรประชาชน (18 - 19 หลัก)<span style="color:red">*</span></label>
@@ -101,7 +101,6 @@
                         <input type="text" id="year" name="year" >
                     </div>
               </div>
-            </form>
             <p id="warn" style="color:red; font-size:16px;"></p>
             <div class="d-flex justify-content-end" style="margin-top:2rem">
               <button class="btn btn-secondary btn-otp px-4 mx-3" id="goPage1" style="border-radius:20px; line-height:30px; width:150px;" type="button"><!--!--> &lt; ย้อนกลับ </button><!--!-->
@@ -132,6 +131,7 @@
           </div>
       </div>
     </div>
+    </form>
   </div>
 
   <script src="reg.js"></script>
