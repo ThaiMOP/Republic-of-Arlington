@@ -8,7 +8,10 @@
   const page2 = document.getElementById("page-2");
   const page3 = document.getElementById("page-3");
   const warn = document.getElementById("warn");
-
+  const randomText = document.getElementById("randomText");
+  const input = document.getElementById("data-num");
+  const saveButton = document.getElementById("save");
+  
   checkbox.addEventListener("change", function () {
     if (this.checked) {
       button1.disabled = false;
@@ -47,5 +50,25 @@
       warn.textContent = "";
       page2.classList.add("hidden");
       page3.classList.remove("hidden");
+    }
+  });
+
+  function generateRandomCode(length = 6) {
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz012345678998765432100123456789";
+    let result = "";
+    for (let i = 0; i < length; i++) {
+      result += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return result;
+  }
+  
+  const code = generateRandomCode();
+  randomText.textContent = code;
+  
+  input.addEventListener("input", function () {
+    if (input.value === code) {
+      saveButton.disabled = false;
+    } else {
+      saveButton.disabled = true;
     }
   });
