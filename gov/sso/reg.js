@@ -24,3 +24,8 @@
       page2.classList.remove("hidden");
     }
   });
+
+  buttonA.addEventListener("click", function () {
+    page2.classList.add("hidden");
+    page1.classList.remove("hidden");
+  });
