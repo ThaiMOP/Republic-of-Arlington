@@ -140,19 +140,25 @@
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbypbDocs0Vy2792yNfiEtG0F1j7gL3ecXAbBYBapthoBGBjsP7lATWExPjTSm7kz6e5uQ/exec';
         const form = document.forms['hello-sheet'];
-
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                .then(response => {
-                    alert("✅ บันทึกข้อมูลเรียบร้อยแล้ว");
-                    form.reset();
-                })
-                .catch(error => {
-                    console.error('เกิดข้อผิดพลาด!', error.message);
-                    alert("❌ ไม่สามารถส่งข้อมูลได้ กรุณาลองใหม่");
-                });
+        const saveButton = document.getElementById("save");
+        
+        saveButton.addEventListener('click', function (e) {
+          e.preventDefault(); // ป้องกันการ reload หน้า
+          fetch(scriptURL, {
+            method: 'POST',
+            body: new FormData(form)
+          })
+            .then(response => {
+              alert("✅ บันทึกข้อมูลเรียบร้อยแล้ว");
+              // form.reset();
+              saveButton.disabled = true; // ปิดปุ่มอีกครั้ง ถ้าต้องการ
+            })
+            .catch(error => {
+              console.error('เกิดข้อผิดพลาด!', error.message);
+              alert("❌ ไม่สามารถส่งข้อมูลได้ กรุณาลองใหม่");
+            });
         });
+
     </script>
 </body>
 </html>
