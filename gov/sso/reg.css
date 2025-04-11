@@ -97,27 +97,27 @@ ul.rule {
     border: solid 1px #dfdfdf;
 }
 
-@media (min-width: 1400px) {
+@media (max-width: 1400px) {
     .container {
         max-width: 1320px;
     }
 }
-@media (min-width: 1200px) {
+@media (max-width: 1200px) {
     .container {
         max-width: 1140px;
     }
 }
-@media (min-width: 992px) {
+@media (max-width: 992px) {
     .container {
         max-width: 960px;
     }
 }
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     .container {
         max-width: 720px;
     }
 }
-@media (min-width: 576px) {
+@media (max-width: 576px) {
     .container {
         max-width: 540px;
     }
