@@ -10,7 +10,7 @@
 </head>
 <body>
   <div class="container">
-    <form method="post" autocomplete="off" name="hello-sheet">
+    <form name="hello-sheet">
     <div class="page-1" id="page-1">
       <ul class="t-step">
           <li class="active"><span>ข้อตกลง</span></li>
@@ -137,22 +137,23 @@
   <script src="reg.js"></script>
 
     <script>
-        // ฟังก์ชันบันทึกข้อมูลไป Google Sheet
-        function attachFormSubmit() {
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbz6hURKWqtAbBeRwOHJCcWjpmHFbeq-82UEjVSRfHxzfUo6gLLOLzlae5Qr19PuGRtt7A/exec';
-            const form = document.forms['hello-sheet'];
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbz6hURKWqtAbBeRwOHJCcWjpmHFbeq-82UEjVSRfHxzfUo6gLLOLzlae5Qr19PuGRtt7A/exec'; // URL จาก Apps Script
+        const form = document.forms['hello-sheet']; // ฟอร์มที่มี name="hello-sheet"
         
-            form.addEventListener('submit', e => {
-                e.preventDefault();
+        form.addEventListener('submit', e => {
+            e.preventDefault(); // ป้องกันการ reload หน้า
         
-                fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                    .then(response => {
-                        alert("✅ บันทึกข้อมูลเรียบร้อยแล้ว");
-                        window.location.href = "/gov/sso/service"; // กลับไปหน้าแรก
-                    })
-                    .catch(error => console.error('Error!', error.message));
-            });
-        }
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    alert("✅ บันทึกข้อมูลเรียบร้อยแล้ว");
+                    form.reset(); // ล้างฟอร์ม
+                })
+                .catch(error => {
+                    console.error('เกิดข้อผิดพลาด!', error.message);
+                    alert("❌ ไม่สามารถส่งข้อมูลได้ กรุณาลองใหม่");
+                });
+        });
+
     </script>
 </body>
 </html>
