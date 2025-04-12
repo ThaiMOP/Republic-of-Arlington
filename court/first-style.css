@@ -10,17 +10,21 @@
     box-sizing: border-box;
 }
 
+*:not(i) {
+  font-family: CPN, sans-serif;
+}
+
 body {
   margin: 0;
-  font-family: CPN, sans-serif;
   background-color: var(--white);
   color: var(--blue-dark);
 }
 
 .header {
-  background-color: var(--blue-dark);
+  background-color: var(--white);
   color: var(--yellow-dark);
   padding: 20px 0;
+  box-shadow: 2px 2px 2px #00000025;
 }
 
 .container {
