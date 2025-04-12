@@ -27,10 +27,26 @@ body {
   box-shadow: 2px 2px 2px #00000025;
 }
 
+.header h1 i {
+    padding-right: 5px;
+}
+
 .container {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+[data-header] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (max-width: 890px) {
+    [data-header] {
+        flex-direction: column;
+    }
 }
 
 h1, h2 {
