@@ -58,7 +58,7 @@ body {
 
 @media (max-width: 390px) {
     [data-first] {display: none;}
-    [data-sec] {display: block;}
+    [data-sec] {display: block;font-size: 28px;}
 }
 
 h1, h2 {
