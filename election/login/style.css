@@ -201,3 +201,9 @@ h2 {
     display: none;
   }
 }
+
+@media (max-width: 900px) {
+  p.body-text--xll.new {
+      font-size: medium;
+  }
+}
