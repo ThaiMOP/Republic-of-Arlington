@@ -115,3 +115,15 @@
     button[onclick="logout()"]:hover {
         background: #00b601;
     }
+
+    .menu button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+      color: #666;
+      pointer-events: none;
+      box-shadow: none;
+    }
+    
+    .menu button:disabled:hover {
+      background-color: #cccccc;
+    }
