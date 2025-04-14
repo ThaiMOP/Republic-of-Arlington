@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Logging Out...</title>
+  <script>
+    // ลบ token
+    localStorage.removeItem('discord_token');
+
+    // redirect กลับไปหน้า login
+    window.location.href = 'index.html'; // แก้เป็น index.html ถ้าใช้หน้านั้นแทน
+  </script>
+</head>
+<body>
+  <p>กำลังออกจากระบบ...</p>
+</body>
+</html>
