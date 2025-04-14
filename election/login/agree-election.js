@@ -2,9 +2,9 @@
 // การอนุญาติใช้ปุ่มเลือกตั้ง
 
   const redirectMap = {
-    generalElection: 'ge.html',
-    hrElection: 'hre.html',
-    senateElection: 'se.html',
+    generalElection: '/election/pe.html',
+    hrElection: '/election/hre.html',
+    senateElection: '/election/se.html',
     report: '/election/event',
     check: '/election/enqelection-local'
   };
