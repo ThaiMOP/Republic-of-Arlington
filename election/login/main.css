@@ -65,12 +65,12 @@
     }
 
     .menu {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: 1fr;
       gap: 15px;
       margin-top: 20px;
     }
-
+    
     .menu button {
       padding: 15px;
       font-size: 16px;
@@ -80,11 +80,25 @@
       color: white;
       cursor: pointer;
       transition: background 0.2s ease;
+      width: 100%;
     }
-
+    
     .menu button:hover {
       background-color: #4752c4;
     }
+    
+    @media (min-width: 600px) {
+      .menu {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (min-width: 900px) {
+      .menu {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
 
     button {
         font-family: inherit;
