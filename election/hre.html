@@ -3,78 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <title>เลือกตั้ง ส.ส. - Discord Login</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-    }
-
-    body {
-      background-color: #f4f4f4;
-    }
-
-    header {
-      background-color: white;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 2px 2px 2px #00000025;
-    }
-
-    header img.logo {
-      height: 40px;
-    }
-
-    .profile-container {
-      position: relative;
-      cursor: pointer;
-    }
-
-    .avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-    }
-
-    .profile-box {
-      display: none;
-      position: absolute;
-      right: 0;
-      top: 50px;
-      background: white;
-      border: 1px solid #ddd;
-      padding: 10px;
-      box-shadow: 2px 2px 2px #00000025;
-      border-radius: 8px;
-      z-index: 10;
-      width: 200px;
-      text-align: right;
-    }
-
-    .profile-box.show {
-      display: block;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1140px;
-      margin: 30px auto;
-      padding: 0 15px;
-    }
-
-    h1 {
-      font-size: 28px;
-      margin-bottom: 20px;
-    }
-
-    p {
-      font-size: 16px;
-      line-height: 1.6;
-    }
-  </style>
 </head>
 <body>
   <header>
@@ -90,9 +18,12 @@
 
   <div class="container">
     <h1>การเลือกตั้งสมาชิกสภาผู้แทนราษฎร (ส.ส.)</h1>
-    <p>
-      ข้อมูลการเลือกตั้ง ส.ส. จะแสดงในหน้านี้ คุณสามารถเพิ่มข้อมูลหรือฟังก์ชันเพิ่มเติมได้ตามต้องการ เช่น ฟอร์มลงทะเบียน รายชื่อผู้สมัคร ฯลฯ
-    </p>
+    <div class="menu">
+      <img src="/assets/img/eca/NumberHRE.png">
+    </div>
+    <center>
+      <div data-election></div>
+    </center>
   </div>
 
   <script>
