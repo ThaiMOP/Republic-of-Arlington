@@ -8,51 +8,158 @@ body {
   font-family: CPN, sans-serif;
   background-color: #313338;
   color: white;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.login-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+.container {
+    width: 100%;
+    max-width: 1538px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+    position: relative;
 }
 
-.login-box {
-  background-color: #2b2d31;
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  max-width: 400px;
-  width: 100%;
+.layout.margin-bottom {
+    grid-column-gap: 80px;
+    grid-row-gap: 80px;
+    margin-bottom: 168px;
 }
 
-.login-box h1 {
-  font-size: 28px;
-  margin-bottom: 10px;
+.margin-bottom {
+    margin-top: 0rem !important;
+    margin-right: 0rem !important;
+    margin-left: 0rem !important;
 }
 
-.login-box p {
-  color: #b5bac1;
-  font-size: 14px;
-  margin-bottom: 30px;
+.margin-bottom {
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
 }
 
-.discord-btn {
-  display: inline-block;
-  background-color: #5865f2;
-  color: white;
-  text-decoration: none;
-  padding: 12px 20px;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: background-color 0.3s;
+.layout {
+    grid-column-gap: 44px;
+    grid-row-gap: 44px;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
 }
 
-.discord-btn:hover {
-  background-color: #4752c4;
+.gradient-blue {
+    background-image: linear-gradient(#5865f2, #e0e3ff);
+    border-radius: 88px;
+    flex: none;
+    width: 50%;
+    max-width: 27rem;
+    padding-top: 60px;
+    padding-left: 60px;
+    padding-right: 60px;
+    overflow: hidden;
+}
+
+.image-all {
+    width: 100%;
+}
+
+img {
+    max-width: 100%;
+    display: inline-block;
+}
+
+img {
+    vertical-align: middle;
+    max-width: 100%;
+    display: inline-block;
+}
+
+img {
+    border: 0;
+}
+
+.max-width620.is-margin {
+    width: 50%;
+    max-width: 520px;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.max-width620 {
+    width: 100%;
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.new-h1.text-color-white.is_d {
+    letter-spacing: -.01em;
+    max-width: 450px;
+    margin-bottom: 24px;
+}
+
+.text-color-white {
+    color: white;
+}
+
+.new-h1 {
+    text-transform: uppercase;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: .96;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+.body-text--xll.new {
+    letter-spacing: normal;
+    font-weight: 400;
+}
+
+.body-text--xll {
+    letter-spacing: .02em;
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 130%;
+}
+
+.padding-48px {
+    padding-bottom: 48px;
+}
+
+.layout_left.gap8 {
+    grid-column-gap: 8px;
+    grid-row-gap: 8px;
+    flex-flow: wrap;
+}
+
+.layout_left {
+    flex-direction: column;
+    align-items: flex-start;
+    display: flex;
+}
+
+.btn-download.is_white {
+    color: #000;
+    background-color: #fff;
+}
+.btn-download {
+    grid-column-gap: 8px;
+    grid-row-gap: 8px;
+    color: #fff;
+    background-color: #ffffff1a;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    max-height: 48px;
+    padding: 13px 24px;
+    font-family: inherit;
+    font-weight: 500;
+    transition: all .3s;
+    display: flex;
+}
+.w-inline-block {
+    max-width: 100%;
+    display: inline-block;
 }
