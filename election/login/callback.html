@@ -5,33 +5,78 @@
   <title>Discord Login Callback</title>
   <link rel="icon" href="https://rep-arlington.pages.dev/assets/img/eca.png" type="image/gif" sizes="16x16">
   <link rel="stylesheet" href="https://slw-system.pages.dev/assets/css/font-face.css">
+  <link rel="stylesheet" href="main.css">
 </head>
 <body>
-  <h2>Logging in...</h2>
+  <header>
+    <img class="logo" src="https://rep-arlington.pages.dev/assets/img/logo-eca.png" alt="Logo" />
+    <div class="profile-container" id="profileContainer">
+      <img class="avatar" id="avatar" src="" alt="Avatar" />
+      <div class="profile-box" id="profileBox">
+        <div id="username" style="margin-bottom: 10px;"></div>
+        <button onclick="logout()">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <img class="banner" src="/assets/img/eca/ELECTION-DASHBOARD.png" alt="Banner" />
+
+  <div class="container">
+    <div class="menu">
+      <button>เลือกตั้งเป็นการทั่วไป</button>
+      <button>เลือกตั้งสมาชิกสภาผู้แทนราษฎร</button>
+      <button>เลือกตั้งวุฒิสภา</button>
+      <button>แจ้งเหตุไม่ไปใช้สิทธิเลือกตั้ง</button>
+      <button>ตรวจสอบสิทธิ์เลือกตั้ง</button>
+    </div>
+  </div>
+
   <script>
     const fragment = new URLSearchParams(window.location.hash.slice(1));
     const accessToken = fragment.get('access_token');
 
+    function logout() {
+      localStorage.removeItem('discord_token');
+      window.location.href = '/';
+    }
+
     if (accessToken) {
+      localStorage.setItem('discord_token', accessToken);
+    }
+
+    const token = accessToken || localStorage.getItem('discord_token');
+
+    if (token) {
       fetch('https://discord.com/api/users/@me', {
-        headers: {
-          Authorization: `Bearer ${accessToken}`
-        }
+        headers: { Authorization: `Bearer ${token}` }
       })
-        .then(res => res.json())
-        .then(user => {
-          document.body.innerHTML = `
-            <h1>Welcome, ${user.username}#${user.discriminator}!</h1>
-            <img src="https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png" alt="Avatar" width="100" />
-          `;
-        })
-        .catch(err => {
-          console.error(err);
-          document.body.innerHTML = '<p>Failed to fetch user info</p>';
-        });
+      .then(res => res.json())
+      .then(user => {
+        document.getElementById('avatar').src =
+          `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`;
+        document.getElementById('username').textContent =
+          `${user.username}#${user.discriminator}`;
+      })
+      .catch(err => {
+        console.error(err);
+        document.body.innerHTML = '<p>Failed to fetch user info</p>';
+      });
     } else {
       document.body.innerHTML = '<p>No access token found</p>';
     }
+
+    const profileContainer = document.getElementById('profileContainer');
+    const profileBox = document.getElementById('profileBox');
+
+    profileContainer.addEventListener('click', () => {
+      profileBox.classList.toggle('show');
+    });
+
+    window.addEventListener('click', (e) => {
+      if (!profileContainer.contains(e.target)) {
+        profileBox.classList.remove('show');
+      }
+    });
   </script>
 </body>
 </html>
