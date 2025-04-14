@@ -30,13 +30,13 @@ body {
     .layout.margin-bottom {
         grid-column-gap: 120px;
         grid-row-gap: 120px;
-        margin-bottom: 360px;
+        margin-top: 50px !important;
     }
 }
 .layout.margin-bottom {
     grid-column-gap: 80px;
     grid-row-gap: 80px;
-    margin-bottom: 168px;
+    margin-top: 50px !important;
 }
 
 .margin-bottom {
