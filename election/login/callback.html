@@ -23,14 +23,15 @@
 
   <div class="container">
     <div class="menu">
-      <button>เลือกตั้งเป็นการทั่วไป</button>
-      <button>เลือกตั้งสมาชิกสภาผู้แทนราษฎร</button>
-      <button>เลือกตั้งวุฒิสภา</button>
-      <button>แจ้งเหตุไม่ไปใช้สิทธิเลือกตั้ง</button>
-      <button>ตรวจสอบสิทธิ์เลือกตั้ง</button>
+      <button id="generalElection">เลือกตั้งเป็นการทั่วไป</button>
+      <button id="hrElection">เลือกตั้งสมาชิกสภาผู้แทนราษฎร</button>
+      <button id="senateElection">เลือกตั้งวุฒิสภา</button>
+      <button id="report">แจ้งเหตุไม่ไปใช้สิทธิเลือกตั้ง</button>
+      <button id="check">ตรวจสอบสิทธิ์เลือกตั้ง</button>
     </div>
   </div>
 
+  <script src="agree-election.js"></script>
   <script>
     const fragment = new URLSearchParams(window.location.hash.slice(1));
     const accessToken = fragment.get('access_token');
