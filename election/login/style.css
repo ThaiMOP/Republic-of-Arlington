@@ -20,6 +20,19 @@ body {
     position: relative;
 }
 
+@media screen and (min-width: 1440px) {
+    .layout.margin-bottom {
+        grid-column-gap: 240px;
+        grid-row-gap: 240px;
+    }
+}
+@media screen and (min-width: 1280px) {
+    .layout.margin-bottom {
+        grid-column-gap: 120px;
+        grid-row-gap: 120px;
+        margin-bottom: 360px;
+    }
+}
 .layout.margin-bottom {
     grid-column-gap: 80px;
     grid-row-gap: 80px;
