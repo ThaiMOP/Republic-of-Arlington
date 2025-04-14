@@ -31,12 +31,14 @@ body {
         grid-column-gap: 120px;
         grid-row-gap: 120px;
         margin-top: 50px !important;
+        margin-bottom: 50px !important;
     }
 }
 .layout.margin-bottom {
     grid-column-gap: 80px;
     grid-row-gap: 80px;
     margin-top: 50px !important;
+    margin-bottom: 50px !important;
 }
 
 .margin-bottom {
@@ -54,7 +56,7 @@ body {
 .layout {
     grid-column-gap: 44px;
     grid-row-gap: 44px;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     display: flex;
 }
@@ -175,4 +177,27 @@ h2 {
 .w-inline-block {
     max-width: 100%;
     display: inline-block;
+}
+@media (max-width: 720px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .max-width620.is-margin {
+    width: 100%;
+    max-width: 90%;
+  }
+
+  .gradient-blue {
+    border-radius: 72px;
+    padding-left: 50px;
+    padding-right: 50px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 340px) {
+  .gradient-blue {
+    display: none;
+  }
 }
