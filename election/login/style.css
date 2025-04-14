@@ -215,9 +215,6 @@ h2 {
     padding-right: 50px;
     width: 100%;
   }
-}
-
-@media (max-width: 600px) {
   .gradient-blue {
     display: none;
   }
