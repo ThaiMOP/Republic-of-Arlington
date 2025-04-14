@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>เลือกตั้ง ส.ส. - Discord Login</title>
+  <link rel="icon" href="https://rep-arlington.pages.dev/assets/img/eca.png" type="image/gif" sizes="16x16">
+  <link rel="stylesheet" href="https://slw-system.pages.dev/assets/css/font-face.css">
+  <link rel="stylesheet" href="css/main-election.css">
+</head>
+<body>
+  <header>
+    <img class="logo" src="https://rep-arlington.pages.dev/assets/img/logo-eca.png" alt="Logo" />
+    <div class="profile-container" id="profileContainer">
+      <img class="avatar" id="avatar" src="" alt="Avatar" />
+      <div class="profile-box" id="profileBox">
+        <div id="username" style="margin-bottom: 10px;"></div>
+        <button onclick="logout()">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1>การเลือกตั้งสมาชิกสภาผู้แทนราษฎร (ส.ส.)</h1>
+    <div class="menu">
+      <img src="/assets/img/eca/NumberHRE.png">
+    </div>
+    <center>
+      <div>ท่านเลือกตั้งเสร็จสิ้นแล้ว</div>
+    </center>
+  </div>
+
+  <script>
+    const token = localStorage.getItem('discord_token');
+
+    function logout() {
+      localStorage.removeItem('discord_token');
+      window.location.href = '/election/login/logout.html';
+    }
+
+    if (token) {
+      fetch('https://discord.com/api/users/@me', {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      .then(res => res.json())
+      .then(user => {
+        document.getElementById('avatar').src =
+          `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`;
+        document.getElementById('username').textContent =
+          `${user.username}#${user.discriminator}`;
+      })
+      .catch(err => {
+        console.error(err);
+        document.body.innerHTML = '<p>ไม่สามารถโหลดข้อมูลผู้ใช้ Discord ได้</p>';
+      });
+    } else {
+      document.body.innerHTML = '<p>กรุณาเข้าสู่ระบบผ่าน Discord ก่อน</p>';
+    }
+
+    const profileContainer = document.getElementById('profileContainer');
+    const profileBox = document.getElementById('profileBox');
+
+    profileContainer.addEventListener('click', () => {
+      profileBox.classList.toggle('show');
+    });
+
+    window.addEventListener('click', (e) => {
+      if (!profileContainer.contains(e.target)) {
+        profileBox.classList.remove('show');
+      }
+    });
+  </script>
+</body>
+</html>
