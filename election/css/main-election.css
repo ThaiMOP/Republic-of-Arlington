@@ -64,6 +64,10 @@
       margin-bottom: 20px;
     }
 
+    .menu img {
+      width:100%;
+    }
+
     p {
       font-size: 16px;
       line-height: 1.6;
