@@ -18,6 +18,10 @@
       box-shadow: 2px 2px 2px #00000025;
     }
 
+    button {
+        user-select: none;
+    }
+
     header img.logo {
       height: 40px;
     }
