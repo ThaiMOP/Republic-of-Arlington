@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สำนักงานคณะกรรมการการเลือกตั้ง</title>
+    <link rel="icon" href="https://rep-arlington.pages.dev/assets/img/eca.png" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="https://slw-system.pages.dev/assets/css/font-face.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/eca.css">
+    <style>
+      .container-a {
+          background-color: white;
+          padding: 20px;
+          border-radius: 10px;
+      }
+
+      h1 {
+          text-align: center;
+      }
+
+      .card {
+          border: 1px solid #ccc;
+          border-radius: 8px;
+          overflow: hidden;
+      }
+
+      .card-header {
+          background: #3aa57b;
+          border-color: #3aa57b;
+      }
+      .card-header {
+          width: 100%;
+          display: flex;
+          border: 1px solid transparent;
+          height: 4.5rem;
+          cursor: pointer;
+          transition: all 0.4s ease;
+          border-radius: 0.4375rem;
+          overflow: hidden;
+      }
+      .card-header {
+          box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 7%);
+      }
+        
+        .title {
+            color: #ffffff;
+        }
+        .title {
+            color: #ffffff;
+            background: #3aa57b;
+        }
+        .title {
+            display: flex;
+            align-items: center;
+            height: auto;
+            width: calc(100% - 9rem);
+            transition: all 0.4s ease;
+            -webkit-line-clamp: 2;
+            padding: 1rem 0 1rem 1rem;
+        }
+        .title {
+            font-size: .875rem;
+        }
+        .title {
+            line-height: 1.40;
+        }
+        .title {
+            font-weight: 400 !important;
+        }
+        
+        .card-header i {
+            background: #3aa57b;
+            color: #ffffff;
+        }
+        .card-header i {
+            width: 5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 0.4375rem 0.4375rem 0;
+            transition: background 0.4s ease;
+        }
+        .ftag {
+            background: #30906a;
+        }
+        
+        .ftag {
+            width: 4rem;
+            height: 4em;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+            border-right: 2px solid transparent;
+        }
+
+        .ftag > .icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .icon img {
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: 2.5rem;
+        }
+        
+      .card-content {
+          padding: 15px;
+          background-color: white;
+      }
+
+      .file-info {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 15px;
+      }
+
+      .file-icon {
+          width: 40px;
+          height: 40px;
+      }
+
+      .file-details {
+          flex-grow: 1;
+      }
+
+      .file-name {
+          font-size: 14px;
+          margin: 0;
+      }
+
+      .file-size {
+          font-size: 12px;
+          color: #555;
+          margin: 5px 0 0 0;
+      }
+
+        button {
+            font-family: inherit;
+        }
+      .download-btn {
+          background-color: #2d8c62;
+          color: white;
+          border: none;
+          padding: 8px 12px;
+          border-radius: 5px;
+          cursor: pointer;
+      }
+
+      .download-btn:hover {
+          background-color: #256c50;
+      }
+
+      .download-all-btn {
+          background-color: #1e4d35;
+          color: white;
+          border: none;
+          width: 100%;
+          padding: 10px;
+          border-radius: 5px;
+          cursor: pointer;
+      }
+
+      .download-all-btn:hover {
+          background-color: #163a27;
+      }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        <img height="50px" src="https://rep-arlington.pages.dev/assets/img/eca.png" data-open="640">
+        <h1>สำนักงานคณะกรรมการการเลือกตั้ง</h1>
+        <div class="language-switch">TH | EN</div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">หน้าหลัก</a></li>
+            <li>
+                <a href="#" class="toggle-submenu">เกี่ยวกับ ▾</a>
+                <div class="submenu">
+                    <a href="#">คณะกรรมการการเลือกตั้ง</a>
+                    <a href="#">สำนักงาน กกต.</a>
+                    <a href="#">ทำเนียบผู้บริหาร</a>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="toggle-submenu">ข่าวสาร ▾</a>
+                <div class="submenu">
+                    <a href="#">ข่าวประชาสัมพันธ์</a>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="toggle-submenu">บริการข้อมูล ▾</a>
+                <div class="submenu">
+                    <a href="#" class="toggle-submenu">สถิติการเลือกตั้ง ▾</a>
+                    <div class="submenu">
+                        <a href="#">การเลือกตั้งสมาชิกสภาผู้แทนราษฎร</a>
+                        <a href="#">การออกเสียงประชามติ</a>
+                        <a href="#">การเลือกตั้งท้องถิ่น</a>
+                        <a href="#">สถิติการวินิจฉัยชี้ขาดเรื่องคัดค้านการเลือกตั้ง</a>
+                    </div>
+                    <a href="/election/result">รายงานผลการนับคะแนน</a>
+                    <a href="mp-election-results">ประกาศผลการเลือกตั้ง สส.</a>
+                    <a href="checkidparty">ตรวจสอบการเป็นสมาชิกพรรคการเมือง</a>
+                    <a href="#">ข้อมูลพรรคการเมือง</a>
+                </div>
+            </li>
+            <li><a href="#">ติดต่อ</a></li>
+        </ul>
+    </nav>
+
+    <div class="container-a">
+        <h1>ประกาศผลการเลือกตั้ง</h1>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="ftag"><div class="icon"><img src="https://www.ect.go.th/ect_th/app/images/icon-svg/document.svg" alt="Icon Document"></div></h3>
+                <span class="title">ผลการเลือกตั้งเป็นการทั่วไป เมื่อวันที่ 4 เมษายน 2568</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="card-content">
+                <div class="file-info">
+                    <img src="https://www.ect.go.th/ect_th/app/images/file/svg/pdf.svg" alt="PDF Icon" class="file-icon">
+                    <div class="file-details">
+                        <p class="file-name">ผลการเลือกตั้งสมาชิกสภาผู้แทนราษฎร เมื่อวันที่ 4 เมษายน 2568</p>
+                        <p class="file-size">ขนาดไฟล์ <strong>306 kB</strong></p>
+                    </div>
+                    <button class="download-btn"  data-mp="">ดาวน์โหลด</button>
+                </div>
+                <button class="download-all-btn" download-all>ดาวน์โหลดทั้งหมด</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>สำนักงานคณะกรรมการการเลือกตั้ง</p>
+        <p><i class="fas fa-envelope"></i> infi.dopa.moi.my@gmail.com</p>
+        <div class="footer-bottom">
+            <a href="#">ข้อกำหนด เงื่อนไข และนโยบายส่วนตัว</a>
+            <span>สงวนลิขสิทธิ์ 2025 - สำนักงานคณะกรรมการการเลือกตั้ง</span>
+            <span>จำนวนผู้เข้าชมเว็บไซต์: <span id="totalVisits">0</span> | ขณะนี้มีผู้ชมออนไลน์: <span id="onlineUsers">0</span></span>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_jX8KHjTOD9fTawF-2pJSQG7AABeVAM5GZA&s" height="30">
+        </div>
+    </footer>
+    <script>
+        document.querySelectorAll('[data-mp]').forEach(element => {
+            element.addEventListener('click', function() {
+                window.location.href = 'https://slw-system.pages.dev/pdf/election/12CdK-xL0PV4YO6ovGKGW1jHeTLd1FRYCpsuZVVlzcmOU.pdf';
+            });
+        });
+        document.addEventListener('click', function(event) {
+            if (event.target.matches('.download-all-btn')) {
+                const link = document.createElement('a');
+                link.href = '/assets/file/ประกาศผลการเลือกตั้ง 19 เมษายน 2568.pdf';
+                link.download = 'ประกาศผลการเลือกตั้ง 19 เมษายน 2568.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        });
+
+
+
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            let nav = document.querySelector('nav');
+            let icon = this.querySelector('i');
+            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        });
+
+        document.querySelectorAll('.toggle-submenu').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                let submenu = this.nextElementSibling;
+                if (submenu) {
+                    submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+                }
+            });
+        });
+    </script>
+    <script>
+        // นับจำนวนผู้เข้าชม (เก็บใน LocalStorage)
+        if (localStorage.getItem("totalVisits")) {
+            let visits = parseInt(localStorage.getItem("totalVisits")) + 1;
+            localStorage.setItem("totalVisits", visits);
+        } else {
+            localStorage.setItem("totalVisits", 1);
+        }
+        document.getElementById("totalVisits").textContent = localStorage.getItem("totalVisits");
+
+        // นับจำนวนผู้ชมออนไลน์ (ใช้ sessionStorage)
+        function updateOnlineUsers() {
+            sessionStorage.setItem("isOnline", "true");
+
+            let onlineUsers = sessionStorage.getItem("onlineUsers") ? parseInt(sessionStorage.getItem("onlineUsers")) : 0;
+            sessionStorage.setItem("onlineUsers", onlineUsers + 1);
+            document.getElementById("onlineUsers").textContent = sessionStorage.getItem("onlineUsers");
+        }
+
+        function removeOnlineUser() {
+            let onlineUsers = parseInt(sessionStorage.getItem("onlineUsers")) || 1;
+            sessionStorage.setItem("onlineUsers", onlineUsers > 1 ? onlineUsers - 1 : 0);
+        }
+
+        updateOnlineUsers();
+
+        // ลบผู้ใช้ออกจากระบบเมื่อออกจากหน้าเว็บ
+        window.addEventListener("beforeunload", removeOnlineUser);
+        
+        document.querySelector('img[alt="Election Commission Banner"]').addEventListener("click", function() {
+            window.location.href = "/election/";
+        });
+    </script>
+</body>
+</html>
