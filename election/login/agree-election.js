@@ -15,7 +15,7 @@
 
   const enabledButtons = {
     generalElection: false,
-    hrElection: true,
+    hrElection: false,
     senateElection: false,
     report: true,
     check: true
