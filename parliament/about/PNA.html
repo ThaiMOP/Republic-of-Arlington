@@ -18,23 +18,74 @@
       background-color: #f4f4f4;
     }
 
-    header {
-      background-color: #800;
-      color: white;
-      padding: 15px 20px;
-      display: flex;
-      align-items: center;
-    }
+    
 
-    header img {
-      height: 40px;
-      margin-right: 20px;
-    }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #800;
+            padding: 15px 20px;
+            color: white;
+        }
 
-    header h1 {
-      font-size: 24px;
-      margin: 0;
-    }
+        .logo img {
+            height: 40px;
+        }
+
+        .menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .menu li {
+            margin: 0 10px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .icon-menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            background: #d90000;
+            padding: 20px;
+        }
+
+        .icon-menu .icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            width: 18%;
+            text-align: center;
+        }
+
+        .icon-menu .icon-item i {
+            height: 80px;
+            width: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            background: white;
+            color: #d90000;
+            border-radius: 50%;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
 
     .container {
       padding: 20px;
@@ -75,14 +126,59 @@
         text-align: center;
         margin-top: 10px;
     }
+     @media (max-width: 480px) {
+            .menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background: #800;
+                width: 100%;
+                text-align: center;
+            }
+            .menu.active {
+                display: flex;
+            }
+            .hamburger {
+                display: block;
+            }
+
+            .icon-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        /* เมื่อจอมีขนาดน้อยกว่า 900px */
+        @media (max-width: 900px) {
+            .icon-menu .icon-item {
+                width: 30%;
+            }
+        }
+        
+        /* เมื่อจอมีขนาดน้อยกว่า 600px */
+        @media (max-width: 600px) {
+            .icon-menu .icon-item {
+                width: 45%;
+            }
+        }
   </style>
 </head>
 <body>
-
-  <header>
-    <img src="/assets/img/logo.png" alt="โลโก้รัฐสภา">
-    <h1></h1>
-  </header>
+    <header>
+        <div class="logo">
+            <img src="/assets/img/logo.png" alt="Logo">
+        </div>
+        <ul class="menu">
+            <li><a href="/parliament/">หน้าหลัก</a></li>
+            <li><a href="/parliament/about">เกี่ยวกับรัฐสภา</a></li>
+            <li><a href="#">กฎหมาย</a></li>
+            <li><a href="#">ติดต่อ</a></li>
+        </ul>
+        <div class="hamburger">
+            <i class="fa fa-bars"></i>
+        </div>
+    </header>
 
   <h1 center="">ทำเนียบประธานรัฐสภา</h1>
   <div class="container">
