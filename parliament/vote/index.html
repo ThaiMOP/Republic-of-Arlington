@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>สมาชิกสภาผู้แทนราษฎร</title>
+  <link rel="icon" href="/assets/img/logo.png" type="image/gif" sizes="16x16">
+  <link rel="stylesheet" href="https://slw-system.pages.dev/assets/css/font-face.css">
+  <link rel="stylesheet" href="/parliament/about/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .news_title {
+      padding: 15px 0;
+      border-bottom: 1px solid #ccc;
+      display: grid;
+    }
+
+    .news_title a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .pagination {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .pagination button {
+      padding: 8px 14px;
+      border: none;
+      background-color: #800;
+      color: white;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .pagination button.active {
+      background-color: #333;
+    }
+    .loader {
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #800;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      margin: 40px auto;
+      display: none;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+  </style>
+</head>
+<body>
+  <div id="loader">
+    <div class="spinner"></div>
+  </div>
+    <header>
+        <div class="logo">
+            <img src="/assets/img/logo.png" alt="Logo">
+        </div>
+        <ul class="menu">
+            <li><a href="/parliament/">หน้าหลัก</a></li>
+            <li><a href="/parliament/about">เกี่ยวกับรัฐสภา</a></li>
+            <li><a href="#">กฎหมาย</a></li>
+            <li><a href="#">ติดต่อ</a></li>
+        </ul>
+        <div class="hamburger">
+            <i class="fa fa-bars"></i>
+        </div>
+    </header>
+  
+    <div id="loader" class="loader"></div>
+    <div class="container" id="voteContainer"></div>
+    <div class="pagination" id="pagination"></div>
+    
+    <script>
+      const apiUrl = "https://script.google.com/macros/s/AKfycbzAC4Z5Tv7MhhMh7PLPBtmhQNq5_yIPHtT0fbJvySB0VMHWqafPqx_w66WNMm8xNKvu/exec";
+      const voteContainer = document.getElementById("voteContainer");
+      const pagination = document.getElementById("pagination");
+      const itemsPerPage = 10;
+      let currentPage = 1;
+      let data = [];
+  
+      async function fetchVoteData() {
+        try {
+          document.getElementById("loader").style.display = "block"; // แสดง loader
+          const res = await fetch(apiUrl);
+          data = await res.json();
+          renderPage(1);
+          setupPagination();
+        } catch (err) {
+          voteContainer.innerHTML = "<p>เกิดข้อผิดพลาดในการโหลดข้อมูล</p>";
+          console.error(err);
+        } finally {
+          document.getElementById("loader").style.display = "none"; // ซ่อน loader
+        }
+      }
+
+  
+      function renderPage(page) {
+        currentPage = page;
+        voteContainer.innerHTML = "";
+  
+        const start = (page - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const pageData = data.slice(start, end);
+  
+        pageData.forEach(item => {
+          const div = document.createElement("div");
+          div.className = "news_title";
+          div.innerHTML = `<a href="${item.i}" target="_blank">บันทึกการออกเสียงและลงคะแนน ครั้งที่ ${item.a} ${item.b} วัน${item.c}ที่ ${item.d} ${item.e} ${item.f} เวลา ${item.g} ${item.h}</a>`;
+          voteContainer.appendChild(div);
+        });
+      }
+  
+      function setupPagination() {
+        pagination.innerHTML = "";
+        const totalPages = Math.ceil(data.length / itemsPerPage);
+        if (totalPages <= 1) return;
+  
+        for (let i = 1; i <= totalPages; i++) {
+          const btn = document.createElement("button");
+          btn.textContent = i;
+          if (i === currentPage) btn.classList.add("active");
+          btn.addEventListener("click", () => {
+            renderPage(i);
+            updateActivePage(i);
+          });
+          pagination.appendChild(btn);
+        }
+      }
+  
+      function updateActivePage(activePage) {
+        const buttons = pagination.querySelectorAll("button");
+        buttons.forEach((btn, index) => {
+          btn.classList.toggle("active", index + 1 === activePage);
+        });
+      }
+  
+      fetchVoteData();
+  
+      // Hamburger toggle
+      document.querySelector('.hamburger').addEventListener('click', () => {
+        document.querySelector('.menu').classList.toggle('active');
+        document.querySelector('.hamburger i').classList.toggle('fa-bars');
+        document.querySelector('.hamburger i').classList.toggle('fa-times');
+      });
+    </script>
+</body>
+</html>
