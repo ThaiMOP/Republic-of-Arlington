@@ -9,11 +9,17 @@
   <link rel="stylesheet" href="/parliament/about/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
-    .container {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
+    .vote-container {
+      display: grid;
+      gap: 15px;
+      padding: 20px;
     }
+    
+    .vote-container .news_title {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+    }
+
 
     .news_title {
       padding: 15px 0;
@@ -84,12 +90,12 @@
         </div>
     </header>
   
-    <div class="container" id="voteContainer"></div>
+    <div class="vote-container" id="voteContainer"></div>
     <div class="pagination" id="pagination"></div>
     
     <script>
       const apiUrl = "https://script.google.com/macros/s/AKfycbzAC4Z5Tv7MhhMh7PLPBtmhQNq5_yIPHtT0fbJvySB0VMHWqafPqx_w66WNMm8xNKvu/exec";
-      const voteContainer = document.getElementById("voteContainer");
+      const voteContainer = document.querySelector('.vote-container'); // ถ้าใช้ class
       const pagination = document.getElementById("pagination");
       const itemsPerPage = 10;
       let currentPage = 1;
