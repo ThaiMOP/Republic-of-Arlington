@@ -56,7 +56,6 @@
 
         .banner {
             width: 100%;
-            height: 300px;
             padding: 20px;
         }
         
@@ -65,7 +64,15 @@
             height: 100%;
             border: 1px solid;
             box-shadow: 1px 1px 2px #00000050;
+            display: flex;
+            justify-content: center;
+            text-align: center;
         }
+
+        .sub-box {
+            padding: 20px;
+        }
+
 
         .icon-menu {
             display: flex;
@@ -169,7 +176,10 @@
     </header>
     <div class="banner">
         <div class="box">
-        
+            <div class="sub-box">
+                <h2>วาระสภาผู้แทนราษฎร ชุดที่ 1</h2>
+                <h4>วาระ 1 เดือน เหลืออีก <span id="time-HR"></span> วัน</h4>
+            </div>
         </div>
     </div>
     <nav class="icon-menu">
@@ -186,6 +196,15 @@
     <footer>
         <p>&copy; 2025 Parliament of the Republic of Arlington</p>
     </footer>
+    <script>
+        const endDate = new Date(new Date().getFullYear(), 4, 4); // เดือนใน JS เริ่มจาก 0 = ม.ค. ดังนั้น 4 = พ.ค.
+      
+        const now = new Date();
+        const diffTime = endDate - now;
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        // แสดงผลลัพธ์
+        document.getElementById("time-HR").textContent = diffDays > 0 ? diffDays : 0;
+    </script>
     <script>
         const hamburger = document.querySelector('.hamburger');
         const menu = document.querySelector('.menu');
