@@ -66,8 +66,10 @@
     function showMembers(batch) {
       memberList.innerHTML = "";
       const filtered = allData.filter(item => item.batch === batch);
-
+    
       filtered.forEach((item, index) => {
+        const statusColor = item.status === "ดำรงตำแหน่ง" ? "#00a52a" : "#ff0000";
+    
         const box = document.createElement("div");
         box.className = "profile-box";
         box.innerHTML = `
@@ -75,11 +77,12 @@
           <p style="color: ${item.color};">${item.party}</p>
           <p>สภาผู้แทนราษฎร ${item.batch}</p>
           <p>วาระ ${item.start} - ${item.end}</p>
-          <p>${item.status}</p>
+          <p style="color: ${statusColor};">${item.status}</p>
         `;
         memberList.appendChild(box);
       });
     }
+
 
     select.addEventListener("change", () => {
       showMembers(select.value);
