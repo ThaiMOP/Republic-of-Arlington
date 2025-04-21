@@ -160,6 +160,7 @@
                 width: 45%;
             }
         }
+
 /* Member Page */
 .member-main {
   display: flex;
@@ -187,6 +188,7 @@
 
 .member-btn {
   background-color: #800;
+width: 300px;
   color: white;
   padding: 15px 30px;
   border-radius: 10px;
