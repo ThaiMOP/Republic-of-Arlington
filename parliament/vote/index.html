@@ -88,7 +88,7 @@
   
       async function fetchVoteData() {
         try {
-          document.getElementById("loader").style.display = "block"; // แสดง loader
+          document.getElementById("loader").style.display = "flex"; // แสดง loader
           const res = await fetch(apiUrl);
           data = await res.json();
           renderPage(1);
