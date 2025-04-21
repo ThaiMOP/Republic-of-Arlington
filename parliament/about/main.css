@@ -101,6 +101,7 @@
       padding: 20px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);    
       text-align: center;
+    transition: .5s ease;
     }
 
     .profile-box h2 {
@@ -238,4 +239,8 @@ width: 300px;
 
 @keyframes spin {
   to { transform: rotate(360deg); }
+}
+
+.profile-box:hover {
+    transform: translateY(-10px);
 }
