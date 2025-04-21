@@ -6,7 +6,7 @@ let allData = [];
 
 async function fetchData() {
   try {
-    loader.style.display = "block";
+    loader.style.display = "flex";
     const res = await fetch(apiUrl);
     const data = await res.json();
     allData = data.filter(item => item.type === "วุฒิสภา"); // เฉพาะวุฒิสภา
