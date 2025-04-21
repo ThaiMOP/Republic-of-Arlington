@@ -160,3 +160,42 @@
                 width: 45%;
             }
         }
+/* Member Page */
+.member-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.member-box {
+  text-align: center;
+}
+
+.member-title {
+  color: #800;
+  margin-bottom: 30px;
+  font-size: 26px;
+}
+
+.member-buttons {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.member-btn {
+  background-color: #800;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 18px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease;
+}
+
+.member-btn:hover {
+  background-color: #a00;
+}
