@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>บทบาทรัฐสภา</title>
+  <link rel="icon" href="/assets/img/logo.png" type="image/gif" sizes="16x16">
+  <link rel="stylesheet" href="https://slw-system.pages.dev/assets/css/font-face.css">
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="/assets/img/logo.png" alt="Logo">
+        </div>
+        <ul class="menu">
+            <li><a href="/parliament/">หน้าหลัก</a></li>
+            <li><a href="/parliament/about">เกี่ยวกับรัฐสภา</a></li>
+            <li><a href="#">กฎหมาย</a></li>
+            <li><a href="#">ติดต่อ</a></li>
+        </ul>
+        <div class="hamburger">
+            <i class="fa fa-bars"></i>
+        </div>
+    </header>
+
+    <main class="member-main">
+    <div class="member-box">
+      <h1 class="member-title">เลือกประเภทสมาชิก</h1>
+      <div class="member-buttons">
+        <a href="/parliament/hr" class="member-btn">สมาชิกสภาผู้แทนราษฎร</a>
+        <a href="/parliament/senate" class="member-btn">วุฒิสภา</a>
+      </div>
+    </div>
+  </main>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const menu = document.querySelector('.menu');
+        const icon = document.querySelector('.hamburger i');
+
+        hamburger.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+    </script>
+
+</body>
+</html>
