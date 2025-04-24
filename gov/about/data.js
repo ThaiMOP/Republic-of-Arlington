@@ -1,15 +1,19 @@
-    const apiBase = "https://script.google.com/macros/s/AKfycbz4HTJGGsTfFU-bMimmTwodWy8gxPwIVwJ1OEG-e7pjcrCuRFSlsKzIefXJSPwWPG5X/exec";
+const apiBase = "https://script.google.com/macros/s/AKfycbz4HTJGGsTfFU-bMimmTwodWy8gxPwIVwJ1OEG-e7pjcrCuRFSlsKzIefXJSPwWPG5X/exec";
 
-    async function fetchData(category) {
-      const res = await fetch(`${apiBase}?category=${encodeURIComponent(category)}`);
-      return await res.json();
-    }
-
-    async function populateCategories() {
+    async function fetchCategories() {
+      // คุณอาจต้องเปลี่ยนเป็น apiBase + "?mode=category-list" ถ้า API รองรับ
       const res = await fetch(apiBase);
       const data = await res.json();
       const categories = [...new Set(data.map(d => d.category).filter(Boolean))];
 
+      if (!categories.includes("ทำเนียบคณะรัฐมนตรี")) {
+        categories.push("ทำเนียบคณะรัฐมนตรี");
+      }
+
+      populateCategories(categories);
+    }
+
+    function populateCategories(categories) {
       const categorySelect = document.getElementById("category");
       categorySelect.innerHTML = categories.map(c => `<option value="${c}">${c}</option>`).join("");
       categorySelect.addEventListener("change", onCategoryChange);
@@ -19,10 +23,12 @@
     async function onCategoryChange() {
       const selectedCategory = document.getElementById("category").value;
       const setSelect = document.getElementById("set");
+      const actualCategory = selectedCategory === "ทำเนียบคณะรัฐมนตรี" ? "คณะรัฐมนตรี" : selectedCategory;
 
-      const data = await fetchData(selectedCategory);
+      const res = await fetch(`${apiBase}?category=${encodeURIComponent(actualCategory)}`);
+      let data = await res.json();
 
-      if (selectedCategory === "คณะรัฐมนตรี") {
+      if (actualCategory === "คณะรัฐมนตรี" && selectedCategory === "คณะรัฐมนตรี") {
         const maxSet = Math.max(...data.map(d => +d.set));
         const filtered = data.filter(d => +d.set === maxSet);
         setSelect.innerHTML = "";
@@ -42,6 +48,7 @@
       };
       setSelect.onchange(); // default
     }
+
 
     function renderData(data, isCabinetLike) {
       const container = document.getElementById("container");
@@ -66,11 +73,9 @@
         row.className = "grid-row";
         for (let j = 0; j < 3; j++) {
           const item = others[i + j];
-          if (item) {
-            row.innerHTML += createBox(item);
-          } else {
-            row.innerHTML += `<div class="box" style="visibility: hidden;"></div>`;
-          }
+          row.innerHTML += item
+            ? createBox(item)
+            : `<div class="box" style="visibility: hidden;"></div>`;
         }
         container.appendChild(row);
       }
@@ -88,4 +93,4 @@
       `;
     }
 
-    populateCategories();
+    fetchCategories();
