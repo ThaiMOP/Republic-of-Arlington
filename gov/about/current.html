@@ -32,6 +32,38 @@
       width: 32%;
       visibility: hidden;
     }
+    /* .container คล้ายกับ Bootstrap */
+    .container {
+      width: 100%;
+      max-width: 1140px; /* กำหนดขนาดสูงสุดเหมือนกับ container ของ Bootstrap */
+      margin: 0 auto; /* จัดให้อยู่กลางหน้าจอ */
+      padding: 0 15px; /* เพิ่ม padding ซ้าย-ขวา */
+    }
+    
+    /* เพิ่มความยืดหยุ่นตามขนาดหน้าจอ */
+    @media (max-width: 1200px) {
+      .container {
+        max-width: 960px; /* สำหรับหน้าจอขนาดกลาง */
+      }
+    }
+    
+    @media (max-width: 992px) {
+      .container {
+        max-width: 720px; /* สำหรับหน้าจอขนาดเล็ก */
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        max-width: 540px; /* สำหรับมือถือ */
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .container {
+        max-width: 100%; /* สำหรับหน้าจอที่เล็กสุดจะให้เต็มหน้าจอ */
+      }
+    }
   </style>
 </head>
 <body>
