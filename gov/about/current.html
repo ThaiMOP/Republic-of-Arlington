@@ -3,17 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <title>ข้อมูลชุด ครม.</title>
+  <link rel="icon" href="/assets/img/logo.png" type="image/gif" sizes="16x16">
+  <link rel="stylesheet" href="https://slw-system.pages.dev/assets/css/font-face.css">
   <style>
-    body { font-family: sans-serif; padding: 20px; }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: CPN, sans-serif;
+    }
+    
+    body { padding: 20px; }
     select { margin: 10px; padding: 5px; }
-    .grid { display: flex; flex-wrap: wrap; gap: 20px; }
-    .box { border: 1px solid #ccc; padding: 10px; width: calc(33.333% - 20px); box-sizing: border-box; }
-    .centered { margin-left: auto; margin-right: auto; }
+    .grid-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .box {
+      border: 1px solid #ccc;
+      padding: 10px;
+      width: 32%;
+      box-sizing: border-box;
+    }
+    .hidden-box {
+      width: 32%;
+      visibility: hidden;
+    }
   </style>
 </head>
 <body>
-
-  <h1>แสดงข้อมูล</h1>
 
   <label for="category">หมวดหมู่:</label>
   <select id="category"></select>
@@ -21,90 +41,9 @@
   <label for="set">ชุด:</label>
   <select id="set" disabled></select>
 
-  <div id="container" class="grid"></div>
+  <div id="container"></div>
 
-  <script>
-    const apiUrl = "https://script.google.com/macros/s/AKfycbz4HTJGGsTfFU-bMimmTwodWy8gxPwIVwJ1OEG-e7pjcrCuRFSlsKzIefXJSPwWPG5X/exec";
-    let allData = [];
-
-    fetch(apiUrl)
-      .then(res => res.json())
-      .then(data => {
-        allData = data;
-        populateCategories(data);
-      });
-
-    function populateCategories(data) {
-      const categories = [...new Set(data.map(d => d.category).filter(Boolean))];
-      const categorySelect = document.getElementById("category");
-      categorySelect.innerHTML = categories.map(c => `<option value="${c}">${c}</option>`).join("");
-      categorySelect.addEventListener("change", onCategoryChange);
-      onCategoryChange(); // default load
-    }
-
-    function onCategoryChange() {
-      const selectedCategory = document.getElementById("category").value;
-      const setSelect = document.getElementById("set");
-      const container = document.getElementById("container");
-
-      // กรองข้อมูลตามหมวดหมู่
-      const filtered = allData.filter(d => d.category === selectedCategory);
-
-      if (selectedCategory === "คณะรัฐมนตรี") {
-        // หาเลขชุดที่มากที่สุด
-        const maxSet = Math.max(...filtered.map(d => +d.set));
-        renderData(filtered.filter(d => +d.set === maxSet), true);
-        setSelect.innerHTML = "";
-        setSelect.disabled = true;
-      } else {
-        const sets = [...new Set(filtered.map(d => d.set))];
-        setSelect.innerHTML = sets.map(s => `<option value="${s}">ชุด ${s}</option>`).join("");
-        setSelect.disabled = false;
-        setSelect.onchange = () => {
-          const selectedSet = setSelect.value;
-          const displayData = filtered.filter(d => d.set === selectedSet);
-          renderData(displayData, false);
-        };
-        setSelect.onchange(); // load default
-      }
-    }
-
-    function renderData(data, isCabinet) {
-      const container = document.getElementById("container");
-      container.innerHTML = "";
-      if (isCabinet) {
-        const prime = data.find(d => d.position === "นายกรัฐมนตรี");
-        const others = data.filter(d => d !== prime);
-        const row = document.createElement("div");
-        row.className = "grid";
-        const emptyBox = '<div class="box" style="visibility: hidden;"></div>';
-        row.innerHTML = emptyBox + createBox(prime) + emptyBox;
-        container.appendChild(row);
-        data = others;
-      }
-
-      for (let i = 0; i < data.length; i += 3) {
-        const row = document.createElement("div");
-        row.className = "grid";
-        for (let j = 0; j < 3; j++) {
-          if (data[i + j]) row.innerHTML += createBox(data[i + j]);
-        }
-        container.appendChild(row);
-      }
-    }
-
-    function createBox(item) {
-      return `
-        <div class="box">
-          <img src="${item.img}" alt="${item.name}" style="width: 100%; height: auto;">
-          <h3>${item.name}</h3>
-          <p><strong>${item.position}</strong></p>
-          <p>เริ่ม: ${item.start}<br>สิ้นสุด: ${item.end}</p>
-          ${item.link ? `<a href="${item.link}" target="_blank">ข้อมูลเพิ่มเติม</a>` : ""}
-        </div>
-      `;
-    }
-  </script>
+  <script src="data.js"></script>
 
 </body>
 </html>
