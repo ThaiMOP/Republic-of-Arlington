@@ -7,9 +7,7 @@
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+               
         }
         header {
             background: #005ea5;
@@ -171,6 +169,7 @@
        
        .hero-content p {
            font-size: 1.2rem;
+           margin-bottom: 20px;
        }
        
        .services-highlight {
