@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Government of Arlington</title>
+    <title>รัฐบาลอาร์ลิงตัน - หน้าแรก</title>
     <link rel="stylesheet" href="css/gov-styles.css">
     <link rel="icon" href="/assets/img/logo.png" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="https://slw-system.pages.dev/assets/css/font-face.css">
@@ -19,85 +19,32 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#topics">Topics</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="">หน้าแรก</a></li>
+                <li><a href="/gov/gs/">บริการ</a></li>
+                <li><a href="about">เกี่ยวกับ</a></li>
+                <li><a href="#contact">ติดต่อ</a></li>
             </ul>
         </nav>
     </header>
     
     <main>
-        <section id="eco">
-            <div id="inflation-table">
-                <div id="inflation-latest">Latest inflation rates: ... Arlington Dollar</div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Inflation rate</th>
-                        </tr>
-                    </thead>
-                    <tbody id="inflation-data">
-                    </tbody>
-                </table>
-            </div>
-            <div id="hourly-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Time</th>
-                            <th>Rate</th>
-                        </tr>
-                    </thead>
-                    <tbody id="hourly-data">
-                    </tbody>
-                </table>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>ยินดีต้อนรับสู่เว็บไซต์ทางการของเทศบาลเมืองอาร์ลิงตัน</h1>
+                <p>เข้าถึงข้อมูลและบริการภาครัฐอย่างสะดวกรวดเร็ว</p>
             </div>
         </section>
-        <section id="topics">
-            <h1>All Topics and Services</h1>
-            <ul>
-                <li><a href="#">Government Benefits</a></li>
-                <li><a href="#">Housing and Development</a></li>
-                <li><a href="#">Health and Safety</a></li>
-                <li><a href="#">Education</a></li>
-                <li><a href="#">Transportation</a></li>
-            </ul>
+    
+        <section class="services-highlight">
+            <h2>บริการภาครัฐ</h2>
+            <p>สำรวจบริการต่าง ๆ ที่เราจัดเตรียมไว้สำหรับประชาชน</p>
+            <a href="/gov/gs/" class="service-button">ดูบริการทั้งหมด</a>
         </section>
     </main>
+
     
     <footer>
-        <p>&copy; 2025 Government of Arlington. All Rights Reserved.</p>
+        <p>&copy; 2025รัฐบาลแห่งอาร์ลิงตัน สงวนลิขสิทธิ์.</p>
     </footer>
-    
-    <script>
-        async function fetchInflationData() {
-            const response = await fetch('https://script.google.com/macros/s/AKfycbzLPSFBqvpK2nUI_9_UMvXn4HpggFtaSTB2itSNj91Nq41K5H9y8Z8XPA2ShidqSmO8/exec');
-            const data = await response.json();
-            
-            document.getElementById('inflation-latest').innerText = `Latest inflation rates: ${data.latest} % Arlington Dollar`;
-            
-            const inflationTable = document.getElementById('inflation-data');
-            data.history.forEach(entry => {
-                inflationTable.innerHTML += `<tr><td>${entry.date}</td><td>${entry.rate}</td></tr>`;
-            });
-            
-            const hourlyTable = document.getElementById('hourly-data');
-            data.hourly.forEach(entry => {
-                hourlyTable.innerHTML += `<tr><td>${entry.time}</td><td>${entry.rate}</td></tr>`;
-            });
-        }
-        
-        function toggleMenu() {
-            const menu = document.querySelector('nav ul');
-            const icon = document.querySelector('.menu-toggle i');
-            menu.classList.toggle('active');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        }
-        
-        fetchInflationData();
-    </script>
 </body>
 </html>
