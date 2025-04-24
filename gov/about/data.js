@@ -1,4 +1,3 @@
->
     const apiUrl = "https://script.google.com/macros/s/AKfycbz4HTJGGsTfFU-bMimmTwodWy8gxPwIVwJ1OEG-e7pjcrCuRFSlsKzIefXJSPwWPG5X/exec";
     let allData = [];
 
