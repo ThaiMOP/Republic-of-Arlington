@@ -71,14 +71,19 @@
       }
 
       for (let i = 0; i < data.length; i += 3) {
-        const row = document.createElement("div");
-        row.className = "grid-row";
-        for (let j = 0; j < 3; j++) {
-          if (data[i + j]) row.innerHTML += createBox(data[i + j]);
+      const row = document.createElement("div");
+      row.className = "grid-row";
+      for (let j = 0; j < 3; j++) {
+        const item = data[i + j];
+        if (item) {
+          row.innerHTML += createBox(item);
+        } else {
+          row.innerHTML += `<div class="box" style="visibility: hidden;"></div>`; // เติม box เปล่าให้ครบแถว
         }
-        container.appendChild(row);
       }
+      container.appendChild(row);
     }
+
 
     function createBox(item) {
       return `
