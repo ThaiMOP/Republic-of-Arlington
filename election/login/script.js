@@ -1,4 +1,4 @@
-const clientId = '1361187603352784967'; // แทนที่ด้วย Client ID ของคุณ
+const clientId = '1361187603352784967';
 const redirectUri = 'https://rep-arlington.pages.dev/election/login/callback';
 const scope = 'identify';
 
