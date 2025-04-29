@@ -1,34 +1,44 @@
+// การอนุญาตใช้ปุ่มเลือกตั้ง
 
-// การอนุญาติใช้ปุ่มเลือกตั้ง
+const redirectMap = {
+  generalElection: '/election/ge.html',
+  hrElection: '/election/hre.html',
+  senateElection: '/election/se.html',
+  report: '/election/event',
+  check: '/election/enqelection-local'
+};
 
-  const redirectMap = {
-    generalElection: '/election/ge.html',
-    hrElection: '/election/hre.html',
-    senateElection: '/election/se.html',
-    report: '/election/event',
-    check: '/election/enqelection-local'
-  };
+// ดึงข้อมูลผู้ใช้จาก localStorage
+const userData = JSON.parse(localStorage.getItem('election_user_data') || '{}');
 
-  // 🔒 ปรับตรงนี้เพื่อเปิด/ปิดปุ่มแต่ละอัน
-  // 🔒 ปรับตรงนี้เพื่อเปิด/ปิดปุ่มแต่ละอัน
-  // 🔒 ปรับตรงนี้เพื่อเปิด/ปิดปุ่มแต่ละอัน
+// กำหนดว่าเปิดปุ่มไหนบ้างในระบบ (เปิด/ปิด manual)
+const electionStatus = {
+  generalElection: false,  // ❌ ยังไม่เปิด
+  hrElection: true,        // ✅ เปิดแล้ว
+  senateElection: false    // ❌ ยังไม่เปิด
+};
 
-  const enabledButtons = {
-    generalElection: false,
-    hrElection: true,
-    senateElection: false,
-    report: true,
-    check: true
-  };
+// เปิดปุ่มเฉพาะกรณีที่ผู้ใช้มีสิทธิ์ + ระบบเปิดใช้งาน
+const enabledButtons = {
+  generalElection: userData.right === 'มี' && electionStatus.generalElection,
+  hrElection: userData.right === 'มี' && electionStatus.hrElection,
+  senateElection: userData.right === 'มี' && electionStatus.senateElection,
+  report: true,
+  check: true
+};
 
-  Object.entries(redirectMap).forEach(([id, url]) => {
-    const btn = document.getElementById(id);
+// วนลูปกำหนดสถานะให้แต่ละปุ่ม
+Object.entries(redirectMap).forEach(([id, url]) => {
+  const btn = document.getElementById(id);
+  if (!btn) return; // ✅ ป้องกันกรณี element ไม่เจอ
 
-    if (!enabledButtons[id]) {
-      btn.disabled = true;
-    } else {
-      btn.addEventListener('click', () => {
-        window.location.href = url;
-      });
-    }
-  });
+  if (!enabledButtons[id]) {
+    btn.disabled = true;
+    btn.classList.add('disabled'); // แนะนำถ้ามีสไตล์ใน CSS
+  } else {
+    btn.disabled = false;
+    btn.addEventListener('click', () => {
+      window.location.href = url;
+    });
+  }
+});
