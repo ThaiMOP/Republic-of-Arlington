@@ -24,7 +24,7 @@
                 <header>
                     <img src="/assets/img/logo.png" height="82.4px">
                     <div>
-                        <h2>บัตรเลือกตั้งสภาผู้แทนราษฎรแบบบัญชีรายชื่อ</h2>
+                        <h2>บัตรเลือกตั้งสภาผู้แทนราษฎรแบบแบ่งเขต</h2>
                         <!-- <div class="s"></div> -->
                         <p>ทำเครื่องหมายกากบาท "<b>X</b>" ภายใน "ช่องทำเครื่องหมาย" ไม่เกินหนึ่งหมายเลข</p>
                     </div>
@@ -152,23 +152,23 @@
     </noscript>
     <script>
       window.addEventListener('DOMContentLoaded', () => {
-        const data = JSON.parse(localStorage.getItem('election_user_data'));
+      const data = JSON.parse(localStorage.getItem('election_user_data'));
     
-        if (data) {
-          const fullName = `${data.fname} ${data.lname}`;
-          const uid = data.id;
-          const province = data.province;
-          const zone = data.zone;
+      if (data) {
+        const fullName = `${data.fname} ${data.lname}`;
+        const uid = data.id;
+        const province = data.province;
+        const zone = data.zone;
     
-          // ใส่ค่าลง input
-          document.getElementById('name').value = fullName;
-          document.getElementById('uid').value = uid;
-          document.getElementById('province').value = province;
-          document.getElementById('zone').value = zone;
-        } else {
-          console.warn("ไม่พบข้อมูลผู้ใช้ใน localStorage (election_user_data)");
-        }
-      });
+        document.getElementById('name').value = fullName;
+        document.getElementById('uid').value = uid;
+        document.getElementById('province').value = province;
+        document.getElementById('zone').value = zone;
+      } else {
+        console.warn("ไม่พบข้อมูลผู้ใช้ใน localStorage (election_user_data)");
+      }
+    });
+
     </script>
 
     
