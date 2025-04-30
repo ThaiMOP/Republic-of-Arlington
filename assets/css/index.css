@@ -326,7 +326,7 @@
             gap: 30px;
         }
         
-        input#uid, input#name {
+        input#uid, input#name, input#province, input#zone {
             text-align: center;
             padding: 4px 6px;
             outline: 0;
