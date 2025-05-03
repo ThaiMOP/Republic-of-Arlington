@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const moreHtml = `
                 <div class="post-thumbnail-entry">
                   <a href="#list-tab" style="font-size: 14px;">
-                    <i class="fa fa-book m-r-10 b-b-0"></i>ราชกิจจานุเบกษาล่าสุด ๑๐๐ รายการ
+                    <i class="fa fa-book m-r-10 b-b-0"></i>สารรัฐบาลล่าสุด ๑๐๐ รายการ
                   </a>
                 </div>
               `;
