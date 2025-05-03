@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สำนักงานคณะกรรมการการเลือกตั้ง</title>
+    <link rel="icon" href="https://rep-arlington.pages.dev/assets/img/eca.png" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="https://slw-system.pages.dev/assets/css/font-face.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/eca.css">
+    <script src="/assets/js/eca-bod.js"></script>
+    <style>
+  
+      .box {
+        background-color: #fff;
+        padding: 1rem;
+        border-radius: .375rem !important;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        max-width: 600px;
+      }
+  
+      .box img {
+        width: 100px;
+        height: 100px;
+        border-radius: .375rem;
+        object-fit: cover;
+      }
+  
+      .info {
+        flex: 1;
+      }
+  
+      .info h2 {
+        margin: 0;
+        font-size: 1.2rem;
+        color: #333;
+      }
+  
+      .info p {
+        margin: .25rem 0;
+      }
+  
+      .highlight {
+        font-weight: bold;
+        color: #e9b913;
+      }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script>
+      function calculateDuration(startDateStr) {
+        const [day, month, yearBE] = startDateStr.split(' ');
+        const months = {
+          'มกราคม': 0, 'กุมภาพันธ์': 1, 'มีนาคม': 2, 'เมษายน': 3,
+          'พฤษภาคม': 4, 'มิถุนายน': 5, 'กรกฎาคม': 6, 'สิงหาคม': 7,
+          'กันยายน': 8, 'ตุลาคม': 9, 'พฤศจิกายน': 10, 'ธันวาคม': 11
+        };
+  
+        const startDate = new Date(parseInt(yearBE) - 543, months[month], parseInt(day));
+        const today = new Date();
+  
+        let years = today.getFullYear() - startDate.getFullYear();
+        let monthsDiff = today.getMonth() - startDate.getMonth();
+        let days = today.getDate() - startDate.getDate();
+  
+        if (days < 0) {
+          monthsDiff -= 1;
+          const prevMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+          days += prevMonth.getDate();
+        }
+  
+        if (monthsDiff < 0) {
+          years -= 1;
+          monthsDiff += 12;
+        }
+  
+        const result = `${monthsDiff} เดือน ${days} วัน`;
+        return result;
+      }
+  
+      const durationText = calculateDuration("31 มีนาคม 2568");
+      document.getElementById("duration").textContent = durationText;
+    </script>
+</body>
+</html>
