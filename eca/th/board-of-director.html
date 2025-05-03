@@ -93,10 +93,16 @@
     
       window.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
-          const durationText = calculateDuration("31 มีนาคม 2568");
-          document.getElementById("duration").textContent = durationText;
-        }, 1000); // 1000 มิลลิวินาที = 1 วินาที
+          const boxes = document.querySelectorAll('.box');
+          boxes.forEach(box => {
+            const startDate = box.getAttribute('data-start-date');
+            const duration = calculateDuration(startDate);
+            const span = box.querySelector('.duration');
+            if (span) span.textContent = duration;
+          });
+        }, 1000); // รอ 1 วินาที
       });
     </script>
+
 </body>
 </html>
