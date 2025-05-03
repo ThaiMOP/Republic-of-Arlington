@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
         
         <div class="boxes">
           <div class="box" data-start-date="31 มีนาคม 2568">
-            <img src="https://via.placeholder.com/100" alt="นายณภัทร สุวรรณสวัสดิ์">
+            <img src="/assets/img/employee/Info_PS.png" alt="นายณภัทร สุวรรณสวัสดิ์">
             <div class="info">
               <h2>นายณภัทร สุวรรณสวัสดิ์</h2>
               <p>ประธานกรรมการการเลือกตั้ง</p>
