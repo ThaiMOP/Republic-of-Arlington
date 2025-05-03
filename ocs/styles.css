@@ -439,7 +439,8 @@ a.btn:not([href]):not([tabindex]), .btn {
     letter-spacing: 0px;
     outline: none;
     padding: 10px 18px;
-    position: relative;
+    position: fixed;
+    bottom: 10px;
     overflow: hidden;
     text-transform: uppercase;
     background-color: #792024;
