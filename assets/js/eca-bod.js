@@ -10,11 +10,11 @@ document.addEventListener("DOMContentLoaded", function () {
     </header>
     <nav>
         <ul>
-            <li><a href="#">หน้าหลัก</a></li>
+            <li><a href="/eca/th/">หน้าหลัก</a></li>
             <li>
                 <a href="#" class="toggle-submenu">เกี่ยวกับ ▾</a>
                 <div class="submenu">
-                    <a href="#">คณะกรรมการการเลือกตั้ง</a>
+                    <a href="">คณะกรรมการการเลือกตั้ง</a>
                     <a href="#">สำนักงาน กกต.</a>
                     <a href="#">ทำเนียบผู้บริหาร</a>
                 </div>
@@ -36,9 +36,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         <a href="#">สถิติการวินิจฉัยชี้ขาดเรื่องคัดค้านการเลือกตั้ง</a>
                     </div>
                     <a href="/election/result">รายงานผลการนับคะแนน</a>
-                    <a href="mp-election-results">ประกาศผลการเลือกตั้ง สส.</a>
-                    <a href="checkidparty">ตรวจสอบการเป็นสมาชิกพรรคการเมือง</a>
-                    <a href="#">ข้อมูลพรรคการเมือง</a>
+                    <a href="/eca/th/mp-election-results">ประกาศผลการเลือกตั้ง สส.</a>
+                    <a href="/eca/th/checkidparty">ตรวจสอบการเป็นสมาชิกพรรคการเมือง</a>
+                    <a href="/eca/th/dataparty">ข้อมูลพรรคการเมือง</a>
                 </div>
             </li>
             <li><a href="#">ติดต่อ</a></li>
