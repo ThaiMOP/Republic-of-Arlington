@@ -41,7 +41,7 @@ header .list_header ul li a {
 
 h4 {
     font-family: "Bai Jamjuree";
-    color: #000c96;
+    color: #792024;
     font-style: italic;
     font-weight: 600;
     text-transform: uppercase;
@@ -129,18 +129,18 @@ to {
 }
 
 .type01 {
-    background-color: #b9921e;
+    background-color: #ad9e71;
     text-align: center;
     font-size: 14px;
-    color: #000c96;
+    color: #792024;
     padding: 3px 15px;
 }
 
 .type02 {
-    background-color: #000c96;
+    background-color: #792024;
     text-align: center;
     font-size: 30px;
-    color: #b9921e;
+    color: #ad9e71;
     padding: 4px 20px;
     font-weight: 500;
     position: relative;
@@ -179,7 +179,7 @@ a {
 }
 
 .post-thumbnail-entry .post-thumbnail-content > a.post-copy {
-    color: #000c96;
+    color: #792024;
     margin-left: 4px;
 }
 .post-thumbnail-list .post-thumbnail-entry .post-thumbnail-content a {
@@ -199,7 +199,7 @@ a {
 }
 
 .post-thumbnail-entry .post-thumbnail-content .post-date, .post-thumbnail-entry .post-thumbnail-content .post-category {
-    color: #000c96;
+    color: #792024;
     font-size: 14px;
 }
 
@@ -256,7 +256,7 @@ a:hover {
     text-decoration: underline;
 }
 a:hover, a:focus, a:active, #mainMenu nav > ul > li.hover-active > a, #mainMenu nav > ul > li.hover-active > span, #mainMenu nav > ul > li.current > a, #mainMenu nav > ul > li.current > span, #mainMenu nav > ul > li:hover > a, #mainMenu nav > ul > li:hover > span, #mainMenu nav > ul > li:focus > a, #mainMenu nav > ul > li:focus > span, #mainMenu nav > ul > li .dropdown-menu > li > a:focus, #mainMenu nav > ul > li .dropdown-menu > li > a:hover, #mainMenu nav > ul > li .dropdown-menu > li > a:active, #mainMenu nav > ul > li .dropdown-menu > li > span:focus, #mainMenu nav > ul > li .dropdown-menu > li > span:hover, #mainMenu nav > ul > li .dropdown-menu > li > span:active, #mainMenu nav > ul > li .dropdown-menu > li [class*="col-"] > ul > li > a:focus, #mainMenu nav > ul > li .dropdown-menu > li [class*="col-"] > ul > li > a:hover, #mainMenu nav > ul > li .dropdown-menu > li [class*="col-"] > ul > li > a:active, #mainMenu nav > ul > li .dropdown-menu > li.current > a, #mainMenu nav > ul > li .dropdown-menu > li.current > span, #mainMenu nav > ul > li .dropdown-menu > li:hover > a, #mainMenu nav > ul > li .dropdown-menu > li:hover > span, #mainMenu nav > ul > li .dropdown-menu > li:focus > a, #mainMenu nav > ul > li .dropdown-menu > li:focus > span, #mainMenu nav > ul > li .dropdown-menu > li:active > a, #mainMenu nav > ul > li .dropdown-menu > li:active > span, #mainMenu nav > ul > li .dropdown-menu > li.hover-active > a, #mainMenu nav > ul > li .dropdown-menu > li.hover-active > span, #mainMenu.menu-outline nav > ul > li.current > a, #mainMenu.menu-outline nav > ul > li:hover > a, #mainMenu.menu-outline nav > ul > li:focus > a, #mainMenu.menu-lines nav > ul > li.current > a, #mainMenu.menu-lines nav > ul > li:hover > a, #mainMenu.menu-lines nav > ul > li:focus > a, .dark #mainMenu:not(.light):not(.menu-rounded) nav > ul > li .dropdown-menu > li > a:hover, .dark #mainMenu:not(.light):not(.menu-rounded) nav > ul > li .dropdown-menu > li > span:hover, .dark #mainMenu:not(.light):not(.menu-rounded) nav > ul > li .dropdown-menu > li [class*="col-"] > ul > li > a:hover, #mainMenu.dark:not(.light):not(.menu-rounded) nav > ul > li .dropdown-menu > li > a:hover, #mainMenu.dark:not(.light):not(.menu-rounded) nav > ul > li .dropdown-menu > li > span:hover, #mainMenu.dark:not(.light):not(.menu-rounded) nav > ul > li .dropdown-menu > li [class*="col-"] > ul > li > a:hover, .dark #mainMenu:not(.light):not(.menu-rounded) nav > ul > li.current > a, .dark #mainMenu:not(.light):not(.menu-rounded) nav > ul > li.current > span, .dark #mainMenu:not(.light):not(.menu-rounded) nav > ul > li:hover > a, .dark #mainMenu:not(.light):not(.menu-rounded) nav > ul > li:hover > span, .dark #mainMenu:not(.light):not(.menu-rounded) nav > ul > li:focus > a, .dark #mainMenu:not(.light):not(.menu-rounded) nav > ul > li:focus > span, .dark #mainMenu:not(.light):not(.menu-rounded) nav > ul > li.hover-active > a, .dark #mainMenu:not(.light):not(.menu-rounded) nav > ul > li.hover-active > span, #mainMenu.dark:not(.light):not(.menu-rounded) nav > ul > li.current > a, #mainMenu.dark:not(.light):not(.menu-rounded) nav > ul > li.current > span, #mainMenu.dark:not(.light):not(.menu-rounded) nav > ul > li:hover > a, #mainMenu.dark:not(.light):not(.menu-rounded) nav > ul > li:hover > span, #mainMenu.dark:not(.light):not(.menu-rounded) nav > ul > li:focus > a, #mainMenu.dark:not(.light):not(.menu-rounded) nav > ul > li:focus > span, #mainMenu.dark:not(.light):not(.menu-rounded) nav > ul > li.hover-active > a, #mainMenu.dark:not(.light):not(.menu-rounded) nav > ul > li.hover-active > span, .page-menu.menu-outline nav li:hover a, .page-menu.menu-outline nav li.active a, .page-menu.menu-lines nav li:hover a, .page-menu.menu-lines nav li.active a, .page-menu.menu-default nav li:hover a, .page-menu.menu-default nav li.active a, .page-menu.menu-colored-background nav li:hover a, .page-menu.menu-colored-background nav li.active a, .page-menu.menu-dark li:hover a, .page-menu.menu-dark li.active a, .grid-filter.gf-outline li:hover a, .grid-filter.gf-outline li.active a, .grid-filter.gf-lines li:hover a, .grid-filter.gf-lines li.active a, .grid-filter.gf-default li:hover a, .grid-filter.gf-default li.active a, .post-item .post-quote-img .post-meta-category, .post-item .post-quote-img .post-meta-category a, .post-author a, .comments .comment_number span, .comments .comment .text .comment-reply-link, .respond-comment span, .btn.btn-outline, .heading-creative strong, .simple .tabs-navigation li.active a, .simple .tabs-navigation li.active a:focus, .simple .tabs-navigation li a:hover, .feature-box:hover h2, .feature-box:hover h3, .feature-box:hover h4, .list-icon.list-icon-colored li:before, .list-icon.list-icon-colored i, .pagination.pagination-simple .active > a, .pagination.pagination-simple .active > span, .pagination.pagination-simple .active > a:hover, .pagination.pagination-simple .active > span:hover, .pagination.pagination-simple .active > a:focus, .pagination.pagination-simple .active > span:focus, .post-navigation a:hover, .call-to-action h3 span, .item-link, .item-link:hover, .widget-tweeter li a, .widget-twitter li a {
-    color: #000c96;
+    color: #792024;
 }
 
 .top10 {
@@ -264,7 +264,7 @@ a:hover, a:focus, a:active, #mainMenu nav > ul > li.hover-active > a, #mainMenu 
     top: 10px;
 }
 .font-red {
-    color: #000c96 !important;
+    color: #792024 !important;
 }
 h1, h2, h3, h4, h5, h6 {
     overflow-wrap: break-word;
@@ -286,7 +286,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .announce > h4 {
     font-family: "Bai Jamjuree";
     font-size: 16px;
-    color: #000c96;
+    color: #792024;
     font-style: italic;
     font-weight: 600;
     text-transform: uppercase;
@@ -387,7 +387,7 @@ select {
 }
 
 .seperator, .separator {
-    color: #b9921e;
+    color: #ad9e71;
     width: 100%;
     margin: 20px auto;
     overflow: hidden;
@@ -429,7 +429,7 @@ select {
 }
 
 .post-thumbnail-content span a {
-    color: #000c96;
+    color: #792024;
 }
 a.btn:not([href]):not([tabindex]), .btn {
     border-radius: 0px;
@@ -442,8 +442,8 @@ a.btn:not([href]):not([tabindex]), .btn {
     position: relative;
     overflow: hidden;
     text-transform: uppercase;
-    background-color: #000c96;
-    border-color: #000c96;
+    background-color: #792024;
+    border-color: #792024;
     border-width: 1px;
     border-style: solid;
     color: #fff;
@@ -472,7 +472,7 @@ a.btn:not([href]):not([tabindex]), .btn {
     width: 50px;
     height: 50px;
     border: 6px solid #ccc;
-    border-top: 6px solid #000c96;
+    border-top: 6px solid #792024;
     border-radius: 50%;
     animation: spin 1s linear infinite;
   }
