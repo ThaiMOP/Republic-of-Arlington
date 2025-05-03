@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
     </nav>
 
     <main class="container-a">
-        <h1 style=" border-left: 4px solid #e9b913;padding-left: 1rem; ">คณะกรรมการการเลือกตั้ง</h1>
+        <h1 style=" border-left: 4px solid #e9b913;padding-left: 1rem; " class="text_header">คณะกรรมการการเลือกตั้ง</h1>
         
         <div class="boxes">
           <div class="box" data-start-date="31 มีนาคม 2568">
