@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <li>
                 <a href="#" class="toggle-submenu">เกี่ยวกับ ▾</a>
                 <div class="submenu">
-                    <a href="#">คณะกรรมการการเลือกตั้ง</a>
+                    <a href="board-of-director.html">คณะกรรมการการเลือกตั้ง</a>
                     <a href="#">สำนักงาน กกต.</a>
                     <a href="#">ทำเนียบผู้บริหาร</a>
                 </div>
