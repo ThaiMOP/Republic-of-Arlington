@@ -66,31 +66,32 @@
           'พฤษภาคม': 4, 'มิถุนายน': 5, 'กรกฎาคม': 6, 'สิงหาคม': 7,
           'กันยายน': 8, 'ตุลาคม': 9, 'พฤศจิกายน': 10, 'ธันวาคม': 11
         };
-  
+    
         const startDate = new Date(parseInt(yearBE) - 543, months[month], parseInt(day));
         const today = new Date();
-  
-        let years = today.getFullYear() - startDate.getFullYear();
+    
         let monthsDiff = today.getMonth() - startDate.getMonth();
         let days = today.getDate() - startDate.getDate();
-  
+    
         if (days < 0) {
           monthsDiff -= 1;
           const prevMonth = new Date(today.getFullYear(), today.getMonth(), 0);
           days += prevMonth.getDate();
         }
-  
+    
         if (monthsDiff < 0) {
-          years -= 1;
           monthsDiff += 12;
         }
-  
-        const result = `${monthsDiff} เดือน ${days} วัน`;
-        return result;
+    
+        return `${monthsDiff} เดือน ${days} วัน`;
       }
-  
-      const durationText = calculateDuration("31 มีนาคม 2568");
-      document.getElementById("duration").textContent = durationText;
+    
+      window.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+          const durationText = calculateDuration("31 มีนาคม 2568");
+          document.getElementById("duration").textContent = durationText;
+        }, 1000); // 1000 มิลลิวินาที = 1 วินาที
+      });
     </script>
 </body>
 </html>
