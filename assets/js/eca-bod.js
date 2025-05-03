@@ -49,15 +49,15 @@ document.addEventListener("DOMContentLoaded", function () {
         <h1 style=" border-left: 4px solid #e9b913;padding-left: 1rem; ">คณะกรรมการการเลือกตั้ง</h1>
         
         <div class="boxes">
-            <div class="box">
-              <img src="https://via.placeholder.com/100" alt="นายณภัทร สุวรรณสวัสดิ์">
-              <div class="info">
-                <h2>นายณภัทร สุวรรณสวัสดิ์</h2>
-                <p>ประธานกรรมการการเลือกตั้ง</p>
-                <p>ดำรงตำแหน่งตั้งแต่วันที่ 31 มีนาคม 2568</p>
-                <p>(<span id="duration"></span>)</p>
-              </div>
+          <div class="box" data-start-date="31 มีนาคม 2568">
+            <img src="https://via.placeholder.com/100" alt="นายณภัทร สุวรรณสวัสดิ์">
+            <div class="info">
+              <h2>นายณภัทร สุวรรณสวัสดิ์</h2>
+              <p>ประธานกรรมการการเลือกตั้ง</p>
+              <p>ดำรงตำแหน่งตั้งแต่วันที่ 31 มีนาคม 2568</p>
+              <p>(<span class="duration">กำลังคำนวณ...</span>)</p>
             </div>
+          </div>
             
         </div>
     </main>
