@@ -4,7 +4,7 @@ function updateElectionStatus() {
 
   const now = new Date();
   const startTime = new Date(2025, 4, 5, 6, 0, 0);  // 5 พ.ค. 2025 06:00
-  const endTime = new Date(2025, 4, 5, 15, 59, 45); // 5 พ.ค. 2025 15:59:45
+  const endTime = new Date(2025, 4, 5, 20, 59, 45); // 5 พ.ค. 2025 15:59:45
 
   let nextState = "";
 
