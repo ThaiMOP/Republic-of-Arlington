@@ -4,7 +4,7 @@ function updateElectionStatus() {
 
     const now = new Date();
     const startTime = new Date(2025, 4, 4, 6, 0, 0);  // 4 เม.ย. 2025 เวลา 06:00 (UTC+7)
-    const endTime = new Date(2025, 4, 4, 15, 59, 45); // 4 เม.ย. 2025 เวลา 15:59 (UTC+7)
+    const endTime = new Date(2025, 4, 4, 20, 59, 45); // 4 เม.ย. 2025 เวลา 15:59 (UTC+7)
 
     if (now < startTime) { 
         electionTag.innerHTML = `<h1>ยังไม่ถึงเวลาใช้สิทธิออกเสียงลงคะแนน</h1>`; 
