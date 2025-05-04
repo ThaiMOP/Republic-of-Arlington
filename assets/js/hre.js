@@ -1,8 +1,8 @@
   const electionElement = document.querySelector('[data-election]');
 
   // กำหนดเวลาเปิดและปิด
-  const openTime = new Date('2025-05-04T06:00:00+07:00');  // เวลาเปิด 6.00 น.
-  const closeTime = new Date('2025-05-04T15:59:45+07:00'); // เวลา 20.00 น.
+  const openTime = new Date('2025-05-09T06:00:00+07:00');  // เวลาเปิด 6.00 น.
+  const closeTime = new Date('2025-05-09T15:59:45+07:00'); // เวลา 20.00 น.
 
   function updateElectionStatus() {
     const now = new Date();
