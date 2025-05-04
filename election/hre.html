@@ -27,7 +27,7 @@
     </div>
     <center>
 <!--       <div id="userInfo"></div> -->
-      <div data-election></div>
+      <div data-elections></div>
     </center>
   </div>
 
@@ -39,10 +39,69 @@
         window.location.href = '/election/login/logout.html';
       }
     
+      document.addEventListener("DOMContentLoaded", function () {
+    
         // ปิดคลิกขวารูปภาพ
         document.querySelectorAll("img").forEach(img => {
           img.addEventListener("contextmenu", event => event.preventDefault());
         });
+        
+        // โหลดข้อมูล Discord และสิทธิ์เลือกตั้ง
+        const token = localStorage.getItem('discord_token');
+        if (token) {
+          let discordUserId = null;
+    
+          fetch('https://discord.com/api/users/@me', {
+            headers: { Authorization: `Bearer ${token}` }
+          })
+            .then(res => res.json())
+            .then(user => {
+              discordUserId = user.id;
+    
+              document.getElementById('avatar').src =
+                `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`;
+              document.getElementById('username').textContent =
+                `${user.username}#${user.discriminator}`;
+    
+              return fetch('https://script.google.com/macros/s/AKfycbzPzIuqdd2fBRd9z0ZQ8v9UIbxs5t9KP4F8LFHj_RdHbDnvfUVrljP6Ams_yMNXW5lC/exec');
+            })
+            .then(res => res.json())
+            .then(data => {
+              const matchedUser = data.find(entry => entry.id === discordUserId);
+              const infoBox = document.getElementById("userInfo");
+    
+              if (matchedUser) {
+                localStorage.setItem('election_user_data', JSON.stringify(matchedUser));
+    
+                const rightText = matchedUser.right === 'มี'
+                  ? 'คุณมีสิทธิ์เลือกตั้ง'
+                  : 'คุณไม่มีสิทธิ์เลือกตั้งหรือยังไม่ลงทะเบียน';
+              } else {
+                infoBox.innerHTML = `<p style="color:red;">ไม่พบข้อมูลของคุณในระบบเลือกตั้ง</p>`;
+              }
+            })
+            .catch(err => {
+              console.error(err);
+              document.body.innerHTML = '<p>เกิดข้อผิดพลาดในการโหลดข้อมูลสิทธิ์เลือกตั้ง</p>';
+            });
+        } else {
+          document.body.innerHTML = '<p>กรุณาเข้าสู่ระบบผ่าน Discord ก่อน</p>';
+        }
+    
+        // จัดการแสดง/ซ่อนโปรไฟล์
+        const profileContainer = document.getElementById('profileContainer');
+        const profileBox = document.getElementById('profileBox');
+    
+        profileContainer?.addEventListener('click', () => {
+          profileBox.classList.toggle('show');
+        });
+    
+        window.addEventListener('click', (e) => {
+          if (!profileContainer?.contains(e.target)) {
+            profileBox.classList.remove('show');
+          }
+        });
+      });
   </script>
 
 </body>
