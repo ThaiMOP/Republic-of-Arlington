@@ -1,19 +1,47 @@
 function updateElectionStatus() { 
-    const electionTag = document.querySelector("[data-election]"); 
-    if (!electionTag) return; 
+  const electionTag = document.querySelector("[data-election]"); 
+  if (!electionTag) return; 
 
-    const now = new Date();
-    const startTime = new Date(2025, 4, 9, 6, 0, 0);  // 4 เม.ย. 2025 เวลา 06:00 (UTC+7)
-    const endTime = new Date(2025, 4, 9, 15, 59, 45); // 4 เม.ย. 2025 เวลา 15:59 (UTC+7)
+  const now = new Date();
+  const startTime = new Date(2025, 4, 5, 6, 0, 0);  // 9 พ.ค. 2025 เวลา 06:00 (UTC+7)
+  const endTime = new Date(2025, 4, 5, 20, 59, 45); // 9 พ.ค. 2025 เวลา 15:59:45 (UTC+7)
 
-    if (now < startTime) { 
-        electionTag.innerHTML = `<h1>ยังไม่ถึงเวลาใช้สิทธิออกเสียงลงคะแนน</h1>`; 
-    } else if (now >= startTime && now <= endTime) { 
-        electionTag.innerHTML = `<div class="eca-btn" onclick="window.location.href='/election/hr-election.html'">เข้าระบบใช้สิทธิเลือกตั้ง</div>`; 
-    } else { 
-        electionTag.innerHTML = `<h1>บัดนี้ถึงเวลาปิดการออกเสียงลงคะแนนแล้ว ให้ปิดการออกเสียงลงคะแนน</h1>`; 
-    } 
-} 
+  let content = "";
+
+  if (now < startTime) { 
+    content = `<h1>ยังไม่ถึงเวลาใช้สิทธิออกเสียงลงคะแนน</h1>`; 
+  } else if (now >= startTime && now <= endTime) { 
+    content = `<div class="eca-btn" id="voteBtn">เข้าระบบใช้สิทธิเลือกตั้ง</div>`; 
+  } else { 
+    content = `<h1>บัดนี้ถึงเวลาปิดการออกเสียงลงคะแนนแล้ว ให้ปิดการออกเสียงลงคะแนน</h1>`; 
+  }
+
+  // อัปเดตเฉพาะเมื่อเนื้อหามีการเปลี่ยนแปลง
+  if (electionTag.innerHTML !== content) {
+    electionTag.innerHTML = content;
+
+    // แนบ event หลังจาก DOM เปลี่ยน
+    const voteBtn = document.getElementById("voteBtn");
+    if (voteBtn) {
+      voteBtn.addEventListener("click", function () {
+        window.location.href = "/election/hr-election.html";
+      });
+    }
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  updateElectionStatus();
+  setInterval(updateElectionStatus, 1000);
+
+  // ปิด context menu บนรูปภาพ
+  document.querySelectorAll("img").forEach(img => {
+    img.addEventListener("contextmenu", function (event) {
+      event.preventDefault();
+    });
+  });
+});
+
 
   function logout() {
     localStorage.removeItem('discord_token');
@@ -22,8 +50,6 @@ function updateElectionStatus() {
   }
 
   document.addEventListener("DOMContentLoaded", function () {
-    updateElectionStatus();
-    setInterval(updateElectionStatus, 1000);
 
     // ปิดคลิกขวารูปภาพ
     document.querySelectorAll("img").forEach(img => {
