@@ -1,4 +1,4 @@
-  const electionElement = document.querySelector('[data-election]');
+  const electionElement = document.querySelector('[data-elections]');
 
   // กำหนดเวลาเปิดและปิด
   const openTime = new Date('2025-05-06T06:00:00+07:00');  // เวลาเปิด 6.00 น.
