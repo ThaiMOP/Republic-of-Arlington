@@ -25,9 +25,15 @@ header {
     z-index: 999;
 }
 
+.logo_header {
+    display: flex;
+    align-items: center;
+}
+
 header .logo_header img {
     width: 50px;
     height: auto;
+    margin-right: 10px;
 }
 
 header .list_header ul li {
