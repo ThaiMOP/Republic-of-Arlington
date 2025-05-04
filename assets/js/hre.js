@@ -4,14 +4,14 @@ function updateElectionStatus() {
 
     const now = new Date();
     const startTime = new Date(2025, 4, 4, 6, 0, 0);  // 4 เม.ย. 2025 เวลา 06:00 (UTC+7)
-    const endTime = new Date(2025, 4, 4, 20, 59, 45); // 4 เม.ย. 2025 เวลา 15:59 (UTC+7)
+    const endTime = new Date(2025, 4, 4, 15, 59, 45); // 4 เม.ย. 2025 เวลา 15:59 (UTC+7)
 
     if (now < startTime) { 
-        electionTag.innerHTML = <h1>ยังไม่ถึงเวลาใช้สิทธิออกเสียงลงคะแนน</h1>; 
+        electionTag.innerHTML = `<h1>ยังไม่ถึงเวลาใช้สิทธิออกเสียงลงคะแนน</h1>`; 
     } else if (now >= startTime && now <= endTime) { 
-        electionTag.innerHTML = <div class="eca-btn" onclick="window.location.href='/election/hr-election.html'">เข้าระบบใช้สิทธิเลือกตั้ง</div>; 
+        electionTag.innerHTML = `<div class="eca-btn" onclick="window.location.href='/election/hr-election.html'">เข้าระบบใช้สิทธิเลือกตั้ง</div>`; 
     } else { 
-        electionTag.innerHTML = <h1>บัดนี้ถึงเวลาปิดการออกเสียงลงคะแนนแล้ว ให้ปิดการออกเสียงลงคะแนน</h1>; 
+        electionTag.innerHTML = `<h1>บัดนี้ถึงเวลาปิดการออกเสียงลงคะแนนแล้ว ให้ปิดการออกเสียงลงคะแนน</h1>`; 
     } 
 } 
 
@@ -43,16 +43,16 @@ setInterval(updateElectionStatus, 1000);
 
     // เรียก API Discord เพื่อเอาข้อมูลผู้ใช้
     fetch('https://discord.com/api/users/@me', {
-      headers: { Authorization: Bearer ${token} }
+      headers: { Authorization: `Bearer ${token}` }
     })
     .then(res => res.json())
     .then(user => {
       discordUserId = user.id;
 
       document.getElementById('avatar').src =
-        https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png;
+        `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`;
       document.getElementById('username').textContent =
-        ${user.username}#${user.discriminator};
+        `${user.username}#${user.discriminator}`;
 
       // เรียก API Google Script เพื่อตรวจสอบสิทธิ์
       return fetch('https://script.google.com/macros/s/AKfycbzPzIuqdd2fBRd9z0ZQ8v9UIbxs5t9KP4F8LFHj_RdHbDnvfUVrljP6Ams_yMNXW5lC/exec');
@@ -71,12 +71,12 @@ setInterval(updateElectionStatus, 1000);
           : 'คุณไม่มีสิทธิ์เลือกตั้งหรือยังไม่ลงทะเบียน';
 
         const infoBox = document.querySelector('[data-election]');
-        infoBox.innerHTML = 
+        infoBox.innerHTML = `
           <p><strong>ชื่อ:</strong> ${matchedUser.fname} ${matchedUser.lname}</p>
           <p><strong>จังหวัด:</strong> ${matchedUser.province}</p>
           <p><strong>เขต:</strong> ${matchedUser.zone}</p>
           <p><strong>สิทธิ์:</strong> ${rightText}</p>
-        ;
+        `;
       } else {
         document.querySelector('[data-election]').innerHTML =
           '<p style="color:red;">ไม่พบข้อมูลของคุณในระบบเลือกตั้ง</p>';
@@ -101,4 +101,4 @@ setInterval(updateElectionStatus, 1000);
     if (!profileContainer.contains(e.target)) {
       profileBox.classList.remove('show');
     }
-  }); 
+  });
