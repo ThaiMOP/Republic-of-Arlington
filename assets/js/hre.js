@@ -1,33 +1,24 @@
-function updateElectionStatus() {
-  const electionTag = document.querySelector("[data-election]");
-  if (!electionTag) return;
+  const electionElement = document.querySelector('[data-election]');
 
-  const now = new Date();
-  const startTime = new Date(2025, 4, 4, 6, 0, 0);  // 5 พ.ค. 06:00
-  const endTime = new Date(2025, 4, 4, 20, 59, 45); // 5 พ.ค. 15:59:45
+  // กำหนดเวลาเปิดและปิด
+  const openTime = new Date('2025-05-04T06:00:00+07:00');  // เวลาเปิด 6.00 น.
+  const closeTime = new Date('2025-05-04T20:00:00+07:00'); // เวลา 20.00 น.
 
-  let nextState = "";
-  if (now < startTime) {
-    nextState = "before";
-  } else if (now >= startTime && now <= endTime) {
-    nextState = "during";
-  } else {
-    nextState = "after";
+  function updateElectionStatus() {
+    const now = new Date();
+
+    if (now < openTime) {
+      // ยังไม่ถึงเวลาเลือกตั้ง
+      electionElement.innerHTML = `<h1>ยังไม่ถึงเวลาใช้สิทธิออกเสียงลงคะแนน</h1>`;
+    } else if (now >= openTime && now <= closeTime) {
+      // อยู่ในช่วงเวลาเลือกตั้ง
+      electionElement.innerHTML = `<div class="eca-btn" onclick="window.location.href='/election/hr-election.html'">เข้าระบบใช้สิทธิเลือกตั้ง</div>`;
+    } else {
+      // เลยเวลาเลือกตั้งแล้ว
+      electionElement.innerHTML = `<h1>บัดนี้ถึงเวลาปิดการออกเสียงลงคะแนนแล้ว ให้ปิดการออกเสียงลงคะแนน</h1>`;
+    }
   }
 
-  const currentState = electionTag.getAttribute("data-state");
-  if (currentState === nextState) return; // ไม่ต้องเปลี่ยนถ้า state เดิม
-
-  electionTag.setAttribute("data-state", nextState);
-
-  if (nextState === "before") {
-    electionTag.innerHTML = `<h1>ยังไม่ถึงเวลาใช้สิทธิออกเสียงลงคะแนน</h1>`;
-  } else if (nextState === "during") {
-    electionTag.innerHTML = `<div class="eca-btn">เข้าระบบใช้สิทธิเลือกตั้ง</div>`;
-    electionTag.querySelector(".eca-btn").addEventListener("click", function () {
-      window.location.href = "/election/hr-election.html";
-    });
-  } else {
-    electionTag.innerHTML = `<h1>บัดนี้ถึงเวลาปิดการออกเสียงลงคะแนนแล้ว ให้ปิดการออกเสียงลงคะแนน</h1>`;
-  }
-}
+  // อัปเดตทันทีเมื่อโหลดหน้า และตั้งเวลาอัปเดตทุกๆ 1 นาที
+  updateElectionStatus();
+  setInterval(updateElectionStatus, 60 * 1000);
