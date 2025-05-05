@@ -61,7 +61,7 @@
           `${user.username}#${user.discriminator}`;
 
         // เรียกข้อมูลจาก Google Script API
-        return fetch('https://script.google.com/macros/s/AKfycbzPzIuqdd2fBRd9z0ZQ8v9UIbxs5t9KP4F8LFHj_RdHbDnvfUVrljP6Ams_yMNXW5lC/exec')
+        return fetch('https://script.google.com/macros/s/AKfycbyqhX7qPOHwYkZl0lszfpZVU74ltI1lxfwIEGZRpRzeYiqsMAWWTHwRA-AeJ5FrB4x0/exec')
           .then(res => res.json())
           .then(data => {
             const userMatch = data.find(entry => entry.id === user.id);
