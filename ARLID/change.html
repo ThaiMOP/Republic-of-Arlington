@@ -109,8 +109,19 @@
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: formBody
       });
-  
-      const result = await response.json();
+      
+      // ดึงเป็นข้อความก่อน
+      const responseText = await response.text();
+      
+      let result;
+      try {
+        result = JSON.parse(responseText);
+      } catch (err) {
+        console.error("Invalid JSON response:", responseText);
+        alert("เกิดข้อผิดพลาดจากฝั่งเซิร์ฟเวอร์ ❌");
+        return;
+      }
+      
       if (result.status === "success") {
         localStorage.setItem("election_user_data", JSON.stringify({ ...userData, ...updatedData }));
         alert("บันทึกสำเร็จ ✅");
@@ -118,10 +129,7 @@
       } else {
         alert("เกิดข้อผิดพลาด: " + result.message);
       }
-    } catch (err) {
-      console.error("Error updating data:", err);
-      alert("ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์");
-    }
+
   }
 
 
