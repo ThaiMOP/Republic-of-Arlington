@@ -179,3 +179,12 @@ main a {
     color: #fff;
     text-decoration: none;
 }
+
+button[onclick="submitEdit()"],
+button[onclick="showEditForm()"] {
+    border: none;
+    background: #44cf00;
+    padding: 8px 12px;
+    border-radius: 5px;
+    width: 100px;
+}
