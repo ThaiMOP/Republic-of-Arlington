@@ -1,5 +1,6 @@
-const clientId = '1361187603352784967';
-const redirectUri = 'https://rep-arlington.pages.dev/ARLID/callback';
+
+const clientId = '1369199171793584190';
+const redirectUri = 'https://rep-arlington.pages.dev/ARLID/dashboard';
 const scope = 'identify';
 
 document.getElementById('login-btn').addEventListener('click', () => {
