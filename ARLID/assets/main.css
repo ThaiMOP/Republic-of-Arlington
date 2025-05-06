@@ -186,5 +186,12 @@ button[onclick="showEditForm()"] {
     background: #44cf00;
     padding: 8px 12px;
     border-radius: 5px;
-    width: 100px;
+    width: 100%;
+}
+
+input {
+    border: 1px solid #999;
+    padding: 5px;
+    border-radius: 3px;
+    font-family: inherit;
 }
