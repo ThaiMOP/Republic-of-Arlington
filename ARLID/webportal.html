@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Web Portal - ข้อมูลส่วนตัว</title>
+  <link rel="stylesheet" href="main.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+      background: #f4f4f4;
+    }
+    .box {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .box h2 {
+      margin-top: 0;
+      border-bottom: 2px solid #007bff;
+      padding-bottom: 5px;
+    }
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .profile img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+    }
+    p {
+      margin: 8px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="box" id="personalBox">
+    <h2>ข้อมูลส่วนบุคคล</h2>
+    <div class="profile">
+      <img id="avatar" src="" alt="Discord Avatar">
+      <div id="personalInfo"></div>
+    </div>
+  </div>
+
+  <div class="box" id="addressBox">
+    <h2>ที่อยู่</h2>
+    <div id="addressInfo"></div>
+  </div>
+
+  <script>
+    // ดึงข้อมูลจาก localStorage
+    const discordToken = localStorage.getItem('discord_token');
+    const userDataEncoded = localStorage.getItem('election_user_data');
+
+    if (!discordToken || !userDataEncoded) {
+      document.body.innerHTML = "<p>กรุณาเข้าสู่ระบบก่อน</p>";
+      throw new Error("No user data");
+    }
+
+    const userData = JSON.parse(atob(userDataEncoded)); // decode ข้อมูล
+    const avatarUrl = `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`;
+
+    // แสดง avatar
+    document.getElementById("avatar").src = avatarUrl;
+
+    // เติมข้อมูลส่วนบุคคล
+    document.getElementById("personalInfo").innerHTML = `
+      <p>ชื่อ - สกุล (ไทย): <span>${userData.prefix}${userData.fname} ${userData.lname}</span></p>
+      <p>วัน/เดือน/ปีเกิด: ${userData.dateofbirth}</p>
+      <p>เพศ: ${userData.gender}</p>
+      <p>สัญชาติ: ${userData.nationality}</p>
+      <p>ศาสนา: ${userData.religion}</p>
+    `;
+
+    // เติมข้อมูลที่อยู่
+    document.getElementById("addressInfo").innerHTML = `
+      <p>บ้านเลขที่: ${userData.house_number}</p>
+      <p>ตำบล: ${userData.subdistrict}</p>
+      <p>อำเภอ: ${userData.district}</p>
+      <p>จังหวัด: ${userData.province}</p>
+    `;
+  </script>
+</body>
+</html>
