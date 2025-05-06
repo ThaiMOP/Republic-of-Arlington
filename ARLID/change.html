@@ -88,36 +88,42 @@
     }
 
     async function submitEdit() {
-      const updatedData = {
-        ...userData,
-        fname: document.getElementById("fname").value,
-        lname: document.getElementById("lname").value,
-        dateofbirth: document.getElementById("dateofbirth").value,
-        gender: document.getElementById("gender").value,
-        nationality: document.getElementById("nationality").value,
-        religion: document.getElementById("religion").value,
-      };
-
-      try {
-        const response = await fetch(apiUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify([updatedData])
-        });
-
-        const result = await response.json();
-        if (result.status === "success") {
-          localStorage.setItem("election_user_data", JSON.stringify(updatedData));
-          alert("บันทึกสำเร็จ ✅");
-          location.reload();
-        } else {
-          alert("เกิดข้อผิดพลาด: " + result.message);
-        }
-      } catch (err) {
-        console.error("Error updating data:", err);
-        alert("ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์");
+    const updatedData = {
+      id: userData.id,
+      fname: document.getElementById("fname").value,
+      lname: document.getElementById("lname").value,
+      dateofbirth: document.getElementById("dateofbirth").value,
+      gender: document.getElementById("gender").value,
+      nationality: document.getElementById("nationality").value,
+      religion: document.getElementById("religion").value,
+    };
+  
+    // แปลงเป็น query string (เช่น fname=...&lname=...)
+    const formBody = Object.entries(updatedData)
+      .map(([key, val]) => `${encodeURIComponent(key)}=${encodeURIComponent(val)}`)
+      .join('&');
+  
+    try {
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: formBody
+      });
+  
+      const result = await response.json();
+      if (result.status === "success") {
+        localStorage.setItem("election_user_data", JSON.stringify({ ...userData, ...updatedData }));
+        alert("บันทึกสำเร็จ ✅");
+        location.reload();
+      } else {
+        alert("เกิดข้อผิดพลาด: " + result.message);
       }
+    } catch (err) {
+      console.error("Error updating data:", err);
+      alert("ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์");
     }
+  }
+
 
     // เรียกใช้ตอนโหลด
     renderUserData();
