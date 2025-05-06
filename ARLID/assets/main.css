@@ -75,35 +75,37 @@ button {
 @media (min-width: 1200px) { .container { max-width: 1140px; } } 
 @media (min-width: 1400px) { .container { max-width: 1320px; } }
 
-.menu-row {
+/* [data-menu="0"] .menu-row */
+[data-menu="0"] {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 10px 0;
 }
 
-.menu-row button {
+[data-menu="0"] button {
     width: calc(50% - 20px);
     margin: 0 10px;
     padding: 20px;
     cursor: pointer;
 }
 
-.menu-column {
+[data-menu="1"] {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     gap: 10px 0;
 }
 
-.menu-column button {
+[data-menu="1"] button {
     width: calc(100% - 20px);
     margin: 0 10px;
     padding: 20px;
     cursor: pointer;
 }
-.menu-row button,
-.menu-column button {
+
+[data-menu="0"] button,
+[data-menu="1"] button {
     background-image: linear-gradient(to right, #a100ad, #002dd3, #001ab6, #1534f0);
     background-size: 300% 100%;
     color: #fff;
@@ -113,8 +115,8 @@ button {
     border-radius: 3px;
 }
 
-.menu-row button:hover ,
-.menu-column button:hover {
+[data-menu="0"] button:hover ,
+[data-menu="1"] button:hover {
     color: #fff;
     background-position: 100% 0;
     transform: scale(1.06);
