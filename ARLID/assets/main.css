@@ -74,3 +74,47 @@ button {
 @media (min-width: 992px) { .container { max-width: 960px; } } 
 @media (min-width: 1200px) { .container { max-width: 1140px; } } 
 @media (min-width: 1400px) { .container { max-width: 1320px; } }
+
+.menu-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px 0;
+}
+
+.menu-row button {
+    width: calc(50% - 20px);
+    margin: 0 10px;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.menu-column {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px 0;
+}
+
+.menu-column button {
+    width: calc(100% - 20px);
+    margin: 0 10px;
+    padding: 20px;
+    cursor: pointer;
+}
+.menu-row button,
+.menu-column button {
+    background-image: linear-gradient(to right, #a100ad, #002dd3, #001ab6, #1534f0);
+    background-size: 300% 100%;
+    color: #fff;
+    border: none;
+    font-weight: 700;
+    transition: all .4s ease-in-out;
+}
+
+.menu-row button:hover ,
+.menu-column button:hover {
+    color: #fff;
+    background-position: 100% 0;
+    transform: scale(1.06);
+}
