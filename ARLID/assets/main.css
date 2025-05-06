@@ -147,10 +147,12 @@ button {
     margin-top: 0;
     border-bottom: 2px solid #007bff;
     padding-bottom: 5px;
+    margin-bottom: 20px;
 }
 
 .profile {
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 15px;
 }
@@ -160,6 +162,13 @@ button {
     height: 80px;
     border-radius: 50%;
     border: 2px solid #ccc;
+}
+
+.profile .avatar {
+    border-radius: 3px !important;
+    border: none;
+    width: 200px !important;
+    height: auto !important;
 }
 
 #personalInfo p {
