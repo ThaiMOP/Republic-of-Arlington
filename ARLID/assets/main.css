@@ -110,6 +110,7 @@ button {
     border: none;
     font-weight: 700;
     transition: all .4s ease-in-out;
+    border-radius: 3px;
 }
 
 .menu-row button:hover ,
