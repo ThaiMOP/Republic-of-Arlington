@@ -1,5 +1,5 @@
 body {
-    background-color: #f4f4f4;
+    background: linear-gradient(99.94deg, #543a80 9.02%, #2f0d46 88.28%);
     font-family: CPN, sans-serif;
 }
 
@@ -10,7 +10,7 @@ body {
 }
 
 header {
-    background-color: white;
+    background-color: #ffffff05;
     padding: 10px 20px;
     display: flex;
     align-items: center;
