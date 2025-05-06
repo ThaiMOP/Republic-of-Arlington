@@ -106,9 +106,9 @@ button {
 
 [data-menu="0"] button,
 [data-menu="1"] button {
-    background-image: linear-gradient(to right, #a100ad, #002dd3, #001ab6, #1534f0);
+    background-image: linear-gradient(to right, #fffa00, #ff9b00, #ff9b00, #f01515);
     background-size: 300% 100%;
-    color: #fff;
+    color: #0e00c0;
     border: none;
     font-weight: 700;
     transition: all .4s ease-in-out;
@@ -117,7 +117,7 @@ button {
 
 [data-menu="0"] button:hover ,
 [data-menu="1"] button:hover {
-    color: #fff;
+    color: #0e00c0;
     background-position: 100% 0;
     transform: scale(1.06);
 }
