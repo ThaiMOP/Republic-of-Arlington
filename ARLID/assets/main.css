@@ -16,6 +16,9 @@ header {
     align-items: center;
     justify-content: space-between;
     box-shadow: 2px 2px 2px #00000025;
+    position: fixed;
+    width: 100%;
+    top: 0;
 }
 
 header img.logo {
@@ -60,3 +63,14 @@ button[onclick="logout()"] {
 .profile-box.show {
     display: block;
 }
+
+button {
+    font-family: inherit;
+}
+
+.container { width: 100%; margin-left: auto; margin-right: auto; padding-left: 15px; padding-right: 15px; } 
+@media (min-width: 576px) { .container { max-width: 540px; } } 
+@media (min-width: 768px) { .container { max-width: 720px; } } 
+@media (min-width: 992px) { .container { max-width: 960px; } } 
+@media (min-width: 1200px) { .container { max-width: 1140px; } } 
+@media (min-width: 1400px) { .container { max-width: 1320px; } }
