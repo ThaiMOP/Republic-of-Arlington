@@ -47,7 +47,7 @@ const accessToken = fragment.get('access_token');
 function logout() {
     localStorage.removeItem('discord_token');
     localStorage.removeItem('election_user_data');
-    window.location.href = '/election/login/logout.html';
+    window.location.href = '/ARLID/';
 }
 
 if (accessToken) {
