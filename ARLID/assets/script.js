@@ -1,4 +1,4 @@
-const clientId = '1369199171793584190';
+const clientId = '1361187603352784967';
 const redirectUri = 'https://rep-arlington.pages.dev/ARLID/dashboard.html';
 const scope = 'identify';
 
