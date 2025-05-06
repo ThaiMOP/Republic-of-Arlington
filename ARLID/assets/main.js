@@ -85,7 +85,6 @@ if (token) {
                 })
                 .then(data => {
                     localStorage.setItem('election_user_data', JSON.stringify(data));
-                    console.log('ข้อมูลจาก Google Script:', data);
 
                     // หา user ที่ตรงกับ Discord ID
                     const matchedUser = data.find(entry => entry.id === discordId);
