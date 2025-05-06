@@ -26,16 +26,33 @@
     </div>
     <div id="ilovemenu">
       <div data-menu="1">
-        <button>ตรวจสอบข้อมูลตนเอง</button>
-        <button>เปลี่ยนข้อมูล ชื่อ-สกุล</button>
-        <button>ระบบเลือกตั้ง</button>
-        <button>ฐานข้อมูลด้านความมั่นคง</button>
-        <button>เครื่องอิสริยาภรณ์</button>
-        <button>ตรวจสอบประกาศสารรัฐบาล</button>
+        <button id="webportal">ตรวจสอบข้อมูลตนเอง</button>
+        <button id="change">เปลี่ยนข้อมูล ชื่อ-สกุล</button>
+        <button id="election">ระบบเลือกตั้ง</button>
+        <button id="stable">ฐานข้อมูลด้านความมั่นคง</button>
+        <button id="honour">เครื่องอิสริยาภรณ์</button>
+        <button id="ocs">ตรวจสอบประกาศสารรัฐบาล</button>
       </div>
     </div>
   </div>
   
+  <script>
+    const routes = {
+      webportal: "webportal",
+      change: "change",
+      election: "election",
+      stable: "stable",
+      honour: "honour",
+      ocs: "/ocs/"
+    };
+  
+    document.getElementById("ilovemenu").addEventListener("click", (e) => {
+      const btn = e.target.closest("button");
+      if (btn && routes[btn.id]) {
+        window.location.href = routes[btn.id];
+      }
+    });
+  </script>
   <script>
     document.getElementById("row").addEventListener("click", function () {
       const menu = document.getElementById("ilovemenu");
