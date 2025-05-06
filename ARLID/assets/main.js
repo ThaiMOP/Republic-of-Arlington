@@ -2,7 +2,7 @@
 const routes = {
     webportal: "webportal",
     change: "change",
-    election: "election",
+    election: "/election/login/callback",
     stable: "stable",
     honour: "honour",
     ocs: "/ocs/"
