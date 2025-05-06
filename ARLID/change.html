@@ -1,59 +1,101 @@
-<script>
-const apiUrl = "https://script.google.com/macros/s/AKfycbyZGnc58H6tmwe2_hGGLzr4BktYcOS9xf7rch9JIKWbXv0VUV0pwSIcBptp1oTH5gmZ/exec";
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Web Portal - ข้อมูลส่วนตัว</title>
+  <link rel="icon" href="https://rep-arlington.pages.dev/assets/img/eca.png" type="image/gif" sizes="16x16">
+  <link rel="stylesheet" href="https://slw-system.pages.dev/assets/css/font-face.css">
+  <link rel="stylesheet" href="assets/main.css">
+</head>
+<body>
+  <header>
+    <img class="logo" src="https://rep-arlington.pages.dev/assets/img/logo.png" alt="Logo">
+    <div class="profile-container" id="profileContainer">
+      <img class="avatar" id="avatar" src="" alt="Avatar">
+      <div class="profile-box" id="profileBox">
+        <div id="username" style="margin-bottom: 10px;">นายณภัทร สุวรรณสวัสดิ์</div>
+        <button onclick="logout()">ออกจากระบบ</button>
+      </div>
+    </div>
+  </header>
+  <main style="margin-top: 68px;padding-top: 20px;margin-bottom: 20px;padding-left: 10px;">
+    <a href="dashboard">กลับหน้าหลัก</a>
+  </main>
+  <div class="container">
+    <div class="box" id="personalBox">
+      <h2>ข้อมูลส่วนบุคคล</h2>
+      <div class="profile">
+        <img class="avatar" id="avatar" src="" alt="Discord Avatar">
+        <div id="personalInfo"></div>
+      </div>
+    </div>
+  
+    <div class="box" id="addressBox">
+      <h2>ที่อยู่</h2>
+      <div id="addressInfo"></div>
+    </div>
+  </div>
 
-document.addEventListener("DOMContentLoaded", () => {
-  if (!userData) return;
-
-  // เพิ่มปุ่ม "แก้ไขข้อมูล" ใน personalInfo
-  const editBtn = document.createElement("button");
-  editBtn.textContent = "แก้ไขข้อมูล";
-  editBtn.onclick = showEditForm;
-  document.getElementById("personalInfo").appendChild(editBtn);
-});
-
-function showEditForm() {
-  const formHtml = `
-    <p>ชื่อ: <input type="text" id="fname" value="${userData.fname}"></p>
-    <p>นามสกุล: <input type="text" id="lname" value="${userData.lname}"></p>
-    <p>วันเกิด: <input type="date" id="dateofbirth" value="${userData.dateofbirth}"></p>
-    <p>เพศ: <input type="text" id="gender" value="${userData.gender}"></p>
-    <p>สัญชาติ: <input type="text" id="nationality" value="${userData.nationality}"></p>
-    <p>ศาสนา: <input type="text" id="religion" value="${userData.religion}"></p>
-    <p><button onclick="submitEdit()">บันทึกการแก้ไข</button></p>
-  `;
-  document.getElementById("personalInfo").innerHTML = formHtml;
-}
-
-async function submitEdit() {
-  const updatedData = {
-    ...userData,
-    fname: document.getElementById("fname").value,
-    lname: document.getElementById("lname").value,
-    dateofbirth: document.getElementById("dateofbirth").value,
-    gender: document.getElementById("gender").value,
-    nationality: document.getElementById("nationality").value,
-    religion: document.getElementById("religion").value,
-  };
-
-  try {
-    const response = await fetch(apiUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify([updatedData])  // ส่งเป็น array 1 ตัว เพราะ script รองรับหลายแถว
-    });
-
-    const result = await response.json();
-    if (result.status === "success") {
-      // อัปเดต localStorage ใหม่
-      localStorage.setItem("election_user_data", JSON.stringify(updatedData));
-      alert("บันทึกสำเร็จ ✅");
-      location.reload(); // โหลดหน้าใหม่เพื่อแสดงข้อมูลใหม่
-    } else {
-      alert("เกิดข้อผิดพลาด: " + result.message);
-    }
-  } catch (err) {
-    console.error("Error updating data:", err);
-    alert("ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์");
+  <script>
+  const apiUrl = "https://script.google.com/macros/s/AKfycbyZGnc58H6tmwe2_hGGLzr4BktYcOS9xf7rch9JIKWbXv0VUV0pwSIcBptp1oTH5gmZ/exec";
+  
+  document.addEventListener("DOMContentLoaded", () => {
+    if (!userData) return;
+  
+    // เพิ่มปุ่ม "แก้ไขข้อมูล" ใน personalInfo
+    const editBtn = document.createElement("button");
+    editBtn.textContent = "แก้ไขข้อมูล";
+    editBtn.onclick = showEditForm;
+    document.getElementById("personalInfo").appendChild(editBtn);
+  });
+  
+  function showEditForm() {
+    const formHtml = `
+      <p>ชื่อ: <input type="text" id="fname" value="${userData.fname}"></p>
+      <p>นามสกุล: <input type="text" id="lname" value="${userData.lname}"></p>
+      <p>วันเกิด: <input type="date" id="dateofbirth" value="${userData.dateofbirth}"></p>
+      <p>เพศ: <input type="text" id="gender" value="${userData.gender}"></p>
+      <p>สัญชาติ: <input type="text" id="nationality" value="${userData.nationality}"></p>
+      <p>ศาสนา: <input type="text" id="religion" value="${userData.religion}"></p>
+      <p><button onclick="submitEdit()">บันทึกการแก้ไข</button></p>
+    `;
+    document.getElementById("personalInfo").innerHTML = formHtml;
   }
-}
-</script>
+  
+  async function submitEdit() {
+    const updatedData = {
+      ...userData,
+      fname: document.getElementById("fname").value,
+      lname: document.getElementById("lname").value,
+      dateofbirth: document.getElementById("dateofbirth").value,
+      gender: document.getElementById("gender").value,
+      nationality: document.getElementById("nationality").value,
+      religion: document.getElementById("religion").value,
+    };
+  
+    try {
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify([updatedData])  // ส่งเป็น array 1 ตัว เพราะ script รองรับหลายแถว
+      });
+  
+      const result = await response.json();
+      if (result.status === "success") {
+        // อัปเดต localStorage ใหม่
+        localStorage.setItem("election_user_data", JSON.stringify(updatedData));
+        alert("บันทึกสำเร็จ ✅");
+        location.reload(); // โหลดหน้าใหม่เพื่อแสดงข้อมูลใหม่
+      } else {
+        alert("เกิดข้อผิดพลาด: " + result.message);
+      }
+    } catch (err) {
+      console.error("Error updating data:", err);
+      alert("ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์");
+    }
+  }
+  </script>
+
+
+</body>
+</html>
