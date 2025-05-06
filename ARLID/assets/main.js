@@ -84,19 +84,27 @@ if (token) {
                     return res.json();
                 })
                 .then(data => {
-                    localStorage.setItem('election_user_data', JSON.stringify(data));
 
                     // หา user ที่ตรงกับ Discord ID
                     const matchedUser = data.find(entry => entry.id === discordId);
 
                     if (matchedUser) {
-                        const fullName = `${matchedUser.prefix}${matchedUser.fname} ${matchedUser.lname}`;
-                        document.getElementById('username').textContent = fullName;
+                      // เพิ่ม avatar และ discord info เข้า matchedUser
+                      matchedUser.avatar = user.avatar;
+                      matchedUser.username = user.username;
+                      matchedUser.discriminator = user.discriminator;
+                    
+                      // เก็บเฉพาะข้อมูลของ user คนเดียว
+                      localStorage.setItem('election_user_data', JSON.stringify(matchedUser));
+                    
+                      const fullName = `${matchedUser.prefix}${matchedUser.fname} ${matchedUser.lname}`;
+                      document.getElementById('username').textContent = fullName;
                     } else {
-                        // ถ้าไม่พบ ให้ fallback เป็น Discord username
-                        document.getElementById('username').textContent =
-                            `${user.username}#${user.discriminator}`;
+                      // fallback
+                      document.getElementById('username').textContent =
+                        `${user.username}#${user.discriminator}`;
                     }
+
 
                 })
                 .catch(err => {
