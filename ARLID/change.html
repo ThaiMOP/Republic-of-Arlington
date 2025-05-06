@@ -1,0 +1,59 @@
+<script>
+const apiUrl = "https://script.google.com/macros/s/AKfycbyZGnc58H6tmwe2_hGGLzr4BktYcOS9xf7rch9JIKWbXv0VUV0pwSIcBptp1oTH5gmZ/exec";
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (!userData) return;
+
+  // เพิ่มปุ่ม "แก้ไขข้อมูล" ใน personalInfo
+  const editBtn = document.createElement("button");
+  editBtn.textContent = "แก้ไขข้อมูล";
+  editBtn.onclick = showEditForm;
+  document.getElementById("personalInfo").appendChild(editBtn);
+});
+
+function showEditForm() {
+  const formHtml = `
+    <p>ชื่อ: <input type="text" id="fname" value="${userData.fname}"></p>
+    <p>นามสกุล: <input type="text" id="lname" value="${userData.lname}"></p>
+    <p>วันเกิด: <input type="date" id="dateofbirth" value="${userData.dateofbirth}"></p>
+    <p>เพศ: <input type="text" id="gender" value="${userData.gender}"></p>
+    <p>สัญชาติ: <input type="text" id="nationality" value="${userData.nationality}"></p>
+    <p>ศาสนา: <input type="text" id="religion" value="${userData.religion}"></p>
+    <p><button onclick="submitEdit()">บันทึกการแก้ไข</button></p>
+  `;
+  document.getElementById("personalInfo").innerHTML = formHtml;
+}
+
+async function submitEdit() {
+  const updatedData = {
+    ...userData,
+    fname: document.getElementById("fname").value,
+    lname: document.getElementById("lname").value,
+    dateofbirth: document.getElementById("dateofbirth").value,
+    gender: document.getElementById("gender").value,
+    nationality: document.getElementById("nationality").value,
+    religion: document.getElementById("religion").value,
+  };
+
+  try {
+    const response = await fetch(apiUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify([updatedData])  // ส่งเป็น array 1 ตัว เพราะ script รองรับหลายแถว
+    });
+
+    const result = await response.json();
+    if (result.status === "success") {
+      // อัปเดต localStorage ใหม่
+      localStorage.setItem("election_user_data", JSON.stringify(updatedData));
+      alert("บันทึกสำเร็จ ✅");
+      location.reload(); // โหลดหน้าใหม่เพื่อแสดงข้อมูลใหม่
+    } else {
+      alert("เกิดข้อผิดพลาด: " + result.message);
+    }
+  } catch (err) {
+    console.error("Error updating data:", err);
+    alert("ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์");
+  }
+}
+</script>
