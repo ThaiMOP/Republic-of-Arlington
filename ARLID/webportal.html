@@ -71,7 +71,7 @@
       throw new Error("No user data");
     }
 
-    const userData = JSON.parse(atob(userDataEncoded)); // decode ข้อมูล
+    const userData = JSON.parse(userDataEncoded);
     const avatarUrl = `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`;
 
     // แสดง avatar
