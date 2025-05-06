@@ -76,7 +76,7 @@ if (token) {
                 `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`;
 
             // ดึงข้อมูลจาก Google Apps Script
-            fetch('https://script.google.com/macros/s/AKfycbyZGnc58H6tmwe2_hGGLzr4BktYcOS9xf7rch9JIKWbXv0VUV0pwSIcBptp1oTH5gmZ/exec')
+            fetch('https://script.google.com/macros/s/AKfycbwjrpH1eFzb6pO5Pl0yLBQfTTjVJgTf8xztO6n2B0OA-cxha3fdYweSJLx97DmdZgEg/exec')
                 .then(res => {
                     if (!res.ok) {
                         throw new Error('ไม่สามารถดึงข้อมูลจาก Google Script');
