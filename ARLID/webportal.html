@@ -45,7 +45,7 @@
     </div>
   </header>
   <main style=" margin-top: 68px; padding-top: 20px; ">
-    <a href="dashboard">< กลับหน้าหลัก</a>
+    <a href="dashboard">กลับหน้าหลัก</a>
   </main>
   <div class="container">
     <div class="box" id="personalBox">
@@ -66,18 +66,18 @@
     // ดึงข้อมูลจาก localStorage
     const discordToken = localStorage.getItem('discord_token');
     const userDataEncoded = localStorage.getItem('election_user_data');
-
+  
     if (!discordToken || !userDataEncoded) {
       document.body.innerHTML = "<p>กรุณาเข้าสู่ระบบก่อน</p>";
       throw new Error("No user data");
     }
-
+  
     const userData = JSON.parse(userDataEncoded);
     const avatarUrl = `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`;
-
+  
     // แสดง avatar
     document.getElementById("avatar").src = avatarUrl;
-
+  
     // เติมข้อมูลส่วนบุคคล
     document.getElementById("personalInfo").innerHTML = `
       <p>ชื่อ - สกุล (ไทย): <span>${userData.prefix}${userData.fname} ${userData.lname}</span></p>
@@ -86,7 +86,7 @@
       <p>สัญชาติ: ${userData.nationality}</p>
       <p>ศาสนา: ${userData.religion}</p>
     `;
-
+  
     // เติมข้อมูลที่อยู่
     document.getElementById("addressInfo").innerHTML = `
       <p>บ้านเลขที่: ${userData.house_number}</p>
@@ -95,5 +95,6 @@
       <p>จังหวัด: ${userData.province}</p>
     `;
   </script>
+
 </body>
 </html>
