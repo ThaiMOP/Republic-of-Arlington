@@ -174,3 +174,8 @@ button {
 #personalInfo p {
     margin: 8px 0;
 }
+
+main a {
+    color: #fff;
+    text-decoration: none;
+}
