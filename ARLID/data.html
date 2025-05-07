@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>กำลังโหลด...</title>
+  <link rel="icon" href="https://rep-arlington.pages.dev/assets/img/logo.png" type="image/gif" sizes="16x16">
+  <link rel="stylesheet" href="https://slw-system.pages.dev/assets/css/font-face.css">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: CPN;
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  กำลังโหลดข้อมูล โปรดรอสักครู่...
+
+  <script>
+    const apiUrl = "https://script.google.com/macros/s/AKfycbz3MGxCG1OSpLa6Wh1n4i1SDLAHCvoAU9DB5RICnyasEeUEpTk-lNadVz-YL_AaMSDTtw/exec";
+    const discordToken = localStorage.getItem('discord_token');
+    const userDataEncoded = localStorage.getItem('election_user_data');
+    let userData = null;
+
+    function redirectToDashboard() {
+      window.location.href = "/ARLID/dashboard";
+    }
+
+    if (userDataEncoded) {
+      try {
+        userData = JSON.parse(atob(userDataEncoded)); // แกะจาก base64
+      } catch (err) {
+        console.error("ไม่สามารถอ่านข้อมูลผู้ใช้:", err);
+        redirectToDashboard();
+      }
+
+      if (userData && userData.id) {
+        fetch(apiUrl)
+          .then(res => res.json())
+          .then(data => {
+            const match = data.find(item => item.id === userData.id);
+            if (match) {
+              if (match.link === "Unable to access this website") {
+                alert("ขออภัย คุณไม่สามารถเข้าหน้านี้ได้");
+                redirectToDashboard();
+              } else {
+                window.location.href = "data-eca" + match.link;
+              }
+            } else {
+              alert("ไม่พบข้อมูลของคุณในระบบ");
+              redirectToDashboard();
+            }
+          })
+          .catch(err => {
+            console.error("เกิดข้อผิดพลาดขณะโหลดข้อมูล API:", err);
+            redirectToDashboard();
+          });
+      } else {
+        redirectToDashboard();
+      }
+    } else {
+      redirectToDashboard();
+    }
+  </script>
+</body>
+</html>
