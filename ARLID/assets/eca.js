@@ -17,7 +17,7 @@ async function fetchData() {
   if (!currentParty) return;
 
   // ?eca เห็นทุกพรรค → ไม่กรอง
-  const url = `${scriptURL}?action=read${key === "eca" ? "" : "&party=" + encodeURIComponent(currentParty)}`;
+  const url = `${scriptURL}?action=read&party=${encodeURIComponent(currentParty || "")}`;
   const res = await fetch(url);
   const data = await res.json();
   allMembers = data; // เก็บไว้ใช้กับ dropdown
