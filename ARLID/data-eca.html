@@ -43,21 +43,26 @@
       nfp: "อนาคตใหม่",
       eca: "คณะกรรมการการเลือกตั้ง"
     };
-
+    
     const query = new URLSearchParams(window.location.search);
     const key = [...partyMap.keys()].find(k => query.has(k));
     const currentParty = partyMap[key];
-
+    
     document.getElementById("party-title").textContent = "ข้อมูลพรรค: " + (currentParty || "ไม่พบพรรค");
-
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbynQSH4-QRqGPCo9mM1u4_2ajicj_G-5vcK1HRNL3AceDz7BYwS6UjwIWM3ddZ_RVet/exec'; // <-- ใส่ URL ของคุณ
-
+    
+    const scriptURL = 'https://script.google.com/macros/s/XXXXX/exec';
+    
     async function fetchData() {
       if (!currentParty) return;
-      const res = await fetch(`${scriptURL}?action=read&party=${encodeURIComponent(currentParty)}`);
+    
+      // 🔽 ตรงนี้สร้าง URL พร้อม action=read และ party=...
+      const url = `${scriptURL}?action=read&party=${encodeURIComponent(currentParty)}`;
+    
+      const res = await fetch(url);
       const data = await res.json();
       const tbody = document.querySelector("#data-table tbody");
       tbody.innerHTML = '';
+    
       data.forEach((item, index) => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
@@ -69,6 +74,7 @@
         tbody.appendChild(tr);
       });
     }
+
 
     function addRow() {
       const tbody = document.querySelector("#data-table tbody");
