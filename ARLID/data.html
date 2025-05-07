@@ -25,7 +25,7 @@
 </head>
 <body>
   <h2>กำลังโหลดข้อมูล โปรดรอสักครู่...</h2>
-  <div id="log">เริ่มกระบวนการโหลด...</div>
+  <div id="log">เริ่มโหลด...</div>
 
   <script>
     const logEl = document.getElementById("log");
@@ -35,68 +35,67 @@
     }
 
     const apiUrl = "https://script.google.com/macros/s/AKfycbz3MGxCG1OSpLa6Wh1n4i1SDLAHCvoAU9DB5RICnyasEeUEpTk-lNadVz-YL_AaMSDTtw/exec";
+    const discordToken = localStorage.getItem('discord_token');
     const userDataEncoded = localStorage.getItem('election_user_data');
+    let userData = null;
 
     function redirectToDashboard() {
-      log("→ เปลี่ยนเส้นทางกลับ /ARLID/dashboard");
+      log("➡ กลับไปที่ /ARLID/dashboard");
       setTimeout(() => {
         window.location.href = "/ARLID/dashboard";
-      }, 1500);
+      }, 1000);
     }
 
-    async function start() {
-      log("📦 กำลังดึงข้อมูลจาก LocalStorage...");
+    async function main() {
+      log("📦 ดึงข้อมูลจาก LocalStorage...");
       if (!userDataEncoded) {
-        log("❌ ไม่พบข้อมูล election_user_data");
+        log("❌ ไม่พบ election_user_data");
         return redirectToDashboard();
       }
 
-      let userData;
       try {
-        userData = JSON.parse(atob(userDataEncoded));
-        log(`✅ แกะข้อมูลผู้ใช้เรียบร้อย: ID = ${userData.id}`);
+        userData = JSON.parse(userDataEncoded); // ✅ ใช้ JSON ปกติ
+        log("✅ โหลด userData สำเร็จ: ID = " + userData.id);
       } catch (err) {
-        log("❌ แกะข้อมูลไม่ได้: " + err.message);
+        log("❌ แปลงข้อมูล userData ไม่สำเร็จ: " + err.message);
         return redirectToDashboard();
       }
 
-      if (!userData.id) {
+      if (!userData || !userData.id) {
         log("❌ ไม่พบ userData.id");
         return redirectToDashboard();
       }
 
-      log("🌐 กำลังโหลดข้อมูลจาก API...");
+      log("🌐 เรียกข้อมูลจาก API...");
       try {
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-        log("✅ โหลดข้อมูล API สำเร็จ");
+        const res = await fetch(apiUrl);
+        const data = await res.json();
+        log("✅ ได้ข้อมูลจาก API แล้ว");
 
-        log(`🔍 กำลังค้นหา ID: ${userData.id} จาก API...`);
         const match = data.find(item => item.id === userData.id);
-
         if (!match) {
-          log("❌ ไม่พบข้อมูลที่ตรงกับ ID");
+          log("❌ ไม่พบ ID นี้ใน API");
           return redirectToDashboard();
         }
 
-        log(`✅ พบข้อมูล: link = ${match.link}`);
+        log("✅ พบข้อมูล link: " + match.link);
         if (match.link === "Unable to access this website") {
-          alert("คุณไม่ได้รับสิทธิ์เข้าถึงหน้านี้");
+          alert("คุณไม่ได้รับสิทธิ์เข้าหน้านี้");
           return redirectToDashboard();
         } else {
-          const redirectUrl = "data-eca" + match.link;
-          log(`➡ กำลังเปลี่ยนเส้นทางไปยัง ${redirectUrl}`);
+          const targetUrl = "data-eca" + match.link;
+          log("➡ ย้ายไปที่: " + targetUrl);
           setTimeout(() => {
-            window.location.href = redirectUrl;
-          }, 1500);
+            window.location.href = targetUrl;
+          }, 1000);
         }
       } catch (err) {
-        log("❌ โหลดข้อมูลจาก API ไม่สำเร็จ: " + err.message);
+        log("❌ ดึงข้อมูล API ไม่สำเร็จ: " + err.message);
         return redirectToDashboard();
       }
     }
 
-    start();
+    main();
   </script>
 </body>
 </html>
