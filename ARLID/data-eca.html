@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>จัดการข้อมูลพรรค</title>
+  <link rel="icon" href="/assets/img/logo.png" type="image/gif" sizes="16x16">
+  <link rel="stylesheet" href="https://slw-system.pages.dev/assets/css/font-face.css">
+  <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: CPN, sans-serif;
+    }
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+    table, th, td { border: 1px solid #ccc; border-collapse: collapse; padding: 8px; }
+    input, select { width: 100%; }
+    button { margin: 5px; }
+  </style>
+</head>
+<body>
+  <h2 id="party-title">ข้อมูลพรรค</h2>
+  <table id="data-table">
+    <thead>
+      <tr>
+        <th>ลำดับ</th>
+        <th>ชื่อ-นามสกุล</th>
+        <th>เลขประชาชน</th>
+        <th>ลบ</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <button onclick="addRow()">เพิ่มแถว</button>
+  <button onclick="saveData()">บันทึก</button>
+
+  <script>
+    const partyMap = {
+      dem: "ประชาธิปไตย",
+      pfp: "เสรีประชาชน",
+      nfp: "อนาคตใหม่",
+      eca: "คณะกรรมการการเลือกตั้ง"
+    };
+
+    const query = new URLSearchParams(window.location.search);
+    const key = [...partyMap.keys()].find(k => query.has(k));
+    const currentParty = partyMap[key];
+
+    document.getElementById("party-title").textContent = "ข้อมูลพรรค: " + (currentParty || "ไม่พบพรรค");
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbynQSH4-QRqGPCo9mM1u4_2ajicj_G-5vcK1HRNL3AceDz7BYwS6UjwIWM3ddZ_RVet/exec'; // <-- ใส่ URL ของคุณ
+
+    async function fetchData() {
+      if (!currentParty) return;
+      const res = await fetch(`${scriptURL}?action=read&party=${encodeURIComponent(currentParty)}`);
+      const data = await res.json();
+      const tbody = document.querySelector("#data-table tbody");
+      tbody.innerHTML = '';
+      data.forEach((item, index) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${index + 1}</td>
+          <td><input type="text" value="${item.name}" /></td>
+          <td><input type="text" value="${item.id}" readonly /></td>
+          <td><button onclick="removeRow(this)">ลบ</button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function addRow() {
+      const tbody = document.querySelector("#data-table tbody");
+      const rowCount = tbody.rows.length + 1;
+      const newRow = document.createElement("tr");
+      const uniqueId = 'id-' + Date.now();
+      newRow.innerHTML = `
+        <td>${rowCount}</td>
+        <td><input type="text" /></td>
+        <td><input type="text" value="${uniqueId}" readonly /></td>
+        <td><button onclick="removeRow(this)">ลบ</button></td>
+      `;
+      tbody.appendChild(newRow);
+    }
+
+    function removeRow(button) {
+      const row = button.closest("tr");
+      row.remove();
+    }
+
+    async function saveData() {
+      const rows = document.querySelectorAll("#data-table tbody tr");
+      const data = Array.from(rows).map(row => {
+        const name = row.cells[1].querySelector("input").value;
+        const id = row.cells[2].querySelector("input").value;
+        return { name, id, party: currentParty };
+      });
+
+      const res = await fetch(scriptURL, {
+        method: 'POST',
+        body: JSON.stringify({ action: "write", data })
+      });
+
+      if (res.ok) {
+        alert("บันทึกข้อมูลเรียบร้อยแล้ว");
+        fetchData();
+      } else {
+        alert("เกิดข้อผิดพลาด");
+      }
+    }
+
+    fetchData();
+  </script>
+</body>
+</html>
