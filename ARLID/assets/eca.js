@@ -1,4 +1,4 @@
-const scriptURL = "https://script.google.com/macros/s/AKfycbzp4afqkZa_bwyNp53AW4A8iFKgXryt-eSC230NJm_fmo4jRRjrgnIngE1xMIvLhH9w/exec";
+const scriptURL = "https://script.google.com/macros/s/AKfycbz1VfPPJlh09E0JdwvhtIikVhGVbFQfx3lfixlI3PJbVjFOSN0hQ3Yt8rcjoWCg7pI/exec";
 const params = new URLSearchParams(window.location.search);
 const key = [...params.keys()][0]; // เช่น ?dem → key = "dem"
 
@@ -107,7 +107,22 @@ async function saveData() {
     headers: { "Content-Type": "application/json" }
   });
 
-  const result = await res.text();
-  alert("บันทึกข้อมูลแล้ว: " + result);
+  const responseText = await res.text();
+
+  let result;
+  try {
+      result = JSON.parse(responseText);
+  } catch (err) {
+      console.error("Invalid JSON response:", responseText);
+      alert("เกิดข้อผิดพลาดจากฝั่งเซิร์ฟเวอร์ ❌");
+      return;
+  }
+  
+  if (result.status === "success") {
+      alert("บันทึกข้อมูลสำเร็จ ✅");
+      fetchData(); // refresh ข้อมูล
+  } else {
+      alert("เกิดข้อผิดพลาด: " + (result.message || "ไม่ทราบสาเหตุ"));
+  }
   fetchData(); // refresh ข้อมูล
 }
