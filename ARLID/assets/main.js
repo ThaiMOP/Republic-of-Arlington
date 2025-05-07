@@ -4,6 +4,7 @@ const routes = {
     change: "change",
     election: "/election/login/callback",
     stable: "stable",
+    edit: "data",
     honour: "honour",
     ocs: "/ocs/"
 };
