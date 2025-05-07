@@ -1,128 +1,100 @@
-const scriptURL = "https://script.google.com/macros/s/AKfycbz1VfPPJlh09E0JdwvhtIikVhGVbFQfx3lfixlI3PJbVjFOSN0hQ3Yt8rcjoWCg7pI/exec";
-const params = new URLSearchParams(window.location.search);
-const key = [...params.keys()][0]; // เช่น ?dem → key = "dem"
+document.addEventListener('DOMContentLoaded', function () {
+  const urlParams = new URLSearchParams(window.location.search);
+  const partyParam = urlParams.get('party');  // อ่านค่า 'party' จาก URL
 
-const partyMap = {
-  dem: "ประชาธิปไตย",
-  pfp: "เสรีประชาชน",
-  nfp: "อนาคตใหม่",
-  eca: "คณะกรรมการการเลือกตั้ง"
-};
+  // กำหนดพรรคที่สัมพันธ์กับ query string
+  const partyMap = {
+    dem: "ประชาธิปไตย",
+    pfp: "เสรีประชาชน",
+    nfp: "อนาคตใหม่",
+    eca: "คณะกรรมการการเลือกตั้ง"
+  };
 
-const currentParty = partyMap[key] || null;
-let allMembers = [];
-let currentData = [];
+  // หากมีพารามิเตอร์ใน query string เช่น ?dem หรือ ?pfp
+  if (partyParam) {
+    const partyName = partyMap[partyParam.toLowerCase()];
+    if (partyName) {
+      document.getElementById('party-title').textContent = `ข้อมูลพรรค: ${partyName}`;
+      document.getElementById('party-name').textContent = `พรรค: ${partyName}`;
+      loadPartyData(partyName);  // โหลดข้อมูลพรรคจาก Google Apps Script
+    } else {
+      document.getElementById('party-title').textContent = 'ไม่พบพรรค';
+      document.getElementById('party-name').textContent = 'ไม่พบข้อมูลพรรค';
+    }
+  } else {
+    document.getElementById('party-title').textContent = 'กรุณาเลือกพรรค';
+    document.getElementById('party-name').textContent = 'ไม่มีข้อมูลพรรค';
+  }
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("party-name").textContent = currentParty || "ไม่ทราบชื่อพรรค";
-  fetchData();
-
-  document.getElementById("add-row").addEventListener("click", addRow);
-  document.getElementById("save-data").addEventListener("click", saveData);
+  // ฟังก์ชันที่ใช้โหลดข้อมูลจาก Google Apps Script
+  function loadPartyData(partyName) {
+    fetch(`https://script.google.com/macros/s/AKfycbzzBmXHrEVDom-e7AY7N9f19eIkkbGKneqB9f9r8hD6c_jMlHDjKW4KY0Xa-TPgGONp/exec?party=${partyName}`)
+      .then(response => response.json())
+      .then(data => {
+        console.log('Data fetched:', data); // ใช้ตรวจสอบว่าได้รับข้อมูลไหม
+        // คุณสามารถเพิ่มฟังก์ชันเพื่อแสดงข้อมูลในตารางที่นี่
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  }
 });
 
-async function fetchData() {
-  if (!currentParty) return;
+  function updateTable() {
+    dataTableBody.innerHTML = '';
+    partyData.forEach((row, index) => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${index + 1}</td>
+        <td><input type="text" value="${row.name}" data-index="${index}" class="name-input"></td>
+        <td><input type="text" value="${row.id}" data-index="${index}" class="id-input"></td>
+        <td><button class="delete-row" data-index="${index}">ลบ</button></td>
+      `;
+      dataTableBody.appendChild(tr);
+    });
 
-  // 1. ข้อมูลทุกคนสำหรับ dropdown
-  const allRes = await fetch(`${scriptURL}?action=read&party=*`);
-  allMembers = await allRes.json();
+    document.querySelectorAll('.delete-row').forEach(button => {
+      button.addEventListener('click', function () {
+        const index = button.getAttribute('data-index');
+        partyData.splice(index, 1);
+        updateTable();
+      });
+    });
 
-  // 2. ข้อมูลเฉพาะพรรค (หรือทั้งหมดถ้า ?eca)
-  const url = `${scriptURL}?action=read${key === "eca" ? "" : "&party=" + encodeURIComponent(currentParty)}`;
-  const partyRes = await fetch(url);
-  currentData = await partyRes.json();
-
-  renderTable();
-}
-
-function renderTable() {
-  const tbody = document.querySelector("#data-table tbody");
-  tbody.innerHTML = '';
-
-  currentData.forEach((item, index) => {
-    const tr = document.createElement("tr");
-
-    tr.innerHTML = `
-      <td>${index + 1}</td>
-      <td><input type="text" value="${item.name}" /></td>
-      <td><input type="text" value="${item.id}" readonly /></td>
-      <td><button onclick="removeRow(this)">ลบ</button></td>
-    `;
-
-    tbody.appendChild(tr);
-  });
-}
-
-function addRow() {
-  const tbody = document.querySelector("#data-table tbody");
-  const index = tbody.rows.length + 1;
-
-  const tr = document.createElement("tr");
-
-  const nameSelect = document.createElement("select");
-  nameSelect.innerHTML = `<option value="">-- เลือกชื่อ --</option>` +
-    allMembers.map(m => `<option value="${m.id}">${m.name}</option>`).join("");
-
-  const idInput = document.createElement("input");
-  idInput.type = "text";
-  idInput.readOnly = true;
-
-  nameSelect.addEventListener("change", () => {
-    const selected = allMembers.find(m => m.id === nameSelect.value);
-    idInput.value = selected ? selected.id : "";
-  });
-
-  tr.innerHTML = `
-    <td>${index}</td>
-    <td></td>
-    <td></td>
-    <td><button onclick="removeRow(this)">ลบ</button></td>
-  `;
-
-  tr.children[1].appendChild(nameSelect);
-  tr.children[2].appendChild(idInput);
-  tbody.appendChild(tr);
-}
-
-function removeRow(button) {
-  button.closest("tr").remove();
-}
-
-async function saveData() {
-  const rows = Array.from(document.querySelectorAll("#data-table tbody tr"));
-  const data = rows.map(row => {
-    const nameInput = row.querySelector("td:nth-child(2) input, select");
-    const idInput = row.querySelector("td:nth-child(3) input");
-    return {
-      party: currentParty,
-      name: nameInput.value,
-      id: idInput.value
-    };
-  });
-
-  const res = await fetch(scriptURL, {
-    method: "POST",
-    body: JSON.stringify({ action: "write", data }), // เปลี่ยนจาก "save" เป็น "write"
-    headers: { "Content-Type": "application/json" }
-  });
-
-  const responseText = await res.text();
-
-  let result;
-  try {
-      result = JSON.parse(responseText);
-  } catch (err) {
-      console.error("Invalid JSON response:", responseText);
-      alert("เกิดข้อผิดพลาดจากฝั่งเซิร์ฟเวอร์ ❌");
-      return;
+    document.querySelectorAll('.name-input, .id-input').forEach(input => {
+      input.addEventListener('input', function () {
+        const index = input.getAttribute('data-index');
+        const field = input.classList.contains('name-input') ? 'name' : 'id';
+        partyData[index][field] = input.value;
+      });
+    });
   }
-  
-  if (result.status === "success") {
-      alert("บันทึกข้อมูลสำเร็จ ✅");
-      fetchData(); // refresh ข้อมูล
-  } else {
-      alert("เกิดข้อผิดพลาด: " + (result.message || "ไม่ทราบสาเหตุ"));
-  }
-  fetchData(); // refresh ข้อมูล
-}
+
+  addRowButton.addEventListener('click', function () {
+    partyData.push({ name: '', id: '' });
+    updateTable();
+  });
+
+  saveDataButton.addEventListener('click', function () {
+    const dataToSave = partyData.map(row => ({
+      name: row.name,
+      id: row.id,
+      party: party
+    }));
+
+    fetch('https://script.google.com/macros/s/AKfycbzzBmXHrEVDom-e7AY7N9f19eIkkbGKneqB9f9r8hD6c_jMlHDjKW4KY0Xa-TPgGONp/exec', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(dataToSave)
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success') {
+          alert('บันทึกข้อมูลสำเร็จ!');
+        } else {
+          alert('เกิดข้อผิดพลาดในการบันทึกข้อมูล');
+        }
+      })
+      .catch(error => console.error('Error saving data:', error));
+  });
+});
