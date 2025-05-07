@@ -14,56 +14,89 @@
       font-family: CPN;
       font-size: 1.5rem;
     }
+    #log {
+      background: #f1f1f1;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      white-space: pre-line;
+    }
   </style>
 </head>
 <body>
-  กำลังโหลดข้อมูล โปรดรอสักครู่...
+  <h2>กำลังโหลดข้อมูล โปรดรอสักครู่...</h2>
+  <div id="log">เริ่มกระบวนการโหลด...</div>
 
   <script>
+    const logEl = document.getElementById("log");
+    function log(text) {
+      console.log(text);
+      logEl.textContent += `\n${text}`;
+    }
+
     const apiUrl = "https://script.google.com/macros/s/AKfycbz3MGxCG1OSpLa6Wh1n4i1SDLAHCvoAU9DB5RICnyasEeUEpTk-lNadVz-YL_AaMSDTtw/exec";
-    const discordToken = localStorage.getItem('discord_token');
     const userDataEncoded = localStorage.getItem('election_user_data');
-    let userData = null;
 
     function redirectToDashboard() {
-      window.location.href = "/ARLID/dashboard";
+      log("→ เปลี่ยนเส้นทางกลับ /ARLID/dashboard");
+      setTimeout(() => {
+        window.location.href = "/ARLID/dashboard";
+      }, 1500);
     }
 
-    if (userDataEncoded) {
+    async function start() {
+      log("📦 กำลังดึงข้อมูลจาก LocalStorage...");
+      if (!userDataEncoded) {
+        log("❌ ไม่พบข้อมูล election_user_data");
+        return redirectToDashboard();
+      }
+
+      let userData;
       try {
-        userData = JSON.parse(atob(userDataEncoded)); // แกะจาก base64
+        userData = JSON.parse(atob(userDataEncoded));
+        log(`✅ แกะข้อมูลผู้ใช้เรียบร้อย: ID = ${userData.id}`);
       } catch (err) {
-        console.error("ไม่สามารถอ่านข้อมูลผู้ใช้:", err);
-        redirectToDashboard();
+        log("❌ แกะข้อมูลไม่ได้: " + err.message);
+        return redirectToDashboard();
       }
 
-      if (userData && userData.id) {
-        fetch(apiUrl)
-          .then(res => res.json())
-          .then(data => {
-            const match = data.find(item => item.id === userData.id);
-            if (match) {
-              if (match.link === "Unable to access this website") {
-                alert("ขออภัย คุณไม่สามารถเข้าหน้านี้ได้");
-                redirectToDashboard();
-              } else {
-                window.location.href = "data-eca" + match.link;
-              }
-            } else {
-              alert("ไม่พบข้อมูลของคุณในระบบ");
-              redirectToDashboard();
-            }
-          })
-          .catch(err => {
-            console.error("เกิดข้อผิดพลาดขณะโหลดข้อมูล API:", err);
-            redirectToDashboard();
-          });
-      } else {
-        redirectToDashboard();
+      if (!userData.id) {
+        log("❌ ไม่พบ userData.id");
+        return redirectToDashboard();
       }
-    } else {
-      redirectToDashboard();
+
+      log("🌐 กำลังโหลดข้อมูลจาก API...");
+      try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        log("✅ โหลดข้อมูล API สำเร็จ");
+
+        log(`🔍 กำลังค้นหา ID: ${userData.id} จาก API...`);
+        const match = data.find(item => item.id === userData.id);
+
+        if (!match) {
+          log("❌ ไม่พบข้อมูลที่ตรงกับ ID");
+          return redirectToDashboard();
+        }
+
+        log(`✅ พบข้อมูล: link = ${match.link}`);
+        if (match.link === "Unable to access this website") {
+          alert("คุณไม่ได้รับสิทธิ์เข้าถึงหน้านี้");
+          return redirectToDashboard();
+        } else {
+          const redirectUrl = "data-eca" + match.link;
+          log(`➡ กำลังเปลี่ยนเส้นทางไปยัง ${redirectUrl}`);
+          setTimeout(() => {
+            window.location.href = redirectUrl;
+          }, 1500);
+        }
+      } catch (err) {
+        log("❌ โหลดข้อมูลจาก API ไม่สำเร็จ: " + err.message);
+        return redirectToDashboard();
+      }
     }
+
+    start();
   </script>
 </body>
 </html>
