@@ -22,6 +22,7 @@
 </head>
 <body>
   <h2 id="party-title">ข้อมูลพรรค</h2>
+  <h2 id="party-title">ข้อมูลพรรค</h2>
   <table id="data-table">
     <thead>
       <tr>
@@ -36,87 +37,6 @@
   <button onclick="addRow()">เพิ่มแถว</button>
   <button onclick="saveData()">บันทึก</button>
 
-  <script>
-    const partyMap = {
-      dem: "ประชาธิปไตย",
-      pfp: "เสรีประชาชน",
-      nfp: "อนาคตใหม่",
-      eca: "คณะกรรมการการเลือกตั้ง"
-    };
-    
-    const query = new URLSearchParams(window.location.search);
-    const key = Object.keys(partyMap).find(k => query.has(k));
-    const currentParty = partyMap[key];
-    
-    document.getElementById("party-title").textContent = "ข้อมูลพรรค: " + (currentParty || "ไม่พบพรรค");
-    
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwUY78FvPyV6QHElIjTDpZIfgMe0FKRZdobDFomjkEQrdha5T6GVQQBy3Xi_Odrb6AG/exec';
-    
-    async function fetchData() {
-      if (!currentParty) return;
-    
-      // 🔽 ตรงนี้สร้าง URL พร้อม action=read และ party=...
-      const url = `${scriptURL}?action=read&party=${encodeURIComponent(currentParty)}`;
-    
-      const res = await fetch(url);
-      const data = await res.json();
-      const tbody = document.querySelector("#data-table tbody");
-      tbody.innerHTML = '';
-    
-      data.forEach((item, index) => {
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-          <td>${index + 1}</td>
-          <td><input type="text" value="${item.name}" /></td>
-          <td><input type="text" value="${item.id}" readonly /></td>
-          <td><button onclick="removeRow(this)">ลบ</button></td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
-
-
-    function addRow() {
-      const tbody = document.querySelector("#data-table tbody");
-      const rowCount = tbody.rows.length + 1;
-      const newRow = document.createElement("tr");
-      const uniqueId = 'id-' + Date.now();
-      newRow.innerHTML = `
-        <td>${rowCount}</td>
-        <td><input type="text" /></td>
-        <td><input type="text" value="${uniqueId}" readonly /></td>
-        <td><button onclick="removeRow(this)">ลบ</button></td>
-      `;
-      tbody.appendChild(newRow);
-    }
-
-    function removeRow(button) {
-      const row = button.closest("tr");
-      row.remove();
-    }
-
-    async function saveData() {
-      const rows = document.querySelectorAll("#data-table tbody tr");
-      const data = Array.from(rows).map(row => {
-        const name = row.cells[1].querySelector("input").value;
-        const id = row.cells[2].querySelector("input").value;
-        return { name, id, party: currentParty };
-      });
-
-      const res = await fetch(scriptURL, {
-        method: 'POST',
-        body: JSON.stringify({ action: "write", data })
-      });
-
-      if (res.ok) {
-        alert("บันทึกข้อมูลเรียบร้อยแล้ว");
-        fetchData();
-      } else {
-        alert("เกิดข้อผิดพลาด");
-      }
-    }
-
-    fetchData();
-  </script>
+  <script src="assets/eca.js"></script>
 </body>
 </html>
