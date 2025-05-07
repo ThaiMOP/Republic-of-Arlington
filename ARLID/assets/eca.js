@@ -10,7 +10,7 @@ const key = Object.keys(partyMap).find(k => query.has(k));
 const currentParty = partyMap[key];
 document.getElementById("party-title").textContent = "ข้อมูลพรรค: " + (currentParty || "ไม่พบพรรค");
 
-const scriptURL = 'https://script.google.com/macros/s/XXXXX/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwUY78FvPyV6QHElIjTDpZIfgMe0FKRZdobDFomjkEQrdha5T6GVQQBy3Xi_Odrb6AG/exec';
 let allMembers = []; // เก็บสมาชิกทั้งหมด
 
 async function fetchData() {
