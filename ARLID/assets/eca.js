@@ -103,7 +103,7 @@ async function saveData() {
 
   const res = await fetch(scriptURL, {
     method: "POST",
-    body: JSON.stringify({ action: "save", data }),
+    body: JSON.stringify({ action: "write", data }), // เปลี่ยนจาก "save" เป็น "write"
     headers: { "Content-Type": "application/json" }
   });
 
