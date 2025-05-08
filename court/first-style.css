@@ -133,6 +133,7 @@ nav {
 
 
 .main-content {
+  padding-top: 0 !important;
   padding: 2rem 0;
 }
 
