@@ -1,3 +1,22 @@
 function learnMore() {
   alert("ระบบข้อมูลเพิ่มเติมอยู่ระหว่างการพัฒนา");
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const submenuParents = document.querySelectorAll('.has-submenu > a');
+
+  submenuParents.forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault(); // ป้องกันลิงก์ทำงาน
+      const parentLi = this.parentElement;
+      parentLi.classList.toggle('open');
+
+      // ปิดเมนูย่อยอื่นๆ ที่เปิดอยู่ (optional)
+      submenuParents.forEach(otherLink => {
+        if (otherLink !== this) {
+          otherLink.parentElement.classList.remove('open');
+        }
+      });
+    });
+  });
+});
