@@ -7,11 +7,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   submenuParents.forEach(link => {
     link.addEventListener('click', function (e) {
-      e.preventDefault(); // ป้องกันลิงก์ทำงาน
+      e.preventDefault(); // ป้องกันการเปิดลิงก์
       const parentLi = this.parentElement;
       parentLi.classList.toggle('open');
 
-      // ปิดเมนูย่อยอื่นๆ ที่เปิดอยู่ (optional)
+      // ปิดเมนูอื่น (optional)
       submenuParents.forEach(otherLink => {
         if (otherLink !== this) {
           otherLink.parentElement.classList.remove('open');
