@@ -7,16 +7,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
   submenuParents.forEach(link => {
     link.addEventListener('click', function (e) {
-      e.preventDefault(); // ป้องกันการเปิดลิงก์
+      e.preventDefault();
       const parentLi = this.parentElement;
+
+      // toggle เมนูของตัวเอง
       parentLi.classList.toggle('open');
 
-      // ปิดเมนูอื่น (optional)
+      // ปิดเมนูอื่นที่ไม่เกี่ยวข้อง (ไม่ใช่ตัวเองหรือเมนูลูก/เมนูพ่อ)
       submenuParents.forEach(otherLink => {
-        if (otherLink !== this) {
-          otherLink.parentElement.classList.remove('open');
+        const otherLi = otherLink.parentElement;
+
+        if (
+          otherLi !== parentLi &&
+          !parentLi.contains(otherLi) &&
+          !otherLi.contains(parentLi)
+        ) {
+          otherLi.classList.remove('open');
         }
       });
     });
   });
 });
+
