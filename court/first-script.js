@@ -29,3 +29,20 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+fetch('https://script.google.com/macros/s/AKfycbwwEAafwcl4m4uwl3z_AEa0uDgzyZAyDCiDHhk7W-SFyj-7MUfQ8gdFysO0zqM9vkip/exec')
+.then(response => response.json())  // แปลงข้อมูลจาก JSON เป็น Object
+.then(newsData => {
+    const newsListEl = document.getElementById("news-list");
+
+    newsData.forEach(item => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+      <a href="${item.linkto}" target="_blank">${item.name}</a> 
+      <span class="news-date">(${item.date})</span>
+    `;
+        newsListEl.appendChild(li);
+    });
+})
+.catch(error => {
+    console.error('เกิดข้อผิดพลาดในการดึงข้อมูลข่าวสาร:', error);
+});
