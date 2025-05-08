@@ -109,6 +109,11 @@ nav {
   background-color: #f0f0f0;
   color: #007BFF;
 }
+
+.submenu .submenu a {
+    padding-left: 1.5em !important;
+}
+
 [data-first] {
   display: block;
 }
