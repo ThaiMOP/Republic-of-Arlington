@@ -132,35 +132,74 @@ nav {
 }
 
 
+.main-content {
+  padding: 2rem 0;
+}
+
 .hero {
-  background-color: var(--yellow-dark);
-  color: var(--blue-dark);
-  padding: 60px 0;
+  background-color: #f1f1f1;
+  padding: 2rem 0;
   text-align: center;
 }
 
 .hero h2 {
-  font-size: 2.5rem;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 .hero p {
-  font-size: 1.2rem;
-  margin: 20px 0;
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 1rem;
 }
 
 .hero button {
+  padding: 0.6rem 1.2rem;
   background-color: var(--blue-dark);
-  color: var(--yellow-dark);
+  color: white;
   border: none;
-  padding: 12px 24px;
-  font-size: 1rem;
+  border-radius: 6px;
   cursor: pointer;
-  border-radius: 8px;
-  transition: background 0.3s;
+  transition: background-color 0.3s ease;
 }
 
 .hero button:hover {
-  background-color: #11172b;
+  background-color: #111c34;
+}
+
+.about-court,
+.news {
+  padding: 2rem 0;
+}
+
+.about-court h3,
+.news h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.news-list {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.news-list li {
+  margin-bottom: 0.5rem;
+}
+
+.news-list a {
+  color: var(--blue-dark);
+  text-decoration: none;
+}
+
+.news-list a:hover {
+  color: #007BFF;
+}
+
+.news-date {
+  color: #888;
+  font-size: 0.9rem;
+  margin-left: 0.5rem;
 }
 
 .footer {
