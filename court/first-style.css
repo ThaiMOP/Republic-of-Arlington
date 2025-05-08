@@ -73,6 +73,7 @@ nav {
   padding: 0;
   margin: 0;
 }
+
 .nav-links .submenu {
   display: none;
   position: absolute;
@@ -83,9 +84,48 @@ nav {
   list-style: none;
   z-index: 100;
 }
+nav ul li {
+    position: relative;
+}
 
+nav ul li .submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    padding: 0.5rem 0;
+    list-style: none;
+    min-width: 200px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+nav ul li:hover > .submenu {
+    display: block;
+}
+
+nav ul li .submenu li a {
+    padding: 0.5rem 1rem;
+    text-align: left;
+    color: #111;
+}
+
+nav ul li .submenu li a:hover {
+    background-color: #f0f0f0;
+    color: #007BFF;
+}
 .nav-links li:hover > .submenu {
   display: block;
+}
+
+nav ul li > a {
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #111;
+    text-decoration: none;
 }
 
 .nav-links li {
