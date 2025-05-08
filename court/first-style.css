@@ -24,7 +24,7 @@ body {
 .header {
   background-color: var(--header);
   color: var(--yellow-dark);
-  padding: 20px 0;
+  padding: 10px 0;
   box-shadow: 2px 2px 2px #00000025;
 }
 
@@ -83,6 +83,10 @@ nav {
   padding: 0.5rem 0;
   list-style: none;
   z-index: 1000;
+}
+
+.submenu .submenu {
+    background: #efefef;
 }
 
 .has-submenu.open > .submenu {
