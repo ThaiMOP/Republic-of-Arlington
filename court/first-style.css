@@ -121,7 +121,7 @@ nav {
   display: none;
 }
 
-@media (max-width: 390px) {
+@media (max-width: 500px) {
   [data-first] {
     display: none;
   }
