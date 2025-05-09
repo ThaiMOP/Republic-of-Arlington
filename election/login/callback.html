@@ -10,7 +10,7 @@
 <body>
   <header>
     <img class="logo" src="https://rep-arlington.pages.dev/assets/img/logo-eca.png" alt="Logo" />
-    <div class="profile-container" id="profileContainer">
+    <div class="profile-container" id="profileContainer" style="display: none;">
       <img class="avatar" id="avatar" src="" alt="Avatar" />
       <div class="profile-box" id="profileBox">
         <div id="username" style="margin-bottom: 10px;"></div>
@@ -30,84 +30,84 @@
       <button id="check">ตรวจสอบสิทธิ์เลือกตั้ง</button>
     </div>
   </div>
-
   <script src="agree-election.js"></script>
   <script>
+    const isEmergency = localStorage.getItem('emergency_login') === 'true';
     const fragment = new URLSearchParams(window.location.hash.slice(1));
     const accessToken = fragment.get('access_token');
-
+  
     function logout() {
       localStorage.removeItem('discord_token');
       localStorage.removeItem('election_user_data');
+      localStorage.removeItem('emergency_login');
       window.location.href = '/election/login/logout.html';
     }
-
-    if (accessToken) {
-      localStorage.setItem('discord_token', accessToken);
-    }
-
-    const token = accessToken || localStorage.getItem('discord_token');
-
-    if (token) {
-      fetch('https://discord.com/api/users/@me', {
-        headers: { Authorization: `Bearer ${token}` }
-      })
-      .then(res => res.json())
-      .then(user => {
-        // แสดงข้อมูลโปรไฟล์
-        document.getElementById('avatar').src =
-          `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`;
-        document.getElementById('username').textContent =
-          `${user.username}#${user.discriminator}`;
-
-        // เรียกข้อมูลจาก Google Script API
-        return fetch('https://script.google.com/macros/s/AKfycbyqhX7qPOHwYkZl0lszfpZVU74ltI1lxfwIEGZRpRzeYiqsMAWWTHwRA-AeJ5FrB4x0/exec')
-          .then(res => res.json())
-          .then(data => {
-            const userMatch = data.find(entry => entry.id === user.id);
-
-            if (userMatch) {
-              localStorage.setItem('election_user_data', JSON.stringify(userMatch));
-
-              if (userMatch.right === 'มี') {
-                document.getElementById('generalElection').disabled = false;
-                document.getElementById('hrElection').disabled = false;
-                document.getElementById('senateElection').disabled = false;
+  
+    if (isEmergency) {
+      console.log("เข้าสู่ระบบแบบฉุกเฉิน - ข้าม Discord");
+  
+      document.getElementById('profileContainer').style.display = 'none';
+      // ตรวจสอบสิทธิเลือกตั้งแบบฉุกเฉิน (ใช้ข้อมูลใน localStorage ที่ login ฉุกเฉินใส่ไว้)
+      const data = JSON.parse(localStorage.getItem('election_user_data'));
+      if (data && data.right === 'มี') {
+        document.getElementById('generalElection').disabled = false;
+        document.getElementById('hrElection').disabled = false;
+        document.getElementById('senateElection').disabled = false;
+      } else {
+        disableElectionButtons();
+      }
+    } else {
+      if (accessToken) {
+        localStorage.setItem('discord_token', accessToken);
+      }
+  
+      const token = accessToken || localStorage.getItem('discord_token');
+  
+      if (token) {
+        fetch('https://discord.com/api/users/@me', {
+          headers: { Authorization: `Bearer ${token}` }
+        })
+        .then(res => res.json())
+        .then(user => {
+          document.getElementById('profileContainer').style.display = 'block';
+          document.getElementById('avatar').src =
+            `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`;
+          document.getElementById('username').textContent =
+            `${user.username}#${user.discriminator}`;
+  
+          return fetch('https://script.google.com/macros/s/AKfycbyqhX7qPOHwYkZl0lszfpZVU74ltI1lxfwIEGZRpRzeYiqsMAWWTHwRA-AeJ5FrB4x0/exec')
+            .then(res => res.json())
+            .then(data => {
+              const userMatch = data.find(entry => entry.id === user.id);
+              if (userMatch) {
+                localStorage.setItem('election_user_data', JSON.stringify(userMatch));
+                if (userMatch.right === 'มี') {
+                  document.getElementById('generalElection').disabled = false;
+                  document.getElementById('hrElection').disabled = false;
+                  document.getElementById('senateElection').disabled = false;
+                } else {
+                  disableElectionButtons();
+                }
               } else {
                 disableElectionButtons();
               }
-            } else {
-              disableElectionButtons();
-            }
-          });
-      })
-      .catch(err => {
-        console.error(err);
-        document.body.innerHTML = '<p>เกิดข้อผิดพลาดในการตรวจสอบข้อมูลผู้ใช้</p>';
-      });
-    } else {
-      document.body.innerHTML = '<p>ไม่พบ access token</p>';
+            });
+        })
+        .catch(err => {
+          console.error(err);
+          document.body.innerHTML = '<p>เกิดข้อผิดพลาดในการตรวจสอบข้อมูลผู้ใช้</p>';
+        });
+      } else {
+        document.body.innerHTML = '<p>ไม่พบ access token</p>';
+      }
     }
-
+  
     function disableElectionButtons() {
       document.getElementById('generalElection').disabled = true;
       document.getElementById('hrElection').disabled = true;
       document.getElementById('senateElection').disabled = true;
     }
-
-    // จัดการโปรไฟล์ dropdown
-    const profileContainer = document.getElementById('profileContainer');
-    const profileBox = document.getElementById('profileBox');
-
-    profileContainer.addEventListener('click', () => {
-      profileBox.classList.toggle('show');
-    });
-
-    window.addEventListener('click', (e) => {
-      if (!profileContainer.contains(e.target)) {
-        profileBox.classList.remove('show');
-      }
-    });
   </script>
+
 </body>
 </html>
