@@ -42,21 +42,18 @@
         const user = data.find(user => user.uid === uid && user.password === password);
 
         if (user) {
-          // แยกชื่อ-นามสกุล
-          const [fname, lname] = user.fullName.split(' ');
-
-          // บันทึกข้อมูลลง localStorage
+          // บันทึกข้อมูลลง localStorage ตรง ๆ
           const userData = {
             id: user.uid,
-            fname,
-            lname,
+            fname: user.fname,
+            lname: user.lname,
             province: user.province,
             zone: user.zone
           };
 
           localStorage.setItem('election_user_data', JSON.stringify(userData));
           alert('เข้าสู่ระบบสำเร็จ!');
-          window.location.href = '/election/login/callback'; // หรือเปลี่ยนเป็นหน้าหลัง login ของคุณ
+          window.location.href = '/election/login/callback'; // เปลี่ยนเป็นหน้าหลักหลัง login
         } else {
           errorDiv.textContent = 'UID หรือรหัสผ่านไม่ถูกต้อง';
         }
