@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    label { display: block; margin-top: 10px; }
+    input { width: 100%; padding: 5px; }
+    button { margin-top: 15px; padding: 10px 15px; }
+    .error { color: red; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h2>เข้าสู่ระบบ</h2>
+  <label for="uid">รหัสผู้ใช้ (UID):</label>
+  <input type="text" id="uid" placeholder="กรอกรหัสผู้ใช้">
+
+  <label for="password">รหัสผ่าน:</label>
+  <input type="password" id="password" placeholder="กรอกรหัสผ่าน">
+
+  <button onclick="login()">เข้าสู่ระบบ</button>
+
+  <div class="error" id="error"></div>
+
+  <script>
+    async function login() {
+      const uid = document.getElementById('uid').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const errorDiv = document.getElementById('error');
+      errorDiv.textContent = '';
+
+      if (!uid || !password) {
+        errorDiv.textContent = 'กรุณากรอกทั้ง UID และรหัสผ่าน';
+        return;
+      }
+
+      try {
+        const res = await fetch('https://script.google.com/macros/s/AKfycbw1BM44MGusH0XFv_f023enQ7CuilCRoco5b8Un_tqDZhUnQw5PKKvIwnu51z-QULm4/exec');
+        const data = await res.json();
+
+        const user = data.find(user => user.uid === uid && user.password === password);
+
+        if (user) {
+          // แยกชื่อ-นามสกุล
+          const [fname, lname] = user.fullName.split(' ');
+
+          // บันทึกข้อมูลลง localStorage
+          const userData = {
+            id: user.uid,
+            fname,
+            lname,
+            province: user.province,
+            zone: user.zone
+          };
+
+          localStorage.setItem('election_user_data', JSON.stringify(userData));
+          alert('เข้าสู่ระบบสำเร็จ!');
+          window.location.href = '/election/login/callback'; // หรือเปลี่ยนเป็นหน้าหลัง login ของคุณ
+        } else {
+          errorDiv.textContent = 'UID หรือรหัสผ่านไม่ถูกต้อง';
+        }
+
+      } catch (err) {
+        console.error(err);
+        errorDiv.textContent = 'เกิดข้อผิดพลาดในการโหลดข้อมูล';
+      }
+    }
+  </script>
+</body>
+</html>
