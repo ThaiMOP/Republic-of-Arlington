@@ -21,7 +21,7 @@ const electionStatus = {
 // เปิดปุ่มเฉพาะกรณีที่ผู้ใช้มีสิทธิ์ + ระบบเปิดใช้งาน
 const enabledButtons = {
   generalElection: userData.right === 'มี' && electionStatus.generalElection,
-  hrElection: userData.right === 'มี' && electionStatus.hrElection,
+  hrElection: true,
   senateElection: userData.right === 'มี' && electionStatus.senateElection,
   report: true,
   check: true
