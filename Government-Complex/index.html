@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>เลือกศูนย์ราชการ</title>
+  <link rel="stylesheet" href="https://slw-system.pages.dev/assets/css/font-face.css">
+  <style>
+    
+    *:not(i) {
+        font-family: CPN, sans-serif;
+    }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+      background-image: url('background.jpg'); /* เปลี่ยนเป็นลิงก์หรือชื่อภาพของคุณ */
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 40px;
+      border-radius: 12px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #ffffffcc;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #ffffffee;
+    }
+  </style>
+</head>
+<body>
+  <div class="button-container">
+    <button onclick="location.href='center1.html'">ศูนย์ราชการ 1</button>
+    <button onclick="location.href='center2.html'">ศูนย์ราชการ 2</button>
+  </div>
+</body>
+</html>
