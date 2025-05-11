@@ -78,15 +78,15 @@ z-index: 9999;
 }
 
 .toast-message {
-background-color: #323232;
-color: #fff;
-padding: 10px 20px;
-margin-top: 10px;
-border-radius: 8px;
-box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-animation: fadeInUp 0.5s, fadeOut 0.5s 2.5s;
-opacity: 0;
-animation-fill-mode: forwards;
+    background-color: #323232;
+    color: #fff;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    animation: fadeInUp 0.5s, fadeOut 0.5s 2.5s;
+    opacity: 0;
+    animation-fill-mode: forwards;
 }
 
 @keyframes fadeInUp {
@@ -101,10 +101,10 @@ animation-fill-mode: forwards;
 }
 
 @keyframes fadeOut {
-to {
-    opacity: 0;
-    transform: translateY(30px);
-}
+    to {
+        opacity: 0;
+        transform: translateY(30px);
+    }
 }
 
 .post-thumbnail-list {
@@ -444,9 +444,9 @@ a.btn:not([href]):not([tabindex]), .btn {
     font-weight: 400;
     letter-spacing: 0px;
     outline: none;
-    padding: 10px 18px;
-    position: fixed;
-    bottom: 10px;
+    padding: 20px 30px;
+    margin: 0 auto;
+    width: 120px;
     overflow: hidden;
     text-transform: uppercase;
     background-color: #792024;
