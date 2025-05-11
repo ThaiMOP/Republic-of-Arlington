@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
     </div>
     <main>
         <div class="banner-wrapper">
-            <img src="/assets/img/gcenter/ยินดีต้อนรับเข้าสู่เว็บไซต์ศูนย์ราชการนฤเบศร์ธรรมนคร.png" alt="Election Commission Banner" class="banner-image">
+            <img src="/assets/img/gcenter/ยินดีต้อนรับเข้าสู่เว็บไซต์ศูนย์ราชการนฤเบศร์ธรรมนคร.png" alt="Election Commission Banner" class="banner-image" width="100%">
         </div>
         
         <section class="section-block">
