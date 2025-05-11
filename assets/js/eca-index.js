@@ -43,32 +43,31 @@ document.addEventListener("DOMContentLoaded", function () {
             </li>
             <li><a href="#">ติดต่อ</a></li>
         </ul>
-    </nav>
-    
+    </nav
+
     <!-- Loader ทั้งหน้า -->
     <div id="page-loader">
-      <div class="spinner"></div>
+        <div class="spinner"></div>
     </div>
     <main>
         <div class="banner-wrapper">
-          <img src="/assets/img/gcenter/ยินดีต้อนรับเข้าสู่เว็บไซต์ศูนย์ราชการนฤเบศร์ธรรมนคร.png" alt="Election Commission Banner" class="banner-image">
+            <img src="/assets/img/gcenter/ยินดีต้อนรับเข้าสู่เว็บไซต์ศูนย์ราชการนฤเบศร์ธรรมนคร.png" alt="Election Commission Banner" class="banner-image">
         </div>
         
-      <section class="section-block">
-        <h2>คำวินิจฉัย กกต.</h2>
-        <p>การตัดสินใจตามกฎหมายเลือกตั้งของคณะกรรมการการเลือกตั้ง ที่มีผลบังคับใช้ในกระบวนการเลือกตั้ง</p>
-        
-      </section>
-    
-      <section class="section-block">
-        <h2>ข่าวล่าสุด</h2>
-        <div class="news-container" id="news-section"></div>
-      </section>
-    
-      <section class="section-block">
-        <h2>ข้อมูลผลเลือกตั้ง และเขตเลือกตั้ง</h2>
-        <div class="news-container" id="results-section"></div>
-      </section>
+        <section class="section-block">
+            <h2>คำวินิจฉัย กกต.</h2>
+            <p>การตัดสินใจตามกฎหมายเลือกตั้งของคณะกรรมการการเลือกตั้ง ที่มีผลบังคับใช้ในกระบวนการเลือกตั้ง</p>
+        </section>
+
+        <section class="section-block">
+            <h2>ข่าวล่าสุด</h2>
+            <div class="news-container" id="news-section"></div>
+        </section>
+
+        <section class="section-block">
+            <h2>ข้อมูลผลเลือกตั้ง และเขตเลือกตั้ง</h2>
+            <div class="news-container" id="results-section"></div>
+        </section>
     </main>
 
     <footer>
@@ -82,51 +81,44 @@ document.addEventListener("DOMContentLoaded", function () {
             <img src="/assets/img/ISO9001.jpg" height="30">
         </div>
     </footer>
-    <script>
-      async function loadData() {
+    `;
+
+    // ฟังก์ชันโหลดข้อมูล
+    async function loadData() {
         try {
-          // ดึงข่าว
-          const newsRes = await fetch('https://script.google.com/macros/s/AKfycbwj8_52HwKqV-IiA0AXw8mQ2Xot-ygvy0lV8yzej5aoMv1HHYEoxyD8S9T4oHqeIk6C/exec');
-          const news = await newsRes.json();
-          renderBoxes(news, 'news-section');
-    
-          // ดึงผลเลือกตั้ง
-          const resultRes = await fetch('https://script.google.com/macros/s/AKfycbxOEqvcWgz8zoWmyHxZCMwnLLH-H-pXK4URDt5RroFa8ap0SzrjmRJEzchvLYOlyvSF/exec');
-          const results = await resultRes.json();
-          renderBoxes(results, 'results-section');
+            const newsRes = await fetch('https://script.google.com/macros/s/AKfycbwj8_52HwKqV-IiA0AXw8mQ2Xot-ygvy0lV8yzej5aoMv1HHYEoxyD8S9T4oHqeIk6C/exec');
+            const news = await newsRes.json();
+            renderBoxes(news, 'news-section');
+            
+            const resultRes = await fetch('https://script.google.com/macros/s/AKfycbxOEqvcWgz8zoWmyHxZCMwnLLH-H-pXK4URDt5RroFa8ap0SzrjmRJEzchvLYOlyvSF/exec');
+            const results = await resultRes.json();
+            renderBoxes(results, 'results-section');
         } catch (err) {
-          console.error('โหลดข้อมูลไม่สำเร็จ:', err);
+            console.error('โหลดข้อมูลไม่สำเร็จ:', err);
+        } finally {
+            document.getElementById("page-loader").style.display = "none";
         }
-      }
-    
-      function renderBoxes(data, targetId) {
-          const container = document.getElementById(targetId);
-          container.innerHTML = '';
-        
-          data.forEach(item => {
+    }
+
+    function renderBoxes(data, targetId) {
+        const container = document.getElementById(targetId);
+        container.innerHTML = '';
+        data.forEach(item => {
             const box = document.createElement('div');
             box.className = 'news-box';
-        
             box.innerHTML = `
-              <a href="${item.link}" target="_blank" style="text-decoration: none; color: inherit;">
-                <img src="${item.img}" alt="${item.title}" style="width: 100%; border-radius: 8px; margin-bottom: 10px;">
-                <div class="news-title">${item.title}</div>
-                <div class="news-date">${item.date}</div>
-              </a>
+                <a href="${item.link}" target="_blank" style="text-decoration: none; color: inherit;">
+                    <img src="${item.img}" alt="${item.title}" style="width: 100%; border-radius: 8px; margin-bottom: 10px;">
+                    <div class="news-title">${item.title}</div>
+                    <div class="news-date">${item.date}</div>
+                </a>
             `;
-        
             container.appendChild(box);
-          });
-        }
+        });
+    }
 
-    
-      document.addEventListener('DOMContentLoaded', loadData);
-    </script>
-
-
-    `;
+    loadData();  // เรียกใช้ฟังก์ชัน
 });
-
 
 document.addEventListener("DOMContentLoaded", function () {
     const scriptContent = `
