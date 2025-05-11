@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <div id="page-loader">
         <div class="spinner"></div>
     </div>
-    <main>
+    <main class="container">
         <div class="banner-wrapper">
             <img src="/assets/img/gcenter/ยินดีต้อนรับเข้าสู่เว็บไซต์ศูนย์ราชการนฤเบศร์ธรรมนคร.png" alt="Election Commission Banner" class="banner-image" width="100%">
         </div>
