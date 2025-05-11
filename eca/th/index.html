@@ -9,6 +9,81 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/eca.css">
     <script src="/assets/js/eca-index.js"></script>
+    <style>
+      /* Loader แบบเต็มจอ */
+      #page-loader {
+        position: fixed;
+        z-index: 9999;
+        background: white;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    
+      .spinner {
+        border: 8px solid #f3f3f3;
+        border-top: 8px solid #3498db;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: spin 1s linear infinite;
+      }
+    
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+        
+        .news-container {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 20px;
+          justify-content: center;
+          margin-top: 20px;
+        }
+        
+        .news-box {
+          background: #f8f9fa;
+          border: 1px solid #ccc;
+          border-radius: 12px;
+          padding: 16px;
+          width: calc(33.333% - 20px);
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          transition: all 0.3s ease;
+        }
+        
+        .news-box:hover {
+          transform: translateY(-5px);
+        }
+        
+        .news-title {
+          font-size: 16px;
+          font-weight: bold;
+          margin-bottom: 6px;
+        }
+        
+        .news-date {
+          font-size: 13px;
+          color: #777;
+        }
+        
+        @media (max-width: 768px) {
+          .news-box {
+            width: calc(50% - 20px);
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .news-box {
+            width: 100%;
+          }
+        }
+
+    </style>
 </head>
 <body>
     <div id="root"></div>
