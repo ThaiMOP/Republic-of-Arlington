@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>ข้อมูลชุด ครม.</title>
+  <link rel="icon" href="/assets/img/logo.png" type="image/gif" sizes="16x16">
+  <link rel="stylesheet" href="https://slw-system.pages.dev/assets/css/font-face.css">    
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="/assets/img/logo.png" alt="Arlington Gov Logo">
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="">หน้าแรก</a></li>
+                <li><a href="/gov/gs/">บริการ</a></li>
+                <li><a href="about/current">เกี่ยวกับ</a></li>
+                <li><a href="ministry.html">เว็บไซต์กระทรวง</a></li>
+                <li><a href="#contact">ติดต่อ</a></li>
+            </ul>
+        </nav>
+    </header>
+  
+  <label for="category">หมวดหมู่:</label>
+  <select id="category"></select>
+
+  <label for="set">ชุด:</label>
+  <select id="set" disabled></select>
+
+  <div class="container">
+    <div id="container"></div>
+  </div>
+
+  <script src="data.js"></script>
+
+</body>
+</html>
