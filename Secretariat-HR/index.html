@@ -221,16 +221,30 @@
     menuItems.forEach(item => {
       const submenu = item.querySelector('ul');
       if (submenu) {
-        item.addEventListener('mouseenter', () => {
-          submenu.style.display = 'block';
-        });
-        item.addEventListener('mouseleave', () => {
-          submenu.style.display = 'none';
+        // ซ่อนเมนูย่อยเริ่มต้น
+        submenu.style.display = 'none';
+
+        // toggle เมื่อคลิกเมนูหลัก
+        item.addEventListener('click', (e) => {
+          e.stopPropagation(); // ป้องกัน bubbling
+          const isVisible = submenu.style.display === 'block';
+
+          // ซ่อนเมนูย่อยทั้งหมดก่อน
+          document.querySelectorAll('nav ul li ul').forEach(ul => ul.style.display = 'none');
+
+          // toggle เมนูนี้
+          submenu.style.display = isVisible ? 'none' : 'block';
         });
       }
     });
+
+    // ปิดเมนูเมื่อคลิกข้างนอก
+    document.addEventListener('click', () => {
+      document.querySelectorAll('nav ul li ul').forEach(ul => ul.style.display = 'none');
+    });
   });
 </script>
+
 
 
 
