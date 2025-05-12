@@ -117,17 +117,18 @@ nav {
 [data-first] {
   display: block;
 }
-[data-sec] {
-  display: none;
-}
 
 @media (max-width: 500px) {
-  [data-first] {
-    display: none;
+  .nav-links {
+    gap: 16px;
   }
-  [data-sec] {
-    display: block;
-    font-size: 20px;
+
+  header {
+    font-size: 12px;
+  }
+
+  .executives h2 {
+    font-size: 16px;
   }
 }
 
