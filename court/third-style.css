@@ -53,6 +53,12 @@
   }
 }
 
+@media (max-width: 540px) {
+  .breadcrumbs {
+    font-size: 10px;
+  }
+}
+
 .executive-img {
   width: 100%;
   object-fit: cover;
