@@ -147,28 +147,52 @@
 </footer>
 
 <script>
+  const originalStyles = new Map();
+
   function setTheme(theme) {
     const allElements = document.querySelectorAll('body *:not(.top-bar):not(.top-bar *)');
-    let bgColor = '', textColor = '';
 
     if (theme === 'default') {
-      bgColor = 'white';
-      textColor = 'black';
-    } else if (theme === 'dark') {
-      bgColor = 'black';
-      textColor = 'white';
-    } else if (theme === 'yellow') {
-      bgColor = 'black';
-      textColor = 'yellow';
+      // คืนค่า style ดั้งเดิม
+      allElements.forEach(el => {
+        if (originalStyles.has(el)) {
+          const { backgroundColor, color } = originalStyles.get(el);
+          el.style.backgroundColor = backgroundColor;
+          el.style.color = color;
+        } else {
+          el.style.backgroundColor = '';
+          el.style.color = '';
+        }
+      });
+      document.body.style.backgroundColor = '';
+      document.body.style.color = '';
+    } else {
+      let bgColor = '';
+      let textColor = '';
+
+      if (theme === 'dark') {
+        bgColor = 'black';
+        textColor = 'white';
+      } else if (theme === 'yellow') {
+        bgColor = 'black';
+        textColor = 'yellow';
+      }
+
+      allElements.forEach(el => {
+        // บันทึก style ดั้งเดิมครั้งแรกเท่านั้น
+        if (!originalStyles.has(el)) {
+          originalStyles.set(el, {
+            backgroundColor: el.style.backgroundColor || '',
+            color: el.style.color || ''
+          });
+        }
+        el.style.backgroundColor = bgColor;
+        el.style.color = textColor;
+      });
+
+      document.body.style.backgroundColor = bgColor;
+      document.body.style.color = textColor;
     }
-
-    allElements.forEach(el => {
-      el.style.backgroundColor = bgColor;
-      el.style.color = textColor;
-    });
-
-    document.body.style.backgroundColor = bgColor;
-    document.body.style.color = textColor;
   }
 
   function setFontSize(size) {
@@ -178,6 +202,7 @@
     if (size === 'large') document.body.classList.add('font-size-large');
   }
 </script>
+
 
 
 </body>
