@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>เข้าสู่ระบบ</title>
+  <link rel="icon" href="https://rep-arlington.pages.dev/assets/img/logo.png" type="image/png">
+  <link rel="stylesheet" href="https://slw-system.pages.dev/assets/css/font-face.css">
+  <link rel="stylesheet" href="/assets/css/bora-login.css">
+  
+</head>
+<body>
+  <div id="login-box">
+    <img src="/assets/img/Arlington.png" style=" width: 200px; ">
+    <h2>เข้าสู่ระบบฐานข้อมูลทะเบียนราษฎร์</h2>
+    <input type="text" id="username" placeholder="หมายเลขบัตรประชาชน"><br><br>
+    <input type="password" id="password" placeholder="วันเกิด/วันเข้า server (เช่น 9/3/2025)"><br><br>
+    <button onclick="login()">เข้าสู่ระบบ</button>
+    <p id="login-error" style="color:red;"></p>
+  </div>
+
+  <div id="data-box" class="hidden">
+    <h2>ข้อมูลของคุณ</h2>
+    <button onclick="logout()">ออกจากระบบ</button>
+    <table id="data-table">
+      <thead>
+        <tr>
+          <th>รูป</th>
+          <th>ชื่อไทย</th>
+          <th>ชื่ออังกฤษ</th>
+          <th>หมายเลขบัตร</th>
+          <th>วันเกิด</th>
+          <th>เพศ</th>
+          <th>สัญชาติ</th>
+          <th>ศาสนา</th>
+          <th>ออกบัตร</th>
+          <th>หมดอายุ</th>
+          <th>วุฒิ</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script>
+    const apiUrl = "https://script.google.com/macros/s/AKfycbz4OteJFXPN2fc18Lye85f1-zaRj_LkXYy9fjDO3wsOTwX478MTSe2A3PkJx-g7iUnN/exec";
+
+    function login() {
+      const inputUser = document.getElementById("username").value.trim();
+      const inputPass = document.getElementById("password").value.trim();
+      const errorBox = document.getElementById("login-error");
+
+      fetch(apiUrl)
+        .then(res => res.json())
+        .then(data => {
+          const userData = data.find(row =>
+            row["หมายเลขบัตร"] === inputUser &&
+            row["วันเกิด"] === inputPass
+          );
+
+          if (userData) {
+            showUserData(userData);
+            document.getElementById("login-box").classList.add("hidden");
+            document.getElementById("data-box").classList.remove("hidden");
+          } else {
+            errorBox.textContent = "ไม่พบผู้ใช้งาน หรือวันเกิดไม่ถูกต้อง";
+          }
+        });
+    }
+
+    function showUserData(row) {
+      const tbody = document.querySelector("#data-table tbody");
+      tbody.innerHTML = `
+        <tr>
+          <td><img src="${row['รูปภาพ']}" alt="รูปภาพ"></td>
+          <td>${row['ชื่อไทย']}</td>
+          <td>${row['ชื่ออังกฤษ']}</td>
+          <td>${row['หมายเลขบัตร']}</td>
+          <td>${row['วันเกิด']}</td>
+          <td>${row['เพศ']}</td>
+          <td>${row['สัญชาติ']}</td>
+          <td>${row['ศาสนา']}</td>
+          <td>${row['ออกบัตร']}</td>
+          <td>${row['หมดอายุ']}</td>
+          <td>${row['วุฒิ']}</td>
+        </tr>
+      `;
+    }
+
+    function logout() {
+      document.getElementById("login-box").classList.remove("hidden");
+      document.getElementById("data-box").classList.add("hidden");
+      document.getElementById("username").value = "";
+      document.getElementById("password").value = "";
+      document.getElementById("login-error").textContent = "";
+    }
+  </script>
+</body>
+</html>

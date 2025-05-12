@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เว็บไซต์กระทรวง</title>
+     <link rel="stylesheet" href="css/gov-styles.css">
+    <link rel="icon" href="/assets/img/logo.png" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="https://slw-system.pages.dev/assets/css/font-face.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>     
+    .ministry-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 20px;
+  }
+
+  .box-link {
+    flex: 1 1 calc(25% - 40px); /* 4 กล่องต่อแถว */
+    max-width: 250px;
+    min-width: 180px;
+    background: linear-gradient(135deg, #4a90e2, #007BFF);
+    color: white;
+    text-align: center;
+    padding: 20px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .box-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+  }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="/assets/img/logo.png" alt="Arlington Gov Logo">
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">หน้าแรก</a></li>
+                <li><a href="/gov/gs/">บริการ</a></li>
+                <li><a href="about/current">เกี่ยวกับ</a></li>
+                <li><a href="ministry.html">เว็บไซต์กระทรวง</a></li>
+                <li><a href="#contact">ติดต่อ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="ministry-grid">
+        <a href="https://rep-arlington.pages.dev/gov/de/" class="box-link">กระทรวงดิจิทัล</a>
+        <a href="https://rep-arlington.pages.dev/gov/ad/" class="box-link">กระทรวงการปกครอง</a>
+    </div>
+
+
+    <footer>
+        <p>&copy; 2025รัฐบาลแห่งอาร์ลิงตัน สงวนลิขสิทธิ์.</p>
+    </footer>
+    <noscript>ไม่มีอะไร</noscript>
+</body>
+</html>

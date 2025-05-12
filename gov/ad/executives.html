@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ทำเนียบผู้บริหาร</title>
+  <script src="script.js" defer></script>
+    <link rel="shortcut icon" href="https://media.discordapp.net/attachments/1367228675640262707/1367240896936022137/Government_House.png?ex=68225e4f&is=68210ccf&hm=5872c6ccbc69a53b261ecdf431f2c916ea5367e1f7a25ef46f3cde70afdf6627&=&format=webp&quality=lossless&width=960&height=960" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div id="header"></div>
+
+  <div class="container">
+    <div class="executives-container" style=" margin-top: 89.6px;"></div>
+  </div>
+
+
+  <div id="footer"></div>
+  <script>
+    // ดึงข้อมูลผู้บริหารจาก Google Apps Script
+    fetch('https://script.google.com/macros/s/AKfycbwPoHQEldjEhIZRRJjHv_h-coOrtY9A08fdeIVRxi1bHsXKRnxRgjV_yRHsDLsmcxs7Iw/exec')
+      .then(response => response.json())
+      .then(data => {
+        // เตรียมข้อมูลและแสดงผล
+        const container = document.querySelector('.executives-container');
+
+        // การ์ดผู้บริหารคนแรก
+        const firstExecutive = data[0];
+        const firstCard = createExecutiveCard(firstExecutive, 'full');
+        container.appendChild(firstCard);
+
+        // ✅ เพิ่มการ์ด none หลังการ์ด full
+        const noneCard = document.createElement('div');
+        noneCard.classList.add('executive-card', 'none');
+        container.appendChild(noneCard);
+
+        // การ์ดผู้บริหารคนอื่นๆ
+        data.slice(1).forEach(executive => {
+          const card = createExecutiveCard(executive, 'quarter');
+          container.appendChild(card);
+        });
+      })
+      .catch(error => console.log('Error fetching data: ', error));
+
+    // ฟังก์ชันในการสร้างการ์ดผู้บริหาร
+    function createExecutiveCard(executive, size) {
+      const card = document.createElement('div');
+      card.classList.add('executive-card', size);
+
+      // สร้างภาพ
+      const img = document.createElement('img');
+      img.src = executive.image;
+      img.alt = executive.name;
+
+      // สร้างชื่อและตำแหน่ง
+      const name = document.createElement('h3');
+      name.textContent = executive.name;
+
+      const position = document.createElement('p');
+      position.textContent = executive.position;
+
+      // ใส่เนื้อหาลงการ์ด
+      card.appendChild(img);
+      card.appendChild(name);
+      card.appendChild(position);
+
+      return card;
+    }
+  </script>
+
+</body>
+
+</html>
