@@ -250,3 +250,51 @@ nav {
     margin-top: 0.5rem;
   }
 }
+
+.main-content h1 {
+  font-size: 24px;
+  margin-bottom: 1rem;
+}
+
+label, select {
+  font-size: 16px;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+select {
+  padding: 8px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.judgment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.judgment-item a {
+  display: inline-block;
+  padding: 10px 14px;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.2s;
+}
+
+.judgment-item a:hover {
+  background-color: #e0e0e0;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .main-content {
+    padding: 1rem 0.5rem;
+  }
+
+  .judgment-item a {
+    font-size: 14px;
+  }
+}
