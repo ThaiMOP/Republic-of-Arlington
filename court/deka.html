@@ -97,7 +97,7 @@
   <script src="first-script.js"></script>
   <script>
     const url = 'https://script.google.com/macros/s/AKfycbyxMQurICYCcPwB0XQQB4LthxT6pRqngUENcP7LaAspn2I8qq49Gx_erFi9SHGVfTRO/exec';
-
+    
     async function fetchJudgments() {
       try {
         const res = await fetch(url);
@@ -128,15 +128,19 @@
       });
     }
     
-    // ✅ รวม loader + โหลดข้อมูล ไว้ใน DOMContentLoaded เดียว
     document.addEventListener('DOMContentLoaded', async () => {
-      // แสดง loader 3 วินาที
-      await new Promise(resolve => setTimeout(resolve, 3000));
+      // เริ่มโหลดข้อมูล + เริ่มจับเวลา
+      const dataPromise = fetchJudgments();
+      const delayPromise = new Promise(resolve => setTimeout(resolve, 3000));
+    
+      // รอทั้งคู่เสร็จ
+      const [allJudgments] = await Promise.all([dataPromise, delayPromise]);
+    
+      // แสดงเนื้อหาและซ่อนโหลด
       document.getElementById('loader').style.display = 'none';
       document.querySelector('.main-content').style.display = 'block';
     
-      // ดึงข้อมูลและแสดง
-      const allJudgments = await fetchJudgments();
+      // แสดงข้อมูลเริ่มต้น
       renderJudgments(allJudgments, 'all');
     
       // เปลี่ยนตาม select
@@ -144,6 +148,7 @@
         renderJudgments(allJudgments, e.target.value);
       });
     });
+
 
   </script>
 </body>
