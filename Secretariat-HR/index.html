@@ -162,13 +162,24 @@
   const originalStyles = new Map();
 
   function setTheme(theme) {
-    const allElements = document.querySelectorAll('body *:not(.top-bar):not(.top-bar *):not(.banner h1):not(.banner h2):not(.banner)');
+    const body = document.body;
     const banner = document.querySelector('.banner');
 
+    // เปลี่ยน class บน body
+    body.classList.remove('theme-default', 'theme-dark', 'theme-yellow');
+    body.classList.add(`theme-${theme}`);
+
+    // เลือก element ทั้งหมดที่ไม่ใช่ top-bar และไม่ใช่ h1/h2 ใน banner
+    const allElements = document.querySelectorAll(
+      'body *:not(.top-bar):not(.top-bar *):not(.banner h1):not(.banner h2):not(.banner)'
+    );
+
+    // สีที่จะใช้สำหรับ element ทั่วไป
     let bgColor = '';
     let textColor = '';
 
     if (theme === 'default') {
+      // คืนค่าทุก style ดั้งเดิม
       allElements.forEach(el => {
         if (originalStyles.has(el)) {
           const { backgroundColor, color } = originalStyles.get(el);
@@ -180,7 +191,7 @@
         }
       });
 
-      // คืนค่าพื้นหลัง banner
+      // banner ใช้แค่ภาพ ไม่มี overlay
       banner.style.background = "url('/assets/img/parliament.jpg') no-repeat center center fixed";
       banner.style.backgroundSize = 'cover';
       banner.style.backgroundBlendMode = '';
@@ -204,7 +215,7 @@
         el.style.color = textColor;
       });
 
-      // เปลี่ยนพื้นหลัง banner เฉพาะ overlay สี
+      // banner แสดงภาพ + overlay สี
       banner.style.background = `rgba(0,0,0,0.6) url('/assets/img/parliament.jpg') no-repeat center center fixed`;
       banner.style.backgroundSize = 'cover';
       banner.style.backgroundBlendMode = 'overlay';
@@ -212,12 +223,12 @@
   }
 
   function setFontSize(size) {
-    document.body.classList.remove('font-size-small', 'font-size-medium', 'font-size-large');
-    if (size === 'small') document.body.classList.add('font-size-small');
-    if (size === 'medium') document.body.classList.add('font-size-medium');
-    if (size === 'large') document.body.classList.add('font-size-large');
+    const body = document.body;
+    body.classList.remove('font-size-small', 'font-size-medium', 'font-size-large');
+    body.classList.add(`font-size-${size}`);
   }
 </script>
+
 
 
 
