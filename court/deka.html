@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ศาลแห่งสาธารณรัฐอาร์ลิงตัน</title>
+  <link rel="icon" href="/assets/img/logo.png" type="image/gif" sizes="16x16">
+  <link rel="stylesheet" href="https://slw-system.pages.dev/assets/css/font-face.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="first-style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div data-header="">
+        <img src="/assets/img/court/logo.png" width="50.4px">
+        <nav>
+          <ul class="nav-links">
+            <li>
+              <a href="#">
+                <div data-first>หน้าหลัก</div>
+                <div data-sec><i class="fa-solid fa-house"></i></div>
+              </a>
+            </li>
+            <li class="has-submenu">
+              <a href="#">
+                <div data-first="">เกี่ยวกับศาล</div>
+                <div data-sec><i class="fa-solid fa-folder-open"></i></div>
+              </a>
+              <ul class="submenu">
+                <li class="has-submenu">
+                  <a href="#">ผู้บริหารศาล</a>
+                  <ul class="submenu">
+                    <li><a href="#">ผู้บริหารศาลยุติธรรม</a></li>
+                    <li><a href="occ-manager">ผู้บริหารศาลรัฐธรรมนูญ</a></li>
+                    <li><a href="adm-manager">ผู้บริหารศาลปกครอง</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">ประวัติความเป็นมา</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="">
+                <div data-first>คำพิพากษา</div>
+                <div data-sec><i class="fa-solid fa-file"></i></div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <div data-first>ติดต่อเรา</div>
+                <div data-sec><i class="fa-solid fa-envelope"></i></div>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <main class="main-content">
+    <h1>เอกสารศาลกลางอาร์ลิงตัน</h1>
+    <label for="typeSelect">เลือกประเภทคำพิพากษา:</label>
+    <select id="typeSelect">
+      <option value="all">ทั้งหมด</option>
+      <option value="a">คำวินิจฉัยศาลรัฐธรรมนูญ</option>
+      <option value="b">คำสั่งศาลรัฐธรรมนูญ</option>
+      <option value="c">คำพิพากษา/คำสั่งศาลปกครอง</option>
+      <option value="d">คำพิพากษาศาลฎีกา</option>
+      <option value="e">คำพิพากษาศาลชั้นอุทธรณ์</option>
+      <option value="f">รายงานประจำปีศาลกลาง</option>
+    </select>
+
+    <div id="resultList" class="judgment-list"></div>
+  </main>
+  
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-left">
+          <p>&copy; 2025 ศาลกลางอาร์ลิงตัน</p>
+          <p>เลขที่  ถนนนฤเบศร์ธรรมนคร อำเภอเมืองชอลซัล จังหวัดชอลซัง</p>
+        </div>
+        <div class="footer-right">
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="first-script.js"></script>
+  <script>
+    const url = 'https://script.google.com/macros/s/AKfycbyxMQurICYCcPwB0XQQB4LthxT6pRqngUENcP7LaAspn2I8qq49Gx_erFi9SHGVfTRO/exec';
+  
+    async function fetchJudgments() {
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        return data;
+      } catch (err) {
+        console.error('เกิดข้อผิดพลาดในการโหลดข้อมูล:', err);
+        return [];
+      }
+    }
+  
+    function renderJudgments(data, type) {
+      const list = document.getElementById('resultList');
+      list.innerHTML = ''; // ล้างข้อมูลเก่า
+  
+      const filtered = type === 'all' ? data : data.filter(item => item.type === type);
+  
+      if (filtered.length === 0) {
+        list.innerHTML = '<p>ไม่พบข้อมูล</p>';
+        return;
+      }
+  
+      filtered.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'judgment-item';
+        div.innerHTML = `<a href="${item.link}" target="_blank">${item.name}</a>`;
+        list.appendChild(div);
+      });
+    }
+  
+    // เริ่มต้น
+    let allJudgments = [];
+  
+    document.addEventListener('DOMContentLoaded', async () => {
+      allJudgments = await fetchJudgments();
+      renderJudgments(allJudgments, 'all');
+  
+      document.getElementById('typeSelect').addEventListener('change', (e) => {
+        renderJudgments(allJudgments, e.target.value);
+      });
+    });
+  </script>
+</body>
+</html>
