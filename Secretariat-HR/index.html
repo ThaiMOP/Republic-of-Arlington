@@ -20,15 +20,16 @@
     .font-size-large { font-size: 18px; }
     header .top-bar {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
       padding: 10px;
+      background-color: #acaaaa;
     }
     header .main-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 20px;
-      background-color: #f2f2f2;
+      background: #800000;
     }
     nav ul {
       list-style: none;
@@ -61,6 +62,19 @@
       color: white;
       text-align: center;
     }
+    
+    .top-bar button {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        padding: 5px;
+        line-height: 12.5px;
+        font-size: 15px !important;
+        text-align: center;
+        background: #ffffff;
+        border: none;
+        font-family: 'Kanit', sans-serif;
+    }
   </style>
 </head>
 <body class="theme-default font-size-medium">
@@ -69,8 +83,8 @@
   <div class="top-bar">
     <div>
       <button onclick="setTheme('default')">ปกติ</button>
-      <button onclick="setTheme('dark')">หนังสือขาว-พื้นหลังดำ</button>
-      <button onclick="setTheme('yellow')">หนังสือเหลือง-พื้นหลังดำ</button>
+      <button style="background-color: black !important; color: white !important;" onclick="setTheme('dark')">หนังสือขาว-พื้นหลังดำ</button>
+      <button style="background-color: black !important; color: yellow !important;" onclick="setTheme('yellow')">หนังสือเหลือง-พื้นหลังดำ</button>
     </div>
     <div>
       <button onclick="setFontSize('small')">-ก</button>
