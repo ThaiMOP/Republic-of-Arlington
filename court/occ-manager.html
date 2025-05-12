@@ -77,8 +77,10 @@
       <div class="executive-box">
         <div class="executive">
           <img src="/assets/img/court/occ-head1.png" alt="ชื่อผู้บริหาร" class="executive-img">
-          <h3>นายณภัทร สุวรรณสวัสดิ์</h3>
+          <h3>1. นายณภัทร สุวรรณสวัสดิ์</h3>
           <p class="position">ประธานศาลรัฐธรรมนูญ</p>
+          <p>1 เมษายน 2568 (<span id="day" start-date="2025-04-01" finish-date=""></span>)</p>
+          <script> function calculateDaysInOffice() { const span = document.getElementById('day'); const startDateStr = span.getAttribute('start-date'); const finishDateStr = span.getAttribute('finish-date'); const startDate = new Date(startDateStr); const finishDate = finishDateStr ? new Date(finishDateStr) : new Date(); const timeDiff = finishDate - startDate; const dayDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24)); span.textContent = `${dayDiff} วัน`; } calculateDaysInOffice(); </script>
         </div>
       </div>
     </div>
