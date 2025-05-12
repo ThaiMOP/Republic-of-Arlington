@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Title -->
+  <title>Arlington Governance Services</title>
+  <link rel="icon" href="https://rep-arlington.pages.dev/assets/img/logo.png" type="image/png">
+  <meta name="title" content="Arlington Governance Services">
+  <meta name="description" content="เข้าถึงข้อมูลภาครัฐได้ง่าย ๆ ทั้งข้อมูลส่วนตัว สวัสดิการ นโยบายรัฐ และอื่น ๆ ครบจบในที่เดียว!">
+  
+  <!-- Open Graph / Facebook / LINE -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rep-arlington.pages.dev/gov/gs/">
+  <meta property="og:title" content="Arlington Governance Services">
+  <meta property="og:description" content="เข้าถึงข้อมูลภาครัฐได้ง่าย ๆ ทั้งข้อมูลส่วนตัว สวัสดิการ นโยบายรัฐ และอื่น ๆ ครบจบในที่เดียว!">
+  <meta property="og:image" content="https://rep-arlington.pages.dev/assets/img/logo.png">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://rep-arlington.pages.dev/gov/gs/">
+  <meta property="twitter:title" content="Arlington Governance Services">
+  <meta property="twitter:description" content="เข้าถึงข้อมูลภาครัฐได้ง่าย ๆ ทั้งข้อมูลส่วนตัว สวัสดิการ นโยบายรัฐ และอื่น ๆ ครบจบในที่เดียว!">
+  <meta property="twitter:image" content="https://rep-arlington.pages.dev/assets/img/logo.png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Sarabun', sans-serif;
+      background-color: #f5f6f8;
+      color: #333;
+    }
+    header {
+      background-color: #002d5a;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #fff;
+      position: relative;
+      z-index: 1;
+    }
+    header img {
+      height: 50px;
+    }
+    header h1 {
+      font-size: 1.5rem;
+      margin-left: 1rem;
+    }
+    .menu-toggle {
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .sidebar {
+      position: absolute;
+      z-index: 0;
+      top: 0;
+      right: 0;
+      background: #00b894;
+      width: 250px;
+      height: calc(100vh - 4em);
+      color: #fff;
+      padding: 1rem;
+      padding-top: 3em;
+      display: none;
+    }
+    .sidebar.active {
+      display: block;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+    .sidebar ul li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      cursor: pointer;
+    }
+    main {
+      max-width: 1024px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+      color: #002d5a;
+      margin-top: 0;
+      text-align: center;
+    }
+    .services.active{
+      display: grid;
+    }
+    .services {
+      display: none;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .service-card {
+      background: #fff;
+      border-radius: 1rem;
+      padding: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .service-card img {
+      width: 64px;
+      margin-bottom: 0.5rem;
+    }
+    .service-card p {
+      margin: 0.5rem 0;
+    }
+    .details-link {
+      color: #00b894;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+    .nav-menu {
+  display: flex;
+  align-items: center;
+}
+
+    .menu {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    }
+
+    .menu li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    }
+
+    .menu li a:hover {
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 0.5rem;
+    }
+
+    /* สำหรับ dropdown */
+    .dropdown {
+    position: relative;
+    }
+
+    .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #004080;
+    top: 100%;
+    left: 0;
+    min-width: 160px;
+    z-index: 2;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    }
+
+    .dropdown-content a {
+    color: #fff;
+    display: block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    }
+
+    .dropdown:hover .dropdown-content {
+    display: block;
+    }
+
+    /* Responsive toggle */
+    @media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 64px;
+        right: 0;
+        background-color: #002d5a;
+        width: 100%;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .menu {
+        flex-direction: column;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+    }
+
+  </style>
+</head>
+<body>
+<header>
+  <div style="display: flex; align-items: center;">
+    <img src="/assets/img/AGS.png" alt="Governance Services Logo" />
+    <h1>Governance Services</h1>
+  </div>
+  <nav class="nav-menu">
+    <ul class="menu">
+      <li><a href="index.html">หน้าหลัก</a></li>
+      <li class="dropdown">
+        <a href="#">เกี่ยวกับ</a>
+        <div class="dropdown-content">
+          <a href="policy.html">นโยบาย</a>
+          <a href="executives.html">ทำเนียบผู้บริหาร</a>
+          <a href="gov.html">ตรวจสอบข้อมูล</a>
+        </div>
+      </li>
+      <li><a href="#">ติดต่อเรา</a></li>
+      <li><a href="https://rep-arlington.pages.dev/gov/">กลับหน้าหลัก</a></li>
+    </ul>
+  </nav>
+  <i class="fas fa-bars menu-toggle" id="menuToggle"></i>
+</header>
+
+  <div class="sidebar" id="sidebar">
+    <ul>
+      <li onclick="openFeatureContent('feature-list-block-1')">ข้อมูลของฉัน</li>
+      <li onclick="openFeatureContent('feature-list-block-2')">นโยบายรัฐบาล</li>
+      <li onclick="openFeatureContent('feature-list-block-3')">สวัสดิการ</li>
+      <li onclick="openFeatureContent('feature-list-block-4')">สารธารณูปโภค</li>
+      <li onclick="openFeatureContent('feature-list-block-5')">การศึกษา</li>
+      <li onclick="openFeatureContent('feature-list-block-6')">การงาน/อาชีพ</li>
+      <li onclick="openFeatureContent('feature-list-block-7')">เลือกตั้ง</li>
+      <li onclick="openFeatureContent('feature-list-block-8')">การเงิน/ประกัน</li>
+      <li onclick="openFeatureContent('feature-list-block-9')">ที่ดิน/ที่อยู่</li>
+      <li onclick="openFeatureContent('feature-list-block-10')">คดี/แจ้งเหตุ</li>
+      <li onclick="openFeatureContent('feature-list-block-11')">รู้เรื่องรัฐ</li>
+    </ul>
+  </div>
+  <main>
+    <h2>บริการที่น่าสนใจ</h2>
+    <div class="services active">
+      <!-- ข้อมูลทั้งหมด -->
+      
+      <div class="service-card">
+        <img src="https://img.icons8.com/?size=100&id=YNfoxHVAFFEa&format=png&color=000000" alt="ข้อมูลทะเบียนราษฎร์">
+        <p>ข้อมูลทะเบียนราษฎร์</p>
+        <a href="/gov/bora/index.html" class="details-link">รายละเอียด</a>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/ios-filled/100/000000/conference.png" alt="ประกันสังคม">
+        <p>ลงทะเบียนประกันสังคม</p>
+        <a href="/gov/sso/service" class="details-link">รายละเอียด</a>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/ios-filled/100/000000/conference.png" alt="">
+        <p>สวัสดิการชุมชน</p>
+        <a href="#" onclick="learnMore()" class="details-link">รายละเอียด</a>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/ios-filled/100/000000/conference.png" alt="">
+        <p>ขอเทียบวุฒิ</p>
+        <a href="#" onclick="learnMore()" class="details-link">รายละเอียด</a>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/?size=100&id=KoFUQ6FPna5n&format=png&color=000000" alt="เช็กสิทธิเลือกตั้ง">
+        <p>เช็กสิทธิเลือกตั้ง</p>
+        <a href="https://rep-arlington.pages.dev/election/enqelection-local" class="details-link">รายละเอียด</a>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/?size=100&id=Fro98ekUVu6V&format=png&color=000000" alt="">
+        <p>แจ้งเหตุไม่ไปเลือกตั้ง</p>
+        <a href="https://rep-arlington.pages.dev/election/event" class="details-link">รายละเอียด</a>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/?size=100&id=p3ZF7TUg1eNy&format=png&color=000000" alt="">
+        <p>ยื่นแบบชำระภาษี</p>
+        <a href="#" onclick="learnMore()" class="details-link">รายละเอียด</a>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/?size=100&id=wIJkgPUNylKq&format=png&color=000000" alt="">
+        <p>ภาษีที่ดิน และสิ่งปลูกสร้าง</p>
+        <a href="#" onclick="learnMore()" class="details-link">รายละเอียด</a>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/?size=100&id=104084&format=png&color=000000" alt="">
+        <p>Check ผังเมือง</p>
+        <a href="#" class="details-link">รายละเอียด</a>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/?size=100&id=DGJ9K7moMMar&format=png&color=000000" alt="">
+        <p>ขอคัดและขอรับรองสำเนาคำพิพากษา/คำสั่งศาลปกครอง</p>
+        <a href="https://rep-arlington.pages.dev/court/" class="details-link">รายละเอียด</a>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/?size=100&id=123822&format=png&color=000000" alt="">
+        <p>แจ้งเหตุปัญหาสังคม</p>
+        <a href="#"onclick="learnMore()" class="details-link">รายละเอียด</a>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/?size=100&id=11658&format=png&color=000000" alt="">
+        <p>บริการติดตามสถานะคดี</p>
+        <a href="https://rep-arlington.pages.dev/court/" class="details-link">รายละเอียด</a>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/?size=100&id=OI2bRTyUMtns&format=png&color=000000" alt="">
+        <p>ศูนย์ดำรงธรรม</p>
+        <a href="https://rep-arlington.pages.dev/court/" class="details-link">รายละเอียด</a>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/?size=100&id=jOh08ohAhThp&format=png&color=000000" alt="">
+        <p>ตรวจสอบบุคคลล้มละลาย</p>
+        <a href="https://rep-arlington.pages.dev/court/" class="details-link">รายละเอียด</a>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/?size=100&id=3005&format=png&color=000000" alt="">
+        <p>ข้อมูลเปิดภาครัฐ</p>
+        <a href="#"onclick="learnMore()" class="details-link">รายละเอียด</a>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/?size=100&id=2817&format=png&color=000000" alt="">
+        <p>ข้อมูลติดต่อราชการ</p>
+        <a href="#"onclick="learnMore()" class="details-link">รายละเอียด</a>
+      </div>
+      
+    </div>
+    <div class="services" id="feature-list-block-1">
+      
+      <!-- ข้อมูลของฉัน -->
+      
+      <div class="service-card">
+        <img src="https://img.icons8.com/?size=100&id=KoFUQ6FPna5n&format=png&color=000000" alt="เช็กสิทธิเลือกตั้ง">
+        <p>เช็กสิทธิเลือกตั้ง</p>
+        <a href="https://rep-arlington.pages.dev/election/enqelection-local" class="details-link">รายละเอียด</a>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/?size=100&id=YNfoxHVAFFEa&format=png&color=000000" alt="ข้อมูลทะเบียนราษฎร์">
+        <p>ข้อมูลทะเบียนราษฎร์</p>
+        <a href="/gov/bora/index.html" class="details-link">รายละเอียด</a>
+      </div>
+      
+    </div>
+    <div class="services" id="feature-list-block-2">
+      <!-- นโยบายรัฐบาล -->
+    </div>
+    <div class="services" id="feature-list-block-3">
+      
+      <!-- สวัสดิการ -->
+      
+      <div class="service-card">
+        <img src="https://img.icons8.com/ios-filled/100/000000/conference.png" alt="ประกันสังคม">
+        <p>ลงทะเบียนประกันสังคม</p>
+        <a href="/gov/sso/service" class="details-link">รายละเอียด</a>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/ios-filled/100/000000/conference.png" alt="">
+        <p>สวัสดิการชุมชน</p>
+        <a href="#"onclick="learnMore()" class="details-link">รายละเอียด</a>
+      </div>
+      
+    </div>
+    <div class="services" id="feature-list-block-4">
+      <!-- สาธารณูปโภค -->
+    </div>
+    <div class="services" id="feature-list-block-5">
+      
+      <!-- การศึกษา -->
+      <div class="service-card">
+        <img src="https://img.icons8.com/ios-filled/100/000000/conference.png" alt="">
+        <p>ขอเทียบวุฒิ</p>
+        <a href="#" onclick="learnMore()" class="details-link">รายละเอียด</a>
+      </div>
+    </div>
+    <div class="services" id="feature-list-block-6">
+      <!-- การงาน/อาชีพ -->
+    </div>
+    
+    <div class="services" id="feature-list-block-7">
+      <!-- เลือกตั้ง -->
+      <div class="service-card">
+        <img src="https://img.icons8.com/?size=100&id=MORHmfaUUcLw&format=png&color=000000" alt="">
+        <p>ตรวจสอบผู้มีสิทธิเลือกตั้ง</p>
+        <a href="https://rep-arlington.pages.dev/election/enqelection-local" class="details-link">รายละเอียด</a>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/?size=100&id=Fro98ekUVu6V&format=png&color=000000" alt="">
+        <p>แจ้งเหตุไม่ไปเลือกตั้ง</p>
+        <a href="https://rep-arlington.pages.dev/election/event" class="details-link">รายละเอียด</a>
+      </div>
+    </div>
+    <div class="services" id="feature-list-block-8">
+      <!-- การเงิน/ประกัน -->
+      <div class="service-card">
+        <img src="https://img.icons8.com/?size=100&id=p3ZF7TUg1eNy&format=png&color=000000" alt="">
+        <p>ยื่นแบบชำระภาษี</p>
+        <a href="#" onclick="learnMore()" class="details-link">รายละเอียด</a>
+      </div>
+    </div>
+    <div class="services" id="feature-list-block-9">
+      <!-- ที่ดิน/ที่อยู่ -->
+      <div class="service-card">
+        <img src="https://img.icons8.com/?size=100&id=wIJkgPUNylKq&format=png&color=000000" alt="">
+        <p>ภาษีที่ดิน และสิ่งปลูกสร้าง</p>
+        <a href="#" onclick="learnMore()" class="details-link">รายละเอียด</a>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/?size=100&id=104084&format=png&color=000000" alt="">
+        <p>Check ผังเมือง</p>
+        <a href="#" onclick="learnMore()" class="details-link">รายละเอียด</a>
+      </div>
+    </div>
+    <div class="services" id="feature-list-block-10">
+      <!-- คดี/แจ้งเหตุ -->
+      <div class="service-card">
+        <img src="https://img.icons8.com/?size=100&id=DGJ9K7moMMar&format=png&color=000000" alt="">
+        <p>ขอคัดและขอรับรองสำเนาคำพิพากษา/คำสั่งศาลปกครอง</p>
+        <a href="https://rep-arlington.pages.dev/court/" class="details-link">รายละเอียด</a>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/?size=100&id=123822&format=png&color=000000" alt="">
+        <p>แจ้งเหตุปัญหาสังคม</p>
+        <a href="#" onclick="learnMore()" class="details-link">รายละเอียด</a>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/?size=100&id=11658&format=png&color=000000" alt="">
+        <p>บริการติดตามสถานะคดี</p>
+        <a href="https://rep-arlington.pages.dev/court/" class="details-link">รายละเอียด</a>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/?size=100&id=OI2bRTyUMtns&format=png&color=000000" alt="">
+        <p>ศูนย์ดำรงธรรม</p>
+        <a href="https://rep-arlington.pages.dev/court/" class="details-link">รายละเอียด</a>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/?size=100&id=jOh08ohAhThp&format=png&color=000000" alt="">
+        <p>ตรวจสอบบุคคลล้มละลาย</p>
+        <a href="https://rep-arlington.pages.dev/court/" class="details-link">รายละเอียด</a>
+      </div>
+    </div>
+    <div class="services" id="feature-list-block-11">
+      <!-- รู้เรื่องรัฐ -->
+      <div class="service-card">
+        <img src="https://img.icons8.com/?size=100&id=3005&format=png&color=000000" alt="">
+        <p>ข้อมูลเปิดภาครัฐ</p>
+        <a href="#" onclick="learnMore()" class="details-link">รายละเอียด</a>
+      </div>
+      <div class="service-card">
+        <img src="https://img.icons8.com/?size=100&id=2817&format=png&color=000000" alt="">
+        <p>ข้อมูลติดต่อราชการ</p>
+        <a href="#" onclick="learnMore()" class="details-link">รายละเอียด</a>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="script.js"></script>
+  <script>
+  function openFeatureContent(id) {
+    // ซ่อนทุก block ก่อน
+    const allBlocks = document.querySelectorAll('.services');
+    allBlocks.forEach(block => {
+      block.classList.remove('active');
+    });
+  
+    // แสดง block ที่ต้องการ
+    const targetBlock = document.getElementById(id);
+    if (targetBlock) {
+      targetBlock.classList.add('active');
+    }
+  }
+  </script>
+
+  <script>
+    const toggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+    let open = false;
+
+    toggle.addEventListener('click', () => {
+      open = !open;
+      sidebar.classList.toggle('active');
+      toggle.classList.toggle('fa-bars');
+      toggle.classList.toggle('fa-xmark');
+    });
+  </script>
+
+    <script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navMenu = document.querySelector('.nav-menu');
+  menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+  });
+</script>
+
+
+  <script src="/court/first-script.js"></script>
+</body>
+</html>
