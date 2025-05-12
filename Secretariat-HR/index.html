@@ -162,7 +162,7 @@
   const originalStyles = new Map();
 
   function setTheme(theme) {
-    const allElements = document.querySelectorAll('body *:not(.top-bar):not(.top-bar *):not(.banner h1):not(.banner h2)');
+    const allElements = document.querySelectorAll('body *:not(.top-bar):not(.top-bar *):not(.banner h1):not(.banner h2):not(.banner)');
     const banner = document.querySelector('.banner');
 
     let bgColor = '';
@@ -186,10 +186,10 @@
       banner.style.backgroundBlendMode = '';
     } else {
       if (theme === 'dark') {
-        bgColor = 'rgba(0, 0, 0, 0.6)';
+        bgColor = 'black';
         textColor = 'white';
       } else if (theme === 'yellow') {
-        bgColor = 'rgba(0, 0, 0, 0.6)';
+        bgColor = 'black';
         textColor = 'yellow';
       }
 
@@ -204,10 +204,10 @@
         el.style.color = textColor;
       });
 
-      // เปลี่ยนพื้นหลัง banner พร้อม overlay
-      banner.style.background = `${bgColor} url('/assets/img/parliament.jpg') no-repeat center center fixed`;
-      banner.style.backgroundBlendMode = 'overlay';
+      // เปลี่ยนพื้นหลัง banner เฉพาะ overlay สี
+      banner.style.background = `rgba(0,0,0,0.6) url('/assets/img/parliament.jpg') no-repeat center center fixed`;
       banner.style.backgroundSize = 'cover';
+      banner.style.backgroundBlendMode = 'overlay';
     }
   }
 
@@ -218,6 +218,7 @@
     if (size === 'large') document.body.classList.add('font-size-large');
   }
 </script>
+
 
 
 <script>
