@@ -139,6 +139,23 @@
         renderJudgments(allJudgments, e.target.value);
       });
     });
+
+    document.addEventListener('DOMContentLoaded', async () => {
+    // แสดง loader 3 วิ
+    await new Promise(resolve => setTimeout(resolve, 3000));
+  
+    // ซ่อน loader แล้วแสดงเนื้อหา
+    document.getElementById('loader').style.display = 'none';
+    document.querySelector('.main-content').style.display = 'block';
+  
+    // ดึงข้อมูล
+    allJudgments = await fetchJudgments();
+    renderJudgments(allJudgments, 'all');
+  
+    document.getElementById('typeSelect').addEventListener('change', (e) => {
+      renderJudgments(allJudgments, e.target.value);
+    });
+  });
   </script>
 </body>
 </html>
