@@ -277,15 +277,14 @@ select {
 .judgment-item a {
   display: inline-block;
   padding: 10px 14px;
-  background-color: #f2f2f2;
   border-radius: 8px;
   text-decoration: none;
   color: #333;
-  transition: background-color 0.2s;
+  transition: color 0.2s;
 }
 
 .judgment-item a:hover {
-  background-color: #e0e0e0;
+  color: #005eff;
 }
 
 /* Responsive */
