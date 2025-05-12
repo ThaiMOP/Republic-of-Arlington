@@ -133,11 +133,29 @@
 
 <script>
   function setTheme(theme) {
-    document.body.classList.remove('theme-default', 'theme-dark', 'theme-yellow');
-    if (theme === 'default') document.body.classList.add('theme-default');
-    if (theme === 'dark') document.body.classList.add('theme-dark');
-    if (theme === 'yellow') document.body.classList.add('theme-yellow');
+    const allElements = document.querySelectorAll('body *:not(.top-bar):not(.top-bar *)');
+    let bgColor = '', textColor = '';
+
+    if (theme === 'default') {
+      bgColor = 'white';
+      textColor = 'black';
+    } else if (theme === 'dark') {
+      bgColor = 'black';
+      textColor = 'white';
+    } else if (theme === 'yellow') {
+      bgColor = 'black';
+      textColor = 'yellow';
+    }
+
+    allElements.forEach(el => {
+      el.style.backgroundColor = bgColor;
+      el.style.color = textColor;
+    });
+
+    document.body.style.backgroundColor = bgColor;
+    document.body.style.color = textColor;
   }
+
   function setFontSize(size) {
     document.body.classList.remove('font-size-small', 'font-size-medium', 'font-size-large');
     if (size === 'small') document.body.classList.add('font-size-small');
@@ -145,6 +163,7 @@
     if (size === 'large') document.body.classList.add('font-size-large');
   }
 </script>
+
 
 </body>
 </html>
