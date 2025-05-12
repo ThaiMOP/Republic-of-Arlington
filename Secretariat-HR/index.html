@@ -214,6 +214,23 @@
     if (size === 'large') document.body.classList.add('font-size-large');
   }
 </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const menuItems = document.querySelectorAll('nav > ul > li');
+
+    menuItems.forEach(item => {
+      const submenu = item.querySelector('ul');
+      if (submenu) {
+        item.addEventListener('mouseenter', () => {
+          submenu.style.display = 'block';
+        });
+        item.addEventListener('mouseleave', () => {
+          submenu.style.display = 'none';
+        });
+      }
+    });
+  });
+</script>
 
 
 
