@@ -298,10 +298,13 @@ select {
   }
 }
 
-
 .container-a { width: 100%; margin-left: auto; margin-right: auto; padding-left: 15px; padding-right: 15px; } 
 @media (min-width: 576px) { .container-a { max-width: 540px; } } 
 @media (min-width: 768px) { .container-a { max-width: 720px; } } 
 @media (min-width: 992px) { .container-a { max-width: 960px; } } 
 @media (min-width: 1200px) { .container-a { max-width: 1140px; } } 
 @media (min-width: 1400px) { .container-a { max-width: 1320px; } }
+
+.judgment-item:not(:last-child) {
+    border-bottom: 1px solid #eee;
+}
