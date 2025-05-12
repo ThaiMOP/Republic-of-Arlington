@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>สำนักงานเลขาธิการสภาผู้แทนราษฎร</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Kanit', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .text-white { color: white; }
+    .theme-default { background: white; color: black; }
+    .theme-dark { background: black; color: white; }
+    .theme-yellow { background: black; color: yellow; }
+    .font-size-small { font-size: 14px; }
+    .font-size-medium { font-size: 16px; }
+    .font-size-large { font-size: 18px; }
+    header .top-bar {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+    }
+    header .main-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: #f2f2f2;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      gap: 15px;
+    }
+    nav ul li {
+      position: relative;
+    }
+    nav ul li ul {
+      position: absolute;
+      display: none;
+      background: #fff;
+      list-style: none;
+      padding: 10px;
+    }
+    nav ul li:hover ul {
+      display: block;
+    }
+    .banner {
+      background-image: url('banner.jpg');
+      background-size: cover;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    footer {
+      padding: 20px;
+      background: #333;
+      color: white;
+      text-align: center;
+    }
+  </style>
+</head>
+<body class="theme-default font-size-medium">
+
+<header>
+  <div class="top-bar">
+    <div>
+      <button onclick="setTheme('default')">ปกติ</button>
+      <button onclick="setTheme('dark')">หนังสือขาว-พื้นหลังดำ</button>
+      <button onclick="setTheme('yellow')">หนังสือเหลือง-พื้นหลังดำ</button>
+    </div>
+    <div>
+      <button onclick="setFontSize('small')">-ก</button>
+      <button onclick="setFontSize('medium')">ก</button>
+      <button onclick="setFontSize('large')">ก+</button>
+    </div>
+  </div>
+  <div class="main-header">
+    <div class="logo">LOGO</div>
+    <nav>
+      <ul>
+        <li>เกี่ยวกับสำนักงานฯ
+          <ul>
+            <li>ประวัติความเป็นมา</li>
+            <li>โครงสร้างสำนักงาน</li>
+            <li>หน้าที่และอำนาจ วิสัยทัศน์ พันธกิจ ยุทธศาสตร์</li>
+            <li>ผู้บริหารสำนักงานฯ</li>
+            <li>ทำเนียบเลขาธิการสภาผู้แทนราษฎร</li>
+          </ul>
+        </li>
+        <li>ประกาศ
+          <ul>
+            <li>รายการสภาวาที</li>
+            <li>รับสมัครงาน</li>
+          </ul>
+        </li>
+        <li>แผนงาน</li>
+        <li>ติดต่อ</li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="banner">
+  <h1 class="text-white" style="font-family: 'Kanit', sans-serif; font-weight: 600; font-size: 64px;">
+    สำนักงานเลขาธิการสภาผู้แทนราษฎร</h1>
+  <h2 class="text-white" style="font-family: 'Kanit', sans-serif; font-size: 32px;">
+    The Secretariat of The House of Representatives</h2>
+</div>
+
+<main>
+  <section>
+    <h3>ข่าวสำนักงานฯ</h3>
+    <!-- ใส่ข่าวที่เกี่ยวข้อง -->
+  </section>
+  <section>
+    <h3>ข่าวประชาสัมพันธ์สำนักงานฯ</h3>
+    <!-- ใส่ข่าวประชาสัมพันธ์ -->
+  </section>
+</main>
+
+<footer>
+  <p>© สงวนลิขสิทธิ์โดย สำนักงานเลขาธิการสภาผู้แทนราษฎร ศูนย์ราชการ 2 ชั้น 8 1 ถ.นฤเบศร์ธรรมนคร<br>
+  ตำบลโซยอน อำเภอเมืองซอลซัง 26000</p>
+  <div align="center">
+    <a href='https://www.counter12.com'><img src='https://www.counter12.com/img-ZZ9dyACya6cywZZY-15.gif' border='0' alt='free counter'></a>
+    <script type='text/javascript' src='https://www.counter12.com/ad.js?id=ZZ9dyACya6cywZZY'></script>
+  </div>
+</footer>
+
+<script>
+  function setTheme(theme) {
+    document.body.classList.remove('theme-default', 'theme-dark', 'theme-yellow');
+    if (theme === 'default') document.body.classList.add('theme-default');
+    if (theme === 'dark') document.body.classList.add('theme-dark');
+    if (theme === 'yellow') document.body.classList.add('theme-yellow');
+  }
+  function setFontSize(size) {
+    document.body.classList.remove('font-size-small', 'font-size-medium', 'font-size-large');
+    if (size === 'small') document.body.classList.add('font-size-small');
+    if (size === 'medium') document.body.classList.add('font-size-medium');
+    if (size === 'large') document.body.classList.add('font-size-large');
+  }
+</script>
+
+</body>
+</html>
