@@ -162,7 +162,12 @@
   const originalStyles = new Map();
 
   function setTheme(theme) {
-    const allElements = document.querySelectorAll('body *:not(.top-bar):not(.top-bar *)');
+    const allElements = document.querySelectorAll('body *:not(.top-bar):not(.top-bar *):not(.banner h1):not(.banner h2)');
+
+    // สีพื้นหลังสำหรับธีมต่าง ๆ
+    let bgColor = '';
+    let textColor = '';
+    let bodyOverlay = '';
 
     if (theme === 'default') {
       // คืนค่า style ดั้งเดิม
@@ -176,22 +181,20 @@
           el.style.color = '';
         }
       });
-      document.body.style.backgroundColor = '';
+      document.body.style.background = "url('/assets/img/parliament.jpg') no-repeat center center fixed";
+      document.body.style.backgroundSize = 'cover';
       document.body.style.color = '';
     } else {
-      let bgColor = '';
-      let textColor = '';
-
       if (theme === 'dark') {
-        bgColor = 'black';
+        bgColor = 'rgba(0,0,0,0.85)';
         textColor = 'white';
       } else if (theme === 'yellow') {
-        bgColor = 'black';
+        bgColor = 'rgba(0,0,0,0.85)';
         textColor = 'yellow';
       }
 
       allElements.forEach(el => {
-        // บันทึก style ดั้งเดิมครั้งแรกเท่านั้น
+        // เก็บค่าเดิมก่อนเปลี่ยน
         if (!originalStyles.has(el)) {
           originalStyles.set(el, {
             backgroundColor: el.style.backgroundColor || '',
@@ -202,7 +205,10 @@
         el.style.color = textColor;
       });
 
-      document.body.style.backgroundColor = bgColor;
+      // ตั้งค่าพื้นหลังภาพ + overlay สีธีม
+      document.body.style.background = `${bgColor} url('/assets/img/parliament.jpg') no-repeat center center fixed`;
+      document.body.style.backgroundBlendMode = 'overlay';
+      document.body.style.backgroundSize = 'cover';
       document.body.style.color = textColor;
     }
   }
@@ -214,6 +220,7 @@
     if (size === 'large') document.body.classList.add('font-size-large');
   }
 </script>
+
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const menuItems = document.querySelectorAll('nav > ul > li');
