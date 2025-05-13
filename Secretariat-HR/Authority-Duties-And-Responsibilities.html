@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>สำนักงานเลขาธิการสภาผู้แทนราษฎร</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="theme-default font-size-medium">
+
+<header>
+  <div class="top-bar">
+    <div>
+      <button onclick="setTheme('default')">ก</button>
+      <button style="background-color: black !important; color: white !important;" onclick="setTheme('dark')">ก</button>
+      <button style="background-color: black !important; color: yellow !important;" onclick="setTheme('yellow')">ก</button>
+    </div>
+    <div>
+      <button onclick="setFontSize('small')">-ก</button>
+      <button onclick="setFontSize('medium')">ก</button>
+      <button onclick="setFontSize('large')">ก+</button>
+    </div>
+  </div>
+  <div class="main-header">
+    <div class="logo">
+      <a href="" style="color: #fff;font-size: 30px;text-decoration: none;">
+        SHR
+        <!-- <img src="/assets/img/parliament/logos.PNG" style=" width: 30px; "> -->
+      </a>
+    </div>
+    <nav id="nav_bar">
+      <ul>
+        <li>เกี่ยวกับสำนักงานฯ
+          <ul>
+            <li><a href="about-us/ประวัติความเป็นมา.pdf" target="_blank">ประวัติความเป็นมา</a></li>
+            <li><a href="about-us/article_20250405105009.pdf">โครงสร้างสำนักงาน</a></li>
+            <li><a href="about-us/Authority-Duties-And-Responsibilities">หน้าที่และอำนาจ วิสัยทัศน์ พันธกิจ ยุทธศาสตร์</a></li>
+            <li><a href="about-us/Executive">ผู้บริหารสำนักงานฯ</a></li>
+            <li><a href="about-us/ทำเนียบ">ทำเนียบเลขาธิการสภาผู้แทนราษฎร</a></li>
+          </ul>
+        </li>
+        <li>ประกาศ
+          <ul>
+            <li><a href="announce/รายการสภาวาที">รายการสภาวาที</a></li>
+            <li><a href="announce/recruitment">รับสมัครงาน</a></li>
+          </ul>
+        </li>
+        <li><a href="plan/">แผนงาน</a></li>
+        <li><a href="contact/">ติดต่อ</a></li>
+      </ul>
+    </nav>
+    <div class="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+  </div>
+</header>
+
+<div class="banner" style=" height: 250px; ">
+  <div class="tab-bread">
+    <div class="container">
+      <div class="menu-bread">
+        <a href="/Secretariat-HR/">หน้าแรก</a> <span> &gt;&gt; </span> 
+        <a href="#">เกี่ยวกับสำนักงานฯ</a> <span> &gt;&gt; </span> 
+        <a href="">หน้าที่และอำนาจ วิสัยทัศน์ พันธกิจ ยุทธศาสตร์</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+  <section>
+    <h3>ข่าวสำนักงานฯ</h3>
+    <!-- ใส่ข่าวที่เกี่ยวข้อง -->
+  </section>
+  <section>
+    <h3>ข่าวประชาสัมพันธ์สำนักงานฯ</h3>
+    <!-- ใส่ข่าวประชาสัมพันธ์ -->
+  </section>
+</main>
+
+<footer>
+  <p>© สงวนลิขสิทธิ์โดย สำนักงานเลขาธิการสภาผู้แทนราษฎร ศูนย์ราชการ 2 ชั้น 8 1 ถ.นฤเบศร์ธรรมนคร<br>
+  ตำบลโซยอน อำเภอเมืองซอลซัง 26000</p>
+  <div align="center">
+    <!-- COUNTER -->
+  </div>
+</footer>
+  
+<script>
+document.querySelector('.menu-toggle').addEventListener('click', function () {
+  const icon = this.querySelector('i');
+  const nav = document.getElementById('nav_bar');
+  const body = document.body;
+
+  // ตรวจสอบว่ากำลังจะเปิดหรือปิดเมนู
+  const isOpen = icon.classList.contains('fa-bars');
+
+  // สลับไอคอน
+  icon.classList.toggle('fa-bars');
+  icon.classList.toggle('fa-xmark');
+
+  // เปิดเมนู
+  if (isOpen) {
+    nav.setAttribute('style', 'display: block;');
+    body.style.overflow = 'hidden';
+  } 
+  // ปิดเมนู
+  else {
+    nav.setAttribute('style', '');
+    body.style.overflow = '';
+  }
+});
+</script>
+
+
+<script>
+  const originalStyles = new Map();
+
+  function setTheme(theme) {
+    const body = document.body;
+    const banner = document.querySelector('.banner');
+
+    // เปลี่ยน class บน body
+    body.classList.remove('theme-default', 'theme-dark', 'theme-yellow');
+    body.classList.add(`theme-${theme}`);
+
+    // เลือก element ทั้งหมดที่ไม่ใช่ top-bar และไม่ใช่ h1/h2 ใน banner
+    const allElements = document.querySelectorAll(
+      'body *:not(.top-bar):not(.top-bar *):not(.banner h1):not(.banner h2):not(.banner)'
+    );
+
+    // สีที่จะใช้สำหรับ element ทั่วไป
+    let bgColor = '';
+    let textColor = '';
+
+    if (theme === 'default') {
+      // คืนค่าทุก style ดั้งเดิม
+      allElements.forEach(el => {
+        if (originalStyles.has(el)) {
+          const { backgroundColor, color } = originalStyles.get(el);
+          el.style.backgroundColor = backgroundColor;
+          el.style.color = color;
+        } else {
+          el.style.backgroundColor = '';
+          el.style.color = '';
+        }
+      });
+
+      // banner ใช้แค่ภาพ ไม่มี overlay
+      banner.style.background = "url('/assets/img/parliament.jpg') no-repeat center center fixed";
+      banner.style.backgroundSize = 'cover';
+      banner.style.backgroundBlendMode = '';
+    } else {
+      if (theme === 'dark') {
+        bgColor = 'black';
+        textColor = 'white';
+      } else if (theme === 'yellow') {
+        bgColor = 'black';
+        textColor = 'yellow';
+      }
+
+      allElements.forEach(el => {
+        if (!originalStyles.has(el)) {
+          originalStyles.set(el, {
+            backgroundColor: el.style.backgroundColor || '',
+            color: el.style.color || ''
+          });
+        }
+        el.style.backgroundColor = bgColor;
+        el.style.color = textColor;
+      });
+
+      // banner แสดงภาพ + overlay สี
+      banner.style.background = `rgba(0,0,0,0.6) url('/assets/img/parliament.jpg') no-repeat center center fixed`;
+      banner.style.backgroundSize = 'cover';
+      banner.style.backgroundBlendMode = 'overlay';
+    }
+  }
+
+  function setFontSize(size) {
+    const body = document.body;
+    body.classList.remove('font-size-small', 'font-size-medium', 'font-size-large');
+    body.classList.add(`font-size-${size}`);
+  }
+</script>
+
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const menuItems = document.querySelectorAll('nav > ul > li');
+
+    menuItems.forEach(item => {
+      const submenu = item.querySelector('ul');
+      if (submenu) {
+        // ซ่อนเมนูย่อยเริ่มต้น
+        submenu.style.display = 'none';
+
+        // toggle เมื่อคลิกเมนูหลัก
+        item.addEventListener('click', (e) => {
+          e.stopPropagation(); // ป้องกัน bubbling
+          const isVisible = submenu.style.display === 'block';
+
+          // ซ่อนเมนูย่อยทั้งหมดก่อน
+          document.querySelectorAll('nav ul li ul').forEach(ul => ul.style.display = 'none');
+
+          // toggle เมนูนี้
+          submenu.style.display = isVisible ? 'none' : 'block';
+        });
+      }
+    });
+
+    // ปิดเมนูเมื่อคลิกข้างนอก
+    document.addEventListener('click', () => {
+      document.querySelectorAll('nav ul li ul').forEach(ul => ul.style.display = 'none');
+    });
+  });
+</script>
+
+
+
+
+</body>
+</html>
