@@ -70,6 +70,7 @@ nav ul li ul {
     list-style: none;
     padding: 10px;
     width: 150px;
+    z-index: 999;
 }
 
 nav ul li ul li {
