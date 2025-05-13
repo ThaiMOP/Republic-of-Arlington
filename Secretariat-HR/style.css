@@ -1,7 +1,7 @@
-
 * {
     box-sizing: border-box;
 }
+
 body {
     font-family: 'Kanit', sans-serif;
     margin: 0;
@@ -37,6 +37,10 @@ body {
 
 .font-size-large {
     font-size: 18px;
+}
+
+header {
+    background: #800000;
 }
 
 header .top-bar {
