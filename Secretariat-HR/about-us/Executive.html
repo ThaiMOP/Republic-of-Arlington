@@ -7,55 +7,58 @@
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&display=swap" rel="stylesheet">
   <link href="/Secretariat-HR/style.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 </head>
 <body class="theme-default font-size-medium">
-
 <header>
-  <div class="top-bar">
-    <div>
-      <button onclick="setTheme('default')">ก</button>
-      <button style="background-color: black !important; color: white !important;" onclick="setTheme('dark')">ก</button>
-      <button style="background-color: black !important; color: yellow !important;" onclick="setTheme('yellow')">ก</button>
+    <div class="top-bar">
+        <div>
+            <button onclick="setTheme('default')">ก</button>
+            <button style="background-color: black !important; color: white !important;"
+                onclick="setTheme('dark')">ก</button>
+            <button style="background-color: black !important; color: yellow !important;"
+                onclick="setTheme('yellow')">ก</button>
+        </div>
+        <div>
+            <button onclick="setFontSize('small')">-ก</button>
+            <button onclick="setFontSize('medium')">ก</button>
+            <button onclick="setFontSize('large')">ก+</button>
+        </div>
     </div>
-    <div>
-      <button onclick="setFontSize('small')">-ก</button>
-      <button onclick="setFontSize('medium')">ก</button>
-      <button onclick="setFontSize('large')">ก+</button>
+    <div class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="/Secretariat-HR/" style="color: #fff;font-size: 30px;text-decoration: none;">
+                    SHR
+                    <!-- <img src="/assets/img/parliament/logos.PNG" style=" width: 30px; "> -->
+                </a>
+            </div>
+            <nav id="nav_bar">
+                <ul>
+                    <li>เกี่ยวกับสำนักงานฯ
+                        <ul>
+                            <li><a href="ประวัติความเป็นมา.pdf" target="_blank">ประวัติความเป็นมา</a></li>
+                            <li><a href="article_20250405105009.pdf">โครงสร้างสำนักงาน</a></li>
+                            <li><a href="Authority-Duties-And-Responsibilities">หน้าที่และอำนาจ วิสัยทัศน์ พันธกิจ
+                                    ยุทธศาสตร์</a></li>
+                            <li><a href="">ผู้บริหารสำนักงานฯ</a></li>
+                            <li><a href="ทำเนียบ">ทำเนียบเลขาธิการสภาผู้แทนราษฎร</a></li>
+                        </ul>
+                    </li>
+                    <li>ประกาศ
+                        <ul>
+                            <li><a href="announce/รายการสภาวาที">รายการสภาวาที</a></li>
+                            <li><a href="announce/recruitment">รับสมัครงาน</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="plan/">แผนงาน</a></li>
+                    <li><a href="contact/">ติดต่อ</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="main-header">
-    <div class="logo">
-      <a href="/Secretariat-HR/" style="color: #fff;font-size: 30px;text-decoration: none;">
-        SHR
-        <!-- <img src="/assets/img/parliament/logos.PNG" style=" width: 30px; "> -->
-      </a>
-    </div>
-    <nav id="nav_bar">
-      <ul>
-        <li>เกี่ยวกับสำนักงานฯ
-          <ul>
-            <li><a href="ประวัติความเป็นมา.pdf" target="_blank">ประวัติความเป็นมา</a></li>
-            <li><a href="article_20250405105009.pdf">โครงสร้างสำนักงาน</a></li>
-            <li><a href="Authority-Duties-And-Responsibilities">หน้าที่และอำนาจ วิสัยทัศน์ พันธกิจ ยุทธศาสตร์</a></li>
-            <li><a href="">ผู้บริหารสำนักงานฯ</a></li>
-            <li><a href="ทำเนียบ">ทำเนียบเลขาธิการสภาผู้แทนราษฎร</a></li>
-          </ul>
-        </li>
-        <li>ประกาศ
-          <ul>
-            <li><a href="announce/รายการสภาวาที">รายการสภาวาที</a></li>
-            <li><a href="announce/recruitment">รับสมัครงาน</a></li>
-          </ul>
-        </li>
-        <li><a href="plan/">แผนงาน</a></li>
-        <li><a href="contact/">ติดต่อ</a></li>
-      </ul>
-    </nav>
-    <div class="menu-toggle">
-      <i class="fas fa-bars"></i>
-    </div>
-  </div>
 </header>
 
 <div class="banner" style=" height: 250px; position: relative;">
