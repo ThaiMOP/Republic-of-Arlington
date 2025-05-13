@@ -205,19 +205,28 @@
 document.querySelector('.menu-toggle').addEventListener('click', function () {
   const icon = this.querySelector('i');
   const nav = document.getElementById('nav_bar');
+  const body = document.body;
 
-  // Toggle icon class
-  if (icon.classList.contains('fa-bars')) {
-    icon.classList.remove('fa-bars');
-    icon.classList.add('fa-xmark');
+  // ตรวจสอบว่ากำลังจะเปิดหรือปิดเมนู
+  const isOpen = icon.classList.contains('fa-bars');
+
+  // สลับไอคอน
+  icon.classList.toggle('fa-bars');
+  icon.classList.toggle('fa-xmark');
+
+  // เปิดเมนู
+  if (isOpen) {
     nav.setAttribute('style', 'display: block;');
-  } else {
-    icon.classList.remove('fa-xmark');
-    icon.classList.add('fa-bars');
+    body.style.overflow = 'hidden';
+  } 
+  // ปิดเมนู
+  else {
     nav.setAttribute('style', '');
+    body.style.overflow = '';
   }
 });
 </script>
+
 
 <script>
   const originalStyles = new Map();
