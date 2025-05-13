@@ -48,7 +48,7 @@ header .top-bar {
 
 header .main-header {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     padding: 20px;
     background: #800000;
