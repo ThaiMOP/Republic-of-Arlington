@@ -137,6 +137,7 @@ li {
         width: 100%;
         background: #880000;
         display: none;
+        z-index: 1000;
     }
 
     .main-header nav>ul {
