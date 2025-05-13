@@ -170,7 +170,7 @@ li {
     position: absolute;
     bottom: 0;
     height: auto;
-    background: rgba(31, 30, 30, 0.51);
+    background: rgba(31, 30, 30, 0.51) !important;
 }
 
 .menu-bread {
