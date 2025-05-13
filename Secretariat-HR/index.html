@@ -26,7 +26,7 @@
     }
     header .main-header {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
       align-items: center;
       padding: 20px;
       background: #800000;
@@ -74,6 +74,10 @@
       text-align: center;
     }
     
+    li {
+        user-select: none;
+    }
+    
     .top-bar button {
         width: 25px;
         height: 25px;
@@ -87,6 +91,42 @@
         font-family: 'Kanit', sans-serif;
         cursor: pointer;
     }
+
+    .menu-toggle {display: none;}
+    @media (max-width: 574.98px) {
+      .main-header nav {
+        position: fixed;
+        top: 109.15px;
+        height: calc(100vh - 109.15px);
+        width: 100%;
+        background: #880000;
+        display: none;
+      }
+    
+      .main-header nav > ul {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+      }
+    
+      .main-header nav > ul > li:not(:last-child) {
+        border-bottom: 1px solid;
+        padding-bottom: 20px;
+      }
+    
+      .main-header nav > ul > li > ul {
+        position: relative;
+        width: 100%;
+        background: transparent;
+        padding-left: 0;
+      }
+    
+      .main-header nav > ul > li > ul > li:not(:last-child) {
+        border-bottom: 1px solid #ff9b00;
+      }
+    }
+
   </style>
 </head>
 <body class="theme-default font-size-medium">
@@ -108,7 +148,7 @@
     <div class="logo">
       <a href="">LOGO</a>
     </div>
-    <nav>
+    <nav id="nav_bar">
       <ul>
         <li>เกี่ยวกับสำนักงานฯ
           <ul>
@@ -129,6 +169,9 @@
         <li><a href="">ติดต่อ</a></li>
       </ul>
     </nav>
+    <div class="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
   </div>
 </header>
 
@@ -154,10 +197,27 @@
   <p>© สงวนลิขสิทธิ์โดย สำนักงานเลขาธิการสภาผู้แทนราษฎร ศูนย์ราชการ 2 ชั้น 8 1 ถ.นฤเบศร์ธรรมนคร<br>
   ตำบลโซยอน อำเภอเมืองซอลซัง 26000</p>
   <div align="center">
-    <a href='https://www.counter12.com'><img src='https://www.counter12.com/img-ZZ9dyACya6cywZZY-15.gif' border='0' alt='free counter'></a>
-    <script type='text/javascript' src='https://www.counter12.com/ad.js?id=ZZ9dyACya6cywZZY'></script>
+    <!-- COUNTER -->
   </div>
 </footer>
+  
+<script>
+document.querySelector('.menu-toggle').addEventListener('click', function () {
+  const icon = this.querySelector('i');
+  const nav = document.getElementById('nav_bar');
+
+  // Toggle icon class
+  if (icon.classList.contains('fa-bars')) {
+    icon.classList.remove('fa-bars');
+    icon.classList.add('fa-xmark');
+    nav.setAttribute('style', 'display: block;');
+  } else {
+    icon.classList.remove('fa-xmark');
+    icon.classList.add('fa-bars');
+    nav.setAttribute('style', '');
+  }
+});
+</script>
 
 <script>
   const originalStyles = new Map();
