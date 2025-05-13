@@ -91,6 +91,7 @@ nav ul li:hover ul {
     background-size: cover;
     padding: 60px 20px;
     text-align: center;
+    position: relative;
 }
 
 footer {
@@ -163,14 +164,24 @@ li {
 }
 
 .tab-bread {
-    position: absolute;
-    top: auto;
-    bottom: 0px;
-    padding: 10px 50px;
+    padding: 10px 0;
+    margin-left: -20px;
+    margin-right: -40px;
     width: 100%;
+    position: absolute;
+    bottom: 0;
     height: auto;
     background: rgba(31, 30, 30, 0.51);
 }
+
+.menu-bread {
+    color: #ccc;
+    font-weight: 700;
+    font-size: 14px;
+    float: left;
+    margin: 10px 0px;
+}
+
 .menu-bread a {
     color: #ffffff;
 }
