@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>สำนักงานเลขาธิการสภาผู้แทนราษฎร</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&display=swap" rel="stylesheet">
+  <link href="/Secretariat-HR/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body class="theme-default font-size-medium">
+
+<header>
+  <div class="top-bar">
+    <div>
+      <button onclick="setTheme('default')">ก</button>
+      <button style="background-color: black !important; color: white !important;" onclick="setTheme('dark')">ก</button>
+      <button style="background-color: black !important; color: yellow !important;" onclick="setTheme('yellow')">ก</button>
+    </div>
+    <div>
+      <button onclick="setFontSize('small')">-ก</button>
+      <button onclick="setFontSize('medium')">ก</button>
+      <button onclick="setFontSize('large')">ก+</button>
+    </div>
+  </div>
+  <div class="main-header">
+    <div class="logo">
+      <a href="/Secretariat-HR/" style="color: #fff;font-size: 30px;text-decoration: none;">
+        SHR
+        <!-- <img src="/assets/img/parliament/logos.PNG" style=" width: 30px; "> -->
+      </a>
+    </div>
+    <nav id="nav_bar">
+      <ul>
+        <li>เกี่ยวกับสำนักงานฯ
+          <ul>
+            <li><a href="ประวัติความเป็นมา.pdf" target="_blank">ประวัติความเป็นมา</a></li>
+            <li><a href="article_20250405105009.pdf">โครงสร้างสำนักงาน</a></li>
+            <li><a href="Authority-Duties-And-Responsibilities">หน้าที่และอำนาจ วิสัยทัศน์ พันธกิจ ยุทธศาสตร์</a></li>
+            <li><a href="Executive">ผู้บริหารสำนักงานฯ</a></li>
+            <li><a href="">ทำเนียบเลขาธิการสภาผู้แทนราษฎร</a></li>
+          </ul>
+        </li>
+        <li>ประกาศ
+          <ul>
+            <li><a href="announce/รายการสภาวาที">รายการสภาวาที</a></li>
+            <li><a href="announce/recruitment">รับสมัครงาน</a></li>
+          </ul>
+        </li>
+        <li><a href="plan/">แผนงาน</a></li>
+        <li><a href="contact/">ติดต่อ</a></li>
+      </ul>
+    </nav>
+    <div class="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+  </div>
+</header>
+
+<div class="banner" style=" height: 250px; position: relative;">
+  <div class="tab-bread">
+    <div class="container">
+      <div class="menu-bread">
+        <a href="/Secretariat-HR/">หน้าแรก</a> <span> &gt;&gt; </span> 
+        <a href="#">เกี่ยวกับสำนักงานฯ</a> <span> &gt;&gt; </span> 
+        <a href="" title="ทำเนียบเลขาธิการสภาผู้แทนราษฎร">ทำเนียบเลขาธิการสภาผู้แทนราษฎร</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main style=" background-image: linear-gradient(#ffffff, #e5dcca);margin-top: 20px; ">
+  <section class="container">
+      <span style="font-size: 26px; color: #A52A2A;"><span style="font-family: 'Kanit'; font-weight: 700;">ทำเนียบเลขาธิการสภาผู้แทนราษฎร</span></span>
+      <div class="executives-container">
+      	<div class="executive-card quarter">
+      	   <img src="https://rep-arlington.pages.dev/assets/img/logo.png" alt="นายณภัทร สุวรรณสวัสดิ์">
+      	    <h3>นายณภัทร สุวรรณสวัสดิ์</h3>
+      	    <span class="info-text">เลขาธิการสภาผู้แทนราษฎร<br>(5 เมษายน 2568 - ปัจจุบัน)</span>
+      	</div>
+      </div>
+  </section>
+</main>
+
+<footer>
+  <p>© สงวนลิขสิทธิ์โดย สำนักงานเลขาธิการสภาผู้แทนราษฎร ศูนย์ราชการ 2 ชั้น 8 1 ถ.นฤเบศร์ธรรมนคร<br>
+  ตำบลโซยอน อำเภอเมืองซอลซัง 26000</p>
+  <div align="center">
+    <!-- COUNTER -->
+  </div>
+</footer>
+  
+<script>
+document.querySelector('.menu-toggle').addEventListener('click', function () {
+  const icon = this.querySelector('i');
+  const nav = document.getElementById('nav_bar');
+  const body = document.body;
+
+  // ตรวจสอบว่ากำลังจะเปิดหรือปิดเมนู
+  const isOpen = icon.classList.contains('fa-bars');
+
+  // สลับไอคอน
+  icon.classList.toggle('fa-bars');
+  icon.classList.toggle('fa-xmark');
+
+  // เปิดเมนู
+  if (isOpen) {
+    nav.setAttribute('style', 'display: block;');
+    body.style.overflow = 'hidden';
+  } 
+  // ปิดเมนู
+  else {
+    nav.setAttribute('style', '');
+    body.style.overflow = '';
+  }
+});
+</script>
+<script>
+  const originalStyles = new Map();
+
+  function setTheme(theme) {
+    const body = document.body;
+    const banner = document.querySelector('.banner');
+    const main = document.querySelector('main');
+
+    // เปลี่ยน class ของ body
+    body.classList.remove('theme-default', 'theme-dark', 'theme-yellow');
+    body.classList.add(`theme-${theme}`);
+
+    // เป้าหมาย element ที่จะเปลี่ยนสี (ยกเว้น .top-bar และ h1/h2 ใน banner)
+    const allElements = document.querySelectorAll(
+      'body *:not(.top-bar):not(.top-bar *):not(.banner h1):not(.banner h2):not(.banner)'
+    );
+
+    let bgColor = '';
+    let textColor = '';
+
+    if (theme === 'default') {
+      // คืนค่า style เดิม
+      allElements.forEach(el => {
+        if (originalStyles.has(el)) {
+          const { backgroundColor, color } = originalStyles.get(el);
+          el.style.backgroundColor = backgroundColor;
+          el.style.color = color;
+        } else {
+          el.style.backgroundColor = '';
+          el.style.color = '';
+        }
+      });
+
+      // banner ใช้ภาพพื้นหลังธรรมดา
+      banner.style.background = "url('/assets/img/parliament.jpg') no-repeat center center fixed";
+      banner.style.backgroundSize = 'cover';
+      banner.style.backgroundBlendMode = '';
+
+      // main ใช้พื้น gradient ขาว
+      main.style.background = "linear-gradient(rgb(255, 255, 255), rgb(229, 220, 202))";
+
+      // รูปภาพกลับมาเป็นสี
+      const allImages = document.querySelectorAll('img');
+      allImages.forEach(img => {
+        img.style.filter = '';
+      });
+
+    } else {
+      // ตั้งค่าสีตามธีม
+      if (theme === 'dark') {
+        bgColor = 'black';
+        textColor = 'white';
+      } else if (theme === 'yellow') {
+        bgColor = 'black';
+        textColor = 'yellow';
+      }
+
+      // บันทึกและเปลี่ยนสีของทุก element
+      allElements.forEach(el => {
+        if (!originalStyles.has(el)) {
+          originalStyles.set(el, {
+            backgroundColor: el.style.backgroundColor || '',
+            color: el.style.color || ''
+          });
+        }
+        el.style.backgroundColor = bgColor;
+        el.style.color = textColor;
+      });
+
+      // main ลบ gradient
+      main.style.background = '';
+
+      // banner ใช้ overlay บนภาพ
+      banner.style.background = `rgba(0,0,0,0.6) url('/assets/img/parliament.jpg') no-repeat center center fixed`;
+      banner.style.backgroundSize = 'cover';
+      banner.style.backgroundBlendMode = 'overlay';
+
+      // รูปภาพเป็นขาวดำ
+      const allImages = document.querySelectorAll('img');
+      allImages.forEach(img => {
+        img.style.filter = 'grayscale(100%)';
+      });
+    }
+  }
+
+  function setFontSize(size) {
+    const body = document.body;
+    body.classList.remove('font-size-small', 'font-size-medium', 'font-size-large');
+    body.classList.add(`font-size-${size}`);
+  }
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const menuItems = document.querySelectorAll('nav > ul > li');
+
+    menuItems.forEach(item => {
+      const submenu = item.querySelector('ul');
+      if (submenu) {
+        // ซ่อนเมนูย่อยเริ่มต้น
+        submenu.style.display = 'none';
+
+        // toggle เมื่อคลิกเมนูหลัก
+        item.addEventListener('click', (e) => {
+          e.stopPropagation(); // ป้องกัน bubbling
+          const isVisible = submenu.style.display === 'block';
+
+          // ซ่อนเมนูย่อยทั้งหมดก่อน
+          document.querySelectorAll('nav ul li ul').forEach(ul => ul.style.display = 'none');
+
+          // toggle เมนูนี้
+          submenu.style.display = isVisible ? 'none' : 'block';
+        });
+      }
+    });
+
+    // ปิดเมนูเมื่อคลิกข้างนอก
+    document.addEventListener('click', () => {
+      document.querySelectorAll('nav ul li ul').forEach(ul => ul.style.display = 'none');
+    });
+  });
+</script>
+</body>
+</html>
