@@ -182,7 +182,11 @@ li {
     background: transparent !important;
 }
 
-.menu-bread element {
+.menu-bread a {
+    background: transparent !important;
+}
+
+.menu-bread span {
     background: transparent !important;
 }
 
