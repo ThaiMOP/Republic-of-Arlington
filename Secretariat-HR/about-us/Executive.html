@@ -7,17 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&display=swap" rel="stylesheet">
   <link href="/Secretariat-HR/style.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <style>  
-.container {
-    background: transparent !important;
-}
-.container span {
-    background: transparent !important;
-}
-.container * {
-    background: transparent !important;
-}
-  </style>
+
 </head>
 <body class="theme-default font-size-medium">
 
@@ -132,22 +122,22 @@ document.querySelector('.menu-toggle').addEventListener('click', function () {
   function setTheme(theme) {
     const body = document.body;
     const banner = document.querySelector('.banner');
+    const main = document.querySelector('main');
 
-    // เปลี่ยน class บน body
+    // เปลี่ยน class ของ body
     body.classList.remove('theme-default', 'theme-dark', 'theme-yellow');
     body.classList.add(`theme-${theme}`);
 
-    // เลือก element ทั้งหมดที่ไม่ใช่ top-bar และไม่ใช่ h1/h2 ใน banner
+    // เป้าหมาย element ที่จะเปลี่ยนสี
     const allElements = document.querySelectorAll(
       'body *:not(.top-bar):not(.top-bar *):not(.banner h1):not(.banner h2):not(.banner)'
     );
 
-    // สีที่จะใช้สำหรับ element ทั่วไป
     let bgColor = '';
     let textColor = '';
 
     if (theme === 'default') {
-      // คืนค่าทุก style ดั้งเดิม
+      // คืนค่า style เดิม
       allElements.forEach(el => {
         if (originalStyles.has(el)) {
           const { backgroundColor, color } = originalStyles.get(el);
@@ -159,10 +149,13 @@ document.querySelector('.menu-toggle').addEventListener('click', function () {
         }
       });
 
-      // banner ใช้แค่ภาพ ไม่มี overlay
+      // banner กลับมาใช้ภาพอย่างเดียว
       banner.style.background = "url('/assets/img/parliament.jpg') no-repeat center center fixed";
       banner.style.backgroundSize = 'cover';
       banner.style.backgroundBlendMode = '';
+
+      // main ใช้ gradient พื้นขาว
+      main.style.background = "linear-gradient(rgb(255, 255, 255), rgb(229, 220, 202))";
     } else {
       if (theme === 'dark') {
         bgColor = 'black';
@@ -183,10 +176,13 @@ document.querySelector('.menu-toggle').addEventListener('click', function () {
         el.style.color = textColor;
       });
 
-      // banner แสดงภาพ + overlay สี
+      // banner มี overlay บนภาพ
       banner.style.background = `rgba(0,0,0,0.6) url('/assets/img/parliament.jpg') no-repeat center center fixed`;
       banner.style.backgroundSize = 'cover';
       banner.style.backgroundBlendMode = 'overlay';
+
+      // ลบ gradient จาก main
+      main.style.background = '';
     }
   }
 
@@ -196,6 +192,7 @@ document.querySelector('.menu-toggle').addEventListener('click', function () {
     body.classList.add(`font-size-${size}`);
   }
 </script>
+
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const menuItems = document.querySelectorAll('nav > ul > li');
