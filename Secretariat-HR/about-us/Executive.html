@@ -128,7 +128,7 @@ document.querySelector('.menu-toggle').addEventListener('click', function () {
     body.classList.remove('theme-default', 'theme-dark', 'theme-yellow');
     body.classList.add(`theme-${theme}`);
 
-    // เป้าหมาย element ที่จะเปลี่ยนสี
+    // เป้าหมาย element ที่จะเปลี่ยนสี (ยกเว้น .top-bar และ h1/h2 ใน banner)
     const allElements = document.querySelectorAll(
       'body *:not(.top-bar):not(.top-bar *):not(.banner h1):not(.banner h2):not(.banner)'
     );
@@ -149,14 +149,22 @@ document.querySelector('.menu-toggle').addEventListener('click', function () {
         }
       });
 
-      // banner กลับมาใช้ภาพอย่างเดียว
+      // banner ใช้ภาพพื้นหลังธรรมดา
       banner.style.background = "url('/assets/img/parliament.jpg') no-repeat center center fixed";
       banner.style.backgroundSize = 'cover';
       banner.style.backgroundBlendMode = '';
 
-      // main ใช้ gradient พื้นขาว
+      // main ใช้พื้น gradient ขาว
       main.style.background = "linear-gradient(rgb(255, 255, 255), rgb(229, 220, 202))";
+
+      // รูปภาพกลับมาเป็นสี
+      const allImages = document.querySelectorAll('img');
+      allImages.forEach(img => {
+        img.style.filter = '';
+      });
+
     } else {
+      // ตั้งค่าสีตามธีม
       if (theme === 'dark') {
         bgColor = 'black';
         textColor = 'white';
@@ -165,6 +173,7 @@ document.querySelector('.menu-toggle').addEventListener('click', function () {
         textColor = 'yellow';
       }
 
+      // บันทึกและเปลี่ยนสีของทุก element
       allElements.forEach(el => {
         if (!originalStyles.has(el)) {
           originalStyles.set(el, {
@@ -176,28 +185,19 @@ document.querySelector('.menu-toggle').addEventListener('click', function () {
         el.style.color = textColor;
       });
 
-      // banner มี overlay บนภาพ
+      // main ลบ gradient
+      main.style.background = '';
+
+      // banner ใช้ overlay บนภาพ
       banner.style.background = `rgba(0,0,0,0.6) url('/assets/img/parliament.jpg') no-repeat center center fixed`;
       banner.style.backgroundSize = 'cover';
       banner.style.backgroundBlendMode = 'overlay';
-	    
-	// ... หลังจาก banner และ main
-	
-	const allImages = document.querySelectorAll('img');
 
-	if (theme === 'default') {
-	  allImages.forEach(img => {
-	    img.style.filter = ''; // ลบ filter เมื่อกลับไป default
-	  });
-	} else {
-	  allImages.forEach(img => {
-	    img.style.filter = 'grayscale(100%)'; // ทำภาพเป็นขาวดำ
-	  });
-	}
-
-
-      // ลบ gradient จาก main
-      main.style.background = '';
+      // รูปภาพเป็นขาวดำ
+      const allImages = document.querySelectorAll('img');
+      allImages.forEach(img => {
+        img.style.filter = 'grayscale(100%)';
+      });
     }
   }
 
@@ -207,7 +207,6 @@ document.querySelector('.menu-toggle').addEventListener('click', function () {
     body.classList.add(`font-size-${size}`);
   }
 </script>
-
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const menuItems = document.querySelectorAll('nav > ul > li');
