@@ -179,6 +179,11 @@ li {
     font-size: 14px;
     float: left;
     margin: 10px 0px;
+    background: transparent !important;
+}
+
+.menu-bread element {
+    background: transparent !important;
 }
 
 .menu-bread a {
