@@ -1,0 +1,157 @@
+body {
+    font-family: 'Kanit', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.text-white {
+    color: white;
+}
+
+.theme-default {
+    background: white;
+    color: black;
+}
+
+.theme-dark {
+    background: black;
+    color: white;
+}
+
+.theme-yellow {
+    background: black;
+    color: yellow;
+}
+
+.font-size-small {
+    font-size: 14px;
+}
+
+.font-size-medium {
+    font-size: 16px;
+}
+
+.font-size-large {
+    font-size: 18px;
+}
+
+header .top-bar {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: #acaaaa;
+}
+
+header .main-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    background: #800000;
+    color: #fff;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+nav ul li {
+    position: relative;
+    cursor: pointer;
+}
+
+nav ul li ul {
+    position: absolute;
+    display: none;
+    background: #800000;
+    list-style: none;
+    padding: 10px;
+    width: 150px;
+}
+
+nav ul li ul li {
+    padding: 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+nav ul li:hover ul {
+    display: block;
+}
+
+.banner {
+    background: url("/assets/img/parliament.jpg") center center / cover no-repeat fixed;
+    background-size: cover;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+footer {
+    padding: 20px;
+    background: #333;
+    color: white;
+    text-align: center;
+}
+
+li {
+    user-select: none;
+}
+
+.top-bar button {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    padding: 5px;
+    line-height: 12.5px;
+    font-size: 15px !important;
+    text-align: center;
+    background: #ffffff;
+    border: none;
+    font-family: 'Kanit', sans-serif;
+    cursor: pointer;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+@media (max-width: 574.98px) {
+    .main-header nav {
+        position: fixed;
+        top: 109.15px;
+        height: calc(100vh - 109.15px);
+        width: 100%;
+        background: #880000;
+        display: none;
+    }
+
+    .main-header nav>ul {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .main-header nav>ul>li:not(:last-child) {
+        border-bottom: 1px solid;
+        padding-bottom: 20px;
+    }
+
+    .main-header nav>ul>li>ul {
+        position: relative;
+        width: 100%;
+        background: transparent;
+        padding-left: 0;
+    }
+
+    .main-header nav>ul>li>ul>li:not(:last-child) {
+        border-bottom: 1px solid #ff9b00;
+    }
+}
