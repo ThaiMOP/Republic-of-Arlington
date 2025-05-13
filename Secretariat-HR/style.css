@@ -131,6 +131,7 @@ li {
     .main-header nav {
         position: fixed;
         top: 109.15px;
+        left: 0;
         height: calc(100vh - 109.15px);
         width: 100%;
         background: #880000;
