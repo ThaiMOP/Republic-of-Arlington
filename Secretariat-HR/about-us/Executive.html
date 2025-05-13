@@ -180,6 +180,20 @@ document.querySelector('.menu-toggle').addEventListener('click', function () {
       banner.style.background = `rgba(0,0,0,0.6) url('/assets/img/parliament.jpg') no-repeat center center fixed`;
       banner.style.backgroundSize = 'cover';
       banner.style.backgroundBlendMode = 'overlay';
+	    
+	// ... หลังจาก banner และ main
+	
+	const allImages = document.querySelectorAll('img');
+	
+	if (theme === 'default') {
+	  allImages.forEach(img => {
+	    img.style.filter = '';
+	  });
+	} else {
+	  allImages.forEach(img => {
+	    img.style.filter = 'grayscale(100%)';
+	  });
+	}
 
       // ลบ gradient จาก main
       main.style.background = '';
