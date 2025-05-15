@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ระบบลงทะเบียนที่ดิน</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun&display=swap " rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+        }
+        .status-available { color: green; }
+        .status-reserved { color: red; }
+        .status-suspended { color: gray; }
+    </style>
+</head>
+<body>
+    <section>
+        <h2>แบบฟอร์มการจองที่ดิน</h2>
+        <form id="land-registration-form">
+            <div>
+                <label for="person-select">เลือกชื่อผู้จอง:</label>
+                <select id="person-select"></select>
+            </div>
+
+            <div>
+                <label>อำเภอ:</label>
+                <input type="text" id="district-display" readonly>
+            </div>
+
+            <div>
+                <label>จังหวัด:</label>
+                <input type="text" id="province-display" readonly>
+            </div>
+
+            <div>
+                <label for="subdistrict-select">เลือกตำบล/แขวง:</label>
+                <select id="subdistrict-select" disabled>
+                    <option value="">-- กรุณาเลือกตำบล/แขวง --</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="plot-select">เลือกแปลงที่ดิน:</label>
+                <select id="plot-select" disabled>
+                    <option value="">-- กรุณาเลือกแปลงที่ดิน --</option>
+                </select>
+                <div id="plot-status"></div>
+            </div>
+
+            <button type="submit" id="submit-btn">ยืนยันการจอง</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>รายชื่อผู้จองที่ดิน</h2>
+        <table id="registrations-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>ชื่อ-นามสกุล</th>
+                    <th>อำเภอ</th>
+                    <th>จังหวัด</th>
+                    <th>ตำบล</th>
+                    <th>แปลงที่ดิน</th>
+                    <th>สถานะ</th>
+                </tr>
+            </thead>
+            <tbody id="registrations-table-body"></tbody>
+        </table>
+    </section>
+
+        <footer>
+        <div class="container">
+            <p>© 2023 กระทรวงการปกครอง. สงวนลิขสิทธิ์.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
