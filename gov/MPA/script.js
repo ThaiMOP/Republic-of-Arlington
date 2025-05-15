@@ -243,15 +243,18 @@ function registerLand() {
 }
 
 // แสดงข้อมูลในตาราง
+// แสดงข้อมูลในตาราง
 function renderRegistrationsTable() {
-  registrationsTable.innerHTML = '';
+  const tbody = document.getElementById('registrations-table-body');
+  tbody.innerHTML = ''; // เคลียร์ข้อมูลก่อนเติมใหม่
+
   registrations.forEach(reg => {
     const statusText = {
       reserved: 'ถูกจอง',
       suspended: 'ระงับ'
     }[reg.status] || 'ว่าง';
 
-    const row = registrationsTable.insertRow();
+    const row = document.createElement('tr');
     row.innerHTML = `
       <td>${reg.id}</td>
       <td>${reg.personName}</td>
@@ -261,5 +264,6 @@ function renderRegistrationsTable() {
       <td>แปลง ${reg.plot}</td>
       <td>${statusText}</td>
     `;
+    tbody.appendChild(row);
   });
 }
