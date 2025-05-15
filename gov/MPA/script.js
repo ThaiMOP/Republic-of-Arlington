@@ -13,7 +13,7 @@ let initialData = {};
 let landStatus = {};
 let registrations = [];
 
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbx7vxT6fp2btcHChEilWByAUmI1DG34YvoIs1MH7KnB842ArVYyHXUqT825xBBntxAh/exec';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbx7vxT6fp2btcHChEilWByAUmI1DG34YvoIs1MH7KnB842ArVYyHXUqT825xBBntxAh/exec?action=loadData';
 
 
 // เมื่อ DOM โหลดเสร็จ
