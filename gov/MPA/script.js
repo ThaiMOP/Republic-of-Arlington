@@ -6,7 +6,14 @@ const subdistrictSelect = document.getElementById('subdistrict-select');
 const plotSelect = document.getElementById('plot-select');
 const plotStatus = document.getElementById('plot-status');
 const submitBtn = document.getElementById('submit-btn');
-const registrationsTable = document.getElementById('registrations-table').getElementsByTagName('tbody')[0];
+// ใช้ querySelector เพื่อความปลอดภัยและอ่านง่าย
+const registrationsTableBody = document.querySelector('#registrations-table tbody');
+
+if (!registrationsTableBody) {
+    console.error("ไม่พบ element #registrations-table tbody");
+} else {
+    // ใช้งาน registrationsTableBody ได้เลย
+}
 const registrationForm = document.getElementById('land-registration-form');
 
 // URL ของ Google Apps Script Web App
