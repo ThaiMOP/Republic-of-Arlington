@@ -39,33 +39,6 @@ function fetchInitialData() {
     });
 }
 
-// โหลดข้อมูลจาก Google Sheets
-function loadData() {
-  return fetch(`${GAS_URL}?action=loadData`)
-    .then(res => res.json())
-    .then(data => {
-      window.appData = {
-        persons: initialData.persons,
-        subdistricts: initialData.subdistricts,
-        registrations: data.registrations,
-        landStatus: initializeLandStatus()
-      };
-      updateLandStatusFromRegistrations();
-      populatePersonSelect();
-      renderRegistrationsTable();
-    });
-}
-
-// สร้างแผนที่สถานะแปลงที่ดินเริ่มต้น
-function initializeLandStatus() {
-  const statusMap = {};
-  for (const [district, subdistricts] of Object.entries(initialData.subdistricts)) {
-    subdistricts.forEach(sub => {
-      statusMap[`${district}-${sub}`] = { plots: Array(8).fill('available') }; // A-H
-    });
-  }
-  return statusMap;
-}
 
 // อัปเดตสถานะแปลงจากข้อมูลการจอง
 function updateLandStatusFromRegistrations() {
