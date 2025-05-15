@@ -83,6 +83,22 @@ function init() {
     setupEventListeners();
 }
 
+// สร้างข้อมูลเริ่มต้นของสถานะที่ดินทั้งหมดให้เป็น 'available'
+function initializeLandStatus() {
+    const statusMap = {};
+
+    for (const [district, subdistricts] of Object.entries(initialData.subdistricts)) {
+        subdistricts.forEach(subdistrict => {
+            const key = `${district}-${subdistrict}`;
+            statusMap[key] = {
+                plots: Array(8).fill('available') // แปลง A-H
+            };
+        });
+    }
+
+    return statusMap;
+}
+
 // Load data from Google Sheets via Google Apps Script
 function loadData() {
     fetch(`${GAS_URL}?action=loadData`)
@@ -102,6 +118,20 @@ function loadData() {
             console.error('โหลดข้อมูลจากเซิร์ฟเวอร์ไม่สำเร็จ:', err);
             alert('ไม่สามารถโหลดข้อมูลได้ในขณะนี้');
         });
+    // อัปเดตสถานะที่ดินจากข้อมูลการจอง
+    function updateLandStatusFromRegistrations() {
+        registrations = window.appData.registrations;
+        landStatus = window.appData.landStatus;
+    
+        registrations.forEach(reg => {
+            const key = `${reg.district}-${reg.subdistrict}`;
+            const plotIndex = reg.plot.charCodeAt(0) - 65;
+            if (landStatus[key]) {
+                landStatus[key].plots[plotIndex] = reg.status;
+            }
+        });
+    }
+
 }
 // Setup event listeners
 function setupEventListeners() {
