@@ -1,156 +1,131 @@
-// URL ของ Google Apps Script Web App
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+const API_URL = "https://script.google.com/macros/s/AKfycbyh8Qf_Pmdf0GLniYvKdnWZacxeLJnkuO3nBG00fZGwU9yJZkU-1yLnKCximfkmQj6g/exec";
 
-let persons = [];
-let subdistricts = {};
+let globalData = null;
 
-// โหลดข้อมูล JSON ภายนอก
-fetch('data.json')
-  .then(res => res.json())
-  .then(data => {
-    persons = data.persons;
-    subdistricts = data.subdistricts;
-    populatePersons();
-  });
-
-// ใส่รายชื่อผู้จองลงใน select
-function populatePersons() {
-  const select = document.getElementById('person-select');
-  persons.forEach(p => {
-    const option = document.createElement('option');
-    option.value = p.id;
-    option.textContent = p.name;
-    select.appendChild(option);
-  });
-}
-
-// เมื่อเลือกผู้จอง
-document.getElementById('person-select').addEventListener('change', function () {
-  const person = persons.find(p => p.id == this.value);
-  if (person) {
-    document.getElementById('district-display').value = person.district;
-    document.getElementById('province-display').value = person.province;
-    populateSubdistricts(person.district);
-  }
+document.addEventListener("DOMContentLoaded", () => {
+  loadDataJson();
+  loadRegistrations();
+  setupFormSubmission();
 });
 
-// เติมตำบลเมื่อรู้เขต
-function populateSubdistricts(district) {
-  const subSelect = document.getElementById('subdistrict-select');
-  subSelect.innerHTML = '<option value="">-- กรุณาเลือกตำบล/แขวง --</option>';
-  subSelect.disabled = false;
+function loadDataJson() {
+  fetch("data.json")
+    .then((res) => res.json())
+    .then((data) => {
+      globalData = data;
+      const personSelect = document.getElementById("person-select");
+      data.persons.forEach((person) => {
+        const option = document.createElement("option");
+        option.value = person.id;
+        option.textContent = person.name;
+        option.dataset.district = person.district;
+        option.dataset.province = person.province;
+        personSelect.appendChild(option);
+      });
 
-  (subdistricts[district] || []).forEach(sd => {
-    const option = document.createElement('option');
-    option.value = sd;
-    option.textContent = sd;
-    subSelect.appendChild(option);
-  });
-
-  document.getElementById('plot-select').innerHTML =
-    '<option value="">-- กรุณาเลือกแปลงที่ดิน --</option>';
-  document.getElementById('plot-select').disabled = true;
-  document.getElementById('plot-status').textContent = '';
+      personSelect.addEventListener("change", handlePersonChange);
+    });
 }
 
-// เมื่อเลือกตำบล → สร้างแปลงที่ดินจำลอง
-document.getElementById('subdistrict-select').addEventListener('change', function () {
-  const plotSelect = document.getElementById('plot-select');
-  plotSelect.innerHTML = '<option value="">-- กรุณาเลือกแปลงที่ดิน --</option>';
+function handlePersonChange(event) {
+  const selectedOption = event.target.selectedOptions[0];
+  const district = selectedOption.dataset.district;
+  const province = selectedOption.dataset.province;
+
+  document.getElementById("district-display").value = district;
+  document.getElementById("province-display").value = province;
+
+  // Update subdistricts
+  const subdistrictSelect = document.getElementById("subdistrict-select");
+  subdistrictSelect.innerHTML = '<option value="">-- กรุณาเลือกตำบล/แขวง --</option>';
+  const subdistricts = globalData.subdistricts[district] || [];
+
+  subdistricts.forEach((sub) => {
+    const opt = document.createElement("option");
+    opt.value = sub;
+    opt.textContent = sub;
+    subdistrictSelect.appendChild(opt);
+  });
+  subdistrictSelect.disabled = subdistricts.length === 0;
+
+  // Enable plot-select
+  const plotSelect = document.getElementById("plot-select");
   plotSelect.disabled = false;
+  plotSelect.innerHTML = `
+    <option value="">-- กรุณาเลือกแปลงที่ดิน --</option>
+    <option value="A1">A1</option>
+    <option value="A2">A2</option>
+    <option value="A3">A3</option>
+  `;
 
-  // สมมุติแปลงที่ดินเป็น A, B, C
-  ['A', 'B', 'C'].forEach(p => {
-    const option = document.createElement('option');
-    option.value = p;
-    option.textContent = `แปลง ${p}`;
-    plotSelect.appendChild(option);
+  plotSelect.addEventListener("change", () => {
+    const statusBox = document.getElementById("plot-status");
+    const status = getRandomStatus(); // mock logic
+    statusBox.textContent = status.label;
+    statusBox.className = status.className;
   });
+}
 
-  document.getElementById('plot-status').textContent = '';
-});
+function getRandomStatus() {
+  const statusList = [
+    { label: "ว่าง", className: "status-available" },
+    { label: "จองแล้ว", className: "status-reserved" },
+    { label: "ระงับ", className: "status-suspended" },
+  ];
+  return statusList[Math.floor(Math.random() * statusList.length)];
+}
 
-// ตรวจสอบสถานะเมื่อเลือกแปลง
-document.getElementById('plot-select').addEventListener('change', function () {
-  const statusDiv = document.getElementById('plot-status');
-  const plot = this.value;
+function setupFormSubmission() {
+  const form = document.getElementById("land-registration-form");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const personSelect = document.getElementById("person-select");
+    const subdistrict = document.getElementById("subdistrict-select").value;
+    const plot = document.getElementById("plot-select").value;
+    const statusText = document.getElementById("plot-status").textContent;
 
-  fetch(`${GOOGLE_SCRIPT_URL}?action=check&plot=${encodeURIComponent(plot)}`)
-    .then(res => res.json())
-    .then(data => {
-      if (data.status === 'available') {
-        statusDiv.textContent = 'สถานะ: ว่าง';
-        statusDiv.className = 'status-available';
-      } else if (data.status === 'reserved') {
-        statusDiv.textContent = 'สถานะ: ถูกจองแล้ว';
-        statusDiv.className = 'status-reserved';
-      } else {
-        statusDiv.textContent = 'สถานะ: ไม่ทราบ';
-        statusDiv.className = 'status-suspended';
-      }
+    const selected = personSelect.selectedOptions[0];
+    const data = {
+      person_id: personSelect.value,
+      name: selected.textContent,
+      district: selected.dataset.district,
+      province: selected.dataset.province,
+      subdistrict: subdistrict,
+      plot: plot,
+      status: statusText,
+      timestamp: new Date().toLocaleString(),
+    };
+
+    fetch(API_URL, {
+      method: "POST",
+      mode: "no-cors", // use "cors" if your GAS allows it
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
     });
-});
 
-// ส่งฟอร์ม
-document.getElementById('land-registration-form').addEventListener('submit', function (e) {
-  e.preventDefault();
+    alert("ส่งข้อมูลสำเร็จ");
+    form.reset();
+    document.getElementById("plot-status").textContent = "";
+    loadRegistrations(); // reload table
+  });
+}
 
-  const personId = document.getElementById('person-select').value;
-  const person = persons.find(p => p.id == personId);
-  const subdistrict = document.getElementById('subdistrict-select').value;
-  const plot = document.getElementById('plot-select').value;
-
-  if (!person || !subdistrict || !plot) {
-    alert('กรุณากรอกข้อมูลให้ครบถ้วน');
-    return;
-  }
-
-  const payload = {
-    action: 'register',
-    id: person.id,
-    name: person.name,
-    district: person.district,
-    province: person.province,
-    subdistrict,
-    plot
-  };
-
-  fetch(GOOGLE_SCRIPT_URL, {
-    method: 'POST',
-    body: JSON.stringify(payload)
-  })
-    .then(res => res.json())
-    .then(result => {
-      if (result.success) {
-        alert('ลงทะเบียนสำเร็จ');
-        loadRegistrations();
-      } else {
-        alert('ไม่สามารถลงทะเบียนได้');
-      }
-    });
-});
-
-// โหลดตารางผู้ลงทะเบียน
 function loadRegistrations() {
-  fetch(`${GOOGLE_SCRIPT_URL}?action=list`)
-    .then(res => res.json())
-    .then(data => {
-      const tbody = document.getElementById('registrations-table-body');
-      tbody.innerHTML = '';
-      data.forEach(entry => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${entry.id}</td>
-          <td>${entry.name}</td>
-          <td>${entry.district}</td>
-          <td>${entry.province}</td>
-          <td>${entry.subdistrict}</td>
-          <td>${entry.plot}</td>
-          <td class="${entry.status === 'ว่าง' ? 'status-available' : 'status-reserved'}">${entry.status}</td>
-        `;
-        tbody.appendChild(row);
+  fetch(API_URL)
+    .then((res) => res.json())
+    .then((rows) => {
+      const tbody = document.getElementById("registrations-table-body");
+      tbody.innerHTML = "";
+      rows.forEach((row) => {
+        const tr = document.createElement("tr");
+        row.forEach((cell) => {
+          const td = document.createElement("td");
+          td.textContent = cell;
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
       });
     });
 }
-
-window.onload = loadRegistrations;
