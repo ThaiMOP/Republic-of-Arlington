@@ -11,10 +11,22 @@ const registrationForm = document.getElementById('land-registration-form');
 
 let initialData = {};
 let landStatus = {};
-let registrations = [];
+let registrations = []; // ตัวแปร global สำหรับเก็บข้อมูล
 
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbx7vxT6fp2btcHChEilWByAUmI1DG34YvoIs1MH7KnB842ArVYyHXUqT825xBBntxAh/exec?action=loadData';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbx7vxT6fp2btcHChEilWByAUmI1DG34YvoIs1MH7KnB842ArVYyHXUqT825xBBntxAh/exec';
 
+function loadData() {
+  fetch(`${GAS_URL}?action=loadData`)
+    .then(response => response.json())
+    .then(data => {
+      registrations = data.registrations; // เก็บข้อมูลไว้ให้ render ใช้
+      renderRegistrationsTable();         // เรียกแสดงข้อมูลบนตาราง
+    })
+    .catch(error => {
+      console.error('เกิดข้อผิดพลาดในการโหลดข้อมูล:', error);
+      alert('ไม่สามารถโหลดข้อมูลจากเซิร์ฟเวอร์ได้');
+    });
+}
 
 // เมื่อ DOM โหลดเสร็จ
 document.addEventListener('DOMContentLoaded', init);
@@ -70,18 +82,39 @@ function initializeLandStatus() {
 
 // อัปเดตสถานะแปลงจากข้อมูลการจอง
 function updateLandStatusFromRegistrations() {
-  registrations = window.appData.registrations;
-  landStatus = window.appData.landStatus;
+    registrations = window.appData.registrations;
+    landStatus = window.appData.landStatus;
 
-  registrations.forEach(reg => {
-    const key = `${reg.district}-${reg.subdistrict}`;
-    if (reg.plot && typeof reg.plot === 'string') {
-      const plotIndex = reg.plot.charCodeAt(0) - 65;
-      if (landStatus[key]) {
-        landStatus[key].plots[plotIndex] = reg.status;
-      }
-    }
-  });
+    registrations.forEach(reg => {
+        const key = `${reg.district}-${reg.subdistrict}`;
+        if (reg.plot && typeof reg.plot === 'string' && landStatus[key]) {
+            const plotIndex = reg.plot.charCodeAt(0) - 65;
+            landStatus[key].plots[plotIndex] = reg.status;
+        } else {
+            console.warn('ข้อมูล plot ไม่ถูกต้องหรือ key ไม่ถูกต้อง:', reg);
+        }
+    });
+}
+
+// ฟังก์ชันโหลดข้อมูล
+function loadData() {
+    fetch(`${GAS_URL}?action=loadData`)
+        .then(res => res.json())
+        .then(data => {
+            window.appData = {
+                persons: initialData.persons,
+                subdistricts: initialData.subdistricts,
+                registrations: data.registrations,
+                landStatus: initializeLandStatus()
+            };
+            updateLandStatusFromRegistrations();  // เรียกที่นี่หลังกำหนด window.appData
+            populatePersonSelect();
+            renderRegistrationsTable();
+        })
+        .catch(err => {
+            console.error('โหลดข้อมูลจากเซิร์ฟเวอร์ไม่สำเร็จ:', err);
+            alert('ไม่สามารถโหลดข้อมูลได้ในขณะนี้');
+        });
 }
 
 // ตั้งค่า event เมื่อผู้ใช้ใช้งาน UI
@@ -267,3 +300,8 @@ function renderRegistrationsTable() {
     tbody.appendChild(row);
   });
 }
+
+// เรียกโหลดข้อมูลตอนเปิดหน้าเว็บ
+document.addEventListener('DOMContentLoaded', () => {
+  loadData();
+});
