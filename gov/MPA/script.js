@@ -125,12 +125,19 @@ function loadData() {
     
         registrations.forEach(reg => {
             const key = `${reg.district}-${reg.subdistrict}`;
-            const plotIndex = reg.plot.charCodeAt(0) - 65;
-            if (landStatus[key]) {
-                landStatus[key].plots[plotIndex] = reg.status;
+            
+            // ตรวจสอบว่า reg.plot มีค่าและเป็น string
+            if (reg.plot && typeof reg.plot === 'string') {
+                const plotIndex = reg.plot.charCodeAt(0) - 65;
+                if (landStatus[key]) {
+                    landStatus[key].plots[plotIndex] = reg.status;
+                }
+            } else {
+                console.warn('ข้อมูล plot ไม่ถูกต้อง:', reg);
             }
         });
     }
+
 
 }
 // Setup event listeners
