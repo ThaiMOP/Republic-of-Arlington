@@ -10,7 +10,7 @@ const registrationsTable = document.getElementById('registrations-table').getEle
 const registrationForm = document.getElementById('land-registration-form');
 
 // URL ของ Google Apps Script Web App
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbxQSbMU8Q1-2kUPPKDey0pDR9HRCSj5qepp6zJVwI6l6iCtnTU9yyXeL764-5uIuNMH/exec'; // ⚠️ แทนที่เป็น URL จริงของคุณ
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbx0wLkpEzMSIHVNPrz4NvkG518SUCWaI-CssxoSMUbrmDBRyTa8tZqu-7nxeL1Hxtyp/exec'; // ⚠️ แทนที่เป็น URL จริงของคุณ
 
 let landStatus = {};
 let registrations = [];
