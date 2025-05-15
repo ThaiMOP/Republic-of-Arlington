@@ -13,20 +13,7 @@ let initialData = {};
 let landStatus = {};
 let registrations = []; // ตัวแปร global สำหรับเก็บข้อมูล
 
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbx7vxT6fp2btcHChEilWByAUmI1DG34YvoIs1MH7KnB842ArVYyHXUqT825xBBntxAh/exec';
-
-function loadData() {
-  fetch(`${GAS_URL}?action=loadData`)
-    .then(response => response.json())
-    .then(data => {
-      registrations = data.registrations; // เก็บข้อมูลไว้ให้ render ใช้
-      renderRegistrationsTable();         // เรียกแสดงข้อมูลบนตาราง
-    })
-    .catch(error => {
-      console.error('เกิดข้อผิดพลาดในการโหลดข้อมูล:', error);
-      alert('ไม่สามารถโหลดข้อมูลจากเซิร์ฟเวอร์ได้');
-    });
-}
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbwy66i66j_0VXPu2ZhFg2Q2Mmf3D2Ylg-i3EGlJxDkkiNmNF4VYLEoR4PrNrZoscdWR/exec';
 
 // เมื่อ DOM โหลดเสร็จ
 document.addEventListener('DOMContentLoaded', init);
@@ -275,33 +262,49 @@ function registerLand() {
   });
 }
 
-// แสดงข้อมูลในตาราง
-// แสดงข้อมูลในตาราง
-function renderRegistrationsTable() {
-  const tbody = document.getElementById('registrations-table-body');
-  tbody.innerHTML = ''; // เคลียร์ข้อมูลก่อนเติมใหม่
 
-  registrations.forEach(reg => {
-    const statusText = {
-      reserved: 'ถูกจอง',
-      suspended: 'ระงับ'
-    }[reg.status] || 'ว่าง';
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const response = await fetch(`${GAS_URL}?action=loadData`);
+        const result = await response.json();
+        renderTable(result.registrations);
+      } catch (err) {
+        console.error('โหลดข้อมูลไม่สำเร็จ:', err);
+        alert('ไม่สามารถโหลดข้อมูลจากระบบได้');
+      }
+    });
 
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td>${reg.id}</td>
-      <td>${reg.personName}</td>
-      <td>${reg.district}</td>
-      <td>${reg.province}</td>
-      <td>${reg.subdistrict}</td>
-      <td>แปลง ${reg.plot}</td>
-      <td>${statusText}</td>
-    `;
-    tbody.appendChild(row);
-  });
-}
+    function renderTable(registrations) {
+      const tbody = document.getElementById('registrations-table-body');
+      tbody.innerHTML = '';
 
-// เรียกโหลดข้อมูลตอนเปิดหน้าเว็บ
-document.addEventListener('DOMContentLoaded', () => {
-  loadData();
-});
+      registrations.forEach(reg => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${reg['ID']}</td>
+          <td>${reg['ชื่อ-นามสกุล']}</td>
+          <td>${reg['อำเภอ']}</td>
+          <td>${reg['จังหวัด']}</td>
+          <td>${reg['ตำบล']}</td>
+          <td>แปลง ${reg['แปลงที่ดิน']}</td>
+          <td>${getStatusText(reg['สถานะ'])}</td>
+          <td>${formatDate(reg['เวลา'])}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function getStatusText(status) {
+      return {
+        reserved: 'ถูกจอง',
+        suspended: 'ระงับ'
+      }[status] || 'ว่าง';
+    }
+
+    function formatDate(isoString) {
+      const d = new Date(isoString);
+      return d.toLocaleString('th-TH', {
+        dateStyle: 'short',
+        timeStyle: 'short'
+      });
+    }
