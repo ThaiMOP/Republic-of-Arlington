@@ -287,3 +287,14 @@ document.addEventListener('DOMContentLoaded', function () {
       alert('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง');
     }
   });
+
+  document.getElementById('save-settings-btn').addEventListener('click', function () {
+    const status = document.getElementById('registration-status').value;
+    const submitBtn = document.getElementById('submit-btn');
+
+    if (status === 'open') {
+      submitBtn.disabled = false;
+    } else {
+      submitBtn.disabled = true;
+    }
+  });
