@@ -16,7 +16,7 @@ function loadDataJson() {
       const personSelect = document.getElementById("person-select");
       data.persons.forEach((person) => {
         const option = document.createElement("option");
-        option.value = person.id;
+        option.value = `${person.id}`;
         option.textContent = person.name;
         option.dataset.district = person.district;
         option.dataset.province = person.province;
