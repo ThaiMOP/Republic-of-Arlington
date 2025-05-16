@@ -264,6 +264,11 @@ document.getElementById('login').addEventListener('click', function () {
   loginSection.style.display = (loginSection.style.display === 'block') ? 'none' : 'block';
 });
 
+// ปิด popup login
+document.getElementById('close-popup').addEventListener('click', function () {
+  document.getElementById('login-section').style.display = 'none';
+});
+
 // ตรวจสอบรหัสผ่าน
 document.getElementById('login-btn').addEventListener('click', function () {
   const username = document.getElementById('admin-username').value.trim();
@@ -271,7 +276,6 @@ document.getElementById('login-btn').addEventListener('click', function () {
 
   if (username === 'admin' && password === 'arlington140568') {
     alert('เข้าสู่ระบบสำเร็จ!');
-    // คุณสามารถซ่อน login-section หรือนำผู้ใช้ไปยังหน้าผู้ดูแลได้ที่นี่
     document.getElementById('login-section').style.display = 'none';
   } else {
     alert('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง');
