@@ -56,65 +56,65 @@
     <div id="loading-popup" style="display: none;" class="loading-overlay">
       <div class="loading-box"><img src="loading.gif"><p>กำลังค้นหาข้อมูล กรุณารอสักครู่...</p></div>
     </div>
-
-    <section>
-        <h2>แบบฟอร์มการจองที่ดิน</h2>
-        <form id="land-registration-form">
-            <div>
-                <label for="person-select">เลือกชื่อผู้จอง:</label>
-                <select id="person-select">
-                    <option value="">-- ชื่อ นามสกุล --</option>
-                </select>
-            </div>
-
-            <div>
-                <label>อำเภอ:</label>
-                <input type="text" id="district-display" readonly>
-            </div>
-
-            <div>
-                <label>จังหวัด:</label>
-                <input type="text" id="province-display" readonly>
-            </div>
-
-            <div>
-                <label for="subdistrict-select">เลือกตำบล/แขวง:</label>
-                <select id="subdistrict-select" disabled>
-                    <option value="">-- กรุณาเลือกตำบล/แขวง --</option>
-                </select>
-            </div>
-
-            <div>
-                <label for="plot-select">เลือกแปลงที่ดิน:</label>
-                <select id="plot-select" disabled>
-                    <option value="">-- กรุณาเลือกแปลงที่ดิน --</option>
-                </select>
-                <div id="plot-status"></div>
-            </div>
-
-            <button type="submit" id="submit-btn">ยืนยันการจอง</button>
-        </form>
-    </section>
-
-    <section>
-        <h2>รายชื่อผู้จองที่ดิน</h2>
-        <table id="registrations-table">
-          <thead>
-            <tr>
-              <th>รหัส</th>
-              <th>ชื่อ</th>
-              <th>อำเภอ</th>
-              <th>จังหวัด</th>
-              <th>ตำบล</th>
-              <th>แปลง</th>
-              <th>สถานะ</th>
-            </tr>
-          </thead>
-          <tbody id="registrations-table-body"></tbody>
-        </table>
-
-    </section>
-
+    <main class="container">
+        <section>
+            <h2>แบบฟอร์มการจองที่ดิน</h2>
+            <form id="land-registration-form">
+                <div>
+                    <label for="person-select">เลือกชื่อผู้จอง:</label>
+                    <select id="person-select">
+                        <option value="">-- ชื่อ นามสกุล --</option>
+                    </select>
+                </div>
+    
+                <div>
+                    <label>อำเภอ:</label>
+                    <input type="text" id="district-display" readonly>
+                </div>
+    
+                <div>
+                    <label>จังหวัด:</label>
+                    <input type="text" id="province-display" readonly>
+                </div>
+    
+                <div>
+                    <label for="subdistrict-select">เลือกตำบล/แขวง:</label>
+                    <select id="subdistrict-select" disabled>
+                        <option value="">-- กรุณาเลือกตำบล/แขวง --</option>
+                    </select>
+                </div>
+    
+                <div>
+                    <label for="plot-select">เลือกแปลงที่ดิน:</label>
+                    <select id="plot-select" disabled>
+                        <option value="">-- กรุณาเลือกแปลงที่ดิน --</option>
+                    </select>
+                    <div id="plot-status"></div>
+                </div>
+    
+                <button type="submit" id="submit-btn">ยืนยันการจอง</button>
+            </form>
+        </section>
+    
+        <section>
+            <h2>รายชื่อผู้จองที่ดิน</h2>
+            <table id="registrations-table">
+              <thead>
+                <tr>
+                  <th>รหัส</th>
+                  <th>ชื่อ</th>
+                  <th>อำเภอ</th>
+                  <th>จังหวัด</th>
+                  <th>ตำบล</th>
+                  <th>แปลง</th>
+                  <th>สถานะ</th>
+                </tr>
+              </thead>
+              <tbody id="registrations-table-body"></tbody>
+            </table>
+    
+        </section>
+    </main>
         <footer>
         <div class="container">
             <p>© 2023 กระทรวงการปกครอง. สงวนลิขสิทธิ์.</p>
