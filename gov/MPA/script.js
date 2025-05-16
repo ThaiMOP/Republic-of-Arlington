@@ -240,3 +240,40 @@ document.querySelector('.menu-toggle').addEventListener('click', function () {
     nav.style.display = 'none';
   }
 });
+
+
+// จัดการการคลิกเมนูแบบฟอร์ม
+document.addEventListener('DOMContentLoaded', function () {
+  const toggle = document.querySelector('.dropdown-toggle');
+  const menu = document.querySelector('.dropdown-menu');
+
+  toggle.addEventListener('click', function (e) {
+    e.preventDefault(); // ป้องกันการ jump ไปยัง #
+    menu.classList.toggle('show');
+  });
+  document.addEventListener('click', function (e) {
+    if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('show');
+    }
+  });
+});
+
+// เปิด popup login
+document.getElementById('login').addEventListener('click', function () {
+  const loginSection = document.getElementById('login-section');
+  loginSection.style.display = (loginSection.style.display === 'block') ? 'none' : 'block';
+});
+
+// ตรวจสอบรหัสผ่าน
+document.getElementById('login-btn').addEventListener('click', function () {
+  const username = document.getElementById('admin-username').value.trim();
+  const password = document.getElementById('admin-password').value.trim();
+
+  if (username === 'admin' && password === 'arlington140568') {
+    alert('เข้าสู่ระบบสำเร็จ!');
+    // คุณสามารถซ่อน login-section หรือนำผู้ใช้ไปยังหน้าผู้ดูแลได้ที่นี่
+    document.getElementById('login-section').style.display = 'none';
+  } else {
+    alert('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง');
+  }
+});
