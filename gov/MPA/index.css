@@ -262,3 +262,7 @@ button#login-btn {
     color: red;
     display: none;
 }
+
+select {
+    cursor: pointer;
+}
