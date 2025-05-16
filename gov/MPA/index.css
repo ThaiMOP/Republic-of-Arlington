@@ -156,7 +156,7 @@ nav ul ul li a:hover {
     background-color: #002244;
 }
 
-nav {display:block;}
+nav {display:block !important;}
 .menu-toggle {display:none;}
 
 /* Responsive toggle menu button (optional) */
