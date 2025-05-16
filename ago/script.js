@@ -26,3 +26,18 @@ fetch('data.json')
       container.appendChild(card);
     });
   });
+
+const menuToggle = document.getElementById('menu-toggle');
+const menuHeader = document.getElementById('menu-header');
+const icon = menuToggle.querySelector('i');
+
+menuToggle.addEventListener('click', () => {
+  menuHeader.classList.toggle('show');
+  if (menuHeader.classList.contains('show')) {
+    icon.classList.remove('fa-bars');
+    icon.classList.add('fa-xmark');
+  } else {
+    icon.classList.remove('fa-xmark');
+    icon.classList.add('fa-bars');
+  }
+});
