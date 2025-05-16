@@ -34,6 +34,29 @@ header .header-bar {
   cursor: pointer;
 }
 
+.menu_header {
+  display: flex;
+  gap: 15px;
+}
+
+@media (max-width: 768px) {
+  .menu_header {
+    display: none;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 10px;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    border: 1px solid #ccc;
+    z-index: 999;
+  }
+
+  .menu_header.show {
+    display: flex;
+  }
+}
+
 /* Slider */
 .slider {
   position: relative;
