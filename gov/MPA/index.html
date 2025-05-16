@@ -29,16 +29,28 @@
         .loading-box {
           background: white;
           padding: 20px 40px;
+          margin: 10%;
           border-radius: 12px;
           font-size: 18px;
           box-shadow: 0 0 10px rgba(0,0,0,0.25);
+          user-select: none;
         }
-
+        
+        .loading-box p {
+            text-align: center;
+        }
+        
+        #plot-status {
+            margin: 20px 0;
+            padding: 10px;
+            user-select: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <div id="loading-popup" style="display: none;" class="loading-overlay">
-      <div class="loading-box">กำลังค้นหาข้อมูล กรุณารอสักครู่...</div>
+      <div class="loading-box"><img src="loading.gif"><p>กำลังค้นหาข้อมูล กรุณารอสักครู่...</p></div>
     </div>
 
     <section>
