@@ -129,14 +129,19 @@ nav ul li a {
     text-decoration: none;
     padding: 10px 15px;
     display: block;
-    cursor: pointer;
+    cursor: pointer; 
+    transition: .5s ease;
+}
+
+nav ul ul li a:hover {
+    background: #171a70;
 }
 
 nav ul ul {
     display: none;
     position: absolute;
     top: 55.6px;
-    left: 0;
+    right: 0;
     background-color: #1a1e81;
     min-width: 160px;
     z-index: 1;
