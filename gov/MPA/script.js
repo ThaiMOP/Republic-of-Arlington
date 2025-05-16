@@ -258,26 +258,32 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-// เปิด popup login
-document.getElementById('login').addEventListener('click', function () {
-  const loginSection = document.getElementById('login-section');
-  loginSection.style.display = (loginSection.style.display === 'block') ? 'none' : 'block';
-});
+  // เปิด login popup
+  document.getElementById('login').addEventListener('click', function () {
+    document.getElementById('login-section').style.display = 'block';
+  });
 
-// ปิด popup login
-document.getElementById('close-popup').addEventListener('click', function () {
-  document.getElementById('login-section').style.display = 'none';
-});
-
-// ตรวจสอบรหัสผ่าน
-document.getElementById('login-btn').addEventListener('click', function () {
-  const username = document.getElementById('admin-username').value.trim();
-  const password = document.getElementById('admin-password').value.trim();
-
-  if (username === 'admin' && password === 'arlington140568') {
-    alert('เข้าสู่ระบบสำเร็จ!');
+  // ปิด login popup ด้วยปุ่ม x
+  document.getElementById('close-popup').addEventListener('click', function () {
     document.getElementById('login-section').style.display = 'none';
-  } else {
-    alert('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง');
-  }
-});
+  });
+
+  // ตรวจสอบการเข้าสู่ระบบ
+  document.getElementById('login-btn').addEventListener('click', function () {
+    const username = document.getElementById('admin-username').value.trim();
+    const password = document.getElementById('admin-password').value.trim();
+
+    if (username === 'admin' && password === 'arlington140568') {
+      alert('เข้าสู่ระบบสำเร็จ!');
+      
+      // ซ่อนทุก admin-section
+      document.querySelectorAll('.admin-section').forEach(el => {
+        el.style.display = 'none';
+      });
+
+      // แสดง dashboard
+      document.getElementById('admin-dashboard').style.display = 'block';
+    } else {
+      alert('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง');
+    }
+  });
