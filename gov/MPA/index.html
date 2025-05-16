@@ -203,6 +203,21 @@
             statusDiv.style.display = "none";
           }
         }, 3000);
+          // แสดง Loader 4 วินาที
+          setTimeout(function () {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("main-content").style.display = "block";
+        
+            // ตรวจสอบปุ่มหลังจาก 3 วินาที (หลัง Loader หาย)
+            setTimeout(function () {
+              const submitBtn = document.getElementById("submit-btn");
+              const statusDiv = document.getElementById("button-status");
+        
+              if (submitBtn.disabled) {
+                statusDiv.style.display = "block";
+              }
+            }, 3000);
+          }, 4000);
     </script>
 
 </body>
