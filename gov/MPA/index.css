@@ -244,3 +244,7 @@ button#login-btn {
     height: 100vh;
     border-radius: 0;
 }
+
+.admin-actions button {
+    width: 100%;
+}
