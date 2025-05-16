@@ -218,3 +218,19 @@ nav {display:block;}
 button#login-btn {
     width: 100%;
 }
+
+#close-popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: #ffffff;
+    background: #dedede;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    cursor: pointer;
+}
