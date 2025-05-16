@@ -151,13 +151,13 @@ nav ul ul li a:hover {
     background-color: #002244;
 }
 
-.nav {display:block;}
+nav {display:block;}
 .menu-toggle {display:none;}
 
 /* Responsive toggle menu button (optional) */
 @media (max-width: 768px) {
     .menu-toggle {display:block;}
-    .nav {display:none;}
+    nav {display:none;}
     nav {
         position: absolute;
         top: 60px;
