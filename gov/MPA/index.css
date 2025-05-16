@@ -212,6 +212,7 @@ nav {display:block;}
     padding: 25px;
     margin-bottom: 30px;
     height: 100vh;
+    border-radius: 0;
 }
 
 button#login-btn {
