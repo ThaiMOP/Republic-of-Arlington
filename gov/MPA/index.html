@@ -106,19 +106,22 @@
     </div>
     
     <!-- Popup Login Form -->
-    <div id="login-section" class="admin-section" style="display: none;">
-      <h2>เข้าสู่ระบบผู้ดูแล</h2>
-      <div class="form-group">
-        <label for="admin-username">ชื่อผู้ใช้:</label>
-        <input type="text" id="admin-username" required>
-      </div>
-      <div class="form-group">
-        <label for="admin-password">รหัสผ่าน:</label>
-        <input type="password" id="admin-password" required>
-      </div>
-      <div class="form-group">
-        <button type="submit" id="login-btn">เข้าสู่ระบบ</button>
-      </div>
+    
+    <div id="loading-popup" style="display: none;" class="loading-overlay">
+        <div id="login-section" class="admin-section" style="display: none;">
+          <h2>เข้าสู่ระบบผู้ดูแล</h2>
+          <div class="form-group">
+            <label for="admin-username">ชื่อผู้ใช้:</label>
+            <input type="text" id="admin-username" required>
+          </div>
+          <div class="form-group">
+            <label for="admin-password">รหัสผ่าน:</label>
+            <input type="password" id="admin-password" required>
+          </div>
+          <div class="form-group">
+            <button type="submit" id="login-btn">เข้าสู่ระบบ</button>
+          </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
