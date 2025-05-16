@@ -46,8 +46,10 @@ header .header-bar {
     background-color: #fff;
     padding: 10px;
     position: absolute;
-    top: 60px;
-    right: 20px;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px);
     border: 1px solid #ccc;
     z-index: 999;
   }
