@@ -188,7 +188,7 @@
           .catch((err) => console.error("Error fetching status:", err));
       });
 
-        document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
           const submitBtn = document.getElementById("submit-btn");
           const statusDiv = document.getElementById("button-status");
         
@@ -197,7 +197,7 @@
           } else {
             statusDiv.style.display = "none";
           }
-        });
+        }, 3000);
     </script>
 
 </body>
