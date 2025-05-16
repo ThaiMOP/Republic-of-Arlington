@@ -9,145 +9,150 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <div id="loading-popup" style="display: none;" class="loading-overlay">
-      <div class="loading-box"><img src="loading.gif"><p>กำลังค้นหาข้อมูล กรุณารอสักครู่...</p></div>
+    <div id="loader">
+      <div class="spinner"></div>
     </div>
-    <header>
-      <div class="logo">
-        <img src="logo.png" alt="โลโก้กระทรวงการปกครอง">
-        <span>กระทรวงการปกครอง</span>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#">หน้าหลัก</a></li>
-          <li>
-            <a href="#" class="dropdown-toggle">แบบฟอร์ม <i class="fa-solid fa-caret-down"></i></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">การจองที่ดิน</a></li>
+    <main id="main-content">
+        <div id="loading-popup" style="display: none;" class="loading-overlay">
+          <div class="loading-box"><img src="loading.gif"><p>กำลังค้นหาข้อมูล กรุณารอสักครู่...</p></div>
+        </div>
+        <header>
+          <div class="logo">
+            <img src="logo.png" alt="โลโก้กระทรวงการปกครอง">
+            <span>กระทรวงการปกครอง</span>
+          </div>
+          <nav>
+            <ul>
+              <li><a href="#">หน้าหลัก</a></li>
+              <li>
+                <a href="#" class="dropdown-toggle">แบบฟอร์ม <i class="fa-solid fa-caret-down"></i></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">การจองที่ดิน</a></li>
+                </ul>
+              </li>
             </ul>
-          </li>
-        </ul>
-      </nav>
-      <div class="menu-toggle">
-          <i class="fa-solid fa-bars"></i>
-      </div>
-    </header>
+          </nav>
+          <div class="menu-toggle">
+              <i class="fa-solid fa-bars"></i>
+          </div>
+        </header>
+        
     
-
-    <main class="container">
-        <section>
-            <h2>แบบฟอร์มการจองที่ดิน</h2>
-            <form id="land-registration-form">
-                <div>
-                    <label for="person-select">เลือกชื่อผู้จอง:</label>
-                    <select id="person-select">
-                        <option value="">-- ชื่อ นามสกุล --</option>
-                    </select>
+        <section class="container">
+            <section>
+                <h2>แบบฟอร์มการจองที่ดิน</h2>
+                <form id="land-registration-form">
+                    <div>
+                        <label for="person-select">เลือกชื่อผู้จอง:</label>
+                        <select id="person-select">
+                            <option value="">-- ชื่อ นามสกุล --</option>
+                        </select>
+                    </div>
+        
+                    <div>
+                        <label>อำเภอ:</label>
+                        <input type="text" id="district-display" readonly>
+                    </div>
+        
+                    <div>
+                        <label>จังหวัด:</label>
+                        <input type="text" id="province-display" readonly>
+                    </div>
+        
+                    <div>
+                        <label for="subdistrict-select">เลือกตำบล/แขวง:</label>
+                        <select id="subdistrict-select" disabled>
+                            <option value="">-- กรุณาเลือกตำบล/แขวง --</option>
+                        </select>
+                    </div>
+        
+                    <div>
+                        <label for="plot-select">เลือกแปลงที่ดิน:</label>
+                        <select id="plot-select" disabled>
+                            <option value="">-- กรุณาเลือกแปลงที่ดิน --</option>
+                        </select>
+                        <div id="plot-status"></div>
+                    </div>
+        
+                    <button type="submit" id="submit-btn">ยืนยันการจอง</button>
+                    <div id="button-status" class="status">ระบบยังไม่เปิดใช้งาน</div>
+                </form>
+            </section>
+        
+            <section>
+                <h2>รายชื่อผู้จองที่ดิน</h2>
+                <div class="table">
+                    <table id="registrations-table">
+                      <thead>
+                        <tr>
+                          <th>รหัส</th>
+                          <th>ชื่อ</th>
+                          <th>อำเภอ</th>
+                          <th>จังหวัด</th>
+                          <th>ตำบล</th>
+                          <th>แปลง</th>
+                          <th>สถานะ</th>
+                        </tr>
+                      </thead>
+                      <tbody id="registrations-table-body"></tbody>
+                    </table>
                 </div>
-    
-                <div>
-                    <label>อำเภอ:</label>
-                    <input type="text" id="district-display" readonly>
-                </div>
-    
-                <div>
-                    <label>จังหวัด:</label>
-                    <input type="text" id="province-display" readonly>
-                </div>
-    
-                <div>
-                    <label for="subdistrict-select">เลือกตำบล/แขวง:</label>
-                    <select id="subdistrict-select" disabled>
-                        <option value="">-- กรุณาเลือกตำบล/แขวง --</option>
-                    </select>
-                </div>
-    
-                <div>
-                    <label for="plot-select">เลือกแปลงที่ดิน:</label>
-                    <select id="plot-select" disabled>
-                        <option value="">-- กรุณาเลือกแปลงที่ดิน --</option>
-                    </select>
-                    <div id="plot-status"></div>
-                </div>
-    
-                <button type="submit" id="submit-btn">ยืนยันการจอง</button>
-                <div id="button-status" class="status">ระบบยังไม่เปิดใช้งาน</div>
-            </form>
+            </section>
         </section>
-    
-        <section>
-            <h2>รายชื่อผู้จองที่ดิน</h2>
-            <div class="table">
-                <table id="registrations-table">
-                  <thead>
-                    <tr>
-                      <th>รหัส</th>
-                      <th>ชื่อ</th>
-                      <th>อำเภอ</th>
-                      <th>จังหวัด</th>
-                      <th>ตำบล</th>
-                      <th>แปลง</th>
-                      <th>สถานะ</th>
-                    </tr>
-                  </thead>
-                  <tbody id="registrations-table-body"></tbody>
-                </table>
+        
+        <footer>
+            <div class="container">
+                <p>© 2023 กระทรวงการปกครอง. สงวนลิขสิทธิ์.</p>
             </div>
-        </section>
+        </footer>
+        
+        <!-- ปุ่ม Login -->
+        <div class="btn btn-login" id="login">
+          <i class="fa-solid fa-lock"></i>
+        </div>
+        
+        <!-- Popup Login Form -->
+        
+        <div id="login-section" style="display: none;">
+            <div class="admin-section">
+                <div class="container">
+                  <h2>เข้าสู่ระบบผู้ดูแล</h2>
+                  <div class="form-group">
+                    <label for="admin-username">ชื่อผู้ใช้:</label>
+                    <input type="text" id="admin-username" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="admin-password">รหัสผ่าน:</label>
+                    <input type="password" id="admin-password" required>
+                  </div>
+                  <div class="form-group">
+                    <button type="submit" id="login-btn">เข้าสู่ระบบ</button>
+                  </div>
+                    <div id="close-popup">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                </div>
+            </div>
+            <div id="admin-dashboard">
+                <div class="container">
+                    <h2>การตั้งค่าระบบ</h2>
+                    <div class="form-group">
+                        <label for="registration-status">สถานะการลงทะเบียน:</label>
+                        <select id="registration-status">
+                            <option value="open">เปิด</option>
+                            <option value="closed">ปิด</option>
+                        </select>
+                    </div>
+                    <div class="admin-actions">
+                        <button id="save-settings-btn">บันทึกการตั้งค่า</button>
+                    </div>
+                    <div id="close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
-    
-    <footer>
-        <div class="container">
-            <p>© 2023 กระทรวงการปกครอง. สงวนลิขสิทธิ์.</p>
-        </div>
-    </footer>
-    
-    <!-- ปุ่ม Login -->
-    <div class="btn btn-login" id="login">
-      <i class="fa-solid fa-lock"></i>
-    </div>
-    
-    <!-- Popup Login Form -->
-    
-    <div id="login-section" style="display: none;">
-        <div class="admin-section">
-            <div class="container">
-              <h2>เข้าสู่ระบบผู้ดูแล</h2>
-              <div class="form-group">
-                <label for="admin-username">ชื่อผู้ใช้:</label>
-                <input type="text" id="admin-username" required>
-              </div>
-              <div class="form-group">
-                <label for="admin-password">รหัสผ่าน:</label>
-                <input type="password" id="admin-password" required>
-              </div>
-              <div class="form-group">
-                <button type="submit" id="login-btn">เข้าสู่ระบบ</button>
-              </div>
-                <div id="close-popup">
-                    <i class="fa-solid fa-xmark"></i>
-                </div>
-            </div>
-        </div>
-        <div id="admin-dashboard">
-            <div class="container">
-                <h2>การตั้งค่าระบบ</h2>
-                <div class="form-group">
-                    <label for="registration-status">สถานะการลงทะเบียน:</label>
-                    <select id="registration-status">
-                        <option value="open">เปิด</option>
-                        <option value="closed">ปิด</option>
-                    </select>
-                </div>
-                <div class="admin-actions">
-                    <button id="save-settings-btn">บันทึกการตั้งค่า</button>
-                </div>
-                <div id="close">
-                    <i class="fa-solid fa-xmark"></i>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script src="script.js"></script>
     <script>
