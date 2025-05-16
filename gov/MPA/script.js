@@ -35,6 +35,7 @@ function handlePersonChange(event) {
   document.getElementById("district-display").value = district;
   document.getElementById("province-display").value = province;
 
+  // Update subdistricts
   const subdistrictSelect = document.getElementById("subdistrict-select");
   subdistrictSelect.innerHTML = '<option value="">-- กรุณาเลือกตำบล/แขวง --</option>';
   const subdistricts = globalData.subdistricts[district] || [];
@@ -47,6 +48,7 @@ function handlePersonChange(event) {
   });
   subdistrictSelect.disabled = subdistricts.length === 0;
 
+  // Enable plot-select
   const plotSelect = document.getElementById("plot-select");
   plotSelect.disabled = false;
   plotSelect.innerHTML = `
@@ -68,7 +70,55 @@ function handlePersonChange(event) {
     <option value="015">015</option>
     <option value="016">016</option>
   `;
+
+  // ตรวจสอบว่า plot-status มีหรือยัง ถ้ายังให้สร้างใหม่
+  let statusBox = document.getElementById("plot-status");
+  if (!statusBox) {
+    statusBox = document.createElement("div");
+    statusBox.id = "plot-status";
+    statusBox.className = "status-box";
+    plotSelect.parentNode.insertBefore(statusBox, plotSelect.nextSibling);
+  } else {
+    statusBox.textContent = "";
+    statusBox.className = "status-box";
+  }
+
+  // Add event listener ใหม่
+  plotSelect.addEventListener("change", async () => {
+    const selectedPlot = plotSelect.value;
+    const selectedSubdistrict = document.getElementById("subdistrict-select").value;
+
+    try {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbwl4i7i15GuqKeug_kxCSPdFHqLfC9lctQ2-vm-9bGDCA2zi2dUWwE4H8xsH2dl4xqBkg/exec");
+      const data = await response.json();
+
+      const plotData = data.find(item =>
+        item["ตำบล"] === selectedSubdistrict &&
+        item["แปลงที่ดิน"] === selectedPlot
+      );
+
+      if (plotData) {
+        if (plotData["สถานะ"] === false) {
+          statusBox.textContent = "ว่าง";
+          statusBox.className = "status-available";
+        } else {
+          statusBox.textContent = "จองแล้ว";
+          statusBox.className = "status-reserved";
+          alert("แปลงนี้ถูกจองแล้ว กรุณาเลือกแปลงอื่น");
+        }
+      } else {
+        statusBox.textContent = "ไม่พบข้อมูล";
+        statusBox.className = "status-suspended";
+      }
+
+    } catch (error) {
+      console.error("Error fetching status:", error);
+      statusBox.textContent = "เกิดข้อผิดพลาด";
+      statusBox.className = "status-suspended";
+    }
+  });
 }
+
 
 // ✅ ติดตั้งครั้งเดียวเมื่อ DOM โหลด
 function setupPlotChangeEvent() {
