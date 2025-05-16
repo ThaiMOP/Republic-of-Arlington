@@ -135,9 +135,9 @@ nav ul li a {
 nav ul ul {
     display: none;
     position: absolute;
-    top: 100%;
+    top: 55.6px;
     left: 0;
-    background-color: var(--primary-color);
+    background-color: #1a1e81;
     min-width: 160px;
     z-index: 1;
     flex-direction: column;
@@ -151,8 +151,20 @@ nav ul ul li a:hover {
     background-color: #002244;
 }
 
+.nav {display:block;}
+.menu-toggle {display:none;}
+
 /* Responsive toggle menu button (optional) */
 @media (max-width: 768px) {
+    .menu-toggle {display:block;}
+    .nav {display:none;}
+    nav {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #1a1e81;
+    }
     nav ul {
         flex-direction: column;
         width: 100%;
