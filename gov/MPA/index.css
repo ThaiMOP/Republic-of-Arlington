@@ -94,12 +94,12 @@ body {
     }
 }
 header {
-    background-color: var(--primary-color);
+    background-color: #1a1e81;
+    color: #fff;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
-    color: var(--text-color);
     flex-wrap: wrap;
 }
 
@@ -125,7 +125,7 @@ nav ul li {
 }
 
 nav ul li a {
-    color: var(--text-color);
+    color: #fff;
     text-decoration: none;
     padding: 10px 15px;
     display: block;
