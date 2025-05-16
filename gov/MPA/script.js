@@ -298,6 +298,6 @@ document.addEventListener('DOMContentLoaded', function () {
       submitBtn.disabled = true;
     }
   });
-  document.getElementById('close-popup').addEventListener('click', function() {
+  document.getElementById('close').addEventListener('click', function() {
     document.getElementById('login-section').style.display = 'none';
   });
