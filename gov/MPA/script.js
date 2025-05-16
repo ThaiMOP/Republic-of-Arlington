@@ -222,3 +222,21 @@ function loadRegistrations() {
       });
     });
 }
+
+document.querySelector('.menu-toggle').addEventListener('click', function () {
+  const icon = this.querySelector('i');
+  const nav = document.querySelector('nav');
+
+  // เช็คว่า icon เป็น bars หรือไม่
+  const isBars = icon.classList.contains('fa-bars');
+
+  if (isBars) {
+    icon.classList.remove('fa-bars');
+    icon.classList.add('fa-xmark');
+    nav.style.display = 'block';
+  } else {
+    icon.classList.remove('fa-xmark');
+    icon.classList.add('fa-bars');
+    nav.style.display = 'none';
+  }
+});
