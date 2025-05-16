@@ -33,11 +33,15 @@ const icon = menuToggle.querySelector('i');
 
 menuToggle.addEventListener('click', () => {
   menuHeader.classList.toggle('show');
+
   if (menuHeader.classList.contains('show')) {
     icon.classList.remove('fa-bars');
     icon.classList.add('fa-xmark');
+    document.body.style.overflow = 'hidden'; // ปิด scroll
   } else {
     icon.classList.remove('fa-xmark');
     icon.classList.add('fa-bars');
+    document.body.style.overflow = 'auto'; // เปิด scroll กลับ
   }
 });
+
