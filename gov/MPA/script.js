@@ -53,9 +53,22 @@ function handlePersonChange(event) {
   plotSelect.disabled = false;
   plotSelect.innerHTML = `
     <option value="">-- กรุณาเลือกแปลงที่ดิน --</option>
-    <option value="A1">A1</option>
-    <option value="A2">A2</option>
-    <option value="A3">A3</option>
+    <option value="แปลง 1">แปลง 1</option>
+    <option value="แปลง 2">แปลง 2</option>
+    <option value="แปลง 3">แปลง 3</option>
+    <option value="แปลง 4">แปลง 4</option>
+    <option value="แปลง 5">แปลง 5</option>
+    <option value="แปลง 6">แปลง 6</option>
+    <option value="แปลง 7">แปลง 7</option>
+    <option value="แปลง 8">แปลง 8</option>
+    <option value="แปลง 9">แปลง 9</option>
+    <option value="แปลง 10">แปลง 10</option>
+    <option value="แปลง 11">แปลง 11</option>
+    <option value="แปลง 12">แปลง 12</option>
+    <option value="แปลง 13">แปลง 13</option>
+    <option value="แปลง 14">แปลง 14</option>
+    <option value="แปลง 15">แปลง 15</option>
+    <option value="แปลง 16">แปลง 16</option>
   `;
 
   plotSelect.addEventListener("change", () => {
