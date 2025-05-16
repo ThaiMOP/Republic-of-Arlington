@@ -253,3 +253,12 @@ button#login-btn {
     overflow-x: auto;
     padding: 10px 0;
 }
+
+#button-status {
+    margin: 5px 0;
+    padding: 10px;
+    user-select: none;
+    cursor: pointer;
+    color: red;
+    display: none;
+}
