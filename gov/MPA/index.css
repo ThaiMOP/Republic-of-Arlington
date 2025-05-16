@@ -248,3 +248,8 @@ button#login-btn {
 .admin-actions button {
     width: 100%;
 }
+.table {
+    max-width: 1200px;
+    overflow-x: auto;
+    padding: 10px 0;
+}
