@@ -127,31 +127,26 @@ function setupPlotChangeEvent() {
     const statusBox = document.getElementById("plot-status");
     const selectedPlot = plotSelect.value;
     const selectedSubdistrict = document.getElementById("subdistrict-select").value;
-
+  
     try {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbwl4i7i15GuqKeug_kxCSPdFHqLfC9lctQ2-vm-9bGDCA2zi2dUWwE4H8xsH2dl4xqBkg/exec");
-      const data = await response.json();
-
-      const plotData = data.find(item =>
-        item["ตำบล"] === selectedSubdistrict &&
-        item["แปลงที่ดิน"] === selectedPlot
+      const response = await fetch(API_URL);
+      const data = await response.json(); // เป็น array ของ array
+  
+      const isOccupied = data.some(entry =>
+        entry[4] === selectedSubdistrict && // ตำบล
+        entry[5] === selectedPlot            // แปลงที่ดิน
       );
-
-      if (plotData) {
-        if (plotData["สถานะ"] === false) {
-          statusBox.textContent = "ว่าง";
-          statusBox.className = "status-available";
-        } else {
-          statusBox.textContent = "ไม่ว่าง";
-          statusBox.className = "status-reserved";
-        }
+  
+      if (isOccupied) {
+        statusBox.textContent = "ไม่ว่าง";
+        statusBox.className = "status-reserved";
       } else {
-        statusBox.textContent = "ไม่พบข้อมูล";
-        statusBox.className = "status-suspended";
+        statusBox.textContent = "ว่าง";
+        statusBox.className = "status-available";
       }
-
+  
     } catch (error) {
-      console.error("Error fetching status:", error);
+      console.error("Error fetching plot status:", error);
       statusBox.textContent = "เกิดข้อผิดพลาด";
       statusBox.className = "status-suspended";
     }
