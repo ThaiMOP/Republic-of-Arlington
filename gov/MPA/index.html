@@ -148,5 +148,44 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+      const scriptURL = "YOUR_SCRIPT_URL"; // 🔁 ใส่ URL จาก Deploy Web App
+    
+      // 1. บันทึกสถานะไปยังเซลล์ B1
+      document.getElementById("save-settings-btn").addEventListener("click", () => {
+        const status = document.getElementById("registration-status").value;
+    
+        fetch(scriptURL, {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams({ status: status }),
+        })
+        .then((res) => res.text())
+        .then((text) => {
+          console.log("Response from GAS:", text);
+          alert("บันทึกสถานะเรียบร้อยแล้ว!");
+        })
+        .catch((err) => {
+          console.error("Error:", err);
+          alert("เกิดข้อผิดพลาดในการบันทึก");
+        });
+      });
+    
+      // 2. ดึงข้อมูลจาก B1 เพื่อจัดการปุ่ม submit เมื่อโหลดหน้า
+      window.addEventListener("DOMContentLoaded", () => {
+        fetch(scriptURL)
+          .then((res) => res.text())
+          .then((status) => {
+            const submitBtn = document.getElementById("submit-btn");
+            if (status.trim().toLowerCase() === "open") {
+              submitBtn.disabled = false;
+            } else {
+              submitBtn.disabled = true;
+            }
+          })
+          .catch((err) => console.error("Error fetching status:", err));
+      });
+    </script>
+
 </body>
 </html>
