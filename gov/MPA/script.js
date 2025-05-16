@@ -85,38 +85,35 @@ function handlePersonChange(event) {
 
   // Add event listener ใหม่
   plotSelect.addEventListener("change", async () => {
+    const statusBox = document.getElementById("plot-status");
     const selectedPlot = plotSelect.value;
     const selectedSubdistrict = document.getElementById("subdistrict-select").value;
-
+  
     try {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbwl4i7i15GuqKeug_kxCSPdFHqLfC9lctQ2-vm-9bGDCA2zi2dUWwE4H8xsH2dl4xqBkg/exec");
+      const response = await fetch(API_URL);
       const data = await response.json();
-
-      const plotData = data.find(item =>
-        item["ตำบล"] === selectedSubdistrict &&
-        item["แปลงที่ดิน"] === selectedPlot
+  
+      // เช็คว่ามีข้อมูลใน API_URL ที่ตรงกับตำบลและแปลงที่เลือก
+      const match = data.find(row =>
+        row[4] === selectedSubdistrict &&  // ตำบลอยู่ index 4
+        row[5] === selectedPlot            // แปลงที่ดินอยู่ index 5
       );
-
-      if (plotData) {
-        if (plotData["สถานะ"] === false) {
-          statusBox.textContent = "ว่าง";
-          statusBox.className = "status-available";
-        } else {
-          statusBox.textContent = "จองแล้ว";
-          statusBox.className = "status-reserved";
-          alert("แปลงนี้ถูกจองแล้ว กรุณาเลือกแปลงอื่น");
-        }
+  
+      if (match) {
+        statusBox.textContent = "ไม่ว่าง";
+        statusBox.className = "status-reserved";
       } else {
-        statusBox.textContent = "ไม่พบข้อมูล";
-        statusBox.className = "status-suspended";
+        statusBox.textContent = "ว่าง";
+        statusBox.className = "status-available";
       }
-
+  
     } catch (error) {
-      console.error("Error fetching status:", error);
+      console.error("เกิดข้อผิดพลาดในการโหลดข้อมูล:", error);
       statusBox.textContent = "เกิดข้อผิดพลาด";
       statusBox.className = "status-suspended";
     }
   });
+
 }
 
 
