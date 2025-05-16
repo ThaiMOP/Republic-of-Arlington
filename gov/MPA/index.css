@@ -219,6 +219,7 @@ button#login-btn {
     width: 100%;
 }
 
+#close,
 #close-popup {
     position: fixed;
     top: 20px;
