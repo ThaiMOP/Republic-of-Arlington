@@ -88,15 +88,20 @@ function handlePersonChange(event) {
     const statusBox = document.getElementById("plot-status");
     const selectedPlot = plotSelect.value;
     const selectedSubdistrict = document.getElementById("subdistrict-select").value;
+    const loadingPopup = document.getElementById("loading-popup");
+  
+    if (!selectedPlot) return;
+  
+    // แสดง popup
+    loadingPopup.style.display = "flex";
   
     try {
       const response = await fetch(API_URL);
       const data = await response.json();
   
-      // เช็คว่ามีข้อมูลใน API_URL ที่ตรงกับตำบลและแปลงที่เลือก
       const match = data.find(row =>
-        row[4] === selectedSubdistrict &&  // ตำบลอยู่ index 4
-        row[5] === selectedPlot            // แปลงที่ดินอยู่ index 5
+        row[4] === selectedSubdistrict &&
+        row[5] === selectedPlot
       );
   
       if (match) {
@@ -108,11 +113,15 @@ function handlePersonChange(event) {
       }
   
     } catch (error) {
-      console.error("เกิดข้อผิดพลาดในการโหลดข้อมูล:", error);
+      console.error("เกิดข้อผิดพลาด:", error);
       statusBox.textContent = "เกิดข้อผิดพลาด";
       statusBox.className = "status-suspended";
+    } finally {
+      // ปิด popup ไม่ว่าจะสำเร็จหรือ error
+      loadingPopup.style.display = "none";
     }
   });
+
 
 }
 
