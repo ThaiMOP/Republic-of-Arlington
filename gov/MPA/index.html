@@ -71,6 +71,7 @@
                 </div>
     
                 <button type="submit" id="submit-btn">ยืนยันการจอง</button>
+                <div id="button-status" class="status">ระบบยังไม่เปิดใช้งาน</div>
             </form>
         </section>
     
@@ -186,6 +187,17 @@
           })
           .catch((err) => console.error("Error fetching status:", err));
       });
+
+        document.addEventListener("DOMContentLoaded", function () {
+          const submitBtn = document.getElementById("submit-btn");
+          const statusDiv = document.getElementById("button-status");
+        
+          if (submitBtn.disabled) {
+            statusDiv.style.display = "block";
+          } else {
+            statusDiv.style.display = "none";
+          }
+        });
     </script>
 
 </body>
