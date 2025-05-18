@@ -217,10 +217,19 @@
   </div>
 </footer>
   <script>
-  document.getElementById("btn-sitemap").addEventListener("click", function () {
-    const sitemap = document.getElementById("sitemap");
-    sitemap.style.display = sitemap.style.display === "none" ? "block" : "none";
-  });
+    document.getElementById("btn-sitemap").addEventListener("click", function () {
+      const sitemap = document.getElementById("sitemap");
+    
+      // Toggle การแสดงผล
+      const isHidden = sitemap.style.display === "none";
+      sitemap.style.display = isHidden ? "block" : "none";
+    
+      // ถ้าแสดงผลแล้ว ให้ scroll ไปที่ sitemap
+      if (isHidden) {
+        sitemap.scrollIntoView({ behavior: "smooth" }); // เลื่อนแบบนุ่มนวล
+      }
+    });
+
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
