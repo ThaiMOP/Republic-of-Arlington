@@ -1,110 +1,148 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>สำนักงานคณะกรรมการการเลือกตั้ง</title>
     <link rel="icon" href="https://rep-arlington.pages.dev/assets/img/eca.png" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="https://slw-system.pages.dev/assets/css/font-face.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="another.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="/assets/css/eca.css">
-    <script src="/assets/js/eca-index.js"></script>
-    <style>
-        
-        * {
-            box-sizing: border-box;
-        }
-        .container { width: 100%; margin-left: auto; margin-right: auto; padding-left: 15px; padding-right: 15px; } 
-        @media (min-width: 576px) { .container { max-width: 540px; } } 
-        @media (min-width: 768px) { .container { max-width: 720px; } } 
-        @media (min-width: 992px) { .container { max-width: 960px; } } 
-        @media (min-width: 1200px) { .container { max-width: 1140px; } } 
-        @media (min-width: 1400px) { .container { max-width: 1320px; } }
-        section {
-            padding: 0 20px;
-            width: 100%;
-        }
-        .news-container img {
-            height: 200px;
-            object-fit: cover;
-            object-position: top;
-        }
-      /* Loader แบบเต็มจอ */
-      #page-loader {
-        position: fixed;
-        z-index: 9999;
-        background: white;
-        width: 100vw;
-        height: 100vh;
-        top: 0;
-        left: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-    
-      .spinner {
-        border: 8px solid #f3f3f3;
-        border-top: 8px solid #009d63;
-        border-radius: 50%;
-        width: 60px;
-        height: 60px;
-        animation: spin 1s linear infinite;
-      }
-    
-      @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-      }
-        
-        .news-container {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 20px;
-          justify-content: center;
-          margin-top: 20px;
-        }
-        
-        .news-box {
-          background: #f8f9fa;
-          border: 1px solid #ccc;
-          border-radius: 12px;
-          padding: 16px;
-          width: calc(33.333% - 50px);
-          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-          transition: all 0.3s ease;
-        }
-        
-        .news-box:hover {
-          transform: translateY(-5px);
-        }
-        
-        .news-title {
-          font-size: 16px;
-          font-weight: bold;
-          margin-bottom: 6px;
-        }
-        
-        .news-date {
-          font-size: 13px;
-          color: #777;
-        }
-        
-        @media (max-width: 768px) {
-          .news-box {
-            width: calc(50% - 20px);
-          }
-        }
-        
-        @media (max-width: 480px) {
-          .news-box {
-            width: 100%;
-          }
-        }
-
-    </style>
 </head>
 <body>
-    <div id="root"></div>
+    <header>
+        <div class="container">
+            <div class="flex space-between">
+                <div class="flex" style="gap: 20px;">
+                    <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+                    <img height="50px" src="https://rep-arlington.pages.dev/assets/img/eca.png" data-open="640">
+                    <h1>สำนักงานคณะกรรมการการเลือกตั้ง</h1>
+                </div>
+                <div class="flex">
+                    <nav id="nav">
+                        <ul>
+                            <li><a href="#">หน้าหลัก</a></li>
+                            <li>
+                                <a href="#" class="toggle-submenu">เกี่ยวกับ <i class="fa-solid fa-caret-down"></i></a>
+                                <div class="submenu">
+                                    <a href="board-of-director.html">คณะกรรมการการเลือกตั้ง</a>
+                                    <a href="#">สำนักงาน กกต.</a>
+                                    <a href="#">ทำเนียบผู้บริหาร</a>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#" class="toggle-submenu">ข่าวสาร <i class="fa-solid fa-caret-down"></i></a>
+                                <div class="submenu">
+                                    <a href="#">ข่าวประชาสัมพันธ์</a>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#" class="toggle-submenu">บริการข้อมูล <i class="fa-solid fa-caret-down"></i></a>
+                                <div class="submenu">
+                                    <a href="#" class="toggle-submenu">สถิติการเลือกตั้ง <i class="fa-solid fa-caret-down"></i></a>
+                                    <div class="submenu">
+                                        <a href="#">การเลือกตั้งสมาชิกสภาผู้แทนราษฎร</a>
+                                        <a href="#">การออกเสียงประชามติ</a>
+                                        <a href="#">การเลือกตั้งท้องถิ่น</a>
+                                        <a href="#">สถิติการวินิจฉัยชี้ขาดเรื่องคัดค้านการเลือกตั้ง</a>
+                                    </div>
+                                    <a href="/election/result">รายงานผลการนับคะแนน</a>
+                                    <a href="mp-election-results">ประกาศผลการเลือกตั้ง สส.</a>
+                                    <a href="checkidparty">ตรวจสอบการเป็นสมาชิกพรรคการเมือง</a>
+                                    <a href="#">ข้อมูลพรรคการเมือง</a>
+                                </div>
+                            </li>
+                            <li><a href="#">ติดต่อ</a></li>
+                        </ul>
+                    </nav>
+                    <div class="search-box">
+                        <a href="search"><i class="fas fa-search"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="banner">
+            <div class="-deco"></div>
+            <div class="-inner"><img src="election-mn-2.png" class="w-full -campaign-logo"></div>
+        </div>
+
+        <div class="py-4">
+            <div class="container">
+                <h3 class="h6 cl-gd1">การแบ่งเขตเลือกตั้ง สส.</h3>
+                <p class="h9 mb-4">ที่จะมีการเลือกตั้งในวันเสาร์ที่ <span class="cl-gd2">14 มิถุนายน 2568</span></p>
+                <div class="underline mb-4"></div>
+                <div class="executive-grid">
+                    <a href="#zone1" class="executive-box">
+                        <img src="img/zone1.jpg" alt="เขตเลือกตั้ง 1">
+                        <div class="caption"><b>เขตเลือกตั้งที่ 1</b></div>
+                        <div class="caption">ประกอบด้วย อาร์ลิงตันมหานคร จีมินดง และชางนย็อง (เฉพาะอำเภอเมืองชางนย็อง)</div>
+                    </a>
+                    <a href="#zone2" class="executive-box">
+                        <img src="img/zone2.jpg" alt="เขตเลือกตั้ง 2">
+                        <div class="caption"><b>เขตเลือกตั้งที่ 2</b></div>
+                        <div class="caption">ประกอบด้วย ชอลซัง ธนเกียรติโกศล (เฉพาะอำเภอวังศรีวิไลย์) และภูมิพัฒน์ (เฉพาะอำเภอเมืองภูมิพัฒน์)</div>
+                    </a>
+                    <a href="#zone3" class="executive-box">
+                        <img src="img/zone3.jpg" alt="เขตเลือกตั้ง 3">
+                        <div class="caption"><b>เขตเลือกตั้งที่ 3</b></div>
+                        <div class="caption">ประกอบด้วย โกลเดนฟอร์จ และภูมิพัฒน์ (เฉพาะอำเภอแม่คำฟ้า)</div>
+                    </a>
+                    <a href="#zone4" class="executive-box">
+                        <img src="img/zone4.jpg" alt="เขตเลือกตั้ง 4">
+                        <div class="caption"><b>เขตเลือกตั้งที่ 4</b></div>
+                        <div class="caption">ประกอบด้วย มุนฮย็อน และชางนย็อง (เฉพาะอำเภอทงจาง)</div>
+                    </a>
+                    <a href="#zone5" class="executive-box">
+                        <img src="img/zone5.jpg" alt="เขตเลือกตั้ง 5">
+                        <div class="caption"><b>เขตเลือกตั้งที่ 5</b></div>
+                        <div class="caption">ประกอบด้วย ดอกคำใต้ และไกรสร (เฉพาะอำเภอเมืองไกรสร)</div>
+                    </a>
+                    <a href="#zone6" class="executive-box">
+                        <img src="img/zone6.jpg" alt="เขตเลือกตั้ง 6">
+                        <div class="caption"><b>เขตเลือกตั้งที่ 6</b></div>
+                        <div class="caption">ประกอบด้วย ดอกคำใต้ ไกรสร (เฉพาะอำเภอควนพนมชัย) และธนเกียรติโกศล (เฉพาะอำเภอเมืองธนเกียรติโกศล)</div>
+                    </a>
+                </div>
+                
+                <h3 class="h6 cl-gd1">คำวินิจฉัย กกต.</h3>
+                <div class="underline mb-4"></div>
+
+                <h3 class="h6 cl-gd1">ข่าวสาร</h3>
+                <div class="underline mb-4"></div>
+                <div class="news-container" id="news-section"></div>
+                
+                <h3 class="h6 cl-gd1">ข้อมูลการเลือกตั้ง</h3>
+                <div class="underline mb-4"></div>
+                <div class="news-container" id="results-section"></div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer">
+            <div class="container">
+                <div class="footer-inner">
+                    <div class="grid">
+                        <h3 class="h9">สำนักงานคณะกรรมการการเลือกตั้ง</h3>
+                        <span class="contact">ติดต่อเรา</span>
+                        <p class="contact-p"><i class="fas fa-envelope"></i> infi.dopa.moi.my@gmail.com</p>
+                    </div>
+                    <div class="grid right">
+                        <span class="bold">สำนักงานใหญ่</span>
+                        <span>เลขที่ XX ชั้น 1 ถนนนฤเบศร์ธรรมนคร</span>
+                        <span>ตำบล อำเภอเมืองชอลซัง</span>
+                        <span>จังหวัดชอลซัง XXXXX</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="buttom">
+            <p>Copyright © <span id="year"></span> สำนักงานคณะกรรมการการเลือกตั้ง. All Rights Reserved</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
