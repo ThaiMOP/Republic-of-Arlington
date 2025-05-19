@@ -1,1 +1,60 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Engine ด้วย Google Apps Script JSON</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    input { width: 100%; padding: 10px; margin-bottom: 20px; font-size: 16px; }
+    .result { border-bottom: 1px solid #ccc; padding: 10px 0; }
+    .title { font-weight: bold; }
+    .date { color: gray; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <h2>ค้นหาข้อมูลข่าว / คำวินิจฉัย</h2>
+  <input type="text" id="searchBox" placeholder="พิมพ์เพื่อค้นหา...">
+  <div id="results">กำลังโหลดข้อมูล...</div>
 
+  <script>
+    const sources = [
+      "https://script.google.com/macros/s/AKfycbwj8_52HwKqV-IiA0AXw8mQ2Xot-ygvy0lV8yzej5aoMv1HHYEoxyD8S9T4oHqeIk6C/exec",
+      "https://script.google.com/macros/s/AKfycbxOEqvcWgz8zoWmyHxZCMwnLLH-H-pXK4URDt5RroFa8ap0SzrjmRJEzchvLYOlyvSF/exec"
+    ];
+
+    const searchBox = document.getElementById("searchBox");
+    const resultsDiv = document.getElementById("results");
+    let allData = [];
+
+    // ดึงข้อมูลทั้งหมดจากทั้ง 2 URL
+    async function fetchData() {
+      const fetches = sources.map(url => fetch(url).then(res => res.json()));
+      const results = await Promise.all(fetches);
+      allData = results.flat();
+      showResults(""); // แสดงผลทั้งหมดเมื่อโหลดเสร็จ
+    }
+
+    function showResults(keyword) {
+      const filtered = allData.filter(item =>
+        item.title.toLowerCase().includes(keyword.toLowerCase()) ||
+        item.date.includes(keyword)
+      );
+
+      resultsDiv.innerHTML = filtered.length === 0
+        ? "<p>ไม่พบข้อมูล</p>"
+        : filtered.map(item => `
+            <div class="result">
+              <div class="title">${item.title}</div>
+              <div class="date">${item.date}</div>
+            </div>
+          `).join("");
+    }
+
+    searchBox.addEventListener("input", () => {
+      showResults(searchBox.value);
+    });
+
+    fetchData(); // โหลดข้อมูลเมื่อเปิดเว็บ
+  </script>
+</body>
+</html>
