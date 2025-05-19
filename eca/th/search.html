@@ -15,14 +15,66 @@
     </style>
 </head>
 <body>
+    <header>
+        <div class="container">
+            <div class="flex space-between">
+                <div class="flex" style="gap: 20px;">
+                    <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+                    <img height="50px" src="https://rep-arlington.pages.dev/assets/img/eca.png" data-open="640">
+                    <h1>สำนักงานคณะกรรมการการเลือกตั้ง</h1>
+                </div>
+                <div class="flex">
+                    <nav id="nav">
+                        <ul>
+                            <li><a href="/eca/th/">หน้าหลัก</a></li>
+                            <li>
+                                <a href="#" class="toggle-submenu">เกี่ยวกับ <i class="fa-solid fa-caret-down"></i></a>
+                                <div class="submenu">
+                                    <a href="/eca/th/board-of-director.html">คณะกรรมการการเลือกตั้ง</a>
+                                    <a href="#">สำนักงาน กกต.</a>
+                                    <a href="#">ทำเนียบผู้บริหาร</a>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#" class="toggle-submenu">ข่าวสาร <i class="fa-solid fa-caret-down"></i></a>
+                                <div class="submenu">
+                                    <a href="#">ข่าวประชาสัมพันธ์</a>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#" class="toggle-submenu">บริการข้อมูล <i class="fa-solid fa-caret-down"></i></a>
+                                <div class="submenu">
+                                    <a href="#" class="toggle-submenu">สถิติการเลือกตั้ง <i class="fa-solid fa-caret-down"></i></a>
+                                    <div class="submenu">
+                                        <a href="#">การเลือกตั้งสมาชิกสภาผู้แทนราษฎร</a>
+                                        <a href="#">การออกเสียงประชามติ</a>
+                                        <a href="#">การเลือกตั้งท้องถิ่น</a>
+                                        <a href="#">สถิติการวินิจฉัยชี้ขาดเรื่องคัดค้านการเลือกตั้ง</a>
+                                    </div>
+                                    <a href="/election/result">รายงานผลการนับคะแนน</a>
+                                    <a href="/eca/th/mp-election-results">ประกาศผลการเลือกตั้ง สส.</a>
+                                    <a href="/eca/th/checkidparty">ตรวจสอบการเป็นสมาชิกพรรคการเมือง</a>
+                                    <a href="#">ข้อมูลพรรคการเมือง</a>
+                                </div>
+                            </li>
+                            <li><a href="#">ติดต่อ</a></li>
+                        </ul>
+                    </nav>
+                    <div class="search-box">
+                        <a href="#"><i class="fas fa-search"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
   <h2>ค้นหาข้อมูลข่าว / คำวินิจฉัย</h2>
   <input type="text" id="searchBox" placeholder="พิมพ์เพื่อค้นหา...">
   <div id="results">กำลังโหลดข้อมูล...</div>
 
   <script>
     const sources = [
-      "https://script.google.com/macros/s/AKfycbwj8_52HwKqV-IiA0AXw8mQ2Xot-ygvy0lV8yzej5aoMv1HHYEoxyD8S9T4oHqeIk6C/exec",
-      "https://script.google.com/macros/s/AKfycbxOEqvcWgz8zoWmyHxZCMwnLLH-H-pXK4URDt5RroFa8ap0SzrjmRJEzchvLYOlyvSF/exec"
+        "https://script.google.com/macros/s/AKfycbwj8_52HwKqV-IiA0AXw8mQ2Xot-ygvy0lV8yzej5aoMv1HHYEoxyD8S9T4oHqeIk6C/exec",
+        "https://script.google.com/macros/s/AKfycbxOEqvcWgz8zoWmyHxZCMwnLLH-H-pXK4URDt5RroFa8ap0SzrjmRJEzchvLYOlyvSF/exec"
     ];
 
     const searchBox = document.getElementById("searchBox");
@@ -31,21 +83,21 @@
 
     // ดึงข้อมูลทั้งหมดจากทั้ง 2 URL
     async function fetchData() {
-      const fetches = sources.map(url => fetch(url).then(res => res.json()));
-      const results = await Promise.all(fetches);
-      allData = results.flat();
-      showResults(""); // แสดงผลทั้งหมดเมื่อโหลดเสร็จ
+        const fetches = sources.map(url => fetch(url).then(res => res.json()));
+        const results = await Promise.all(fetches);
+        allData = results.flat();
+        showResults(""); // แสดงผลทั้งหมดเมื่อโหลดเสร็จ
     }
 
     function showResults(keyword) {
-      const filtered = allData.filter(item =>
-        item.title.toLowerCase().includes(keyword.toLowerCase()) ||
-        item.date.includes(keyword)
-      );
+        const filtered = allData.filter(item =>
+            item.title.toLowerCase().includes(keyword.toLowerCase()) ||
+            item.date.includes(keyword)
+        );
 
-      resultsDiv.innerHTML = filtered.length === 0
-        ? "<p>ไม่พบข้อมูล</p>"
-        : filtered.map(item => `
+        resultsDiv.innerHTML = filtered.length === 0
+            ? "<p>ไม่พบข้อมูล</p>"
+            : filtered.map(item => `
             <div class="result">
               <div class="title">${item.title}</div>
               <div class="date">${item.date}</div>
@@ -54,10 +106,10 @@
     }
 
     searchBox.addEventListener("input", () => {
-      showResults(searchBox.value);
+        showResults(searchBox.value);
     });
 
     fetchData(); // โหลดข้อมูลเมื่อเปิดเว็บ
-  </script>
+</script>
 </body>
 </html>
