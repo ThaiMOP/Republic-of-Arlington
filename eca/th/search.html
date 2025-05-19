@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบค้นหา</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="stylesheet" href="https://slw-system.pages.dev/assets/css/font-face.css">
+    <base target="_blank">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        input,button {
+            font-family: CPN, sans-serif;
+        }
+        input{outline: none;}
+        body { margin:0; padding:14px 6px 0 6px; background-color:transparent; font-family: CPN, sans-serif; overflow:hidden; }
+        #search-query {
+        width:50vw; min-width:480px; max-width:720px;
+        margin:0 auto; overflow:hidden; border:0; border-radius:4px; color:#212121; background-color:#FFF;
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+        font-size:16px; line-height:24px;
+        }
+        #search-query-input {
+        min-width:104px; width:66%; height:24px; font-size:16px; border:0; color:#000; background-color:transparent;
+        text-align:start; vertical-align:middle;
+        }
+        .material-symbols-outlined { cursor:pointer; padding:12px; vertical-align:middle; }
+        h6 { float:right; margin:0; }
+    </style>
+    <script>
+        function submitSearch(){
+        const query = document.getElementById("search-query-input").value.trim();
+        if (!query) return;
+        const url = 'https://rep-arlington.pages.dev//search?query=' + encodeURIComponent(query);
+        if(typeof IE_fix !== "undefined") {
+            var referLink = document.createElement("a");
+            referLink.href = url;
+            document.body.appendChild(referLink);
+            referLink.click();
+        } else {
+            window.open(url, '_blank');
+        }
+        }
+
+        function searchKeyPress(e){
+        e = e || window.event;
+        if (e.keyCode == 13) {
+            submitSearch();
+            return false;
+        }
+        return true;
+        }
+    </script>
+</head>
+<body id="head">
+  <center><h1>ระบบค้นหา</h1></center><br>
+  <div id="search-query">
+    <span class="material-symbols-outlined" id="search-icon" onclick="submitSearch();">search</span>
+    <input type="text" id="search-query-input" placeholder="คุณต้องการค้นหาอะไร?" onkeypress="return searchKeyPress(event);" style="box-shadow:none;">
+    <h6>Enhanced by REP-ARL</h6>
+  </div>
+</body>
+</html>

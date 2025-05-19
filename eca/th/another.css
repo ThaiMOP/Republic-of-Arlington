@@ -1,0 +1,77 @@
+.cl-gd1 {
+    background: -webkit-gradient(linear, left top, right top, from(#ff5500), to(#ff7f00));
+    background: linear-gradient(90deg, #ff5500, #ff7f00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.cl-gd2 {
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, #ff6a00), color-stop(100%, #ffaa00));
+    background: -webkit-linear-gradient(90deg, #ff6a00 0%, #ffaa00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.cl-gd3 {
+    background: -webkit-gradient(linear, left top, right top, from(#003057), to(#0961aa));
+    background: linear-gradient(90deg, #003057, #0961aa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.hover-cl-gd1:hover {
+    background: -webkit-gradient(linear, left top, right top, from(#ff5500), to(#ff7f00));
+    background: linear-gradient(90deg, #ff5500, #ff7f00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hover-cl-gd2:hover {
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, #ff6a00), color-stop(100%, #ffaa00));
+    background: -webkit-linear-gradient(90deg, #ff6a00 0%, #ffaa00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hover-cl-gd3:hover {
+    background: -webkit-gradient(linear, left top, right top, from(#003057), to(#0961aa));
+    background: linear-gradient(90deg, #003057, #0961aa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.bg-gd1,
+.hover-bg-gd1:hover {
+    background: linear-gradient(-45deg, #ff5500, #ff7f00);
+}
+
+.bg-gd2,
+.hover-bg-gd2:hover {
+    background: -webkit-linear-gradient(-45deg, #ff6a00 0%, #ffaa00 100%);
+}
+
+.bg-gd3,
+.hover-bg-gd3:hover {
+    background: linear-gradient(-45deg, #003057, #0961aa);
+}
+
+.bg-gd4,
+.hover-bg-gd4:hover {
+    background: linear-gradient(-45deg, #0d8af2, #005499);
+}
+
+@keyframes header-deco-ani {
+
+    0%,
+    5%,
+    95%,
+    100% {
+        margin-top: 5rem;
+    }
+
+    50%,
+    55% {
+        margin-top: 0rem;
+    }
+}
