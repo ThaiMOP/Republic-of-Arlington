@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://slw-system.pages.dev/assets/css/font-face.css">
     <link rel="stylesheet" href="styles.css">
     <style>
-        body { font-family: sans-serif; padding: 20px; }
+        body {padding: 20px; }
         input { width: 100%; padding: 10px; margin-bottom: 20px; font-size: 16px; }
         .result { border-bottom: 1px solid #ccc; padding: 10px 0; }
         .title { font-weight: bold; }
@@ -73,43 +73,51 @@
 
   <script>
     const sources = [
-        "https://script.google.com/macros/s/AKfycbwj8_52HwKqV-IiA0AXw8mQ2Xot-ygvy0lV8yzej5aoMv1HHYEoxyD8S9T4oHqeIk6C/exec",
-        "https://script.google.com/macros/s/AKfycbxOEqvcWgz8zoWmyHxZCMwnLLH-H-pXK4URDt5RroFa8ap0SzrjmRJEzchvLYOlyvSF/exec"
+      "https://script.google.com/macros/s/AKfycbwj8_52HwKqV-IiA0AXw8mQ2Xot-ygvy0lV8yzej5aoMv1HHYEoxyD8S9T4oHqeIk6C/exec",
+      "https://script.google.com/macros/s/AKfycbxOEqvcWgz8zoWmyHxZCMwnLLH-H-pXK4URDt5RroFa8ap0SzrjmRJEzchvLYOlyvSF/exec"
     ];
 
     const searchBox = document.getElementById("searchBox");
     const resultsDiv = document.getElementById("results");
     let allData = [];
 
-    // ดึงข้อมูลทั้งหมดจากทั้ง 2 URL
     async function fetchData() {
+      try {
         const fetches = sources.map(url => fetch(url).then(res => res.json()));
         const results = await Promise.all(fetches);
         allData = results.flat();
-        showResults(""); // แสดงผลทั้งหมดเมื่อโหลดเสร็จ
+        showResults("");
+      } catch (error) {
+        resultsDiv.innerHTML = "<p>เกิดข้อผิดพลาดในการโหลดข้อมูล</p>";
+        console.error(error);
+      }
     }
 
     function showResults(keyword) {
-        const filtered = allData.filter(item =>
-            item.title.toLowerCase().includes(keyword.toLowerCase()) ||
-            item.date.includes(keyword)
-        );
+      const filtered = allData.filter(item =>
+        item.title.toLowerCase().includes(keyword.toLowerCase()) ||
+        (item.date && item.date.includes(keyword))
+      );
 
-        resultsDiv.innerHTML = filtered.length === 0
-            ? "<p>ไม่พบข้อมูล</p>"
-            : filtered.map(item => `
-            <div class="result">
-              <div class="title">${item.title}</div>
-              <div class="date">${item.date}</div>
-            </div>
-          `).join("");
+      if (filtered.length === 0) {
+        resultsDiv.innerHTML = "<p>ไม่พบข้อมูล</p>";
+        return;
+      }
+
+      resultsDiv.innerHTML = filtered.map(item => `
+        <div class="result">
+          <div class="title">${item.title}</div>
+          <div class="date">วันที่: ${item.date || "-"}</div>
+          ${item.link ? `<div class="link"><a href="${item.link}" target="_blank" rel="noopener noreferrer">ดูรายละเอียด</a></div>` : ""}
+        </div>
+      `).join("");
     }
 
     searchBox.addEventListener("input", () => {
-        showResults(searchBox.value);
+      showResults(searchBox.value);
     });
 
-    fetchData(); // โหลดข้อมูลเมื่อเปิดเว็บ
-</script>
+    fetchData();
+  </script>
 </body>
 </html>
