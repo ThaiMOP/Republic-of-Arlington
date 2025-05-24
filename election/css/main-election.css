@@ -89,3 +89,10 @@
     button[onclick="logout()"]:hover {
         background: #00b601;
     }
+
+[data-elections] p:not(:last-child) {
+    display: contents;
+}
+[data-elections] p:last-child {
+    display: none;
+}
