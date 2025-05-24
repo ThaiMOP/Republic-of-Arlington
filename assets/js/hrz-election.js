@@ -71,7 +71,7 @@ document.getElementById("form").addEventListener("submit", function (e) {
       document.getElementById("form").reset();
 
       setTimeout(function () {
-        window.location.href = "/election/hre-finish";
+        window.location.href = "/election/hr-election";
       }, 500);
     })
     .catch(function (error) {
