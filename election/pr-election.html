@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หน่วยการเลือกตั้ง - สาธารณรัฐแห่งอาร์ลิงตัน</title>
+    <link rel="icon" href="https://rep-arlington.pages.dev/assets/img/eca.png" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="https://slw-system.pages.dev/assets/css/font-face.css">
+    <link rel="stylesheet" href="/assets/css/index.css">
+</head>
+<body>
+    <header>
+        <h3>คูหาเลือกตั้งประธานาธิบดี</h3>
+        <div>
+            <p id="time"></p>
+        </div>
+    </header>
+    <div class="mt-5">
+
+    </div>
+    <div>
+        <form  class="flex" id="form" method="POST">
+            <div class="col-6 c-4">
+                <header>
+                    <img src="https://eca-systems.pages.dev/assets/img/blue.png" height="82.4px">
+                    <div>
+                        <h2>บัตรเลือกตั้งประธานาธิบดี</h2>
+                        <!-- <div class="s"></div> -->
+                        <p>ทำเครื่องหมายกากบาท "<b>X</b>" ภายใน "ช่องทำเครื่องหมาย" ไม่เกินหนึ่งหมายเลข</p>
+                    </div>
+                </header>
+                <div class="body-card">
+                    <div class="card">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td><small>หมายเลข<br>ของพรรคการเมือง</small></td>
+                                    <td><small>ภาพเครื่องหมาย<br>พรรคการเมือง</small></td>
+                                    <td><small>ชื่อพรรคการเมือง</small></td>
+                                    <td><img src="https://koknongna.pages.dev/election/assets/img/1.png"></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td><img src="https://upload.wikimedia.org/wikipedia/en/d/d4/Bhumjaithai_Party_logo.png" height="60px"></td>
+                                    <td>พรรคภูมิใจไทย</td>
+                                    <td>
+                                        <input type="text" class="value" id="พรรคภูมิใจไทย" name="พรรคภูมิใจไทย" readonly>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td><img src="https://rep-arlington.pages.dev/assets/img/DEM.png" height="60px"></td>
+                                    <td>พรรคประชาธิปไตย</td>
+                                    <td>
+                                        <input type="text" class="value" id="พรรคประชาธิปไตย" name="พรรคประชาธิปไตย" readonly>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td><img src="https://rep-arlington.pages.dev/assets/img/pheutham.png" height="60px"></td>
+                                    <td>พรรคเพื่อธรรม</td>
+                                    <td>
+                                        <input type="text" class="value" id="พรรคเพื่อธรรม" name="พรรคเพื่อธรรม" readonly>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <footer>
+                    <div class="p">
+                        <p>ถ้าไม่ประสงค์ลงคะแนนเลือกพรรคการเมืองใดเลย ให้ทำเครื่องหมายกากบาท "<b>X</b>" ในช่องสี่เหลื่ยมนี้ </p>
+                        <img src="https://koknongna.pages.dev/election/assets/img/no.png" alt="">
+                    </div>
+                    <div class="box">
+                        <p><small>ช่องไม่เลือกผู้สมัครใด</small></p>
+                        <input type="text" class="value" id="ไม่เลือกพรรคใด" name="ไม่เลือกพรรคใด" readonly>
+                    </div>
+                </footer>
+            </div>
+            <div class="col-6 c-none">
+                <header>
+                    <h2>ตั้นขั้วบัตรเลือกตั้ง</h2>
+                    <p>ด้านในของบัตรเลือกตั้งประธานาธิบดี</p>
+                </header>
+                <main>
+                    <div style=" display: grid; text-align: left; ">
+                        <label for="name">ชื่อ นามสกุล</label>
+                        <input type="text" id="name" placeholder="ชื่อ นามสกุล" name="name" required="">
+                    </div>
+                    <div style=" display: grid; text-align: left; ">
+                        <label for="uid">เลขประชาชน (UID Discord)</label>
+                        <input type="text" id="uid" placeholder="เลขประชาชน" name="uid" required="">
+                    </div>
+                </main>
+                <main>
+                    <div style="display: grid;text-align: left;width: 100%;">
+                        <input type="text" id="director" value="นายณภัทร สุวรรณสวัสดิ์" name="กรรมการประจําหน่วยเลือกตั้ง" required="" readonly="">
+                        <label for="director" style=" text-align: center; ">(กรรมการประจําหน่วยเลือกตั้ง)</label>
+                    </div>
+                </main>
+                <main>
+                    <button type="submit" id="submit-button" class="btn btn-primary button is-primary">หย่อนบัตร</button>
+                </main>
+                <main style=" display: none; ">
+                    <div id="message" style=" display: none; margin: 20px; font-weight: bold; color: green; padding: 8px; background-color: beige; border-radius: 4px; border-color: aquamarine; "></div>
+                </main>
+            </div>
+        </form>
+        
+    </div>
+    <script src="/assets/js/pe.js"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        const data = JSON.parse(localStorage.getItem('election_user_data'));
+    
+        if (data) {
+          const fullName = `${data.fname} ${data.lname}`;
+          const uid = data.id;
+    
+          // ใส่ค่าลง input
+          document.getElementById('name').value = fullName;
+          document.getElementById('uid').value = uid;
+        } else {
+          console.warn("ไม่พบข้อมูลผู้ใช้ใน localStorage (election_user_data)");
+        }
+      });
+    </script>
+
+    
+</body>
+</html>
