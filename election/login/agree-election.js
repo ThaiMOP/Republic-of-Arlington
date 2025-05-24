@@ -13,8 +13,8 @@ const userData = JSON.parse(localStorage.getItem('election_user_data') || '{}');
 
 // กำหนดว่าเปิดปุ่มไหนบ้างในระบบ (เปิด/ปิด manual)
 const electionStatus = {
-  generalElection: false,  // ❌ ยังไม่เปิด
-  hrElection: true,        // ✅ เปิดแล้ววู้ว
+  generalElection: true,// ✅ เปิดแล้ววู้ว
+  hrElection: false,    // ❌ ยังไม่เปิด      
   senateElection: false    // ❌ ยังไม่เปิด
 };
 
