@@ -96,3 +96,6 @@
 [data-elections] p:last-child {
     display: none;
 }
+[data-elections] > * {
+    font-size: 24px;
+}
