@@ -71,7 +71,7 @@ document.getElementById("form").addEventListener("submit", function (e) {
       document.getElementById("form").reset();
 
       setTimeout(function () {
-        window.location.href = "/election/hr-election.html";
+        window.location.href = "/election/hrz-election.html";
       }, 500);
     })
     .catch(function (error) {
@@ -80,63 +80,3 @@ document.getElementById("form").addEventListener("submit", function (e) {
       document.getElementById("message").style.display = "block";
     });
 });
-
-
-        // document.getElementById("form").addEventListener("submit", function (e) {
-        //   e.preventDefault(); // Prevent the default form submission
-        //   document.getElementById("message").textContent = "กำลังบันทึก...";
-        //   document.getElementById("message").style.display = "block";
-        //   document.getElementById("submit-button").disabled = true;
-  
-        //   // Collect the form data
-        //   var formData = new FormData(this);
-        //   var keyValuePairs = [];
-        //   for (var pair of formData.entries()) {
-        //     keyValuePairs.push(pair[0] + "=" + pair[1]);
-        //   }
-  
-        //   var formDataString = keyValuePairs.join("&");
-  
-        //   // Send a POST request to your Google Apps Script
-        //   fetch(
-        //     "https://script.google.com/macros/s/AKfycbzyYwv0eKvmhjwa5SSTGf9FTFFsCHEjPm9qqV64HSVYAkBGx3oyciWjnp-WdLK21Wu8/exec",
-        //     {
-        //       redirect: "follow",
-        //       method: "POST",
-        //       body: formDataString,
-        //       headers: {
-        //         "Content-Type": "text/plain;charset=utf-8",
-        //       },
-        //     }
-        //   )
-        //     .then(function (response) {
-        //       // Check if the request was successful
-        //       if (response) {
-        //         return response; // Assuming your script returns JSON response
-        //       } else {
-        //         throw new Error("Failed to submit the form.");
-        //       }
-        //     })
-        //     .then(function (data) {
-        //         // แสดงข้อความสำเร็จ
-        //         document.getElementById("message").textContent = "Data submitted successfully!";
-        //         document.getElementById("message").style.display = "block";
-        //         document.getElementById("message").style.backgroundColor = "green";
-        //         document.getElementById("message").style.color = "beige";
-        //         document.getElementById("submit-button").disabled = false;
-        //         document.getElementById("form").reset();
-            
-        //         // รอ 2.6 วินาทีแล้วเปลี่ยนหน้า
-        //         setTimeout(function () {
-        //             window.location.href = "/election/next";
-        //         }, 500);
-        //     })
-
-        //     .catch(function (error) {
-        //       // Handle errors, you can display an error message here
-        //       console.error(error);
-        //       document.getElementById("message").textContent =
-        //         "An error occurred while submitting the form.";
-        //       document.getElementById("message").style.display = "block";
-        //     });
-        // });
