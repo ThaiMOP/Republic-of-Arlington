@@ -26,6 +26,7 @@
       <img src="/assets/img/eca/NumberHRE.png">
     </div>
     <center>
+      <div data-elections></div>
       <div data-election></div>
     </center>
   </div>
@@ -71,7 +72,7 @@
           ? 'คุณมีสิทธิ์เลือกตั้ง'
           : 'คุณไม่มีสิทธิ์เลือกตั้งหรือยังไม่ลงทะเบียน';
 
-        const infoBox = document.querySelector('[data-election]');
+        const infoBox = document.querySelector('[data-elections]');
         infoBox.innerHTML = `
           <p><strong>ชื่อ:</strong> ${matchedUser.fname} ${matchedUser.lname}</p>
           <p><strong>จังหวัด:</strong> ${matchedUser.province}</p>
