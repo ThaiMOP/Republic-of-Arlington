@@ -131,3 +131,14 @@
     .menu button:disabled:hover {
       background-color: #cccccc;
     }
+button.disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    color: #666;
+    pointer-events: none;
+    box-shadow: none;
+}
+
+button.disabled:hover {
+    background-color: #cccccc;
+}
